@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2F99877B21A282E3001B1256 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F99877A21A282E3001B1256 /* AppDelegate.swift */; };
-		2F99877D21A282E3001B1256 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F99877C21A282E3001B1256 /* ViewController.swift */; };
 		2F99878021A282E3001B1256 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F99877E21A282E3001B1256 /* Main.storyboard */; };
 		2F99878221A282E7001B1256 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F99878121A282E7001B1256 /* Assets.xcassets */; };
 		2F99878521A282E7001B1256 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F99878321A282E7001B1256 /* LaunchScreen.storyboard */; };
@@ -36,7 +35,6 @@
 /* Begin PBXFileReference section */
 		2F99877721A282E3001B1256 /* friction.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = friction.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F99877A21A282E3001B1256 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2F99877C21A282E3001B1256 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2F99877F21A282E3001B1256 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2F99878121A282E7001B1256 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2F99878421A282E7001B1256 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -98,7 +96,6 @@
 			isa = PBXGroup;
 			children = (
 				2F99877A21A282E3001B1256 /* AppDelegate.swift */,
-				2F99877C21A282E3001B1256 /* ViewController.swift */,
 				2F99877E21A282E3001B1256 /* Main.storyboard */,
 				2F99878121A282E7001B1256 /* Assets.xcassets */,
 				2F99878321A282E7001B1256 /* LaunchScreen.storyboard */,
@@ -256,7 +253,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2F99877D21A282E3001B1256 /* ViewController.swift in Sources */,
 				2F99877B21A282E3001B1256 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -435,6 +431,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9JBA7R48SP;
 				INFOPLIST_FILE = friction/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -453,6 +450,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9JBA7R48SP;
 				INFOPLIST_FILE = friction/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

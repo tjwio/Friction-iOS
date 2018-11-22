@@ -16,6 +16,9 @@
 		2F5D1CE121A292F0003D0587 /* AvenirNextLTPro-It.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F5D1CDA21A292F0003D0587 /* AvenirNextLTPro-It.otf */; };
 		2F5D1CE421A29344003D0587 /* UIFont+CustomFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5D1CE321A29344003D0587 /* UIFont+CustomFonts.swift */; };
 		2F5D1CE621A293A0003D0587 /* UIColor+HexRGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5D1CE521A293A0003D0587 /* UIColor+HexRGB.swift */; };
+		2F8A6F0621A679FB0056D4AD /* FRPollTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8A6F0521A679FB0056D4AD /* FRPollTableViewCell.swift */; };
+		2F8A6F0821A67EAD0056D4AD /* FRLiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8A6F0721A67EAD0056D4AD /* FRLiveView.swift */; };
+		2F8A6F0A21A680CB0056D4AD /* FRPercentageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8A6F0921A680CB0056D4AD /* FRPercentageButton.swift */; };
 		2F99877B21A282E3001B1256 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F99877A21A282E3001B1256 /* AppDelegate.swift */; };
 		2F99878021A282E3001B1256 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F99877E21A282E3001B1256 /* Main.storyboard */; };
 		2F99878221A282E7001B1256 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F99878121A282E7001B1256 /* Assets.xcassets */; };
@@ -54,6 +57,9 @@
 		2F5D1CDA21A292F0003D0587 /* AvenirNextLTPro-It.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextLTPro-It.otf"; sourceTree = "<group>"; };
 		2F5D1CE321A29344003D0587 /* UIFont+CustomFonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+CustomFonts.swift"; sourceTree = "<group>"; };
 		2F5D1CE521A293A0003D0587 /* UIColor+HexRGB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+HexRGB.swift"; sourceTree = "<group>"; };
+		2F8A6F0521A679FB0056D4AD /* FRPollTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FRPollTableViewCell.swift; sourceTree = "<group>"; };
+		2F8A6F0721A67EAD0056D4AD /* FRLiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FRLiveView.swift; sourceTree = "<group>"; };
+		2F8A6F0921A680CB0056D4AD /* FRPercentageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FRPercentageButton.swift; sourceTree = "<group>"; };
 		2F99877721A282E3001B1256 /* friction.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = friction.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F99877A21A282E3001B1256 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2F99877F21A282E3001B1256 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -119,6 +125,14 @@
 				2F5D1CE321A29344003D0587 /* UIFont+CustomFonts.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		2F8A6F0421A678620056D4AD /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				2F8A6F0521A679FB0056D4AD /* FRPollTableViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		2F99876E21A282E3001B1256 = {
@@ -187,6 +201,9 @@
 		2F9987A921A28EDC001B1256 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2F8A6F0421A678620056D4AD /* Cells */,
+				2F8A6F0721A67EAD0056D4AD /* FRLiveView.swift */,
+				2F8A6F0921A680CB0056D4AD /* FRPercentageButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -370,9 +387,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F8A6F0621A679FB0056D4AD /* FRPollTableViewCell.swift in Sources */,
 				2F99877B21A282E3001B1256 /* AppDelegate.swift in Sources */,
+				2F8A6F0A21A680CB0056D4AD /* FRPercentageButton.swift in Sources */,
 				2F5D1CE421A29344003D0587 /* UIFont+CustomFonts.swift in Sources */,
 				2F9987AC21A28EF9001B1256 /* FRMainViewController.swift in Sources */,
+				2F8A6F0821A67EAD0056D4AD /* FRLiveView.swift in Sources */,
 				2F5D1CE621A293A0003D0587 /* UIColor+HexRGB.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -21,6 +21,10 @@ extension UIColor {
             return UIColor(hexColor: 0x656A6F)
         }
         
+        static var medium: UIColor {
+            return UIColor(hexColor: 0x7D7D7D)
+        }
+        
         static var light: UIColor {
             return UIColor(hexColor: 0xA7ADB6)
         }
@@ -65,6 +69,10 @@ extension UIColor {
         
         static var darker: UIColor {
             return UIColor(hexColor: 0xC0392B)
+        }
+        
+        static var light: UIColor {
+            return UIColor(hexColor: 0xFF7D7D)
         }
     }
     

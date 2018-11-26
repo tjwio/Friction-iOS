@@ -7,3 +7,11 @@
 //
 
 import Foundation
+
+public typealias JSON = [String : Any]
+
+public typealias FRUserHandler = (FRUser) -> Void
+
+public typealias FRJSONHandler = (JSON) -> Void
+public typealias FRJSONListHandler = ([JSON]) -> Void
+public typealias FRErrorHandler = (Error) -> Void

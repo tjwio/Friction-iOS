@@ -39,6 +39,12 @@
 		2F8A6F3321AB80370056D4AD /* FRAuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8A6F3221AB80370056D4AD /* FRAuthenticationManager.swift */; };
 		2F8A6F3621AB81620056D4AD /* FRAppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8A6F3521AB81620056D4AD /* FRAppConstants.swift */; };
 		2F8A6F3821AB820E0056D4AD /* FRAppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8A6F3721AB820E0056D4AD /* FRAppManager.swift */; };
+		2F8A6F3B21AB8A640056D4AD /* FRUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8A6F3A21AB8A640056D4AD /* FRUser.swift */; };
+		2F8A6F3D21ABC8B20056D4AD /* URLRequesst+cURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8A6F3C21ABC8B20056D4AD /* URLRequesst+cURL.swift */; };
+		2F8A6F4021ABC9AB0056D4AD /* FRNetworkHandler+Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8A6F3F21ABC9AB0056D4AD /* FRNetworkHandler+Authentication.swift */; };
+		2F8A6F4321ABCA1B0056D4AD /* Data+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8A6F4121ABCA1B0056D4AD /* Data+JSON.swift */; };
+		2F8A6F4421ABCA1B0056D4AD /* Dictionary+Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8A6F4221ABCA1B0056D4AD /* Dictionary+Decoder.swift */; };
+		2F8A6F4721ABCBD60056D4AD /* FRError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8A6F4621ABCBD60056D4AD /* FRError.swift */; };
 		2F99877B21A282E3001B1256 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F99877A21A282E3001B1256 /* AppDelegate.swift */; };
 		2F99878021A282E3001B1256 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F99877E21A282E3001B1256 /* Main.storyboard */; };
 		2F99878221A282E7001B1256 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F99878121A282E7001B1256 /* Assets.xcassets */; };
@@ -100,6 +106,12 @@
 		2F8A6F3221AB80370056D4AD /* FRAuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FRAuthenticationManager.swift; sourceTree = "<group>"; };
 		2F8A6F3521AB81620056D4AD /* FRAppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FRAppConstants.swift; sourceTree = "<group>"; };
 		2F8A6F3721AB820E0056D4AD /* FRAppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FRAppManager.swift; sourceTree = "<group>"; };
+		2F8A6F3A21AB8A640056D4AD /* FRUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FRUser.swift; sourceTree = "<group>"; };
+		2F8A6F3C21ABC8B20056D4AD /* URLRequesst+cURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URLRequesst+cURL.swift"; sourceTree = "<group>"; };
+		2F8A6F3F21ABC9AB0056D4AD /* FRNetworkHandler+Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FRNetworkHandler+Authentication.swift"; sourceTree = "<group>"; };
+		2F8A6F4121ABCA1B0056D4AD /* Data+JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+JSON.swift"; sourceTree = "<group>"; };
+		2F8A6F4221ABCA1B0056D4AD /* Dictionary+Decoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Decoder.swift"; sourceTree = "<group>"; };
+		2F8A6F4621ABCBD60056D4AD /* FRError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FRError.swift; sourceTree = "<group>"; };
 		2F99877721A282E3001B1256 /* friction.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = friction.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F99877A21A282E3001B1256 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2F99877F21A282E3001B1256 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -168,11 +180,14 @@
 		2F5D1CE221A2932E003D0587 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				2F8A6F4121ABCA1B0056D4AD /* Data+JSON.swift */,
+				2F8A6F4221ABCA1B0056D4AD /* Dictionary+Decoder.swift */,
 				2F5D1CE521A293A0003D0587 /* UIColor+HexRGB.swift */,
 				2F5D1CE321A29344003D0587 /* UIFont+CustomFonts.swift */,
 				2F8A6F2621AB76040056D4AD /* UIImage+Constants.swift */,
 				2F8A6F1F21AB74B80056D4AD /* UITextField+Toolbar.swift */,
 				2F8A6F1E21AB74B80056D4AD /* UIViewController+Back.swift */,
+				2F8A6F3C21ABC8B20056D4AD /* URLRequesst+cURL.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -225,6 +240,7 @@
 			children = (
 				2F8A6F2E21AB799D0056D4AD /* FRNetworkHandler.swift */,
 				2F8A6F3021AB79D20056D4AD /* FRURLRouter.swift */,
+				2F8A6F3E21ABC96A0056D4AD /* Authentication */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -235,6 +251,30 @@
 				2F8A6F3521AB81620056D4AD /* FRAppConstants.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		2F8A6F3921AB8A4C0056D4AD /* User */ = {
+			isa = PBXGroup;
+			children = (
+				2F8A6F3A21AB8A640056D4AD /* FRUser.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		2F8A6F3E21ABC96A0056D4AD /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				2F8A6F3F21ABC9AB0056D4AD /* FRNetworkHandler+Authentication.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		2F8A6F4521ABCBC90056D4AD /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				2F8A6F4621ABCBD60056D4AD /* FRError.swift */,
+			);
+			path = Error;
 			sourceTree = "<group>";
 		};
 		2F99876E21A282E3001B1256 = {
@@ -317,9 +357,11 @@
 			children = (
 				2F8A6F2A21AB78720056D4AD /* Authentication */,
 				2F8A6F3421AB81530056D4AD /* Constants */,
+				2F8A6F4521ABCBC90056D4AD /* Error */,
 				2F5D1CE221A2932E003D0587 /* Extensions */,
 				2F8A6F1D21AB74880056D4AD /* Helper */,
 				2F8A6F2B21AB78940056D4AD /* Network */,
+				2F8A6F3921AB8A4C0056D4AD /* User */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -510,6 +552,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F8A6F2321AB74CA0056D4AD /* FRCommonUtility.swift in Sources */,
+				2F8A6F4321ABCA1B0056D4AD /* Data+JSON.swift in Sources */,
 				2F8A6F3821AB820E0056D4AD /* FRAppManager.swift in Sources */,
 				2F8A6F2F21AB799D0056D4AD /* FRNetworkHandler.swift in Sources */,
 				2F8A6F2921AB77E80056D4AD /* FRLoadingButton.swift in Sources */,
@@ -522,12 +565,17 @@
 				2F5D1CE421A29344003D0587 /* UIFont+CustomFonts.swift in Sources */,
 				2F9987AC21A28EF9001B1256 /* FRMainViewController.swift in Sources */,
 				2F8A6F3621AB81620056D4AD /* FRAppConstants.swift in Sources */,
+				2F8A6F4021ABC9AB0056D4AD /* FRNetworkHandler+Authentication.swift in Sources */,
 				2F8A6F3321AB80370056D4AD /* FRAuthenticationManager.swift in Sources */,
+				2F8A6F4421ABCA1B0056D4AD /* Dictionary+Decoder.swift in Sources */,
+				2F8A6F3B21AB8A640056D4AD /* FRUser.swift in Sources */,
 				2F8A6F3121AB79D20056D4AD /* FRURLRouter.swift in Sources */,
 				2F8A6F2021AB74B80056D4AD /* UIViewController+Back.swift in Sources */,
+				2F8A6F3D21ABC8B20056D4AD /* URLRequesst+cURL.swift in Sources */,
 				2F8A6F0821A67EAD0056D4AD /* FRLiveView.swift in Sources */,
 				2F8A6F2121AB74B80056D4AD /* UITextField+Toolbar.swift in Sources */,
 				2F8A6F1021AB71C00056D4AD /* FRWelcomeViewController.swift in Sources */,
+				2F8A6F4721ABCBD60056D4AD /* FRError.swift in Sources */,
 				2F5D1CE621A293A0003D0587 /* UIColor+HexRGB.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

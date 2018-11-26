@@ -407,7 +407,7 @@ class FRSignupViewController: UIViewController, UITextFieldDelegate {
     //MARK: create account
     @objc private func createAccount(_ sender: FRLoadingButton?) {
         sender?.isLoading = true
-        BAAuthenticationManager.shared.signup(firstName: self.firstNameTextField.text!, lastName: self.lastNameTextField.text!, email: self.emailTextField.text!, phone: self.phoneTextField.text!, password: self.passwordTextField.text!, success: { user in
+        FRAuthenticationManager.shared.signup(firstName: self.firstNameTextField.text!, lastName: self.lastNameTextField.text!, email: self.emailTextField.text!, phone: self.phoneTextField.text!, password: self.passwordTextField.text!, success: { user in
             let homeBlock = {
                 let viewController = BAFirstXPWelcomeViewController(user: user)
                 self.navigationController?.pushViewController(viewController, animated: true)

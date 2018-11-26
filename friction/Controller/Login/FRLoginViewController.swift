@@ -294,7 +294,7 @@ class FRLoginViewController: UIViewController, UITextFieldDelegate {
     //MARK: login
     @objc private func login(_ sender: FRLoadingButton?) {
         sender?.isLoading = true
-        BAAuthenticationManager.shared.login(email: self.emailTextField.text!, password: self.passwordTextField.text!, success: { user in
+        FRAuthenticationManager.shared.login(email: self.emailTextField.text!, password: self.passwordTextField.text!, success: { user in
             let homeBlock = {
                 DispatchQueue.main.async {
                     (UIApplication.shared.delegate as? AppDelegate)?.loadHomeViewController(user: user)

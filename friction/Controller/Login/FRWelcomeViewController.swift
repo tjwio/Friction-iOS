@@ -74,7 +74,6 @@ class FRWelcomeViewController: UIViewController {
         
         view.addSubview(backgroundImageView)
         view.addSubview(ciaoLabel)
-        view.addSubview(launchGuyImageView)
         view.addSubview(createAccountButton)
         view.addSubview(loginButton)
         

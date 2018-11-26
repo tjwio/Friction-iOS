@@ -17,4 +17,13 @@ class FRPollTableViewCell: UITableViewCell {
         
         return label
     }()
+    
+    let buttonScrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return scrollView
+    }()
 }

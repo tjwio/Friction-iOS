@@ -19,6 +19,20 @@
 		2F8A6F0621A679FB0056D4AD /* FRPollTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8A6F0521A679FB0056D4AD /* FRPollTableViewCell.swift */; };
 		2F8A6F0821A67EAD0056D4AD /* FRLiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8A6F0721A67EAD0056D4AD /* FRLiveView.swift */; };
 		2F8A6F0A21A680CB0056D4AD /* FRPercentageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8A6F0921A680CB0056D4AD /* FRPercentageButton.swift */; };
+		2F8A6F1021AB71C00056D4AD /* FRWelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8A6F0D21AB71BF0056D4AD /* FRWelcomeViewController.swift */; };
+		2F8A6F1121AB71C00056D4AD /* FRLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8A6F0E21AB71C00056D4AD /* FRLoginViewController.swift */; };
+		2F8A6F1221AB71C00056D4AD /* FRSignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8A6F0F21AB71C00056D4AD /* FRSignupViewController.swift */; };
+		2F8A6F1421AB72300056D4AD /* FeatherIcon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F8A6F1321AB72300056D4AD /* FeatherIcon.framework */; };
+		2F8A6F1921AB74140056D4AD /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F8A6F1521AB74140056D4AD /* ReactiveCocoa.framework */; };
+		2F8A6F1A21AB74140056D4AD /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F8A6F1621AB74140056D4AD /* Result.framework */; };
+		2F8A6F1B21AB74140056D4AD /* SkyFloatingLabelTextField.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F8A6F1721AB74140056D4AD /* SkyFloatingLabelTextField.framework */; };
+		2F8A6F1C21AB74140056D4AD /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F8A6F1821AB74140056D4AD /* ReactiveSwift.framework */; };
+		2F8A6F2021AB74B80056D4AD /* UIViewController+Back.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8A6F1E21AB74B80056D4AD /* UIViewController+Back.swift */; };
+		2F8A6F2121AB74B80056D4AD /* UITextField+Toolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8A6F1F21AB74B80056D4AD /* UITextField+Toolbar.swift */; };
+		2F8A6F2321AB74CA0056D4AD /* FRCommonUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8A6F2221AB74CA0056D4AD /* FRCommonUtility.swift */; };
+		2F8A6F2521AB752D0056D4AD /* GSMessages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F8A6F2421AB752D0056D4AD /* GSMessages.framework */; };
+		2F8A6F2721AB76040056D4AD /* UIImage+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8A6F2621AB76040056D4AD /* UIImage+Constants.swift */; };
+		2F8A6F2921AB77E80056D4AD /* FRLoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8A6F2821AB77E80056D4AD /* FRLoadingButton.swift */; };
 		2F99877B21A282E3001B1256 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F99877A21A282E3001B1256 /* AppDelegate.swift */; };
 		2F99878021A282E3001B1256 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F99877E21A282E3001B1256 /* Main.storyboard */; };
 		2F99878221A282E7001B1256 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F99878121A282E7001B1256 /* Assets.xcassets */; };
@@ -60,6 +74,20 @@
 		2F8A6F0521A679FB0056D4AD /* FRPollTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FRPollTableViewCell.swift; sourceTree = "<group>"; };
 		2F8A6F0721A67EAD0056D4AD /* FRLiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FRLiveView.swift; sourceTree = "<group>"; };
 		2F8A6F0921A680CB0056D4AD /* FRPercentageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FRPercentageButton.swift; sourceTree = "<group>"; };
+		2F8A6F0D21AB71BF0056D4AD /* FRWelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FRWelcomeViewController.swift; sourceTree = "<group>"; };
+		2F8A6F0E21AB71C00056D4AD /* FRLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FRLoginViewController.swift; sourceTree = "<group>"; };
+		2F8A6F0F21AB71C00056D4AD /* FRSignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FRSignupViewController.swift; sourceTree = "<group>"; };
+		2F8A6F1321AB72300056D4AD /* FeatherIcon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FeatherIcon.framework; path = Carthage/Build/iOS/FeatherIcon.framework; sourceTree = "<group>"; };
+		2F8A6F1521AB74140056D4AD /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
+		2F8A6F1621AB74140056D4AD /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
+		2F8A6F1721AB74140056D4AD /* SkyFloatingLabelTextField.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SkyFloatingLabelTextField.framework; path = Carthage/Build/iOS/SkyFloatingLabelTextField.framework; sourceTree = "<group>"; };
+		2F8A6F1821AB74140056D4AD /* ReactiveSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveSwift.framework; path = Carthage/Build/iOS/ReactiveSwift.framework; sourceTree = "<group>"; };
+		2F8A6F1E21AB74B80056D4AD /* UIViewController+Back.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Back.swift"; sourceTree = "<group>"; };
+		2F8A6F1F21AB74B80056D4AD /* UITextField+Toolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+Toolbar.swift"; sourceTree = "<group>"; };
+		2F8A6F2221AB74CA0056D4AD /* FRCommonUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FRCommonUtility.swift; sourceTree = "<group>"; };
+		2F8A6F2421AB752D0056D4AD /* GSMessages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GSMessages.framework; path = Carthage/Build/iOS/GSMessages.framework; sourceTree = "<group>"; };
+		2F8A6F2621AB76040056D4AD /* UIImage+Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Constants.swift"; sourceTree = "<group>"; };
+		2F8A6F2821AB77E80056D4AD /* FRLoadingButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FRLoadingButton.swift; sourceTree = "<group>"; };
 		2F99877721A282E3001B1256 /* friction.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = friction.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F99877A21A282E3001B1256 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2F99877F21A282E3001B1256 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -82,6 +110,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F8A6F2521AB752D0056D4AD /* GSMessages.framework in Frameworks */,
+				2F8A6F1921AB74140056D4AD /* ReactiveCocoa.framework in Frameworks */,
+				2F8A6F1A21AB74140056D4AD /* Result.framework in Frameworks */,
+				2F8A6F1B21AB74140056D4AD /* SkyFloatingLabelTextField.framework in Frameworks */,
+				2F8A6F1C21AB74140056D4AD /* ReactiveSwift.framework in Frameworks */,
+				2F8A6F1421AB72300056D4AD /* FeatherIcon.framework in Frameworks */,
 				2F9987B021A29131001B1256 /* SnapKit.framework in Frameworks */,
 				2F9987B121A29131001B1256 /* Alamofire.framework in Frameworks */,
 			);
@@ -123,6 +157,9 @@
 			children = (
 				2F5D1CE521A293A0003D0587 /* UIColor+HexRGB.swift */,
 				2F5D1CE321A29344003D0587 /* UIFont+CustomFonts.swift */,
+				2F8A6F2621AB76040056D4AD /* UIImage+Constants.swift */,
+				2F8A6F1F21AB74B80056D4AD /* UITextField+Toolbar.swift */,
+				2F8A6F1E21AB74B80056D4AD /* UIViewController+Back.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -133,6 +170,32 @@
 				2F8A6F0521A679FB0056D4AD /* FRPollTableViewCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		2F8A6F0B21AB70780056D4AD /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				2F9987AB21A28EF9001B1256 /* FRMainViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		2F8A6F0C21AB708B0056D4AD /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				2F8A6F0E21AB71C00056D4AD /* FRLoginViewController.swift */,
+				2F8A6F0F21AB71C00056D4AD /* FRSignupViewController.swift */,
+				2F8A6F0D21AB71BF0056D4AD /* FRWelcomeViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		2F8A6F1D21AB74880056D4AD /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				2F8A6F2221AB74CA0056D4AD /* FRCommonUtility.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		2F99876E21A282E3001B1256 = {
@@ -193,7 +256,8 @@
 		2F9987A821A28ED1001B1256 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				2F9987AB21A28EF9001B1256 /* FRMainViewController.swift */,
+				2F8A6F0B21AB70780056D4AD /* Home */,
+				2F8A6F0C21AB708B0056D4AD /* Login */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -203,6 +267,7 @@
 			children = (
 				2F8A6F0421A678620056D4AD /* Cells */,
 				2F8A6F0721A67EAD0056D4AD /* FRLiveView.swift */,
+				2F8A6F2821AB77E80056D4AD /* FRLoadingButton.swift */,
 				2F8A6F0921A680CB0056D4AD /* FRPercentageButton.swift */,
 			);
 			path = View;
@@ -212,6 +277,7 @@
 			isa = PBXGroup;
 			children = (
 				2F5D1CE221A2932E003D0587 /* Extensions */,
+				2F8A6F1D21AB74880056D4AD /* Helper */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -219,6 +285,12 @@
 		2F9987AD21A29130001B1256 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2F8A6F2421AB752D0056D4AD /* GSMessages.framework */,
+				2F8A6F1521AB74140056D4AD /* ReactiveCocoa.framework */,
+				2F8A6F1821AB74140056D4AD /* ReactiveSwift.framework */,
+				2F8A6F1621AB74140056D4AD /* Result.framework */,
+				2F8A6F1721AB74140056D4AD /* SkyFloatingLabelTextField.framework */,
+				2F8A6F1321AB72300056D4AD /* FeatherIcon.framework */,
 				2F9987AF21A29131001B1256 /* Alamofire.framework */,
 				2F9987AE21A29131001B1256 /* SnapKit.framework */,
 			);
@@ -370,6 +442,12 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SnapKit.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/FeatherIcon.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/ReactiveSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/ReactiveCocoa.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Result.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SkyFloatingLabelTextField.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/GSMessages.framework",
 			);
 			name = "Copy Carthage Frameworks";
 			outputFileListPaths = (
@@ -387,12 +465,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F8A6F2321AB74CA0056D4AD /* FRCommonUtility.swift in Sources */,
+				2F8A6F2921AB77E80056D4AD /* FRLoadingButton.swift in Sources */,
+				2F8A6F1121AB71C00056D4AD /* FRLoginViewController.swift in Sources */,
 				2F8A6F0621A679FB0056D4AD /* FRPollTableViewCell.swift in Sources */,
 				2F99877B21A282E3001B1256 /* AppDelegate.swift in Sources */,
+				2F8A6F1221AB71C00056D4AD /* FRSignupViewController.swift in Sources */,
+				2F8A6F2721AB76040056D4AD /* UIImage+Constants.swift in Sources */,
 				2F8A6F0A21A680CB0056D4AD /* FRPercentageButton.swift in Sources */,
 				2F5D1CE421A29344003D0587 /* UIFont+CustomFonts.swift in Sources */,
 				2F9987AC21A28EF9001B1256 /* FRMainViewController.swift in Sources */,
+				2F8A6F2021AB74B80056D4AD /* UIViewController+Back.swift in Sources */,
 				2F8A6F0821A67EAD0056D4AD /* FRLiveView.swift in Sources */,
+				2F8A6F2121AB74B80056D4AD /* UITextField+Toolbar.swift in Sources */,
+				2F8A6F1021AB71C00056D4AD /* FRWelcomeViewController.swift in Sources */,
 				2F5D1CE621A293A0003D0587 /* UIColor+HexRGB.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

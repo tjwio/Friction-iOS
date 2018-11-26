@@ -1,6 +1,6 @@
 //
 //  UIFont+CustomFonts.swift
-//  Friction
+//  friction
 //
 //  Created by Tim Wong on 3/8/18.
 //  Copyright © 2018 tjwio. All rights reserved.

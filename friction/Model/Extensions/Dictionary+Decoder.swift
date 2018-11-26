@@ -1,6 +1,6 @@
 //
 //  Dictionary+Decoder.swift
-//  Restaurant
+//  friction
 //
 //  Created by Tim Wong on 9/12/18.
 //  Copyright © 2018 myDevices. All rights reserved.

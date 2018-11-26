@@ -15,7 +15,7 @@ class FRWelcomeViewController: UIViewController {
     
     let ciaoLabel: UILabel = {
         let label = UILabel()
-        label.text = "Ciao."
+        label.text = "Friction."
         label.textColor = .white
         label.font = UIFont.avenirBold(size: 60.0)
         label.translatesAutoresizingMaskIntoConstraints = false

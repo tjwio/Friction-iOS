@@ -1,6 +1,6 @@
 //
 //  Data+JSON.swift
-//  Restaurant
+//  friction
 //
 //  Created by Tim Wong on 5/17/18.
 //  Copyright © 2018 myDevices. All rights reserved.

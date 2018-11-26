@@ -1,6 +1,6 @@
 //
 //  UITextField+Toolbar.swift
-//  Bump
+//  friction
 //
 //  Created by Tim Wong on 4/15/18.
 //  Copyright © 2018 tjwio. All rights reserved.

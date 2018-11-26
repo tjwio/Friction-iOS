@@ -1,6 +1,6 @@
 //
 //  UIColor+HexRGB.swift
-//  Bump
+//  friction
 //
 //  Created by Tim Wong on 4/13/18.
 //  Copyright © 2018 tjwio. All rights reserved.

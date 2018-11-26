@@ -13,9 +13,9 @@ import SkyFloatingLabelTextField
 
 class FRSignupViewController: UIViewController, UITextFieldDelegate {
     
-    let ciaoLabel: UILabel = {
+    let frictionLabel: UILabel = {
         let label = UILabel()
-        label.text = "Ciao."
+        label.text = "Friction."
         label.textColor = .white
         label.font = UIFont.avenirBold(size: 60.0)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -44,7 +44,7 @@ class FRSignupViewController: UIViewController, UITextFieldDelegate {
         textField.iconColor = .white
         textField.iconMarginBottom = 0.0
         textField.selectedIconColor = .white
-        textField.placeholder = "First Name"
+        textField.placeholder = "Name"
         textField.placeholderColor = .white
         textField.placeholderFont = UIFont.avenirRegular(size: 17.0)
         textField.titleLabel.font = UIFont.avenirRegular(size: 12.0)
@@ -192,7 +192,7 @@ class FRSignupViewController: UIViewController, UITextFieldDelegate {
         loginButton.addTarget(self, action: #selector(self.goToLogin(_:)), for: .touchUpInside)
         
         view.addSubview(backgroundImageView)
-        view.addSubview(ciaoLabel)
+        view.addSubview(frictionLabel)
         view.addSubview(fullStackView)
         view.addSubview(loginButton)
         
@@ -229,7 +229,7 @@ class FRSignupViewController: UIViewController, UITextFieldDelegate {
             make.edges.equalTo(self.view)
         }
         
-        ciaoLabel.snp.makeConstraints { make in
+        frictionLabel.snp.makeConstraints { make in
             make.bottom.equalTo(self.fullStackView.snp.top).offset(-50.0)
             make.centerX.equalTo(self.view)
         }

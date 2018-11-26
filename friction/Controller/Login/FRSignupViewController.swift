@@ -30,7 +30,7 @@ class FRSignupViewController: UIViewController, UITextFieldDelegate {
         return imageView
     }()
     
-    let firstNameTextField: SkyFloatingLabelTextFieldWithIcon = {
+    let nameTextField: SkyFloatingLabelTextFieldWithIcon = {
         let textField = SkyFloatingLabelTextFieldWithIcon()
         textField.keyboardAppearance = .dark
         textField.keyboardType = .default
@@ -45,68 +45,6 @@ class FRSignupViewController: UIViewController, UITextFieldDelegate {
         textField.iconMarginBottom = 0.0
         textField.selectedIconColor = .white
         textField.placeholder = "First Name"
-        textField.placeholderColor = .white
-        textField.placeholderFont = UIFont.avenirRegular(size: 17.0)
-        textField.titleLabel.font = UIFont.avenirRegular(size: 12.0)
-        textField.lineColor = UIColor(hexColor: 0xAAB2BD)
-        textField.titleColor = UIColor(hexColor: 0xAAB2BD)
-        textField.selectedLineColor = UIColor(hexColor: 0x2895F1)
-        textField.selectedTitleColor = .white
-        textField.errorColor = UIColor(hexColor: 0xED5565)
-        textField.lineHeight = 0.5
-        textField.selectedLineHeight = 0.5
-        textField.clearButtonMode = .whileEditing
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        
-        return textField
-    }()
-    
-    let lastNameTextField: SkyFloatingLabelTextFieldWithIcon = {
-        let textField = SkyFloatingLabelTextFieldWithIcon()
-        textField.keyboardAppearance = .dark
-        textField.keyboardType = .default
-        textField.autocorrectionType = .default
-        textField.spellCheckingType = .default
-        textField.autocapitalizationType = .words
-        textField.textColor = .white
-        textField.font = UIFont.avenirRegular(size: 17.0)
-        textField.iconFont = UIFont.featherFont(size: 17.0)
-        textField.iconText = String.featherIcon(name: .user)
-        textField.iconColor = .white
-        textField.iconMarginBottom = 0.0
-        textField.selectedIconColor = .white
-        textField.placeholder = "Last Name"
-        textField.placeholderColor = .white
-        textField.placeholderFont = UIFont.avenirRegular(size: 17.0)
-        textField.titleLabel.font = UIFont.avenirRegular(size: 12.0)
-        textField.lineColor = UIColor(hexColor: 0xAAB2BD)
-        textField.titleColor = UIColor(hexColor: 0xAAB2BD)
-        textField.selectedLineColor = UIColor(hexColor: 0x2895F1)
-        textField.selectedTitleColor = .white
-        textField.errorColor = UIColor(hexColor: 0xED5565)
-        textField.lineHeight = 0.5
-        textField.selectedLineHeight = 0.5
-        textField.clearButtonMode = .whileEditing
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        
-        return textField
-    }()
-    
-    let phoneTextField: SkyFloatingLabelTextFieldWithIcon = {
-        let textField = SkyFloatingLabelTextFieldWithIcon()
-        textField.keyboardAppearance = .dark
-        textField.keyboardType = .phonePad
-        textField.autocorrectionType = .default
-        textField.spellCheckingType = .default
-        textField.autocapitalizationType = .words
-        textField.textColor = .white
-        textField.font = UIFont.avenirRegular(size: 17.0)
-        textField.iconFont = UIFont.featherFont(size: 17.0)
-        textField.iconText = String.featherIcon(name: .phone)
-        textField.iconColor = .white
-        textField.iconMarginBottom = 0.0
-        textField.selectedIconColor = .white
-        textField.placeholder = "Phone Number"
         textField.placeholderColor = .white
         textField.placeholderFont = UIFont.avenirRegular(size: 17.0)
         textField.titleLabel.font = UIFont.avenirRegular(size: 12.0)
@@ -227,22 +165,16 @@ class FRSignupViewController: UIViewController, UITextFieldDelegate {
         
         view.backgroundColor = .white
         
-        self.firstNameTextField.delegate = self
-        self.firstNameTextField.addDoneToolbar(target: self, selector: #selector(self.userFinishedEditingFirstName(sender:)), toolbarStyle: .black)
-        
-        self.lastNameTextField.delegate = self
-        self.lastNameTextField.addDoneToolbar(target: self, selector: #selector(self.userFinishedEditingLastName(sender:)), toolbarStyle: .black)
+        self.nameTextField.delegate = self
+        self.nameTextField.addDoneToolbar(target: self, selector: #selector(self.userFinishedEditingFirstName(sender:)), toolbarStyle: .black)
         
         self.emailTextField.delegate = self
         self.emailTextField.addDoneToolbar(target: self, selector: #selector(self.userFinishedEditingEmail(sender:)), toolbarStyle: .black)
         
-        self.phoneTextField.delegate = self
-        self.phoneTextField.addDoneToolbar(target: self, selector: #selector(self.userFinishedEditingPhoneNumber(sender:)), toolbarStyle: .black)
-        
         self.passwordTextField.delegate = self
         self.passwordTextField.addDoneToolbar(target: self, selector: #selector(self.userFinishedEditingPassword(sender:)), toolbarStyle: .black)
         
-        textFieldsStackView = UIStackView(arrangedSubviews: [firstNameTextField, lastNameTextField, emailTextField, phoneTextField, passwordTextField])
+        textFieldsStackView = UIStackView(arrangedSubviews: [nameTextField, emailTextField, passwordTextField])
         textFieldsStackView.alignment = .center
         textFieldsStackView.axis = .vertical
         textFieldsStackView.distribution = .fill
@@ -268,14 +200,15 @@ class FRSignupViewController: UIViewController, UITextFieldDelegate {
         
         _ = self.addBackButtonToView(dark: false)
         
-        let firstNameTextFieldSignal = self.firstNameTextField.reactive.continuousTextValues
-        let lastNameTextFieldSignal  = self.lastNameTextField.reactive.continuousTextValues
-        let phoneTextFieldSignal     = self.phoneTextField.reactive.continuousTextValues
+        let nameTextFieldSignal = self.nameTextField.reactive.continuousTextValues
         let emailTextFieldSignal = self.emailTextField.reactive.continuousTextValues
         let passwordTextFieldSignal  = self.passwordTextField.reactive.continuousTextValues
         
-        disposables += Signal.combineLatest(firstNameTextFieldSignal, lastNameTextFieldSignal, phoneTextFieldSignal, emailTextFieldSignal, passwordTextFieldSignal).map { firstName, lastName, phone, email, password in
-            return (email != nil ? FRCommonUtility.isValidEmail(email!) : false) && (firstName?.count ?? 0 > 0 && lastName?.count ?? 0 > 0 && email?.count ?? 0 > 0 && password?.count ?? 0 >= 6 && phone?.count ?? 0 > 0);
+        disposables += Signal.combineLatest(nameTextFieldSignal, emailTextFieldSignal, passwordTextFieldSignal).map { (name, email, password) -> Bool in
+            let emailValid = email?.count ?? 0 > 0 && FRCommonUtility.isValidEmail(email!)
+            let nameValid = name?.count ?? 0 > 0
+            let passwordValid = password?.count ?? 0 >= 6
+            return emailValid && nameValid && passwordValid
             }.observeValues { [weak self] isEnabled in
                 if (isEnabled) {
                     self?.createAccountButton.isEnabled = true;
@@ -307,25 +240,13 @@ class FRSignupViewController: UIViewController, UITextFieldDelegate {
             make.centerY.equalTo(self.view)
         }
         
-        firstNameTextField.snp.makeConstraints { make in
-            make.leading.equalTo(self.fullStackView)
-            make.trailing.equalTo(self.fullStackView)
-            make.height.equalTo(44.0)
-        }
-        
-        lastNameTextField.snp.makeConstraints { make in
+        nameTextField.snp.makeConstraints { make in
             make.leading.equalTo(self.fullStackView)
             make.trailing.equalTo(self.fullStackView)
             make.height.equalTo(44.0)
         }
         
         emailTextField.snp.makeConstraints { make in
-            make.leading.equalTo(self.fullStackView)
-            make.trailing.equalTo(self.fullStackView)
-            make.height.equalTo(44.0)
-        }
-        
-        phoneTextField.snp.makeConstraints { make in
             make.leading.equalTo(self.fullStackView)
             make.trailing.equalTo(self.fullStackView)
             make.height.equalTo(44.0)
@@ -385,15 +306,7 @@ class FRSignupViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc private func userFinishedEditingFirstName(sender: Any) {
-        self.firstNameTextField.resignFirstResponder()
-    }
-    
-    @objc private func userFinishedEditingLastName(sender: Any) {
-        self.lastNameTextField.resignFirstResponder()
-    }
-    
-    @objc private func userFinishedEditingPhoneNumber(sender: Any) {
-        self.phoneTextField.resignFirstResponder()
+        self.nameTextField.resignFirstResponder()
     }
     
     @objc private func userFinishedEditingEmail(sender: Any) {
@@ -407,17 +320,8 @@ class FRSignupViewController: UIViewController, UITextFieldDelegate {
     //MARK: create account
     @objc private func createAccount(_ sender: FRLoadingButton?) {
         sender?.isLoading = true
-        FRAuthenticationManager.shared.signup(firstName: self.firstNameTextField.text!, lastName: self.lastNameTextField.text!, email: self.emailTextField.text!, phone: self.phoneTextField.text!, password: self.passwordTextField.text!, success: { user in
-            let homeBlock = {
-                let viewController = BAFirstXPWelcomeViewController(user: user)
-                self.navigationController?.pushViewController(viewController, animated: true)
-            }
+        FRAuthenticationManager.shared.signup(name: self.nameTextField.text!, email: self.emailTextField.text!, password: self.passwordTextField.text!, success: { user in
             
-            user.loadHistory(success: { _ in
-                homeBlock()
-            }, failure: { _ in
-                homeBlock()
-            })
         }) { error in
             print("failed to create account with error: \(error)")
             self.createAccountButton.isLoading = false

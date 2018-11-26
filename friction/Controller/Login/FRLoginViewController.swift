@@ -295,17 +295,7 @@ class FRLoginViewController: UIViewController, UITextFieldDelegate {
     @objc private func login(_ sender: FRLoadingButton?) {
         sender?.isLoading = true
         FRAuthenticationManager.shared.login(email: self.emailTextField.text!, password: self.passwordTextField.text!, success: { user in
-            let homeBlock = {
-                DispatchQueue.main.async {
-                    (UIApplication.shared.delegate as? AppDelegate)?.loadHomeViewController(user: user)
-                }
-            }
             
-            user.loadHistory(success: { _ in
-                homeBlock()
-            }, failure: { _ in
-                homeBlock()
-            })
         }) { error in
             print("failed to login with error: \(error)")
             self.loginButton.isLoading = false

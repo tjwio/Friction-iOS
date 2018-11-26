@@ -15,7 +15,7 @@ public class FRUser: NSObject, Decodable {
     var imageUrl: String?
     
     enum CodingKeys: String, CodingKey {
-        case id, email, name, password
+        case id, email, name
         case imageUrl = "image_url"
     }
 }

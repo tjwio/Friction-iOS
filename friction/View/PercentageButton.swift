@@ -59,11 +59,22 @@ class PercentageButton: UIButton {
         }
         
         disposables += reactive.controlEvents(UIControl.Event(rawValue: UIControl.Event.touchUpInside.rawValue | UIControl.Event.touchUpOutside.rawValue | UIControl.Event.touchCancel.rawValue)).observeValues { [weak self] _ in
-            self?.backgroundColor = self?.isChosen ?? false ? self?.selectedColor ?? .white : .white
+            guard let strongSelf = self else { return }
+            
+            if strongSelf.isChosen {
+                strongSelf.backgroundColor = strongSelf.selectedColor ?? .white
+                strongSelf.percentLabel.textColor = .white
+            } else {
+                strongSelf.backgroundColor = .white
+                strongSelf.percentLabel.textColor = UIColor.Grayscale.dark
+            }
         }
         
         disposables += reactive.controlEvents(UIControl.Event(rawValue: UIControl.Event.touchDown.rawValue | UIControl.Event.touchDragInside.rawValue)).observeValues { [weak self] _ in
-            self?.backgroundColor = self?.selectedColor ?? .white
+            guard let strongSelf = self else { return }
+            
+            strongSelf.backgroundColor = strongSelf.selectedColor ?? .white
+            strongSelf.percentLabel.textColor = .white
         }
     }
     
@@ -74,8 +85,13 @@ class PercentageButton: UIButton {
     private func commonInit() {
         layer.cornerRadius = 4.0
         
-        setTitleColor(UIColor.Grayscale.dark, for: .normal)
+        let textColor = isChosen ? .white : UIColor.Grayscale.dark
+        
+        setTitleColor(textColor, for: .normal)
+        setTitleColor(.white, for: .highlighted)
         titleLabel?.font = .avenirDemi(size: 14.0)
+        
+        percentLabel.textColor = textColor
         
         addSubview(percentLabel)
         setNeedsUpdateConstraints()

@@ -18,3 +18,4 @@ typealias PollListHandler = ([Poll]) -> Void
 typealias JSONHandler = (JSON) -> Void
 typealias JSONListHandler = ([JSON]) -> Void
 typealias ErrorHandler = (Error) -> Void
+typealias EmptyHandler = () -> Void

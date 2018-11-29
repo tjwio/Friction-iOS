@@ -58,6 +58,7 @@
 		2F9DF8B021AF9CE2001D437F /* HistoryPollTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9DF8AF21AF9CE2001D437F /* HistoryPollTableViewCell.swift */; };
 		2FEA96BD21AFA10800522C0F /* Poll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEA96BC21AFA10800522C0F /* Poll.swift */; };
 		2FEA96BF21AFD24700522C0F /* NetworkHandler+Poll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEA96BE21AFD24700522C0F /* NetworkHandler+Poll.swift */; };
+		2FEA96C121AFD76D00522C0F /* DateFormatter+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEA96C021AFD76D00522C0F /* DateFormatter+Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -135,6 +136,7 @@
 		2F9DF8AF21AF9CE2001D437F /* HistoryPollTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryPollTableViewCell.swift; sourceTree = "<group>"; };
 		2FEA96BC21AFA10800522C0F /* Poll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Poll.swift; sourceTree = "<group>"; };
 		2FEA96BE21AFD24700522C0F /* NetworkHandler+Poll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkHandler+Poll.swift"; sourceTree = "<group>"; };
+		2FEA96C021AFD76D00522C0F /* DateFormatter+Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Constants.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				2F8A6F4121ABCA1B0056D4AD /* Data+JSON.swift */,
+				2FEA96C021AFD76D00522C0F /* DateFormatter+Constants.swift */,
 				2F8A6F4221ABCA1B0056D4AD /* Dictionary+Decoder.swift */,
 				2F5D1CE521A293A0003D0587 /* UIColor+HexRGB.swift */,
 				2F5D1CE321A29344003D0587 /* UIFont+CustomFonts.swift */,
@@ -596,6 +599,7 @@
 				2F8A6F2021AB74B80056D4AD /* UIViewController+Back.swift in Sources */,
 				2F8A6F3D21ABC8B20056D4AD /* URLRequesst+cURL.swift in Sources */,
 				2F9DF8B021AF9CE2001D437F /* HistoryPollTableViewCell.swift in Sources */,
+				2FEA96C121AFD76D00522C0F /* DateFormatter+Constants.swift in Sources */,
 				2F8A6F0821A67EAD0056D4AD /* LiveView.swift in Sources */,
 				2F8A6F2121AB74B80056D4AD /* UITextField+Toolbar.swift in Sources */,
 				2F8A6F1021AB71C00056D4AD /* WelcomeViewController.swift in Sources */,

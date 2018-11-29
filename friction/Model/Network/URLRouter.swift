@@ -15,6 +15,7 @@ enum URLRouter: URLRequestConvertible {
     //MARK: POST
     case signup(parameters: Parameters)
     case login(parameters: Parameters)
+    case getPolls
     case uploadImage
     
     //MARK: PUT
@@ -24,7 +25,7 @@ enum URLRouter: URLRequestConvertible {
     
     var method: HTTPMethod {
         switch self {
-        case .loadUser:
+        case .loadUser, .getPolls:
             return .get
         case .signup, .login, .uploadImage:
             return .post
@@ -43,6 +44,8 @@ enum URLRouter: URLRequestConvertible {
             return "/login"
         case .uploadImage:
             return "/upload/image"
+        case .getPolls:
+            return "/polls"
         }
     }
     

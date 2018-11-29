@@ -57,6 +57,7 @@
 		2F9987B121A29131001B1256 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F9987AF21A29131001B1256 /* Alamofire.framework */; };
 		2F9DF8B021AF9CE2001D437F /* HistoryPollTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9DF8AF21AF9CE2001D437F /* HistoryPollTableViewCell.swift */; };
 		2FEA96BD21AFA10800522C0F /* Poll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEA96BC21AFA10800522C0F /* Poll.swift */; };
+		2FEA96BF21AFD24700522C0F /* NetworkHandler+Poll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEA96BE21AFD24700522C0F /* NetworkHandler+Poll.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,6 +134,7 @@
 		2F9987AF21A29131001B1256 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		2F9DF8AF21AF9CE2001D437F /* HistoryPollTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryPollTableViewCell.swift; sourceTree = "<group>"; };
 		2FEA96BC21AFA10800522C0F /* Poll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Poll.swift; sourceTree = "<group>"; };
+		2FEA96BE21AFD24700522C0F /* NetworkHandler+Poll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkHandler+Poll.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -273,6 +275,7 @@
 			isa = PBXGroup;
 			children = (
 				2F8A6F3F21ABC9AB0056D4AD /* NetworkHandler+Authentication.swift */,
+				2FEA96BE21AFD24700522C0F /* NetworkHandler+Poll.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -580,6 +583,7 @@
 				2F8A6F2721AB76040056D4AD /* UIImage+Constants.swift in Sources */,
 				2FEA96BD21AFA10800522C0F /* Poll.swift in Sources */,
 				2F8A6F0A21A680CB0056D4AD /* PercentageButton.swift in Sources */,
+				2FEA96BF21AFD24700522C0F /* NetworkHandler+Poll.swift in Sources */,
 				2F5D1CE421A29344003D0587 /* UIFont+CustomFonts.swift in Sources */,
 				2F9987AC21A28EF9001B1256 /* MainViewController.swift in Sources */,
 				2F8A6F3621AB81620056D4AD /* AppConstants.swift in Sources */,

@@ -8,10 +8,13 @@
 
 import Foundation
 
-public typealias JSON = [String : Any]
+typealias JSON = [String : Any]
 
-public typealias UserHandler = (User) -> Void
+typealias UserHandler = (User) -> Void
 
-public typealias JSONHandler = (JSON) -> Void
-public typealias JSONListHandler = ([JSON]) -> Void
-public typealias ErrorHandler = (Error) -> Void
+typealias PollHandler = (Poll) -> Void
+typealias PollListHandler = ([Poll]) -> Void
+
+typealias JSONHandler = (JSON) -> Void
+typealias JSONListHandler = ([JSON]) -> Void
+typealias ErrorHandler = (Error) -> Void

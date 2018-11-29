@@ -7,17 +7,24 @@
 //
 
 import UIKit
+import ReactiveCocoa
+import ReactiveSwift
 import SnapKit
 
 class PercentageButton: UIButton {
     let percentLabel: UILabel = {
         let label = UILabel()
-        label.font = .avenirMedium(size: 8.0)
+        label.font = .avenirMedium(size: 11.0)
         label.textColor = UIColor.Grayscale.dark
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
     }()
+    
+    private var isChosen = false
+    private var selectedColor: UIColor?
+    
+    private var disposables = CompositeDisposable()
     
     init() {
         super.init(frame: .zero)
@@ -42,15 +49,33 @@ class PercentageButton: UIButton {
         layer.borderColor = color.cgColor
         layer.borderWidth = 1.0
         
+        isChosen = selected
+        selectedColor = color
+        
         if selected {
             backgroundColor = color
         } else {
             backgroundColor = .white
         }
+        
+        disposables += reactive.controlEvents(UIControl.Event(rawValue: UIControl.Event.touchUpInside.rawValue | UIControl.Event.touchUpOutside.rawValue | UIControl.Event.touchCancel.rawValue)).observeValues { [weak self] _ in
+            self?.backgroundColor = self?.isChosen ?? false ? self?.selectedColor ?? .white : .white
+        }
+        
+        disposables += reactive.controlEvents(UIControl.Event(rawValue: UIControl.Event.touchDown.rawValue | UIControl.Event.touchDragInside.rawValue)).observeValues { [weak self] _ in
+            self?.backgroundColor = self?.selectedColor ?? .white
+        }
+    }
+    
+    deinit {
+        disposables.dispose()
     }
     
     private func commonInit() {
-        layer.cornerRadius = 2.0
+        layer.cornerRadius = 4.0
+        
+        setTitleColor(UIColor.Grayscale.dark, for: .normal)
+        titleLabel?.font = .avenirDemi(size: 14.0)
         
         addSubview(percentLabel)
         setNeedsUpdateConstraints()
@@ -58,7 +83,8 @@ class PercentageButton: UIButton {
     
     override func updateConstraints() {
         percentLabel.snp.makeConstraints { make in
-            make.top.trailing.equalToSuperview()
+            make.top.equalToSuperview().offset(2.0)
+            make.trailing.equalToSuperview().offset(-2.0)
         }
         
         super.updateConstraints()

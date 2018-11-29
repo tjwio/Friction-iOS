@@ -20,7 +20,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     let tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.backgroundColor = .white
-        tableView.contentInset = UIEdgeInsets(top: 24.0, left: 0.0, bottom: 12.0, right: 0.0)
+        tableView.contentInset = UIEdgeInsets(top: 12.0, left: 0.0, bottom: 12.0, right: 0.0)
         tableView.rowHeight = UITableView.automaticDimension
         tableView.separatorStyle = .none
         tableView.tableFooterView = UIView()
@@ -46,6 +46,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         navigationController?.navigationBar.largeTitleTextAttributes = [
             .foregroundColor    :    UIColor.black,
             .font               :    UIFont.avenirBold(size: 30.0) ?? UIFont.preferredFont(forTextStyle: .largeTitle)
+        ]
+        navigationController?.navigationBar.titleTextAttributes = [
+            .foregroundColor    :    UIColor.black,
+            .font               :    UIFont.avenirBold(size: 18.0) ?? UIFont.preferredFont(forTextStyle: .largeTitle)
         ]
         
         activityIndicator.startAnimating()
@@ -96,6 +100,14 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         return 1
     }
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 12.0
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return UIView()
+    }
+    
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return indexPath.section == 0 ? 190.0 : 135.0
     }
@@ -104,9 +116,16 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.historyCellIdentifier) as? HistoryPollTableViewCell ?? HistoryPollTableViewCell(style: .default, reuseIdentifier: Constants.historyCellIdentifier)
         
         let poll = polls[indexPath.section]
+        let totalVotes = poll.totalVotes
+        
         cell.nameLabel.text = poll.name
         cell.dateLabel.text = DateFormatter.dayFullMonth.string(from: poll.date)
-        cell.voteLabel.text = "\(poll.totalVotes) Votes"
+        cell.voteLabel.text = "\(totalVotes) Votes"
+        cell.items = poll.options.map { return (value: $0.name, count: $0.votes == 0 ? 0 : Int(Double($0.votes / totalVotes) * 100.0)) }
+        
+        cell.layer.cornerRadius = 4.0
+        cell.layer.borderColor = UIColor.Grayscale.lighter.cgColor
+        cell.layer.borderWidth = 1.0
         
         return cell
     }

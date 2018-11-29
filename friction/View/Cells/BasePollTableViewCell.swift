@@ -11,6 +11,13 @@ import SnapKit
 
 class BasePollTableViewCell: UITableViewCell {
     
+    private struct Constants {
+        struct Button {
+            static let height = 44.0
+            static let width = 125.0
+        }
+    }
+    
     var items = [(value: String, count: Int)]() {
         didSet {
             reloadButtons()
@@ -21,7 +28,7 @@ class BasePollTableViewCell: UITableViewCell {
     
     let nameLabel: UILabel = {
         let label = UILabel()
-        label.font = .avenirBold(size: 22.0)
+        label.font = .avenirBold(size: 24.0)
         label.numberOfLines = 0
         label.textAlignment = .left
         label.textColor = .black
@@ -48,7 +55,7 @@ class BasePollTableViewCell: UITableViewCell {
     
     let userNameLabel: UILabel = {
         let label = UILabel()
-        label.font = .avenirDemi(size: 12.0)
+        label.font = .avenirDemi(size: 14.0)
         label.text = "friction team"
         label.textColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -58,7 +65,7 @@ class BasePollTableViewCell: UITableViewCell {
     
     let dateLabel: UILabel = {
         let label = UILabel()
-        label.font = .avenirMedium(size: 10.0)
+        label.font = .avenirMedium(size: 12.0)
         label.textColor = UIColor.Grayscale.medium
         label.translatesAutoresizingMaskIntoConstraints = false
         
@@ -67,7 +74,7 @@ class BasePollTableViewCell: UITableViewCell {
     
     let voteLabel: UILabel = {
         let label = UILabel()
-        label.font = .avenirMedium(size: 10.0)
+        label.font = .avenirMedium(size: 12.0)
         label.textColor = UIColor.Grayscale.medium
         label.translatesAutoresizingMaskIntoConstraints = false
         
@@ -101,7 +108,7 @@ class BasePollTableViewCell: UITableViewCell {
         stackView.alignment = .center
         stackView.axis = .horizontal
         stackView.distribution = .fill
-        stackView.spacing = 0.0
+        stackView.spacing = 6.0
         stackView.translatesAutoresizingMaskIntoConstraints = false
         
         return stackView
@@ -132,9 +139,10 @@ class BasePollTableViewCell: UITableViewCell {
         }
         
         scrollView.snp.makeConstraints { make in
-            make.top.equalTo(self.nameLabel.snp.bottom)
+            make.top.equalTo(self.nameLabel.snp.bottom).offset(8.0)
             make.leading.equalToSuperview().offset(16.0)
             make.trailing.equalToSuperview().offset(-16.0)
+            make.height.equalTo(Constants.Button.height)
         }
         
         avatarStackView.snp.makeConstraints { make in
@@ -160,6 +168,8 @@ class BasePollTableViewCell: UITableViewCell {
         
         prevButton.snp.makeConstraints { make in
             make.top.bottom.leading.equalToSuperview()
+            make.width.equalTo(Constants.Button.width)
+            make.height.equalTo(Constants.Button.height)
         }
         
         for index in 1..<items.endIndex {
@@ -170,7 +180,9 @@ class BasePollTableViewCell: UITableViewCell {
             
             nextButton.snp.makeConstraints { make in
                 make.top.bottom.equalToSuperview()
-                make.leading.equalTo(prevButton.snp.trailing).offset(16.0)
+                make.leading.equalTo(prevButton.snp.trailing).offset(12.0)
+                make.width.equalTo(Constants.Button.width)
+                make.height.equalTo(Constants.Button.height)
             }
             
             prevButton = nextButton

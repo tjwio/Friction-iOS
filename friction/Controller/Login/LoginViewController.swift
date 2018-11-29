@@ -295,7 +295,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @objc private func login(_ sender: LoadingButton?) {
         sender?.isLoading = true
         AuthenticationManager.shared.login(email: self.emailTextField.text!, password: self.passwordTextField.text!, success: { user in
-            
+            DispatchQueue.main.async {
+                (UIApplication.shared.delegate as? AppDelegate)?.loadMainViewController()
+            }
         }) { error in
             print("failed to login with error: \(error)")
             self.loginButton.isLoading = false

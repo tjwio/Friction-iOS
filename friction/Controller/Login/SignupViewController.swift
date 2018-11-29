@@ -321,7 +321,9 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     @objc private func createAccount(_ sender: LoadingButton?) {
         sender?.isLoading = true
         AuthenticationManager.shared.signup(name: self.nameTextField.text!, email: self.emailTextField.text!, password: self.passwordTextField.text!, success: { user in
-            
+            DispatchQueue.main.async {
+                (UIApplication.shared.delegate as? AppDelegate)?.loadMainViewController()
+            }
         }) { error in
             print("failed to create account with error: \(error)")
             self.createAccountButton.isLoading = false

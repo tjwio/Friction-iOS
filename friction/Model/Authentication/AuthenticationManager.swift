@@ -88,6 +88,7 @@ class AuthenticationManager: NSObject {
     //MARK: LOG OUT
     func logOut() {
         userId = nil
+        authToken = nil
         UserDefaults.standard.set(nil, forKey: Constants.userIdKeychainKey)
         keychain.delete(Constants.emailKeychainKey)
         keychain.delete(Constants.passwordKeychainKey)

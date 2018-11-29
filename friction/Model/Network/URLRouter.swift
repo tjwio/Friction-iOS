@@ -39,9 +39,9 @@ enum URLRouter: URLRequestConvertible {
         case .loadUser, .updateUser:
             return "/users/me"
         case .signup:
-            return "/signup"
+            return "/users/signup"
         case .login:
-            return "/login"
+            return "/users/login"
         case .uploadImage:
             return "/upload/image"
         case .getPolls:

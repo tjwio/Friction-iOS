@@ -17,8 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
         
-        let controller = UINavigationController(rootViewController: WelcomeViewController())
-        window?.rootViewController = controller
+        CommonUtility.configureMessages()
+        
+        loadMainViewController()
         window?.makeKeyAndVisible()
         
         return true
@@ -45,7 +46,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
-
+    
+    func loadMainViewController() {
+        var rootViewController: UIViewController
+        
+        if AuthenticationManager.shared.authToken?.isEmpty ?? true || AuthenticationManager.shared.userId?.isEmpty ?? true {
+            rootViewController = UINavigationController(rootViewController: WelcomeViewController())
+        } else {
+            rootViewController = UINavigationController(rootViewController: MainViewController())
+        }
+        
+        window?.rootViewController = rootViewController
+    }
 }
 

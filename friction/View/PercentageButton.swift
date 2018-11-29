@@ -34,8 +34,26 @@ class PercentageButton: UIButton {
         commonInit()
     }
     
+    convenience init(value: String, count: Int, color: UIColor, selected: Bool = false) {
+        self.init()
+        setTitle(value, for: .normal)
+        percentLabel.text = "\(count)%"
+        
+        layer.borderColor = color.cgColor
+        layer.borderWidth = 1.0
+        
+        if selected {
+            backgroundColor = color
+        } else {
+            backgroundColor = .white
+        }
+    }
+    
     private func commonInit() {
+        layer.cornerRadius = 2.0
+        
         addSubview(percentLabel)
+        setNeedsUpdateConstraints()
     }
     
     override func updateConstraints() {

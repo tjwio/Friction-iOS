@@ -10,6 +10,15 @@ import UIKit
 import SnapKit
 
 class BasePollTableViewCell: UITableViewCell {
+    
+    var items = [(value: String, count: Int)]() {
+        didSet {
+            reloadButtons()
+        }
+    }
+    
+    var buttons = [PercentageButton]()
+    
     let nameLabel: UILabel = {
         let label = UILabel()
         label.font = .avenirBold(size: 22.0)
@@ -21,7 +30,7 @@ class BasePollTableViewCell: UITableViewCell {
         return label
     }()
     
-    let buttonScrollView: UIScrollView = {
+    let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.showsVerticalScrollIndicator = false
@@ -110,7 +119,7 @@ class BasePollTableViewCell: UITableViewCell {
     
     private func commonInit() {
         contentView.addSubview(nameLabel)
-        contentView.addSubview(buttonScrollView)
+        contentView.addSubview(scrollView)
         contentView.addSubview(avatarStackView)
         
         setNeedsUpdateConstraints()
@@ -122,17 +131,55 @@ class BasePollTableViewCell: UITableViewCell {
             make.trailing.greaterThanOrEqualToSuperview().offset(-48.0)
         }
         
-        buttonScrollView.snp.makeConstraints { make in
+        scrollView.snp.makeConstraints { make in
             make.top.equalTo(self.nameLabel.snp.bottom)
             make.leading.equalToSuperview().offset(16.0)
             make.trailing.equalToSuperview().offset(-16.0)
         }
         
         avatarStackView.snp.makeConstraints { make in
-            make.top.equalTo(self.buttonScrollView.snp.bottom).offset(12.0)
+            make.top.equalTo(self.scrollView.snp.bottom).offset(12.0)
             make.leading.equalToSuperview().offset(10.0)
         }
         
         super.updateConstraints()
+    }
+    
+    // MARK: button scroll view
+    
+    private func reloadButtons() {
+        buttons.forEach { $0.removeFromSuperview() }
+        buttons = []
+        
+        guard !items.isEmpty else { return }
+        
+        var item = items.first!
+        var prevButton = PercentageButton(value: item.value, count: item.count, color: .pollColor(index: 0))
+        buttons.append(prevButton)
+        scrollView.addSubview(prevButton)
+        
+        prevButton.snp.makeConstraints { make in
+            make.top.bottom.leading.equalToSuperview()
+        }
+        
+        for index in 1..<items.endIndex {
+            item = items[index]
+            let nextButton = PercentageButton(value: item.value, count: item.count, color: .pollColor(index: index % 3))
+            buttons.append(nextButton)
+            scrollView.addSubview(nextButton)
+            
+            nextButton.snp.makeConstraints { make in
+                make.top.bottom.equalToSuperview()
+                make.leading.equalTo(prevButton.snp.trailing).offset(16.0)
+            }
+            
+            prevButton = nextButton
+        }
+        
+        prevButton.snp.makeConstraints { make in
+            make.trailing.greaterThanOrEqualToSuperview()
+        }
+        
+        setNeedsLayout()
     }
 }

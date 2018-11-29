@@ -1,5 +1,5 @@
 //
-//  FRUser.swift
+//  User.swift
 //  friction
 //
 //  Created by Tim Wong on 11/25/18.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class FRUser: NSObject, Decodable {
+public class User: NSObject, Decodable {
     var id: String
     var email: String
     var name: String

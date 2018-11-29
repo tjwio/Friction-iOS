@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum FRError: Error {
+enum CommonError: Error {
     case imageData
     case invalidJson
     case nilOrEmpty

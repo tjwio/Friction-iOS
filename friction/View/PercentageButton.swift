@@ -1,5 +1,5 @@
 //
-//  FRPercentageButton.swift
+//  PercentageButton.swift
 //  friction
 //
 //  Created by Tim Wong on 11/21/18.
@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-class FRPercentageButton: UIButton {
+class PercentageButton: UIButton {
     let percentLabel: UILabel = {
         let label = UILabel()
         label.font = .avenirMedium(size: 8.0)

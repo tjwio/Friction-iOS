@@ -1,5 +1,5 @@
 //
-//  FRMainViewController.swift
+//  MainViewController.swift
 //  friction
 //
 //  Created by Tim Wong on 11/18/18.
@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-class FRMainViewController: UIViewController {
+class MainViewController: UIViewController {
     
     let tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)

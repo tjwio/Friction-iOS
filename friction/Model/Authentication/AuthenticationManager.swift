@@ -1,5 +1,5 @@
 //
-//  FRAuthenticationManager.swift
+//  AuthenticationManager.swift
 //  friction
 //
 //  Created by Tim Wong on 11/25/18.
@@ -8,7 +8,7 @@
 
 import KeychainSwift
 
-class FRAuthenticationManager: NSObject {
+class AuthenticationManager: NSObject {
     private struct Constants {
         static let passwordKeychainKey = "BA_USER_PASSWORD"
         static let emailKeychainKey = "BA_USER_EMAIL"
@@ -16,7 +16,7 @@ class FRAuthenticationManager: NSObject {
         static let authTokenKeychainKey = "BA_AUTH_TOKEN"
     }
     
-    static let shared = FRAuthenticationManager()
+    static let shared = AuthenticationManager()
     
     private let keychain = KeychainSwift()
     var userId: String?
@@ -30,29 +30,29 @@ class FRAuthenticationManager: NSObject {
     }
     
     //MARK: SIGNUP
-    func signup(name: String, email: String, password: String, success: FRUserHandler?, failure: FRErrorHandler?) {
-        FRNetworkHandler.shared.signup(name: name, email: email, password: password, success: { response in
-            if let userDict = response["user"] as? [String : Any], let authToken = response["token"] as? String, let user = userDict.decodeJson(FRUser.self) {
+    func signup(name: String, email: String, password: String, success: UserHandler?, failure: ErrorHandler?) {
+        NetworkHandler.shared.signup(name: name, email: email, password: password, success: { response in
+            if let userDict = response["user"] as? [String : Any], let authToken = response["token"] as? String, let user = userDict.decodeJson(User.self) {
                 self.save(userId: user.id, email: email, password: password, authToken: authToken)
                 
                 success?(user)
             }
             else {
-                failure?(FRError.invalidJson)
+                failure?(CommonError.invalidJson)
             }
         }, failure: failure)
     }
     
     //MARK: LOGIN
-    func login(email: String, password: String, success: FRUserHandler?, failure: FRErrorHandler?) {
-        FRNetworkHandler.shared.login(email: email, password: password, success: { response in
-            if let userDict = response["user"] as? [String : Any], let authToken = response["token"] as? String, let user = userDict.decodeJson(FRUser.self) {
+    func login(email: String, password: String, success: UserHandler?, failure: ErrorHandler?) {
+        NetworkHandler.shared.login(email: email, password: password, success: { response in
+            if let userDict = response["user"] as? [String : Any], let authToken = response["token"] as? String, let user = userDict.decodeJson(User.self) {
                 self.save(userId: user.id, email: email, password: password, authToken: authToken)
                 
                 success?(user)
             }
             else {
-                failure?(FRError.invalidJson)
+                failure?(CommonError.invalidJson)
             }
         }, failure: failure)
     }

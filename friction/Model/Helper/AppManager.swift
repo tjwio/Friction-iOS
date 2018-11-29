@@ -1,5 +1,5 @@
 //
-//  FRAppManager.swift
+//  AppManager.swift
 //  friction
 //
 //  Created by Tim Wong on 11/25/18.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum FREnvironment {
+enum Environment {
     case development, staging, production
     
     var apiUrl: String {
@@ -20,18 +20,18 @@ enum FREnvironment {
     }
 }
 
-class FRAppManager: NSObject {
-    static private(set) var shared = FRAppManager(environment: .production)
+class AppManager: NSObject {
+    static private(set) var shared = AppManager(environment: .production)
     
-    private(set) var environment: FREnvironment
+    private(set) var environment: Environment
     
-    private init(environment: FREnvironment) {
+    private init(environment: Environment) {
         self.environment = environment
         super.init()
     }
     
-    class func initialize(environment: FREnvironment) -> FRAppManager {
-        shared = FRAppManager(environment: environment)
+    class func initialize(environment: Environment) -> AppManager {
+        shared = AppManager(environment: environment)
         
         return shared
     }

@@ -1,5 +1,5 @@
 //
-//  FRNetworkHandler.swift
+//  NetworkHandler.swift
 //  friction
 //
 //  Created by Tim Wong on 11/25/18.
@@ -8,8 +8,8 @@
 
 import Alamofire
 
-final class FRNetworkHandler: NSObject {
-    static let shared = FRNetworkHandler()
+final class NetworkHandler: NSObject {
+    static let shared = NetworkHandler()
     private(set) var sessionManager = SessionManager(configuration: .default)
     
     private override init() { super.init() }

@@ -1,5 +1,5 @@
 //
-//  FRHistoryPollTableViewCell.swift
+//  HistoryPollTableViewCell.swift
 //  friction
 //
 //  Created by Tim Wong on 11/28/18.
@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-class FRHistoryPollTableViewCell: FRBasePollTableViewCell {
+class HistoryPollTableViewCell: BasePollTableViewCell {
     override func updateConstraints() {
         nameLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(16.0)

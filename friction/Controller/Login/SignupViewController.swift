@@ -1,5 +1,5 @@
 //
-//  FRLoginViewController.swift
+//  SignupViewController.swift
 //  friction
 //
 //  Created by Tim Wong on 4/15/18.
@@ -7,14 +7,13 @@
 //
 
 import UIKit
-import FeatherIcon
 import ReactiveCocoa
 import ReactiveSwift
 import SkyFloatingLabelTextField
 
-class FRLoginViewController: UIViewController, UITextFieldDelegate {
+class SignupViewController: UIViewController, UITextFieldDelegate {
     
-    let ciaoLabel: UILabel = {
+    let frictionLabel: UILabel = {
         let label = UILabel()
         label.text = "Friction."
         label.textColor = .white
@@ -29,6 +28,37 @@ class FRLoginViewController: UIViewController, UITextFieldDelegate {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
         return imageView
+    }()
+    
+    let nameTextField: SkyFloatingLabelTextFieldWithIcon = {
+        let textField = SkyFloatingLabelTextFieldWithIcon()
+        textField.keyboardAppearance = .dark
+        textField.keyboardType = .default
+        textField.autocorrectionType = .default
+        textField.spellCheckingType = .default
+        textField.autocapitalizationType = .words
+        textField.textColor = .white
+        textField.font = UIFont.avenirRegular(size: 17.0)
+        textField.iconFont = UIFont.featherFont(size: 17.0)
+        textField.iconText = String.featherIcon(name: .user)
+        textField.iconColor = .white
+        textField.iconMarginBottom = 0.0
+        textField.selectedIconColor = .white
+        textField.placeholder = "Name"
+        textField.placeholderColor = .white
+        textField.placeholderFont = UIFont.avenirRegular(size: 17.0)
+        textField.titleLabel.font = UIFont.avenirRegular(size: 12.0)
+        textField.lineColor = UIColor(hexColor: 0xAAB2BD)
+        textField.titleColor = UIColor(hexColor: 0xAAB2BD)
+        textField.selectedLineColor = UIColor(hexColor: 0x2895F1)
+        textField.selectedTitleColor = .white
+        textField.errorColor = UIColor(hexColor: 0xED5565)
+        textField.lineHeight = 0.5
+        textField.selectedLineHeight = 0.5
+        textField.clearButtonMode = .whileEditing
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        
+        return textField
     }()
     
     let emailTextField: SkyFloatingLabelTextFieldWithIcon = {
@@ -90,10 +120,10 @@ class FRLoginViewController: UIViewController, UITextFieldDelegate {
         return textField
     }()
     
-    let loginButton: FRLoadingButton = {
-        let button = FRLoadingButton(type: .custom)
+    let createAccountButton: LoadingButton = {
+        let button = LoadingButton(type: .custom)
         button.backgroundColor = UIColor(white: 0.0, alpha: 0.1)
-        button.setTitle("LOG IN", for: .normal)
+        button.setTitle("SIGN UP", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont.avenirDemi(size: 17.0)
         button.isEnabled = false
@@ -103,33 +133,20 @@ class FRLoginViewController: UIViewController, UITextFieldDelegate {
         }
         
         button.reactive.controlEvents(UIControl.Event(rawValue: UIControl.Event.touchDown.rawValue | UIControl.Event.touchDragInside.rawValue)).observeValues { button in
-            button.backgroundColor = button.backgroundColor?.withAlphaComponent(0.5)
+            button.backgroundColor = button.backgroundColor?.withAlphaComponent(0.50)
         }
         
         return button
     }()
     
-    let createAccountButton: UIButton = {
-        let createAccountAttString = NSMutableAttributedString(string: "Dont have an account? Create Account")
-        createAccountAttString.addAttribute(.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: NSMakeRange(createAccountAttString.length-14, 14))
-        createAccountAttString.addAttribute(.foregroundColor, value: UIColor.white, range: NSMakeRange(0, createAccountAttString.length))
+    let loginButton: UIButton = {
+        let loginAttString = NSMutableAttributedString(string: "Already have an account? Log in")
+        loginAttString.addAttribute(NSAttributedString.Key.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: NSMakeRange(loginAttString.length-6, 6))
+        loginAttString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: NSMakeRange(0, loginAttString.length))
         
         let button = UIButton(type: .custom)
-        button.setAttributedTitle(createAccountAttString, for: .normal)
+        button.setAttributedTitle(loginAttString, for: .normal)
         button.titleLabel?.font = UIFont.avenirDemi(size: 17.0)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        
-        return button
-    }()
-    
-    let forgotPasswordButton: UIButton = {
-        let forgotPasswordAttString = NSAttributedString(string: "Forgot Password?", attributes: [NSAttributedString.Key.underlineStyle : NSUnderlineStyle.single.rawValue,
-                                                                                                  NSAttributedString.Key.foregroundColor : UIColor.white])
-        let button = UIButton(type: .custom)
-        button.setAttributedTitle(forgotPasswordAttString, for: .normal)
-        button.titleLabel?.font = UIFont.avenirDemi(size: 16.0)
-        button.backgroundColor = .clear
-        button.isHidden = true
         button.translatesAutoresizingMaskIntoConstraints = false
         
         return button
@@ -138,7 +155,7 @@ class FRLoginViewController: UIViewController, UITextFieldDelegate {
     var textFieldsStackView: UIStackView!
     var fullStackView: UIStackView!
     
-    private var isKeyboardShowing: Bool! = false
+    private var isKeyboardShowing = false
     
     //rx
     private var disposables = CompositeDisposable()
@@ -148,59 +165,58 @@ class FRLoginViewController: UIViewController, UITextFieldDelegate {
         
         view.backgroundColor = .white
         
-        emailTextField.delegate = self
-        emailTextField.addDoneToolbar(target: self, selector: #selector(self.userFinishedEditingEmail(sender:)), toolbarStyle: .black)
+        self.nameTextField.delegate = self
+        self.nameTextField.addDoneToolbar(target: self, selector: #selector(self.userFinishedEditingFirstName(sender:)), toolbarStyle: .black)
         
-        passwordTextField.delegate = self
-        passwordTextField.addDoneToolbar(target: self, selector: #selector(self.userFinishedEditingPassword(sender:)), toolbarStyle: .black)
+        self.emailTextField.delegate = self
+        self.emailTextField.addDoneToolbar(target: self, selector: #selector(self.userFinishedEditingEmail(sender:)), toolbarStyle: .black)
         
-        textFieldsStackView = UIStackView(arrangedSubviews: [emailTextField, passwordTextField])
+        self.passwordTextField.delegate = self
+        self.passwordTextField.addDoneToolbar(target: self, selector: #selector(self.userFinishedEditingPassword(sender:)), toolbarStyle: .black)
+        
+        textFieldsStackView = UIStackView(arrangedSubviews: [nameTextField, emailTextField, passwordTextField])
         textFieldsStackView.alignment = .center
         textFieldsStackView.axis = .vertical
         textFieldsStackView.distribution = .fill
         textFieldsStackView.spacing = 10.0
         textFieldsStackView.translatesAutoresizingMaskIntoConstraints = false
         
-        let buttonStackView = UIStackView(arrangedSubviews: [loginButton, forgotPasswordButton])
-        buttonStackView.alignment = .center
-        buttonStackView.axis = .vertical
-        buttonStackView.distribution = .fill
-        buttonStackView.spacing = 10.0
-        buttonStackView.translatesAutoresizingMaskIntoConstraints = false
-        
-        fullStackView = UIStackView(arrangedSubviews: [textFieldsStackView, buttonStackView])
+        fullStackView = UIStackView(arrangedSubviews: [textFieldsStackView, createAccountButton])
         fullStackView.alignment = .center
         fullStackView.axis = .vertical
         fullStackView.distribution = .fill
         fullStackView.spacing = 15.0
         fullStackView.translatesAutoresizingMaskIntoConstraints = false
         
-        createAccountButton.addTarget(self, action: #selector(self.goToCreateAccount(_:)), for: .touchUpInside)
-        loginButton.addTarget(self, action: #selector(self.login(_:)), for: .touchUpInside)
+        createAccountButton.addTarget(self, action: #selector(self.createAccount(_:)), for: .touchUpInside)
+        loginButton.addTarget(self, action: #selector(self.goToLogin(_:)), for: .touchUpInside)
         
         view.addSubview(backgroundImageView)
-        view.addSubview(ciaoLabel)
+        view.addSubview(frictionLabel)
         view.addSubview(fullStackView)
-        view.addSubview(createAccountButton)
+        view.addSubview(loginButton)
         
-        setupConstraints()
+        self.setupConstraints()
         
         _ = self.addBackButtonToView(dark: false)
         
+        let nameTextFieldSignal = self.nameTextField.reactive.continuousTextValues
         let emailTextFieldSignal = self.emailTextField.reactive.continuousTextValues
         let passwordTextFieldSignal  = self.passwordTextField.reactive.continuousTextValues
         
-        self.disposables += Signal.combineLatest(emailTextFieldSignal, passwordTextFieldSignal).map { email, password in
-            return (email != nil ? FRCommonUtility.isValidEmail(email!) : false) && (password?.count ?? 0 > 0);
+        disposables += Signal.combineLatest(nameTextFieldSignal, emailTextFieldSignal, passwordTextFieldSignal).map { (name, email, password) -> Bool in
+            let emailValid = email?.count ?? 0 > 0 && CommonUtility.isValidEmail(email!)
+            let nameValid = name?.count ?? 0 > 0
+            let passwordValid = password?.count ?? 0 >= 6
+            return emailValid && nameValid && passwordValid
             }.observeValues { [weak self] isEnabled in
-                guard let strongSelf = self else { return }
                 if (isEnabled) {
-                    strongSelf.loginButton.isEnabled = true;
-                    strongSelf.loginButton.backgroundColor = strongSelf.loginButton.backgroundColor?.withAlphaComponent(0.35)
+                    self?.createAccountButton.isEnabled = true;
+                    self?.createAccountButton.backgroundColor = self?.createAccountButton.backgroundColor?.withAlphaComponent(0.35)
                 }
                 else {
-                    strongSelf.loginButton.isEnabled = false;
-                    strongSelf.loginButton.backgroundColor = strongSelf.loginButton.backgroundColor?.withAlphaComponent(0.1)
+                    self?.createAccountButton.isEnabled = false;
+                    self?.createAccountButton.backgroundColor = self?.createAccountButton.backgroundColor?.withAlphaComponent(0.1)
                 }
         }
         
@@ -213,7 +229,7 @@ class FRLoginViewController: UIViewController, UITextFieldDelegate {
             make.edges.equalTo(self.view)
         }
         
-        ciaoLabel.snp.makeConstraints { make in
+        frictionLabel.snp.makeConstraints { make in
             make.bottom.equalTo(self.fullStackView.snp.top).offset(-50.0)
             make.centerX.equalTo(self.view)
         }
@@ -222,6 +238,12 @@ class FRLoginViewController: UIViewController, UITextFieldDelegate {
             make.leading.equalTo(self.view).offset(48.0)
             make.trailing.equalTo(self.view).offset(-48.0)
             make.centerY.equalTo(self.view)
+        }
+        
+        nameTextField.snp.makeConstraints { make in
+            make.leading.equalTo(self.fullStackView)
+            make.trailing.equalTo(self.fullStackView)
+            make.height.equalTo(44.0)
         }
         
         emailTextField.snp.makeConstraints { make in
@@ -236,13 +258,13 @@ class FRLoginViewController: UIViewController, UITextFieldDelegate {
             make.height.equalTo(44.0)
         }
         
-        loginButton.snp.makeConstraints { make in
+        createAccountButton.snp.makeConstraints { make in
             make.leading.equalTo(self.fullStackView)
             make.trailing.equalTo(self.fullStackView)
             make.height.equalTo(54.0)
         }
         
-        createAccountButton.snp.makeConstraints { make in
+        loginButton.snp.makeConstraints { make in
             make.bottom.equalTo(self.view).offset(-30.0)
             make.centerX.equalTo(self.view)
         }
@@ -253,8 +275,8 @@ class FRLoginViewController: UIViewController, UITextFieldDelegate {
         if (textField == self.emailTextField) {
             self.passwordTextField.becomeFirstResponder()
         }
-        else if (textField == self.passwordTextField && self.loginButton.isEnabled) {
-            login(loginButton)
+        else if (textField == self.passwordTextField && self.createAccountButton.isEnabled) {
+            createAccount(createAccountButton)
         }
         else {
             textField.resignFirstResponder()
@@ -271,7 +293,7 @@ class FRLoginViewController: UIViewController, UITextFieldDelegate {
                     floatingTextField.errorMessage = floatingTextField.placeholder?.uppercased();
                 }
                 else {
-                    if (floatingTextField == self.emailTextField && !FRCommonUtility.isValidEmail(newText)) {
+                    if (floatingTextField == self.emailTextField && !CommonUtility.isValidEmail(newText)) {
                         floatingTextField.errorMessage = "EMAIL NOT VALID";
                     }
                     else {
@@ -283,6 +305,10 @@ class FRLoginViewController: UIViewController, UITextFieldDelegate {
         return true;
     }
     
+    @objc private func userFinishedEditingFirstName(sender: Any) {
+        self.nameTextField.resignFirstResponder()
+    }
+    
     @objc private func userFinishedEditingEmail(sender: Any) {
         self.emailTextField.resignFirstResponder()
     }
@@ -291,26 +317,26 @@ class FRLoginViewController: UIViewController, UITextFieldDelegate {
         self.passwordTextField.resignFirstResponder()
     }
     
-    //MARK: login
-    @objc private func login(_ sender: FRLoadingButton?) {
+    //MARK: create account
+    @objc private func createAccount(_ sender: LoadingButton?) {
         sender?.isLoading = true
-        FRAuthenticationManager.shared.login(email: self.emailTextField.text!, password: self.passwordTextField.text!, success: { user in
+        AuthenticationManager.shared.signup(name: self.nameTextField.text!, email: self.emailTextField.text!, password: self.passwordTextField.text!, success: { user in
             
         }) { error in
-            print("failed to login with error: \(error)")
-            self.loginButton.isLoading = false
-            self.showLeftMessage("Failed to login. Please try again", type: .error, options: [.height(66.0)])
+            print("failed to create account with error: \(error)")
+            self.createAccountButton.isLoading = false
+            self.showLeftMessage("Failed to create accout. Please try again", type: .error, options: [.height(66.0)])
         }
     }
     
-    //MARK: signup
-    
-    @objc private func goToCreateAccount(_ sender: UIButton?) {
-        let viewController = FRSignupViewController()
-        navigationController?.pushViewController(viewController, animated: true)
+    //MARK: login
+    @objc private func goToLogin(_ sender: UIButton?) {
+        let viewController = LoginViewController()
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
-    //MARK: Keyboard Notifications
+    // MARK: Keyboard Notifications
+    
     @objc private func keyboardWillShow(notification: NSNotification?) {
         if (self.navigationController?.viewControllers.last == self && self.isViewLoaded && self.view.window != nil) {
             if (self.isKeyboardShowing) {
@@ -348,7 +374,8 @@ class FRLoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    //MARK: status bar
+    // MARK: status bar
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent;
     }

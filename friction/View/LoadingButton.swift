@@ -1,5 +1,5 @@
 //
-//  FRLoadingButton.swift
+//  LoadingButton.swift
 //  friction
 //
 //  Created by Tim Wong on 4/15/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FRLoadingButton: UIButton {
+class LoadingButton: UIButton {
     var activityIndicator: UIActivityIndicatorView!;
     
     public var isLoading = false {

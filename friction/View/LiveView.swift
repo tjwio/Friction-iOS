@@ -1,5 +1,5 @@
 //
-//  FRLiveView.swift
+//  LiveView.swift
 //  friction
 //
 //  Created by Tim Wong on 11/21/18.
@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-class FRLiveView: UIView {
+class LiveView: UIView {
     let label: UILabel = {
         let label = UILabel()
         label.font = .avenirMedium(size: 12.0)

@@ -1,5 +1,5 @@
 //
-//  FRCommonUtility.swift
+//  CommonUtility.swift
 //  friction
 //
 //  Created by Tim Wong on 4/15/18.
@@ -9,7 +9,7 @@
 import UIKit
 import GSMessages
 
-class FRCommonUtility: NSObject {
+class CommonUtility: NSObject {
     public class func isValidEmail(_ email: String!) -> Bool {
         if (email.count > 0) {
             let laxChecker = "^.+@.+.[A-Za-z]{2}[A-Za-z]*$";

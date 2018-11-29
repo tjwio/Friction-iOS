@@ -1,5 +1,5 @@
 //
-//  FRWelcomeViewController.swift
+//  WelcomeViewController.swift
 //  friction
 //
 //  Created by Tim Wong on 4/14/18.
@@ -11,7 +11,7 @@ import ReactiveCocoa
 import ReactiveSwift
 import SnapKit
 
-class FRWelcomeViewController: UIViewController {
+class WelcomeViewController: UIViewController {
     
     let ciaoLabel: UILabel = {
         let label = UILabel()
@@ -106,13 +106,13 @@ class FRWelcomeViewController: UIViewController {
     
     //MARK: create account
     @objc private func createAccount(_ sender: UIButton?) {
-        let viewController = FRSignupViewController()
+        let viewController = SignupViewController()
         navigationController?.pushViewController(viewController, animated: true)
     }
     
     //MARK: login
     @objc private func login(_ sender: UIButton?) {
-        let viewController = FRLoginViewController()
+        let viewController = LoginViewController()
         navigationController?.pushViewController(viewController, animated: true)
     }
     

@@ -1,5 +1,5 @@
 //
-//  FRPollTableViewCell.swift
+//  PollTableViewCell.swift
 //  friction
 //
 //  Created by Tim Wong on 11/21/18.
@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-class FRBasePollTableViewCell: UITableViewCell {
+class BasePollTableViewCell: UITableViewCell {
     let nameLabel: UILabel = {
         let label = UILabel()
         label.font = .avenirBold(size: 22.0)

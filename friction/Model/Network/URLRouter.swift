@@ -1,5 +1,5 @@
 //
-//  FRURLRouter.swift
+//  URLRouter.swift
 //  friction
 //
 //  Created by Tim Wong on 11/25/18.
@@ -8,7 +8,7 @@
 
 import Alamofire
 
-enum FRURLRouter: URLRequestConvertible {
+enum URLRouter: URLRequestConvertible {
     //MARK: GET
     case loadUser
     
@@ -47,11 +47,11 @@ enum FRURLRouter: URLRequestConvertible {
     }
     
     func asURLRequest() throws -> URLRequest {
-        let url = try FRAppManager.shared.environment.apiUrl.asURL()
+        let url = try AppManager.shared.environment.apiUrl.asURL()
         
         var urlRequest = URLRequest(url: url.appendingPathComponent(path))
         urlRequest.httpMethod = method.rawValue
-        if let authHeader = FRAuthenticationManager.shared.authToken {
+        if let authHeader = AuthenticationManager.shared.authToken {
             urlRequest.setValue("Bearer \(authHeader)", forHTTPHeaderField: "Authorization");
         }
         

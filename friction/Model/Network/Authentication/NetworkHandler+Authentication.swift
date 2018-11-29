@@ -1,5 +1,5 @@
 //
-//  FRNetworkHandler+Authentication.swift
+//  NetworkHandler+Authentication.swift
 //  friction
 //
 //  Created by Tim Wong on 11/25/18.
@@ -8,20 +8,20 @@
 
 import Alamofire
 
-extension FRNetworkHandler {
+extension NetworkHandler {
     
     private struct Constants {
         static let password = "password"
     }
     
-    public func signup(name: String, email: String, password: String, success: FRJSONHandler?, failure: FRErrorHandler?) {
+    public func signup(name: String, email: String, password: String, success: JSONHandler?, failure: ErrorHandler?) {
         let parameters = [
-            FRUser.CodingKeys.name.rawValue: name,
-            FRUser.CodingKeys.email.rawValue: email,
+            User.CodingKeys.name.rawValue: name,
+            User.CodingKeys.email.rawValue: email,
             Constants.password: password
         ]
         
-        self.sessionManager.request(FRURLRouter.signup(parameters: parameters)).validate().responseJSON { response in
+        self.sessionManager.request(URLRouter.signup(parameters: parameters)).validate().responseJSON { response in
             switch response.result {
             case .success:
                 success?(response.result.value as? JSON ?? JSON())
@@ -31,13 +31,13 @@ extension FRNetworkHandler {
         }
     }
     
-    public func login(email: String, password: String, success: FRJSONHandler?, failure: FRErrorHandler?) {
+    public func login(email: String, password: String, success: JSONHandler?, failure: ErrorHandler?) {
         let parameters = [
-            FRUser.CodingKeys.email.rawValue: email,
+            User.CodingKeys.email.rawValue: email,
             Constants.password: password
         ]
         
-        self.sessionManager.request(FRURLRouter.login(parameters: parameters)).validate().responseJSON { response in
+        self.sessionManager.request(URLRouter.login(parameters: parameters)).validate().responseJSON { response in
             switch response.result {
             case .success:
                 success?(response.result.value as? JSON ?? JSON())

@@ -25,11 +25,23 @@ extension DateFormatter {
         return formatter
     }()
     
+    static private let amPmFormat: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "h:mm a"
+        formatter.locale = .current
+        
+        return formatter
+    }()
+    
     class var iso861: DateFormatter {
         return DateFormatter.iso861Format
     }
     
     class var dayFullMonth: DateFormatter {
         return dayFullMonthFormat
+    }
+    
+    class var amPm: DateFormatter {
+        return amPmFormat
     }
 }

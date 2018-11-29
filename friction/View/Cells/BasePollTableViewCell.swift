@@ -81,12 +81,22 @@ class BasePollTableViewCell: UITableViewCell {
         return label
     }()
     
+    let doubleSlashLabel: UILabel = {
+        let label = UILabel()
+        label.text = "//"
+        label.font = .avenirLight(size: 12.0)
+        label.textColor = UIColor.Grayscale.medium
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return label
+    }()
+    
     lazy var dateVoteStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [dateLabel, voteLabel])
+        let stackView = UIStackView(arrangedSubviews: [dateLabel, doubleSlashLabel, voteLabel])
         stackView.alignment = .center
         stackView.axis = .horizontal
         stackView.distribution = .fill
-        stackView.spacing = 8.0
+        stackView.spacing = 4.0
         stackView.translatesAutoresizingMaskIntoConstraints = false
         
         return stackView

@@ -119,7 +119,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         let totalVotes = poll.totalVotes
         
         cell.nameLabel.text = poll.name
-        cell.dateLabel.text = DateFormatter.dayFullMonth.string(from: poll.date)
+        cell.dateLabel.text = DateFormatter.dayFullMonth.string(from: poll.date).appending(" at ").appending(DateFormatter.amPm.string(from: poll.date))
         cell.voteLabel.text = "\(totalVotes) Votes"
         cell.items = poll.options.map { return (value: $0.name, count: $0.votes == 0 ? 0 : Int(Double($0.votes / totalVotes) * 100.0)) }
         

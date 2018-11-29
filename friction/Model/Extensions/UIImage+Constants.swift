@@ -18,6 +18,10 @@ extension UIImage {
         return UIImage(named: "back_arrow_white")
     }
     
+    class var frictionIconAvatar: UIImage? {
+        return UIImage(named: "friction_icon_avatar")
+    }
+    
     class var launchImageBg: UIImage? {
         return UIImage(named: "launch_image_bg")
     }

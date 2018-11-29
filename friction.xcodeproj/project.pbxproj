@@ -16,7 +16,7 @@
 		2F5D1CE121A292F0003D0587 /* AvenirNextLTPro-It.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F5D1CDA21A292F0003D0587 /* AvenirNextLTPro-It.otf */; };
 		2F5D1CE421A29344003D0587 /* UIFont+CustomFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5D1CE321A29344003D0587 /* UIFont+CustomFonts.swift */; };
 		2F5D1CE621A293A0003D0587 /* UIColor+HexRGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5D1CE521A293A0003D0587 /* UIColor+HexRGB.swift */; };
-		2F8A6F0621A679FB0056D4AD /* FRPollTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8A6F0521A679FB0056D4AD /* FRPollTableViewCell.swift */; };
+		2F8A6F0621A679FB0056D4AD /* FRBasePollTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8A6F0521A679FB0056D4AD /* FRBasePollTableViewCell.swift */; };
 		2F8A6F0821A67EAD0056D4AD /* FRLiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8A6F0721A67EAD0056D4AD /* FRLiveView.swift */; };
 		2F8A6F0A21A680CB0056D4AD /* FRPercentageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8A6F0921A680CB0056D4AD /* FRPercentageButton.swift */; };
 		2F8A6F1021AB71C00056D4AD /* FRWelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8A6F0D21AB71BF0056D4AD /* FRWelcomeViewController.swift */; };
@@ -55,6 +55,7 @@
 		2F9987AC21A28EF9001B1256 /* FRMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9987AB21A28EF9001B1256 /* FRMainViewController.swift */; };
 		2F9987B021A29131001B1256 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F9987AE21A29131001B1256 /* SnapKit.framework */; };
 		2F9987B121A29131001B1256 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F9987AF21A29131001B1256 /* Alamofire.framework */; };
+		2F9DF8B021AF9CE2001D437F /* FRHistoryPollTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9DF8AF21AF9CE2001D437F /* FRHistoryPollTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,7 +85,7 @@
 		2F5D1CDA21A292F0003D0587 /* AvenirNextLTPro-It.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextLTPro-It.otf"; sourceTree = "<group>"; };
 		2F5D1CE321A29344003D0587 /* UIFont+CustomFonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+CustomFonts.swift"; sourceTree = "<group>"; };
 		2F5D1CE521A293A0003D0587 /* UIColor+HexRGB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+HexRGB.swift"; sourceTree = "<group>"; };
-		2F8A6F0521A679FB0056D4AD /* FRPollTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FRPollTableViewCell.swift; sourceTree = "<group>"; };
+		2F8A6F0521A679FB0056D4AD /* FRBasePollTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FRBasePollTableViewCell.swift; sourceTree = "<group>"; };
 		2F8A6F0721A67EAD0056D4AD /* FRLiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FRLiveView.swift; sourceTree = "<group>"; };
 		2F8A6F0921A680CB0056D4AD /* FRPercentageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FRPercentageButton.swift; sourceTree = "<group>"; };
 		2F8A6F0D21AB71BF0056D4AD /* FRWelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FRWelcomeViewController.swift; sourceTree = "<group>"; };
@@ -129,6 +130,7 @@
 		2F9987AB21A28EF9001B1256 /* FRMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FRMainViewController.swift; sourceTree = "<group>"; };
 		2F9987AE21A29131001B1256 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
 		2F9987AF21A29131001B1256 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		2F9DF8AF21AF9CE2001D437F /* FRHistoryPollTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FRHistoryPollTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,7 +200,8 @@
 		2F8A6F0421A678620056D4AD /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				2F8A6F0521A679FB0056D4AD /* FRPollTableViewCell.swift */,
+				2F8A6F0521A679FB0056D4AD /* FRBasePollTableViewCell.swift */,
+				2F9DF8AF21AF9CE2001D437F /* FRHistoryPollTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -560,7 +563,7 @@
 				2F8A6F2F21AB799D0056D4AD /* FRNetworkHandler.swift in Sources */,
 				2F8A6F2921AB77E80056D4AD /* FRLoadingButton.swift in Sources */,
 				2F8A6F1121AB71C00056D4AD /* FRLoginViewController.swift in Sources */,
-				2F8A6F0621A679FB0056D4AD /* FRPollTableViewCell.swift in Sources */,
+				2F8A6F0621A679FB0056D4AD /* FRBasePollTableViewCell.swift in Sources */,
 				2F99877B21A282E3001B1256 /* AppDelegate.swift in Sources */,
 				2F8A6F1221AB71C00056D4AD /* FRSignupViewController.swift in Sources */,
 				2F8A6F2721AB76040056D4AD /* UIImage+Constants.swift in Sources */,
@@ -576,6 +579,7 @@
 				2F8A6F3121AB79D20056D4AD /* FRURLRouter.swift in Sources */,
 				2F8A6F2021AB74B80056D4AD /* UIViewController+Back.swift in Sources */,
 				2F8A6F3D21ABC8B20056D4AD /* URLRequesst+cURL.swift in Sources */,
+				2F9DF8B021AF9CE2001D437F /* FRHistoryPollTableViewCell.swift in Sources */,
 				2F8A6F0821A67EAD0056D4AD /* FRLiveView.swift in Sources */,
 				2F8A6F2121AB74B80056D4AD /* UITextField+Toolbar.swift in Sources */,
 				2F8A6F1021AB71C00056D4AD /* FRWelcomeViewController.swift in Sources */,

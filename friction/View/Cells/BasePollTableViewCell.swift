@@ -18,7 +18,7 @@ class BasePollTableViewCell: UITableViewCell {
         }
     }
     
-    var items = [(value: String, count: Int)]() {
+    var items = [(value: String, count: Int, selected: Bool)]() {
         didSet {
             reloadButtons()
         }
@@ -172,7 +172,7 @@ class BasePollTableViewCell: UITableViewCell {
         guard !items.isEmpty else { return }
         
         var item = items.first!
-        var prevButton = PercentageButton(value: item.value, count: item.count, color: .pollColor(index: 0))
+        var prevButton = PercentageButton(value: item.value, count: item.count, color: .pollColor(index: 0), selected: item.selected)
         buttons.append(prevButton)
         scrollView.addSubview(prevButton)
         
@@ -184,7 +184,7 @@ class BasePollTableViewCell: UITableViewCell {
         
         for index in 1..<items.endIndex {
             item = items[index]
-            let nextButton = PercentageButton(value: item.value, count: item.count, color: .pollColor(index: index % 3))
+            let nextButton = PercentageButton(value: item.value, count: item.count, color: .pollColor(index: index % 3), selected: item.selected)
             buttons.append(nextButton)
             scrollView.addSubview(nextButton)
             

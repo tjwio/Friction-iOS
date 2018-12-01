@@ -59,6 +59,9 @@
 		2FEA96BD21AFA10800522C0F /* Poll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEA96BC21AFA10800522C0F /* Poll.swift */; };
 		2FEA96BF21AFD24700522C0F /* NetworkHandler+Poll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEA96BE21AFD24700522C0F /* NetworkHandler+Poll.swift */; };
 		2FEA96C121AFD76D00522C0F /* DateFormatter+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEA96C021AFD76D00522C0F /* DateFormatter+Constants.swift */; };
+		2FEA96C721B242CC00522C0F /* NetworkHandler+Votes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEA96C621B242CC00522C0F /* NetworkHandler+Votes.swift */; };
+		2FEA96C921B2433600522C0F /* PollHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEA96C821B2433600522C0F /* PollHolder.swift */; };
+		2FEA96CB21B247CD00522C0F /* Vote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEA96CA21B247CD00522C0F /* Vote.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -137,6 +140,9 @@
 		2FEA96BC21AFA10800522C0F /* Poll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Poll.swift; sourceTree = "<group>"; };
 		2FEA96BE21AFD24700522C0F /* NetworkHandler+Poll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkHandler+Poll.swift"; sourceTree = "<group>"; };
 		2FEA96C021AFD76D00522C0F /* DateFormatter+Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Constants.swift"; sourceTree = "<group>"; };
+		2FEA96C621B242CC00522C0F /* NetworkHandler+Votes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkHandler+Votes.swift"; sourceTree = "<group>"; };
+		2FEA96C821B2433600522C0F /* PollHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollHolder.swift; sourceTree = "<group>"; };
+		2FEA96CA21B247CD00522C0F /* Vote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vote.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -279,6 +285,7 @@
 			children = (
 				2F8A6F3F21ABC9AB0056D4AD /* NetworkHandler+Authentication.swift */,
 				2FEA96BE21AFD24700522C0F /* NetworkHandler+Poll.swift */,
+				2FEA96C621B242CC00522C0F /* NetworkHandler+Votes.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -401,6 +408,8 @@
 			isa = PBXGroup;
 			children = (
 				2FEA96BC21AFA10800522C0F /* Poll.swift */,
+				2FEA96C821B2433600522C0F /* PollHolder.swift */,
+				2FEA96CA21B247CD00522C0F /* Vote.swift */,
 			);
 			path = Poll;
 			sourceTree = "<group>";
@@ -585,7 +594,9 @@
 				2F8A6F1221AB71C00056D4AD /* SignupViewController.swift in Sources */,
 				2F8A6F2721AB76040056D4AD /* UIImage+Constants.swift in Sources */,
 				2FEA96BD21AFA10800522C0F /* Poll.swift in Sources */,
+				2FEA96CB21B247CD00522C0F /* Vote.swift in Sources */,
 				2F8A6F0A21A680CB0056D4AD /* PercentageButton.swift in Sources */,
+				2FEA96C921B2433600522C0F /* PollHolder.swift in Sources */,
 				2FEA96BF21AFD24700522C0F /* NetworkHandler+Poll.swift in Sources */,
 				2F5D1CE421A29344003D0587 /* UIFont+CustomFonts.swift in Sources */,
 				2F9987AC21A28EF9001B1256 /* MainViewController.swift in Sources */,
@@ -599,6 +610,7 @@
 				2F8A6F2021AB74B80056D4AD /* UIViewController+Back.swift in Sources */,
 				2F8A6F3D21ABC8B20056D4AD /* URLRequesst+cURL.swift in Sources */,
 				2F9DF8B021AF9CE2001D437F /* HistoryPollTableViewCell.swift in Sources */,
+				2FEA96C721B242CC00522C0F /* NetworkHandler+Votes.swift in Sources */,
 				2FEA96C121AFD76D00522C0F /* DateFormatter+Constants.swift in Sources */,
 				2F8A6F0821A67EAD0056D4AD /* LiveView.swift in Sources */,
 				2F8A6F2121AB74B80056D4AD /* UITextField+Toolbar.swift in Sources */,

@@ -15,6 +15,9 @@ typealias UserHandler = (User) -> Void
 typealias PollHandler = (Poll) -> Void
 typealias PollListHandler = ([Poll]) -> Void
 
+typealias VoteHandler = (Vote) -> Void
+typealias VoteListHandler = ([Vote]) -> Void
+
 typealias JSONHandler = (JSON) -> Void
 typealias JSONListHandler = ([JSON]) -> Void
 typealias ErrorHandler = (Error) -> Void

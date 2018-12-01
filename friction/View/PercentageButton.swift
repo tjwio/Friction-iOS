@@ -21,7 +21,11 @@ class PercentageButton: UIButton {
         return label
     }()
     
-    private var isChosen = false
+    private var isChosen = false {
+        didSet {
+            updateUIColors()
+        }
+    }
     private var selectedColor: UIColor?
     
     private var disposables = CompositeDisposable()
@@ -49,14 +53,10 @@ class PercentageButton: UIButton {
         layer.borderColor = color.cgColor
         layer.borderWidth = 1.0
         
-        isChosen = selected
         selectedColor = color
+        isChosen = selected
         
-        if selected {
-            backgroundColor = color
-        } else {
-            backgroundColor = .white
-        }
+        updateUIColors()
         
         disposables += reactive.controlEvents(UIControl.Event(rawValue: UIControl.Event.touchUpInside.rawValue | UIControl.Event.touchUpOutside.rawValue | UIControl.Event.touchCancel.rawValue)).observeValues { [weak self] _ in
             guard let strongSelf = self else { return }
@@ -85,13 +85,8 @@ class PercentageButton: UIButton {
     private func commonInit() {
         layer.cornerRadius = 4.0
         
-        let textColor = isChosen ? .white : UIColor.Grayscale.dark
-        
-        setTitleColor(textColor, for: .normal)
         setTitleColor(.white, for: .highlighted)
         titleLabel?.font = .avenirDemi(size: 14.0)
-        
-        percentLabel.textColor = textColor
         
         addSubview(percentLabel)
         setNeedsUpdateConstraints()
@@ -104,5 +99,15 @@ class PercentageButton: UIButton {
         }
         
         super.updateConstraints()
+    }
+    
+    // MARK: ui helper
+    
+    private func updateUIColors() {
+        let textColor = isChosen ? .white : UIColor.Grayscale.dark
+        
+        setTitleColor(textColor, for: .normal)
+        percentLabel.textColor = textColor
+        backgroundColor = isChosen ? selectedColor : .white
     }
 }

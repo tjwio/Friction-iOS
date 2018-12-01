@@ -15,8 +15,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         static let historyCellIdentifier = "HistoryPollCellIdentifier"
     }
     
-    var polls = [Poll]()
-    
     let tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.backgroundColor = .white
@@ -82,8 +80,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     // MARK: reload
     
     private func reloadHelper(completion: EmptyHandler?) {
-        NetworkHandler.shared.getPolls(success: { polls in
-            self.polls = polls
+        PollHolder.shared.initialLoad(success: { polls in
             completion?()
         }) { _ in
             completion?()
@@ -93,7 +90,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     // MARK: table view
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return polls.count
+        return PollHolder.shared.polls.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -115,13 +112,13 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.historyCellIdentifier) as? HistoryPollTableViewCell ?? HistoryPollTableViewCell(style: .default, reuseIdentifier: Constants.historyCellIdentifier)
         
-        let poll = polls[indexPath.section]
+        let poll = PollHolder.shared.polls[indexPath.section]
         let totalVotes = poll.totalVotes
         
         cell.nameLabel.text = poll.name
         cell.dateLabel.text = DateFormatter.dayFullMonth.string(from: poll.date).appending(" at ").appending(DateFormatter.amPm.string(from: poll.date))
         cell.voteLabel.text = "\(totalVotes) Votes"
-        cell.items = poll.options.map { return (value: $0.name, count: $0.votes == 0 ? 0 : Int(Double($0.votes / totalVotes) * 100.0)) }
+        cell.items = poll.options.map { return (value: $0.name, count: $0.votes == 0 ? 0 : Int(Double($0.votes / totalVotes) * 100.0), selected: $0.selected) }
         
         cell.layer.cornerRadius = 4.0
         cell.layer.borderColor = UIColor.Grayscale.lighter.cgColor

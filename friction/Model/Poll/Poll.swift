@@ -12,9 +12,11 @@ class PollOption: NSObject, Decodable {
     var id: String
     var name: String
     var votes: Int
+    var selected = false
     
     enum CodingKeys: String, CodingKey {
-        case id, name, votes
+        case id, name
+        case votes = "vote_count"
     }
 }
 
@@ -48,5 +50,11 @@ class Poll: NSObject, Decodable {
         } else {
             throw CommonError.invalidJson
         }
+    }
+    
+    // MARK: helper
+    
+    func getOption(id: String) -> PollOption? {
+        return options.first { return $0.id == id }
     }
 }

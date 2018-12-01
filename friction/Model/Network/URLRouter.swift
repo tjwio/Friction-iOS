@@ -10,12 +10,11 @@ import Alamofire
 
 enum URLRouter: URLRequestConvertible {
     //MARK: GET
-    case loadUser
+    case loadUser, getPolls, getAllVotes
     
     //MARK: POST
     case signup(parameters: Parameters)
     case login(parameters: Parameters)
-    case getPolls
     case uploadImage
     
     //MARK: PUT
@@ -25,7 +24,7 @@ enum URLRouter: URLRequestConvertible {
     
     var method: HTTPMethod {
         switch self {
-        case .loadUser, .getPolls:
+        case .loadUser, .getPolls, .getAllVotes:
             return .get
         case .signup, .login, .uploadImage:
             return .post
@@ -46,6 +45,8 @@ enum URLRouter: URLRequestConvertible {
             return "/upload/image"
         case .getPolls:
             return "/polls"
+        case .getAllVotes:
+            return "/votes"
         }
     }
     

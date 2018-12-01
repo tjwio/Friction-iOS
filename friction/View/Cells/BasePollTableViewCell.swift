@@ -9,6 +9,10 @@
 import UIKit
 import SnapKit
 
+protocol PollSelectionDelegate: class {
+    func didSelect(item: (value: String, count: Int, selected: Bool), itemIndex: Int, cellIndex: Int)
+}
+
 class BasePollTableViewCell: UITableViewCell {
     
     private struct Constants {
@@ -18,6 +22,8 @@ class BasePollTableViewCell: UITableViewCell {
         }
     }
     
+    var delegate: PollSelectionDelegate?
+    
     var items = [(value: String, count: Int, selected: Bool)]() {
         didSet {
             reloadButtons()
@@ -25,6 +31,8 @@ class BasePollTableViewCell: UITableViewCell {
     }
     
     var buttons = [PercentageButton]()
+    
+    var index = 0
     
     let nameLabel: UILabel = {
         let label = UILabel()
@@ -173,8 +181,11 @@ class BasePollTableViewCell: UITableViewCell {
         
         var item = items.first!
         var prevButton = PercentageButton(value: item.value, count: item.count, color: .pollColor(index: 0), selected: item.selected)
+        prevButton.tag = 0
         buttons.append(prevButton)
         scrollView.addSubview(prevButton)
+        
+        prevButton.addTarget(self, action: #selector(self.didSelectButton(_:)), for: .touchUpInside)
         
         prevButton.snp.makeConstraints { make in
             make.top.bottom.leading.equalToSuperview()
@@ -185,6 +196,8 @@ class BasePollTableViewCell: UITableViewCell {
         for index in 1..<items.endIndex {
             item = items[index]
             let nextButton = PercentageButton(value: item.value, count: item.count, color: .pollColor(index: index % 3), selected: item.selected)
+            nextButton.tag = index
+            nextButton.addTarget(self, action: #selector(self.didSelectButton(_:)), for: .touchUpInside)
             buttons.append(nextButton)
             scrollView.addSubview(nextButton)
             
@@ -203,5 +216,11 @@ class BasePollTableViewCell: UITableViewCell {
         }
         
         setNeedsLayout()
+    }
+    
+    // MARK: button helper
+    
+    @objc private func didSelectButton(_ sender: UIButton) {
+        delegate?.didSelect(item: items[sender.tag], itemIndex: sender.tag, cellIndex: index)
     }
 }

@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class MainViewController: UIViewController, PollSelectionDelegate, UITableViewDelegate, UITableViewDataSource {
     
     private struct Constants {
         static let historyCellIdentifier = "HistoryPollCellIdentifier"
@@ -87,6 +87,19 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    // MARK: selection
+    
+    func didSelect(item: (value: String, count: Int, selected: Bool), itemIndex: Int, cellIndex: Int) {
+        let poll = PollHolder.shared.polls[cellIndex]
+        let option = poll.options[itemIndex]
+        
+        poll.vote(option: option, success: { _ in
+            self.tableView.reloadSections(IndexSet(integer: cellIndex), with: .automatic)
+        }) { _ in
+            self.tableView.reloadSections(IndexSet(integer: cellIndex), with: .automatic)
+        }
+    }
+    
     // MARK: table view
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -118,11 +131,14 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.nameLabel.text = poll.name
         cell.dateLabel.text = DateFormatter.dayFullMonth.string(from: poll.date).appending(" at ").appending(DateFormatter.amPm.string(from: poll.date))
         cell.voteLabel.text = "\(totalVotes) Votes"
-        cell.items = poll.options.map { return (value: $0.name, count: $0.votes == 0 ? 0 : Int(Double($0.votes / totalVotes) * 100.0), selected: $0.selected) }
+        cell.items = poll.options.map { return (value: $0.name, count: $0.votes == 0 ? 0 : Int(Double($0.votes / totalVotes) * 100.0), selected: $0.vote != nil) }
         
         cell.layer.cornerRadius = 4.0
         cell.layer.borderColor = UIColor.Grayscale.lighter.cgColor
         cell.layer.borderWidth = 1.0
+        
+        cell.index = indexPath.section
+        cell.delegate = self
         
         return cell
     }

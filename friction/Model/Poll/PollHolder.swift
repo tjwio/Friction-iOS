@@ -36,7 +36,7 @@ class PollHolder: NSObject {
     func loadVotes(success: EmptyHandler?, failure: ErrorHandler?) {
         NetworkHandler.shared.getAllVotes(success: { votes in
             for vote in votes {
-                self.pollMap[vote.pollId]?.getOption(id: vote.optionId)?.selected = true
+                self.pollMap[vote.pollId]?.getOption(id: vote.optionId)?.vote = vote
             }
             success?()
         }, failure: failure)

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F45105E21B34B3500EC529E /* DeviceToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45105D21B34B3500EC529E /* DeviceToken.swift */; };
+		2F45106021B34BA900EC529E /* NetworkHandler+Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45105F21B34BA900EC529E /* NetworkHandler+Token.swift */; };
 		2F5D1CDB21A292F0003D0587 /* AvenirNextLTPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F5D1CD421A292EF003D0587 /* AvenirNextLTPro-Regular.otf */; };
 		2F5D1CDC21A292F0003D0587 /* AvenirNextLTPro-UltLt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F5D1CD521A292EF003D0587 /* AvenirNextLTPro-UltLt.otf */; };
 		2F5D1CDD21A292F0003D0587 /* AvenirNextLTPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F5D1CD621A292EF003D0587 /* AvenirNextLTPro-Bold.otf */; };
@@ -83,6 +85,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2F45105D21B34B3500EC529E /* DeviceToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceToken.swift; sourceTree = "<group>"; };
+		2F45105F21B34BA900EC529E /* NetworkHandler+Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkHandler+Token.swift"; sourceTree = "<group>"; };
 		2F5D1CD421A292EF003D0587 /* AvenirNextLTPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextLTPro-Regular.otf"; sourceTree = "<group>"; };
 		2F5D1CD521A292EF003D0587 /* AvenirNextLTPro-UltLt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextLTPro-UltLt.otf"; sourceTree = "<group>"; };
 		2F5D1CD621A292EF003D0587 /* AvenirNextLTPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextLTPro-Bold.otf"; sourceTree = "<group>"; };
@@ -182,6 +186,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2F45105C21B34B2000EC529E /* DeviceToken */ = {
+			isa = PBXGroup;
+			children = (
+				2F45105D21B34B3500EC529E /* DeviceToken.swift */,
+			);
+			path = DeviceToken;
+			sourceTree = "<group>";
+		};
 		2F5D1CD321A292D7003D0587 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -289,6 +301,7 @@
 			children = (
 				2F8A6F3F21ABC9AB0056D4AD /* NetworkHandler+Authentication.swift */,
 				2FEA96BE21AFD24700522C0F /* NetworkHandler+Poll.swift */,
+				2F45105F21B34BA900EC529E /* NetworkHandler+Token.swift */,
 				2FEA96C621B242CC00522C0F /* NetworkHandler+Votes.swift */,
 			);
 			path = Authentication;
@@ -383,6 +396,7 @@
 			children = (
 				2F8A6F2A21AB78720056D4AD /* Authentication */,
 				2F8A6F3421AB81530056D4AD /* Constants */,
+				2F45105C21B34B2000EC529E /* DeviceToken */,
 				2F8A6F4521ABCBC90056D4AD /* Error */,
 				2F5D1CE221A2932E003D0587 /* Extensions */,
 				2F8A6F1D21AB74880056D4AD /* Helper */,
@@ -620,11 +634,13 @@
 				2F8A6F3121AB79D20056D4AD /* URLRouter.swift in Sources */,
 				2F8A6F2021AB74B80056D4AD /* UIViewController+Back.swift in Sources */,
 				2F8A6F3D21ABC8B20056D4AD /* URLRequesst+cURL.swift in Sources */,
+				2F45105E21B34B3500EC529E /* DeviceToken.swift in Sources */,
 				2F9DF8B021AF9CE2001D437F /* HistoryPollTableViewCell.swift in Sources */,
 				2FEA96C721B242CC00522C0F /* NetworkHandler+Votes.swift in Sources */,
 				2FEA96C121AFD76D00522C0F /* DateFormatter+Constants.swift in Sources */,
 				2F8A6F0821A67EAD0056D4AD /* LiveView.swift in Sources */,
 				2F8A6F2121AB74B80056D4AD /* UITextField+Toolbar.swift in Sources */,
+				2F45106021B34BA900EC529E /* NetworkHandler+Token.swift in Sources */,
 				2F8A6F1021AB71C00056D4AD /* WelcomeViewController.swift in Sources */,
 				2F8A6F4721ABCBD60056D4AD /* CommonError.swift in Sources */,
 				2F5D1CE621A293A0003D0587 /* UIColor+HexRGB.swift in Sources */,

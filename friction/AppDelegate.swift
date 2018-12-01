@@ -11,6 +11,10 @@ import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
+    
+    private struct Constants {
+        static let tokenKey = "device_token"
+    }
 
     var window: UIWindow?
 
@@ -80,6 +84,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         let token = tokenParts.joined()
         print("Device Token: \(token)")
+        
+        guard UserDefaults.standard.string(forKey: Constants.tokenKey) != token, let udid = UIDevice.current.identifierForVendor?.uuidString else { return }
+        
+        NetworkHandler.shared.addToken(parameters: [DeviceToken.CodingKeys.token.rawValue: token, DeviceToken.CodingKeys.udid.rawValue: udid], success: { _ in
+            UserDefaults.standard.set(token, forKey: Constants.tokenKey)
+        }, failure: nil)
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {

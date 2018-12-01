@@ -18,6 +18,8 @@ typealias PollListHandler = ([Poll]) -> Void
 typealias VoteHandler = (Vote) -> Void
 typealias VoteListHandler = ([Vote]) -> Void
 
+typealias DeviceTokenHandler = (DeviceToken) -> Void
+
 typealias JSONHandler = (JSON) -> Void
 typealias JSONListHandler = ([JSON]) -> Void
 typealias ErrorHandler = (Error) -> Void

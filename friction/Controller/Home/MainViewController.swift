@@ -138,7 +138,8 @@ class MainViewController: UIViewController, PollSelectionDelegate, UITableViewDe
         cell.nameLabel.text = poll.name
         cell.dateLabel.text = DateFormatter.dayFullMonth.string(from: poll.date).appending(" at ").appending(DateFormatter.amPm.string(from: poll.date))
         cell.voteLabel.text = "\(totalVotes) Votes"
-        cell.items = poll.options.map { return (value: $0.name, percent: $0.votes == 0 ? 0.0 : Double($0.votes / totalVotes), selected: $0.vote != nil) }
+        cell.items = poll.options.map { return (value: $0.name, percent: totalVotes == 0 ? 0.0 : Double($0.votes) / Double(totalVotes), selected: $0.vote != nil) }
+        cell.progressHolderView.isHidden = totalVotes == 0
         
         cell.layer.cornerRadius = 4.0
         cell.layer.borderColor = UIColor.Grayscale.lighter.cgColor

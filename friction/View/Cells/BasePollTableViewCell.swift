@@ -156,6 +156,14 @@ class BasePollTableViewCell: UITableViewCell {
         return view
     }()
     
+    var progressHolderView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .clear
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        return view
+    }()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         commonInit()
@@ -167,12 +175,13 @@ class BasePollTableViewCell: UITableViewCell {
     }
     
     func commonInit() {
+        progressHolderView.addSubview(firstProgressView)
+        progressHolderView.addSubview(secondProgressView)
+        progressHolderView.addSubview(thirdProgressView)
         contentView.addSubview(nameLabel)
         contentView.addSubview(scrollView)
         contentView.addSubview(avatarStackView)
-        contentView.addSubview(firstProgressView)
-        contentView.addSubview(secondProgressView)
-        contentView.addSubview(thirdProgressView)
+        contentView.addSubview(progressHolderView)
         
         clipsToBounds = true
         
@@ -195,6 +204,11 @@ class BasePollTableViewCell: UITableViewCell {
         avatarStackView.snp.makeConstraints { make in
             make.top.equalTo(self.scrollView.snp.bottom).offset(12.0)
             make.leading.equalToSuperview().offset(10.0)
+        }
+        
+        progressHolderView.snp.makeConstraints { make in
+            make.leading.trailing.bottom.equalToSuperview()
+            make.height.equalTo(4.0)
         }
         
         super.updateConstraints()
@@ -255,22 +269,20 @@ class BasePollTableViewCell: UITableViewCell {
         let thirdWidth = items.count >= 3 ? items[2].percent : 0.0
         
         firstProgressView.snp.remakeConstraints { make in
-            make.leading.bottom.equalToSuperview()
+            make.top.leading.bottom.equalToSuperview()
             make.height.equalTo(4.0)
             make.width.equalToSuperview().multipliedBy(firstWidth)
         }
         
         secondProgressView.snp.remakeConstraints { make in
             make.leading.equalTo(self.firstProgressView.snp.trailing)
-            make.bottom.equalToSuperview()
-            make.height.equalTo(4.0)
+            make.top.bottom.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(secondWidth)
         }
         
         thirdProgressView.snp.remakeConstraints { make in
             make.leading.equalTo(self.secondProgressView.snp.trailing)
-            make.trailing.bottom.equalToSuperview()
-            make.height.equalTo(4.0)
+            make.top.trailing.bottom.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(thirdWidth)
         }
     }

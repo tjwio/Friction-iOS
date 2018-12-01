@@ -220,7 +220,11 @@ class BasePollTableViewCell: UITableViewCell {
     
     // MARK: button helper
     
-    @objc private func didSelectButton(_ sender: UIButton) {
-        delegate?.didSelect(item: items[sender.tag], itemIndex: sender.tag, cellIndex: index)
+    @objc private func didSelectButton(_ sender: PercentageButton) {
+        if items[sender.tag].selected {
+            sender.isLoading = false
+        } else {
+            delegate?.didSelect(item: items[sender.tag], itemIndex: sender.tag, cellIndex: index)
+        }
     }
 }

@@ -11,7 +11,7 @@ import ReactiveCocoa
 import ReactiveSwift
 import SnapKit
 
-class PercentageButton: UIButton {
+class PercentageButton: LoadingButton {
     let percentLabel: UILabel = {
         let label = UILabel()
         label.font = .avenirMedium(size: 11.0)
@@ -30,7 +30,7 @@ class PercentageButton: UIButton {
     
     private var disposables = CompositeDisposable()
     
-    init() {
+    override init() {
         super.init(frame: .zero)
         commonInit()
     }
@@ -87,6 +87,8 @@ class PercentageButton: UIButton {
         
         setTitleColor(.white, for: .highlighted)
         titleLabel?.font = .avenirDemi(size: 14.0)
+        
+        activityIndicator.style = .gray
         
         addSubview(percentLabel)
         setNeedsUpdateConstraints()

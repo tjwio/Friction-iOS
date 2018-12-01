@@ -53,8 +53,12 @@ class MainViewController: UIViewController, PollSelectionDelegate, UITableViewDe
         
         activityIndicator.startAnimating()
         
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(self.refreshControlRefreshed(_:)), for: .valueChanged)
+        
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.refreshControl = refreshControl
         
         view.addSubview(tableView)
         view.addSubview(activityIndicator)
@@ -85,6 +89,13 @@ class MainViewController: UIViewController, PollSelectionDelegate, UITableViewDe
             completion?()
         }) { _ in
             completion?()
+        }
+    }
+    
+    @objc private func refreshControlRefreshed(_ sender: UIRefreshControl) {
+        reloadHelper {
+            sender.endRefreshing()
+            self.tableView.reloadData()
         }
     }
     

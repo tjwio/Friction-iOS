@@ -24,7 +24,9 @@ class PollHolder: NSObject {
     
     func loadPolls(success: PollListHandler?, failure: ErrorHandler?) {
         NetworkHandler.shared.getPolls(success: { polls in
-            self.polls = polls
+            self.polls = polls.sorted(by: { (first, second) -> Bool in
+                return first.date > second.date
+            })
             polls.forEach { self.pollMap[$0.id] = $0 }
             success?(polls)
         }) { error in

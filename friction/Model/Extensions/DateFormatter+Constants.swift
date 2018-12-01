@@ -13,6 +13,9 @@ extension DateFormatter {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSS"
         formatter.locale = Locale(identifier: "en_US_POSIX")
+        if let tz = TimeZone(abbreviation: "UTC") {
+            formatter.timeZone = tz
+        }
         
         return formatter
     }()
@@ -21,6 +24,7 @@ extension DateFormatter {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd MMMM"
         formatter.locale = .current
+        formatter.timeZone = .current
         
         return formatter
     }()
@@ -29,6 +33,7 @@ extension DateFormatter {
         let formatter = DateFormatter()
         formatter.dateFormat = "h:mm a"
         formatter.locale = .current
+        formatter.timeZone = .current
         
         return formatter
     }()

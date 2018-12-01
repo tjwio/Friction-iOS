@@ -12,6 +12,7 @@ import SnapKit
 class MainViewController: UIViewController, PollSelectionDelegate, UITableViewDelegate, UITableViewDataSource {
     
     private struct Constants {
+        static let liveCellIdentifier = "LivePollCellIdentifier"
         static let historyCellIdentifier = "HistoryPollCellIdentifier"
     }
     
@@ -89,7 +90,7 @@ class MainViewController: UIViewController, PollSelectionDelegate, UITableViewDe
     
     // MARK: selection
     
-    func didSelect(item: (value: String, count: Int, selected: Bool), itemIndex: Int, cellIndex: Int) {
+    func didSelect(item: (value: String, percent: Double, selected: Bool), itemIndex: Int, cellIndex: Int) {
         let poll = PollHolder.shared.polls[cellIndex]
         let option = poll.options[itemIndex]
         
@@ -123,7 +124,13 @@ class MainViewController: UIViewController, PollSelectionDelegate, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.historyCellIdentifier) as? HistoryPollTableViewCell ?? HistoryPollTableViewCell(style: .default, reuseIdentifier: Constants.historyCellIdentifier)
+        let cell: BasePollTableViewCell
+        
+        if indexPath.section == 0 {
+            cell = tableView.dequeueReusableCell(withIdentifier: Constants.liveCellIdentifier) as? LivePollTableViewCell ?? LivePollTableViewCell(style: .default, reuseIdentifier: Constants.liveCellIdentifier)
+        } else {
+            cell = tableView.dequeueReusableCell(withIdentifier: Constants.historyCellIdentifier) as? HistoryPollTableViewCell ?? HistoryPollTableViewCell(style: .default, reuseIdentifier: Constants.historyCellIdentifier)
+        }
         
         let poll = PollHolder.shared.polls[indexPath.section]
         let totalVotes = poll.totalVotes
@@ -131,7 +138,7 @@ class MainViewController: UIViewController, PollSelectionDelegate, UITableViewDe
         cell.nameLabel.text = poll.name
         cell.dateLabel.text = DateFormatter.dayFullMonth.string(from: poll.date).appending(" at ").appending(DateFormatter.amPm.string(from: poll.date))
         cell.voteLabel.text = "\(totalVotes) Votes"
-        cell.items = poll.options.map { return (value: $0.name, count: $0.votes == 0 ? 0 : Int(Double($0.votes / totalVotes) * 100.0), selected: $0.vote != nil) }
+        cell.items = poll.options.map { return (value: $0.name, percent: $0.votes == 0 ? 0.0 : Double($0.votes / totalVotes), selected: $0.vote != nil) }
         
         cell.layer.cornerRadius = 4.0
         cell.layer.borderColor = UIColor.Grayscale.lighter.cgColor

@@ -25,4 +25,8 @@ extension UIImage {
     class var launchImageBg: UIImage? {
         return UIImage(named: "launch_image_bg")
     }
+    
+    class var rightChevron: UIImage? {
+        return UIImage(named: "chevron-right")
+    }
 }

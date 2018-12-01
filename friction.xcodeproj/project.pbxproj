@@ -62,6 +62,7 @@
 		2FEA96C721B242CC00522C0F /* NetworkHandler+Votes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEA96C621B242CC00522C0F /* NetworkHandler+Votes.swift */; };
 		2FEA96C921B2433600522C0F /* PollHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEA96C821B2433600522C0F /* PollHolder.swift */; };
 		2FEA96CB21B247CD00522C0F /* Vote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEA96CA21B247CD00522C0F /* Vote.swift */; };
+		2FEA96CD21B25C9500522C0F /* LivePollTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEA96CC21B25C9500522C0F /* LivePollTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -143,6 +144,7 @@
 		2FEA96C621B242CC00522C0F /* NetworkHandler+Votes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkHandler+Votes.swift"; sourceTree = "<group>"; };
 		2FEA96C821B2433600522C0F /* PollHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollHolder.swift; sourceTree = "<group>"; };
 		2FEA96CA21B247CD00522C0F /* Vote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vote.swift; sourceTree = "<group>"; };
+		2FEA96CC21B25C9500522C0F /* LivePollTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivePollTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,6 +217,7 @@
 			children = (
 				2F8A6F0521A679FB0056D4AD /* BasePollTableViewCell.swift */,
 				2F9DF8AF21AF9CE2001D437F /* HistoryPollTableViewCell.swift */,
+				2FEA96CC21B25C9500522C0F /* LivePollTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -599,6 +602,7 @@
 				2FEA96C921B2433600522C0F /* PollHolder.swift in Sources */,
 				2FEA96BF21AFD24700522C0F /* NetworkHandler+Poll.swift in Sources */,
 				2F5D1CE421A29344003D0587 /* UIFont+CustomFonts.swift in Sources */,
+				2FEA96CD21B25C9500522C0F /* LivePollTableViewCell.swift in Sources */,
 				2F9987AC21A28EF9001B1256 /* MainViewController.swift in Sources */,
 				2F8A6F3621AB81620056D4AD /* AppConstants.swift in Sources */,
 				2F8A6F4021ABC9AB0056D4AD /* NetworkHandler+Authentication.swift in Sources */,

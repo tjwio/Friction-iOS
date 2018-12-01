@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 
 protocol PollSelectionDelegate: class {
-    func didSelect(item: (value: String, count: Int, selected: Bool), itemIndex: Int, cellIndex: Int)
+    func didSelect(item: (value: String, percent: Double, selected: Bool), itemIndex: Int, cellIndex: Int)
 }
 
 class BasePollTableViewCell: UITableViewCell {
@@ -24,7 +24,7 @@ class BasePollTableViewCell: UITableViewCell {
     
     var delegate: PollSelectionDelegate?
     
-    var items = [(value: String, count: Int, selected: Bool)]() {
+    var items = [(value: String, percent: Double, selected: Bool)]() {
         didSet {
             reloadButtons()
         }
@@ -132,6 +132,30 @@ class BasePollTableViewCell: UITableViewCell {
         return stackView
     }()
     
+    let firstProgressView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .pollColor(index: 0)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        return view
+    }()
+    
+    let secondProgressView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .pollColor(index: 1)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        return view
+    }()
+    
+    let thirdProgressView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .pollColor(index: 2)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        return view
+    }()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         commonInit()
@@ -142,10 +166,15 @@ class BasePollTableViewCell: UITableViewCell {
         commonInit()
     }
     
-    private func commonInit() {
+    func commonInit() {
         contentView.addSubview(nameLabel)
         contentView.addSubview(scrollView)
         contentView.addSubview(avatarStackView)
+        contentView.addSubview(firstProgressView)
+        contentView.addSubview(secondProgressView)
+        contentView.addSubview(thirdProgressView)
+        
+        clipsToBounds = true
         
         setNeedsUpdateConstraints()
     }
@@ -180,7 +209,7 @@ class BasePollTableViewCell: UITableViewCell {
         guard !items.isEmpty else { return }
         
         var item = items.first!
-        var prevButton = PercentageButton(value: item.value, count: item.count, color: .pollColor(index: 0), selected: item.selected)
+        var prevButton = PercentageButton(value: item.value, count: Int(item.percent * 100.0), color: .pollColor(index: 0), selected: item.selected)
         prevButton.tag = 0
         buttons.append(prevButton)
         scrollView.addSubview(prevButton)
@@ -195,7 +224,7 @@ class BasePollTableViewCell: UITableViewCell {
         
         for index in 1..<items.endIndex {
             item = items[index]
-            let nextButton = PercentageButton(value: item.value, count: item.count, color: .pollColor(index: index % 3), selected: item.selected)
+            let nextButton = PercentageButton(value: item.value, count: Int(item.percent * 100.0), color: .pollColor(index: index % 3), selected: item.selected)
             nextButton.tag = index
             nextButton.addTarget(self, action: #selector(self.didSelectButton(_:)), for: .touchUpInside)
             buttons.append(nextButton)
@@ -215,7 +244,35 @@ class BasePollTableViewCell: UITableViewCell {
             make.trailing.greaterThanOrEqualToSuperview()
         }
         
+        reloadProgressViews()
+        
         setNeedsLayout()
+    }
+    
+    private func reloadProgressViews() {
+        let firstWidth = items.isEmpty ? 0.0 : items[0].percent
+        let secondWidth = items.count >= 2 ? items[1].percent : 0.0
+        let thirdWidth = items.count >= 3 ? items[2].percent : 0.0
+        
+        firstProgressView.snp.remakeConstraints { make in
+            make.leading.bottom.equalToSuperview()
+            make.height.equalTo(4.0)
+            make.width.equalToSuperview().multipliedBy(firstWidth)
+        }
+        
+        secondProgressView.snp.remakeConstraints { make in
+            make.leading.equalTo(self.firstProgressView.snp.trailing)
+            make.bottom.equalToSuperview()
+            make.height.equalTo(4.0)
+            make.width.equalToSuperview().multipliedBy(secondWidth)
+        }
+        
+        thirdProgressView.snp.remakeConstraints { make in
+            make.leading.equalTo(self.secondProgressView.snp.trailing)
+            make.trailing.bottom.equalToSuperview()
+            make.height.equalTo(4.0)
+            make.width.equalToSuperview().multipliedBy(thirdWidth)
+        }
     }
     
     // MARK: button helper

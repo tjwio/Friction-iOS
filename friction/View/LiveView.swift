@@ -12,7 +12,7 @@ import SnapKit
 class LiveView: UIView {
     let label: UILabel = {
         let label = UILabel()
-        label.font = .avenirMedium(size: 12.0)
+        label.font = .avenirMedium(size: 14.0)
         label.text = "LIVE"
         label.textColor = UIColor.Grayscale.medium
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -34,7 +34,7 @@ class LiveView: UIView {
         stackView.alignment = .top
         stackView.axis = .horizontal
         stackView.distribution = .fill
-        stackView.spacing = 0.0
+        stackView.spacing = 4.0
         stackView.translatesAutoresizingMaskIntoConstraints = false
         
         return stackView

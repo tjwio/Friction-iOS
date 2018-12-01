@@ -145,6 +145,7 @@
 		2FEA96C821B2433600522C0F /* PollHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollHolder.swift; sourceTree = "<group>"; };
 		2FEA96CA21B247CD00522C0F /* Vote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vote.swift; sourceTree = "<group>"; };
 		2FEA96CC21B25C9500522C0F /* LivePollTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivePollTableViewCell.swift; sourceTree = "<group>"; };
+		2FEA96CE21B268CD00522C0F /* friction.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = friction.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -325,6 +326,7 @@
 		2F99877921A282E3001B1256 /* friction */ = {
 			isa = PBXGroup;
 			children = (
+				2FEA96CE21B268CD00522C0F /* friction.entitlements */,
 				2F9987A821A28ED1001B1256 /* Controller */,
 				2F9987AA21A28EE6001B1256 /* Model */,
 				2F9987A921A28EDC001B1256 /* View */,
@@ -486,6 +488,11 @@
 				TargetAttributes = {
 					2F99877621A282E3001B1256 = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					2F99878A21A282E7001B1256 = {
 						CreatedOnToolsVersion = 10.1;
@@ -795,7 +802,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = friction/friction.entitlements;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 9JBA7R48SP;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -809,6 +817,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.tjw.friction;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development io.tjw.friction";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -818,7 +827,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = friction/friction.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 9JBA7R48SP;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -832,6 +843,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.tjw.friction;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "match AdHoc io.tjw.friction";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

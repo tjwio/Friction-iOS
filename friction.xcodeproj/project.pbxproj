@@ -10,6 +10,14 @@
 		2F45105E21B34B3500EC529E /* DeviceToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45105D21B34B3500EC529E /* DeviceToken.swift */; };
 		2F45106021B34BA900EC529E /* NetworkHandler+Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45105F21B34BA900EC529E /* NetworkHandler+Token.swift */; };
 		2F45106221B380E100EC529E /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45106121B380E100EC529E /* AvatarView.swift */; };
+		2F45106421B3860400EC529E /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45106321B3860400EC529E /* ProfileView.swift */; };
+		2F45106721B3868700EC529E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45106621B3868700EC529E /* ProfileViewController.swift */; };
+		2F45106921B3869B00EC529E /* ProfileBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45106821B3869B00EC529E /* ProfileBaseViewController.swift */; };
+		2F45106B21B3886500EC529E /* ProfileDetailValueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45106A21B3886500EC529E /* ProfileDetailValueTableViewCell.swift */; };
+		2F45106D21B38E9F00EC529E /* NetworkHandler+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45106C21B38E9F00EC529E /* NetworkHandler+User.swift */; };
+		2F45106F21B38F7900EC529E /* User+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45106E21B38F7900EC529E /* User+Image.swift */; };
+		2F45107121B38FCC00EC529E /* NetworkHandler+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45107021B38FCC00EC529E /* NetworkHandler+Image.swift */; };
+		2F45107321B390FE00EC529E /* CALayer+Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45107221B390FE00EC529E /* CALayer+Shadow.swift */; };
 		2F5D1CDB21A292F0003D0587 /* AvenirNextLTPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F5D1CD421A292EF003D0587 /* AvenirNextLTPro-Regular.otf */; };
 		2F5D1CDC21A292F0003D0587 /* AvenirNextLTPro-UltLt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F5D1CD521A292EF003D0587 /* AvenirNextLTPro-UltLt.otf */; };
 		2F5D1CDD21A292F0003D0587 /* AvenirNextLTPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F5D1CD621A292EF003D0587 /* AvenirNextLTPro-Bold.otf */; };
@@ -89,6 +97,14 @@
 		2F45105D21B34B3500EC529E /* DeviceToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceToken.swift; sourceTree = "<group>"; };
 		2F45105F21B34BA900EC529E /* NetworkHandler+Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkHandler+Token.swift"; sourceTree = "<group>"; };
 		2F45106121B380E100EC529E /* AvatarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
+		2F45106321B3860400EC529E /* ProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		2F45106621B3868700EC529E /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		2F45106821B3869B00EC529E /* ProfileBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileBaseViewController.swift; sourceTree = "<group>"; };
+		2F45106A21B3886500EC529E /* ProfileDetailValueTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileDetailValueTableViewCell.swift; sourceTree = "<group>"; };
+		2F45106C21B38E9F00EC529E /* NetworkHandler+User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkHandler+User.swift"; sourceTree = "<group>"; };
+		2F45106E21B38F7900EC529E /* User+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+Image.swift"; sourceTree = "<group>"; };
+		2F45107021B38FCC00EC529E /* NetworkHandler+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkHandler+Image.swift"; sourceTree = "<group>"; };
+		2F45107221B390FE00EC529E /* CALayer+Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Shadow.swift"; sourceTree = "<group>"; };
 		2F5D1CD421A292EF003D0587 /* AvenirNextLTPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextLTPro-Regular.otf"; sourceTree = "<group>"; };
 		2F5D1CD521A292EF003D0587 /* AvenirNextLTPro-UltLt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextLTPro-UltLt.otf"; sourceTree = "<group>"; };
 		2F5D1CD621A292EF003D0587 /* AvenirNextLTPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextLTPro-Bold.otf"; sourceTree = "<group>"; };
@@ -196,6 +212,15 @@
 			path = DeviceToken;
 			sourceTree = "<group>";
 		};
+		2F45106521B3867C00EC529E /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				2F45106821B3869B00EC529E /* ProfileBaseViewController.swift */,
+				2F45106621B3868700EC529E /* ProfileViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		2F5D1CD321A292D7003D0587 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -213,6 +238,7 @@
 		2F5D1CE221A2932E003D0587 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				2F45107221B390FE00EC529E /* CALayer+Shadow.swift */,
 				2F8A6F4121ABCA1B0056D4AD /* Data+JSON.swift */,
 				2FEA96C021AFD76D00522C0F /* DateFormatter+Constants.swift */,
 				2F8A6F4221ABCA1B0056D4AD /* Dictionary+Decoder.swift */,
@@ -233,6 +259,7 @@
 				2F8A6F0521A679FB0056D4AD /* BasePollTableViewCell.swift */,
 				2F9DF8AF21AF9CE2001D437F /* HistoryPollTableViewCell.swift */,
 				2FEA96CC21B25C9500522C0F /* LivePollTableViewCell.swift */,
+				2F45106A21B3886500EC529E /* ProfileDetailValueTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -294,6 +321,7 @@
 			isa = PBXGroup;
 			children = (
 				2F8A6F3A21AB8A640056D4AD /* User.swift */,
+				2F45106E21B38F7900EC529E /* User+Image.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -302,8 +330,10 @@
 			isa = PBXGroup;
 			children = (
 				2F8A6F3F21ABC9AB0056D4AD /* NetworkHandler+Authentication.swift */,
+				2F45107021B38FCC00EC529E /* NetworkHandler+Image.swift */,
 				2FEA96BE21AFD24700522C0F /* NetworkHandler+Poll.swift */,
 				2F45105F21B34BA900EC529E /* NetworkHandler+Token.swift */,
+				2F45106C21B38E9F00EC529E /* NetworkHandler+User.swift */,
 				2FEA96C621B242CC00522C0F /* NetworkHandler+Votes.swift */,
 			);
 			path = Authentication;
@@ -378,6 +408,7 @@
 			children = (
 				2F8A6F0B21AB70780056D4AD /* Home */,
 				2F8A6F0C21AB708B0056D4AD /* Login */,
+				2F45106521B3867C00EC529E /* Profile */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -390,6 +421,7 @@
 				2F8A6F0721A67EAD0056D4AD /* LiveView.swift */,
 				2F8A6F2821AB77E80056D4AD /* LoadingButton.swift */,
 				2F8A6F0921A680CB0056D4AD /* PercentageButton.swift */,
+				2F45106321B3860400EC529E /* ProfileView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -611,8 +643,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F8A6F2321AB74CA0056D4AD /* CommonUtility.swift in Sources */,
+				2F45107321B390FE00EC529E /* CALayer+Shadow.swift in Sources */,
 				2F8A6F4321ABCA1B0056D4AD /* Data+JSON.swift in Sources */,
 				2F8A6F3821AB820E0056D4AD /* AppManager.swift in Sources */,
+				2F45106421B3860400EC529E /* ProfileView.swift in Sources */,
+				2F45106D21B38E9F00EC529E /* NetworkHandler+User.swift in Sources */,
 				2F8A6F2F21AB799D0056D4AD /* NetworkHandler.swift in Sources */,
 				2F8A6F2921AB77E80056D4AD /* LoadingButton.swift in Sources */,
 				2F8A6F1121AB71C00056D4AD /* LoginViewController.swift in Sources */,
@@ -628,9 +663,11 @@
 				2F5D1CE421A29344003D0587 /* UIFont+CustomFonts.swift in Sources */,
 				2FEA96CD21B25C9500522C0F /* LivePollTableViewCell.swift in Sources */,
 				2F9987AC21A28EF9001B1256 /* MainViewController.swift in Sources */,
+				2F45106721B3868700EC529E /* ProfileViewController.swift in Sources */,
 				2F8A6F3621AB81620056D4AD /* AppConstants.swift in Sources */,
 				2F8A6F4021ABC9AB0056D4AD /* NetworkHandler+Authentication.swift in Sources */,
 				2F8A6F3321AB80370056D4AD /* AuthenticationManager.swift in Sources */,
+				2F45106F21B38F7900EC529E /* User+Image.swift in Sources */,
 				2F8A6F4921ABCD790056D4AD /* UIViewController+Messages.swift in Sources */,
 				2F8A6F4421ABCA1B0056D4AD /* Dictionary+Decoder.swift in Sources */,
 				2F8A6F3B21AB8A640056D4AD /* User.swift in Sources */,
@@ -641,11 +678,14 @@
 				2F9DF8B021AF9CE2001D437F /* HistoryPollTableViewCell.swift in Sources */,
 				2FEA96C721B242CC00522C0F /* NetworkHandler+Votes.swift in Sources */,
 				2FEA96C121AFD76D00522C0F /* DateFormatter+Constants.swift in Sources */,
+				2F45106921B3869B00EC529E /* ProfileBaseViewController.swift in Sources */,
 				2F8A6F0821A67EAD0056D4AD /* LiveView.swift in Sources */,
 				2F45106221B380E100EC529E /* AvatarView.swift in Sources */,
+				2F45107121B38FCC00EC529E /* NetworkHandler+Image.swift in Sources */,
 				2F8A6F2121AB74B80056D4AD /* UITextField+Toolbar.swift in Sources */,
 				2F45106021B34BA900EC529E /* NetworkHandler+Token.swift in Sources */,
 				2F8A6F1021AB71C00056D4AD /* WelcomeViewController.swift in Sources */,
+				2F45106B21B3886500EC529E /* ProfileDetailValueTableViewCell.swift in Sources */,
 				2F8A6F4721ABCBD60056D4AD /* CommonError.swift in Sources */,
 				2F5D1CE621A293A0003D0587 /* UIColor+HexRGB.swift in Sources */,
 			);

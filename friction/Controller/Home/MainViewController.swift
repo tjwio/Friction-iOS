@@ -16,8 +16,8 @@ class MainViewController: UIViewController, PollSelectionDelegate, UITableViewDe
         static let historyCellIdentifier = "HistoryPollCellIdentifier"
     }
     
-    let avatarImageView: UIImageView = {
-        let imageView = UIImageView(image: .blankAvatar)
+    let avatarImageView: AvatarView = {
+        let imageView = AvatarView(image: .blankAvatar, shadowHidden: true)
         imageView.backgroundColor = .clear
         imageView.translatesAutoresizingMaskIntoConstraints = false
         

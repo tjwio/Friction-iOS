@@ -6,9 +6,9 @@
 //  Copyright © 2018 tjwio. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-typealias JSON = [String : Any]
+typealias JSON = [String: Any]
 
 typealias UserHandler = (User) -> Void
 
@@ -19,6 +19,8 @@ typealias VoteHandler = (Vote) -> Void
 typealias VoteListHandler = ([Vote]) -> Void
 
 typealias DeviceTokenHandler = (DeviceToken) -> Void
+
+typealias ImageHandler = (UIImage) -> Void
 
 typealias JSONHandler = (JSON) -> Void
 typealias JSONListHandler = ([JSON]) -> Void

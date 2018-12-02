@@ -15,8 +15,6 @@ class AvatarView: UIView {
         imageView.layer.cornerRadius = 62.5
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.layer.borderColor = UIColor.white.cgColor
-        imageView.layer.borderWidth = 3.0
         
         return imageView
     }()

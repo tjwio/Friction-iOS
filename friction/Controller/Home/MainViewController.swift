@@ -210,7 +210,7 @@ class MainViewController: UIViewController, PollSelectionDelegate, UITableViewDe
         cell.nameLabel.text = poll.name
         cell.dateLabel.text = DateFormatter.dayFullMonth.string(from: poll.date).appending(" at ").appending(DateFormatter.amPm.string(from: poll.date))
         cell.voteLabel.text = "\(totalVotes) Votes"
-        cell.items = poll.options.map { return (value: $0.name, percent: totalVotes == 0 ? 0.0 : Double($0.votes) / Double(totalVotes), selected: $0.vote != nil) }
+        cell.items = poll.items
         cell.progressHolderView.isHidden = totalVotes == 0
         
         cell.layer.cornerRadius = 4.0
@@ -224,10 +224,13 @@ class MainViewController: UIViewController, PollSelectionDelegate, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        return nil
+        return indexPath
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        let viewController = ChatViewController(poll: PollHolder.shared.polls[indexPath.section])
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }

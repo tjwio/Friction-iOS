@@ -31,6 +31,8 @@ class ButtonScrollView: UIScrollView {
     
     var buttons = [PercentageButton]()
     
+    var showPercentage = true
+    
     // MARK: button scroll view
     
     private func reloadButtons() {
@@ -40,7 +42,7 @@ class ButtonScrollView: UIScrollView {
         guard !items.isEmpty else { return }
         
         var item = items.first!
-        var prevButton = PercentageButton(value: item.value, count: Int(item.percent * 100.0), color: .pollColor(index: 0), selected: item.selected)
+        var prevButton = PercentageButton(value: item.value, count: Int(item.percent * 100.0), color: .pollColor(index: 0), selected: item.selected, showPercentage: showPercentage)
         prevButton.tag = 0
         buttons.append(prevButton)
         addSubview(prevButton)
@@ -55,7 +57,7 @@ class ButtonScrollView: UIScrollView {
         
         for index in 1..<items.endIndex {
             item = items[index]
-            let nextButton = PercentageButton(value: item.value, count: Int(item.percent * 100.0), color: .pollColor(index: index % 3), selected: item.selected)
+            let nextButton = PercentageButton(value: item.value, count: Int(item.percent * 100.0), color: .pollColor(index: index % 3), selected: item.selected, showPercentage: showPercentage)
             nextButton.tag = index
             nextButton.addTarget(self, action: #selector(self.didSelectButton(_:)), for: .touchUpInside)
             buttons.append(nextButton)

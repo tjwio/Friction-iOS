@@ -32,6 +32,10 @@ class Poll: NSObject, Decodable {
         })
     }
     
+    var items: [(value: String, percent: Double, selected: Bool)] {
+        return options.map { return (value: $0.name, percent: totalVotes == 0 ? 0.0 : Double($0.votes) / Double(totalVotes), selected: $0.vote != nil) }
+    }
+    
     enum CodingKeys: String, CodingKey {
         case id, name, options
         case date = "updated_at"

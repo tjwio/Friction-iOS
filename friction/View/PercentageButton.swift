@@ -45,10 +45,11 @@ class PercentageButton: LoadingButton {
         commonInit()
     }
     
-    convenience init(value: String, count: Int, color: UIColor, selected: Bool = false) {
+    convenience init(value: String, count: Int, color: UIColor, selected: Bool = false, showPercentage: Bool = true) {
         self.init()
         setTitle(value, for: .normal)
         percentLabel.text = "\(count)%"
+        percentLabel.isHidden = !showPercentage
         
         layer.borderColor = color.cgColor
         layer.borderWidth = 1.0

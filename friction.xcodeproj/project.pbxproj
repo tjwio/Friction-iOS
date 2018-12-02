@@ -19,6 +19,7 @@
 		2F45107121B38FCC00EC529E /* NetworkHandler+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45107021B38FCC00EC529E /* NetworkHandler+Image.swift */; };
 		2F45107321B390FE00EC529E /* CALayer+Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45107221B390FE00EC529E /* CALayer+Shadow.swift */; };
 		2F45107521B3931600EC529E /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F45107421B3931600EC529E /* SDWebImage.framework */; };
+		2F45107721B47C9A00EC529E /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45107621B47C9A00EC529E /* ProgressView.swift */; };
 		2F5D1CDB21A292F0003D0587 /* AvenirNextLTPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F5D1CD421A292EF003D0587 /* AvenirNextLTPro-Regular.otf */; };
 		2F5D1CDC21A292F0003D0587 /* AvenirNextLTPro-UltLt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F5D1CD521A292EF003D0587 /* AvenirNextLTPro-UltLt.otf */; };
 		2F5D1CDD21A292F0003D0587 /* AvenirNextLTPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F5D1CD621A292EF003D0587 /* AvenirNextLTPro-Bold.otf */; };
@@ -107,6 +108,7 @@
 		2F45107021B38FCC00EC529E /* NetworkHandler+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkHandler+Image.swift"; sourceTree = "<group>"; };
 		2F45107221B390FE00EC529E /* CALayer+Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Shadow.swift"; sourceTree = "<group>"; };
 		2F45107421B3931600EC529E /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImage.framework; path = Carthage/Build/iOS/SDWebImage.framework; sourceTree = "<group>"; };
+		2F45107621B47C9A00EC529E /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		2F5D1CD421A292EF003D0587 /* AvenirNextLTPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextLTPro-Regular.otf"; sourceTree = "<group>"; };
 		2F5D1CD521A292EF003D0587 /* AvenirNextLTPro-UltLt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextLTPro-UltLt.otf"; sourceTree = "<group>"; };
 		2F5D1CD621A292EF003D0587 /* AvenirNextLTPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextLTPro-Bold.otf"; sourceTree = "<group>"; };
@@ -425,6 +427,7 @@
 				2F8A6F2821AB77E80056D4AD /* LoadingButton.swift */,
 				2F8A6F0921A680CB0056D4AD /* PercentageButton.swift */,
 				2F45106321B3860400EC529E /* ProfileView.swift */,
+				2F45107621B47C9A00EC529E /* ProgressView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -666,6 +669,7 @@
 				2FEA96C921B2433600522C0F /* PollHolder.swift in Sources */,
 				2FEA96BF21AFD24700522C0F /* NetworkHandler+Poll.swift in Sources */,
 				2F5D1CE421A29344003D0587 /* UIFont+CustomFonts.swift in Sources */,
+				2F45107721B47C9A00EC529E /* ProgressView.swift in Sources */,
 				2FEA96CD21B25C9500522C0F /* LivePollTableViewCell.swift in Sources */,
 				2F9987AC21A28EF9001B1256 /* MainViewController.swift in Sources */,
 				2F45106721B3868700EC529E /* ProfileViewController.swift in Sources */,

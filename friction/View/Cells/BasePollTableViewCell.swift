@@ -27,6 +27,7 @@ class BasePollTableViewCell: UITableViewCell {
     var items = [(value: String, percent: Double, selected: Bool)]() {
         didSet {
             reloadButtons()
+            progressHolderView.percents = items.map { return $0.percent }
         }
     }
     
@@ -132,32 +133,8 @@ class BasePollTableViewCell: UITableViewCell {
         return stackView
     }()
     
-    let firstProgressView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .pollColor(index: 0)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        
-        return view
-    }()
-    
-    let secondProgressView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .pollColor(index: 1)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        
-        return view
-    }()
-    
-    let thirdProgressView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .pollColor(index: 2)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        
-        return view
-    }()
-    
-    var progressHolderView: UIView = {
-        let view = UIView()
+    var progressHolderView: ProgressView = {
+        let view = ProgressView()
         view.backgroundColor = .clear
         view.translatesAutoresizingMaskIntoConstraints = false
         
@@ -175,9 +152,6 @@ class BasePollTableViewCell: UITableViewCell {
     }
     
     func commonInit() {
-        progressHolderView.addSubview(firstProgressView)
-        progressHolderView.addSubview(secondProgressView)
-        progressHolderView.addSubview(thirdProgressView)
         contentView.addSubview(nameLabel)
         contentView.addSubview(scrollView)
         contentView.addSubview(avatarStackView)
@@ -258,33 +232,7 @@ class BasePollTableViewCell: UITableViewCell {
             make.trailing.greaterThanOrEqualToSuperview()
         }
         
-        reloadProgressViews()
-        
         setNeedsLayout()
-    }
-    
-    private func reloadProgressViews() {
-        let firstWidth = items.isEmpty ? 0.0 : items[0].percent
-        let secondWidth = items.count >= 2 ? items[1].percent : 0.0
-        let thirdWidth = items.count >= 3 ? items[2].percent : 0.0
-        
-        firstProgressView.snp.remakeConstraints { make in
-            make.top.leading.bottom.equalToSuperview()
-            make.height.equalTo(4.0)
-            make.width.equalToSuperview().multipliedBy(firstWidth)
-        }
-        
-        secondProgressView.snp.remakeConstraints { make in
-            make.leading.equalTo(self.firstProgressView.snp.trailing)
-            make.top.bottom.equalToSuperview()
-            make.width.equalToSuperview().multipliedBy(secondWidth)
-        }
-        
-        thirdProgressView.snp.remakeConstraints { make in
-            make.leading.equalTo(self.secondProgressView.snp.trailing)
-            make.top.trailing.bottom.equalToSuperview()
-            make.width.equalToSuperview().multipliedBy(thirdWidth)
-        }
     }
     
     // MARK: button helper

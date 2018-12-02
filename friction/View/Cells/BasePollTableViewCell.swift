@@ -13,20 +13,13 @@ protocol PollSelectionDelegate: class {
     func didSelect(item: (value: String, percent: Double, selected: Bool), itemIndex: Int, cellIndex: Int)
 }
 
-class BasePollTableViewCell: UITableViewCell {
-    
-    private struct Constants {
-        struct Button {
-            static let height = 44.0
-            static let width = 125.0
-        }
-    }
+class BasePollTableViewCell: UITableViewCell, ButtonScrollViewDelegate {
     
     var delegate: PollSelectionDelegate?
     
     var items = [(value: String, percent: Double, selected: Bool)]() {
         didSet {
-            reloadButtons()
+            scrollView.items = items
             progressHolderView.percents = items.map { return $0.percent }
         }
     }
@@ -46,8 +39,8 @@ class BasePollTableViewCell: UITableViewCell {
         return label
     }()
     
-    let scrollView: UIScrollView = {
-        let scrollView = UIScrollView()
+    let scrollView: ButtonScrollView = {
+        let scrollView = ButtonScrollView()
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.showsVerticalScrollIndicator = false
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -152,6 +145,8 @@ class BasePollTableViewCell: UITableViewCell {
     }
     
     func commonInit() {
+        scrollView.selectionDelegate = self
+        
         contentView.addSubview(nameLabel)
         contentView.addSubview(scrollView)
         contentView.addSubview(avatarStackView)
@@ -172,7 +167,7 @@ class BasePollTableViewCell: UITableViewCell {
             make.top.equalTo(self.nameLabel.snp.bottom).offset(8.0)
             make.leading.equalToSuperview().offset(16.0)
             make.trailing.equalToSuperview().offset(-16.0)
-            make.height.equalTo(Constants.Button.height)
+            make.height.equalTo(ButtonScrollView.Constants.Button.height)
         }
         
         avatarStackView.snp.makeConstraints { make in
@@ -190,58 +185,7 @@ class BasePollTableViewCell: UITableViewCell {
     
     // MARK: button scroll view
     
-    private func reloadButtons() {
-        buttons.forEach { $0.removeFromSuperview() }
-        buttons = []
-        
-        guard !items.isEmpty else { return }
-        
-        var item = items.first!
-        var prevButton = PercentageButton(value: item.value, count: Int(item.percent * 100.0), color: .pollColor(index: 0), selected: item.selected)
-        prevButton.tag = 0
-        buttons.append(prevButton)
-        scrollView.addSubview(prevButton)
-        
-        prevButton.addTarget(self, action: #selector(self.didSelectButton(_:)), for: .touchUpInside)
-        
-        prevButton.snp.makeConstraints { make in
-            make.top.bottom.leading.equalToSuperview()
-            make.width.equalTo(Constants.Button.width)
-            make.height.equalTo(Constants.Button.height)
-        }
-        
-        for index in 1..<items.endIndex {
-            item = items[index]
-            let nextButton = PercentageButton(value: item.value, count: Int(item.percent * 100.0), color: .pollColor(index: index % 3), selected: item.selected)
-            nextButton.tag = index
-            nextButton.addTarget(self, action: #selector(self.didSelectButton(_:)), for: .touchUpInside)
-            buttons.append(nextButton)
-            scrollView.addSubview(nextButton)
-            
-            nextButton.snp.makeConstraints { make in
-                make.top.bottom.equalToSuperview()
-                make.leading.equalTo(prevButton.snp.trailing).offset(12.0)
-                make.width.equalTo(Constants.Button.width)
-                make.height.equalTo(Constants.Button.height)
-            }
-            
-            prevButton = nextButton
-        }
-        
-        prevButton.snp.makeConstraints { make in
-            make.trailing.greaterThanOrEqualToSuperview()
-        }
-        
-        setNeedsLayout()
-    }
-    
-    // MARK: button helper
-    
-    @objc private func didSelectButton(_ sender: PercentageButton) {
-        if items[sender.tag].selected {
-            sender.isLoading = false
-        } else {
-            delegate?.didSelect(item: items[sender.tag], itemIndex: sender.tag, cellIndex: index)
-        }
+    func buttonScrollView(_ scrollView: ButtonScrollView, didSelect item: (value: String, percent: Double, selected: Bool), at index: Int) {
+        delegate?.didSelect(item: item, itemIndex: index, cellIndex: self.index)
     }
 }

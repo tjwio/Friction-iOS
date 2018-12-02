@@ -18,8 +18,12 @@ extension UIImage {
         return UIImage(named: "back_arrow_white")
     }
     
-    class var blankAvatar: UIImage? {
-        return UIImage(named: "blank_avatar")
+    class var blankAvatarBlack: UIImage? {
+        return UIImage(named: "blank_avatar_black")
+    }
+    
+    class var blankAvatarLight: UIImage? {
+        return UIImage(named: "blank_avatar_light")
     }
     
     class var frictionIconAvatar: UIImage? {

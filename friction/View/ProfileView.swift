@@ -42,7 +42,7 @@ class ProfileView: UIView {
     }()
     
     let avatarImageView: AvatarView = {
-        let imageView = AvatarView(image: .blankAvatar, shadowHidden: true)
+        let imageView = AvatarView(image: .blankAvatarLight, shadowHidden: true)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
         return imageView

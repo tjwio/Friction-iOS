@@ -46,13 +46,14 @@ class ProfileBaseViewController: UIViewController, UITableViewDelegate, UITableV
     init(user: User) {
         self.user = user
         name.value = user.name
+        email.value = user.email
         
         super.init(nibName: nil, bundle: nil)
         
         user.loadImage(success: { image in
             self.image.value = image
         }, failure: {_ in
-            self.image.value = .blankAvatar
+            self.image.value = .blankAvatarLight
         })
     }
     
@@ -114,7 +115,7 @@ class ProfileBaseViewController: UIViewController, UITableViewDelegate, UITableV
     // MARK: table view
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 11
+        return 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -228,7 +229,7 @@ class ProfileBaseViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let image = info[.editedImage] as? UIImage {
+        if let image = (info[.editedImage] ?? info[.originalImage]) as? UIImage {
             self.image.value = image
             imageDidUpdate.value = true
             

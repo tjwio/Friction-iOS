@@ -68,10 +68,10 @@ class ProfileViewController: ProfileBaseViewController {
     
     private func setupConstraints() {
         dummyShadowView.snp.makeConstraints { make in
-            make.top.equalTo(self.view).offset(40.0)
             make.leading.equalTo(self.view).offset(12.0)
             make.trailing.equalTo(self.view).offset(-12.0)
             make.bottom.equalTo(self.view).offset(6.0)
+            make.height.equalTo(400.0)
         }
         
         profileView.snp.makeConstraints { make in

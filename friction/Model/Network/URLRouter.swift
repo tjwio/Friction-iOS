@@ -39,7 +39,7 @@ enum URLRouter: URLRequestConvertible {
     var path: String {
         switch self {
         case .loadUser, .updateUser:
-            return "/users/me"
+            return "/users"
         case .signup:
             return "/users/signup"
         case .login:

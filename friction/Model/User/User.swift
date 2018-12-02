@@ -9,6 +9,7 @@
 import Foundation
 import ReactiveCocoa
 import ReactiveSwift
+import Result
 import SDWebImage
 
 public class User: NSObject, Decodable {
@@ -58,5 +59,24 @@ public class User: NSObject, Decodable {
             self.email = email
             success?()
         }, failure: failure)
+    }
+}
+
+public class UserHolder: NSObject {
+    static let shared = UserHolder()
+    
+    var user: User!
+    
+    func loadUser(success: UserHandler?, failure: ErrorHandler?) -> Signal<Never, AnyError> {
+        return Signal { (observer, _) in
+            NetworkHandler.shared.getUser(success: { user in
+                self.user = user
+                success?(user)
+                observer.sendCompleted()
+            }, failure: { error in
+                failure?(error)
+                observer.send(error: AnyError(error))
+            })
+        }
     }
 }

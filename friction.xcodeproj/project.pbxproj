@@ -18,6 +18,7 @@
 		2F45106F21B38F7900EC529E /* User+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45106E21B38F7900EC529E /* User+Image.swift */; };
 		2F45107121B38FCC00EC529E /* NetworkHandler+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45107021B38FCC00EC529E /* NetworkHandler+Image.swift */; };
 		2F45107321B390FE00EC529E /* CALayer+Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45107221B390FE00EC529E /* CALayer+Shadow.swift */; };
+		2F45107521B3931600EC529E /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F45107421B3931600EC529E /* SDWebImage.framework */; };
 		2F5D1CDB21A292F0003D0587 /* AvenirNextLTPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F5D1CD421A292EF003D0587 /* AvenirNextLTPro-Regular.otf */; };
 		2F5D1CDC21A292F0003D0587 /* AvenirNextLTPro-UltLt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F5D1CD521A292EF003D0587 /* AvenirNextLTPro-UltLt.otf */; };
 		2F5D1CDD21A292F0003D0587 /* AvenirNextLTPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F5D1CD621A292EF003D0587 /* AvenirNextLTPro-Bold.otf */; };
@@ -105,6 +106,7 @@
 		2F45106E21B38F7900EC529E /* User+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+Image.swift"; sourceTree = "<group>"; };
 		2F45107021B38FCC00EC529E /* NetworkHandler+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkHandler+Image.swift"; sourceTree = "<group>"; };
 		2F45107221B390FE00EC529E /* CALayer+Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Shadow.swift"; sourceTree = "<group>"; };
+		2F45107421B3931600EC529E /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImage.framework; path = Carthage/Build/iOS/SDWebImage.framework; sourceTree = "<group>"; };
 		2F5D1CD421A292EF003D0587 /* AvenirNextLTPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextLTPro-Regular.otf"; sourceTree = "<group>"; };
 		2F5D1CD521A292EF003D0587 /* AvenirNextLTPro-UltLt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextLTPro-UltLt.otf"; sourceTree = "<group>"; };
 		2F5D1CD621A292EF003D0587 /* AvenirNextLTPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextLTPro-Bold.otf"; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F45107521B3931600EC529E /* SDWebImage.framework in Frameworks */,
 				2F8A6F2D21AB790E0056D4AD /* KeychainSwift.framework in Frameworks */,
 				2F8A6F2521AB752D0056D4AD /* GSMessages.framework in Frameworks */,
 				2F8A6F1921AB74140056D4AD /* ReactiveCocoa.framework in Frameworks */,
@@ -445,6 +448,7 @@
 		2F9987AD21A29130001B1256 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2F45107421B3931600EC529E /* SDWebImage.framework */,
 				2F8A6F2C21AB790E0056D4AD /* KeychainSwift.framework */,
 				2F8A6F2421AB752D0056D4AD /* GSMessages.framework */,
 				2F8A6F1521AB74140056D4AD /* ReactiveCocoa.framework */,
@@ -625,6 +629,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/SkyFloatingLabelTextField.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/GSMessages.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/KeychainSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SDWebImage.framework",
 			);
 			name = "Copy Carthage Frameworks";
 			outputFileListPaths = (

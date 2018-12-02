@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2F45105E21B34B3500EC529E /* DeviceToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45105D21B34B3500EC529E /* DeviceToken.swift */; };
 		2F45106021B34BA900EC529E /* NetworkHandler+Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45105F21B34BA900EC529E /* NetworkHandler+Token.swift */; };
+		2F45106221B380E100EC529E /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45106121B380E100EC529E /* AvatarView.swift */; };
 		2F5D1CDB21A292F0003D0587 /* AvenirNextLTPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F5D1CD421A292EF003D0587 /* AvenirNextLTPro-Regular.otf */; };
 		2F5D1CDC21A292F0003D0587 /* AvenirNextLTPro-UltLt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F5D1CD521A292EF003D0587 /* AvenirNextLTPro-UltLt.otf */; };
 		2F5D1CDD21A292F0003D0587 /* AvenirNextLTPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F5D1CD621A292EF003D0587 /* AvenirNextLTPro-Bold.otf */; };
@@ -87,6 +88,7 @@
 /* Begin PBXFileReference section */
 		2F45105D21B34B3500EC529E /* DeviceToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceToken.swift; sourceTree = "<group>"; };
 		2F45105F21B34BA900EC529E /* NetworkHandler+Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkHandler+Token.swift"; sourceTree = "<group>"; };
+		2F45106121B380E100EC529E /* AvatarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		2F5D1CD421A292EF003D0587 /* AvenirNextLTPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextLTPro-Regular.otf"; sourceTree = "<group>"; };
 		2F5D1CD521A292EF003D0587 /* AvenirNextLTPro-UltLt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextLTPro-UltLt.otf"; sourceTree = "<group>"; };
 		2F5D1CD621A292EF003D0587 /* AvenirNextLTPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextLTPro-Bold.otf"; sourceTree = "<group>"; };
@@ -384,6 +386,7 @@
 			isa = PBXGroup;
 			children = (
 				2F8A6F0421A678620056D4AD /* Cells */,
+				2F45106121B380E100EC529E /* AvatarView.swift */,
 				2F8A6F0721A67EAD0056D4AD /* LiveView.swift */,
 				2F8A6F2821AB77E80056D4AD /* LoadingButton.swift */,
 				2F8A6F0921A680CB0056D4AD /* PercentageButton.swift */,
@@ -639,6 +642,7 @@
 				2FEA96C721B242CC00522C0F /* NetworkHandler+Votes.swift in Sources */,
 				2FEA96C121AFD76D00522C0F /* DateFormatter+Constants.swift in Sources */,
 				2F8A6F0821A67EAD0056D4AD /* LiveView.swift in Sources */,
+				2F45106221B380E100EC529E /* AvatarView.swift in Sources */,
 				2F8A6F2121AB74B80056D4AD /* UITextField+Toolbar.swift in Sources */,
 				2F45106021B34BA900EC529E /* NetworkHandler+Token.swift in Sources */,
 				2F8A6F1021AB71C00056D4AD /* WelcomeViewController.swift in Sources */,

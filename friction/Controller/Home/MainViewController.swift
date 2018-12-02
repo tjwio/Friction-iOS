@@ -16,6 +16,14 @@ class MainViewController: UIViewController, PollSelectionDelegate, UITableViewDe
         static let historyCellIdentifier = "HistoryPollCellIdentifier"
     }
     
+    let avatarImageView: UIImageView = {
+        let imageView = UIImageView(image: .blankAvatar)
+        imageView.backgroundColor = .clear
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return imageView
+    }()
+    
     let tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.backgroundColor = .white
@@ -52,6 +60,9 @@ class MainViewController: UIViewController, PollSelectionDelegate, UITableViewDe
             .font               :    UIFont.avenirBold(size: 18.0) ?? UIFont.preferredFont(forTextStyle: .largeTitle)
         ]
         
+        let avatarBarButtonItem = UIBarButtonItem(customView: avatarImageView)
+        navigationItem.rightBarButtonItem = avatarBarButtonItem
+        
         activityIndicator.startAnimating()
         
         let refreshControl = UIRefreshControl()
@@ -80,6 +91,10 @@ class MainViewController: UIViewController, PollSelectionDelegate, UITableViewDe
         
         activityIndicator.snp.makeConstraints { make in
             make.center.equalToSuperview()
+        }
+        
+        avatarImageView.snp.makeConstraints { make in
+            make.height.width.equalTo(30.0)
         }
     }
     

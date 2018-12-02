@@ -6,7 +6,7 @@
 //  Copyright © 2018 tjwio. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 enum Environment {
     case development, staging, production
@@ -37,6 +37,7 @@ class AppManager: NSObject {
     }
     
     func logOut() {
-        
+        AuthenticationManager.shared.logOut()
+        (UIApplication.shared.delegate as? AppDelegate)?.loadMainViewController()
     }
 }

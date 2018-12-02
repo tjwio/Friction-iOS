@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import ReactiveCocoa
+import ReactiveSwift
+import Result
 import SnapKit
 
 class MainViewController: UIViewController, PollSelectionDelegate, UITableViewDelegate, UITableViewDataSource {
@@ -15,6 +18,16 @@ class MainViewController: UIViewController, PollSelectionDelegate, UITableViewDe
         static let liveCellIdentifier = "LivePollCellIdentifier"
         static let historyCellIdentifier = "HistoryPollCellIdentifier"
     }
+    
+    let avatarButton: UIButton = {
+        let button = UIButton(type: .custom)
+        button.setImage(.blankAvatarBlack, for: .normal)
+        button.layer.cornerRadius = 15.0
+        button.layer.masksToBounds = true
+        button.translatesAutoresizingMaskIntoConstraints = false
+        
+        return button
+    }()
     
     let tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
@@ -36,6 +49,12 @@ class MainViewController: UIViewController, PollSelectionDelegate, UITableViewDe
         return view
     }()
     
+    private var disposables = CompositeDisposable()
+    
+    deinit {
+        disposables.dispose()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -52,6 +71,11 @@ class MainViewController: UIViewController, PollSelectionDelegate, UITableViewDe
             .font               :    UIFont.avenirBold(size: 18.0) ?? UIFont.preferredFont(forTextStyle: .largeTitle)
         ]
         
+        let avatarBarButtonItem = UIBarButtonItem(customView: avatarButton)
+        navigationItem.rightBarButtonItem = avatarBarButtonItem
+        
+        avatarButton.addTarget(self, action: #selector(self.showProfileViewController(_:)), for: .touchUpInside)
+        
         activityIndicator.startAnimating()
         
         let refreshControl = UIRefreshControl()
@@ -65,9 +89,18 @@ class MainViewController: UIViewController, PollSelectionDelegate, UITableViewDe
         view.addSubview(activityIndicator)
         setupConstraints()
         
-        reloadHelper { [weak self] in
-            self?.activityIndicator.stopAnimating()
-            self?.tableView.reloadData()
+        disposables += Signal.combineLatest(UserHolder.shared.loadUser(success: nil, failure: nil), PollHolder.shared.initialLoad(success: nil, failure: nil)).observe { [weak self] event in
+            switch event {
+            case .completed:
+                self?.activityIndicator.stopAnimating()
+                self?.tableView.reloadData()
+                self?.loadUserImage()
+            case .failed(_):
+                DispatchQueue.main.async {
+                    AppManager.shared.logOut()
+                }
+            default: break
+            }
         }
     }
     
@@ -81,14 +114,16 @@ class MainViewController: UIViewController, PollSelectionDelegate, UITableViewDe
         activityIndicator.snp.makeConstraints { make in
             make.center.equalToSuperview()
         }
+        
+        avatarButton.snp.makeConstraints { make in
+            make.height.width.equalTo(30.0)
+        }
     }
     
     // MARK: reload
     
     private func reloadHelper(completion: EmptyHandler?) {
-        PollHolder.shared.initialLoad(success: { polls in
-            completion?()
-        }) { _ in
+        disposables += PollHolder.shared.initialLoad(success: nil, failure: nil).observe { _ in
             completion?()
         }
     }
@@ -98,6 +133,14 @@ class MainViewController: UIViewController, PollSelectionDelegate, UITableViewDe
             sender.endRefreshing()
             self.tableView.reloadData()
         }
+    }
+    
+    // MARK: load image
+    
+    private func loadUserImage() {
+        UserHolder.shared.user.loadImage(success: { image in
+            self.avatarButton.setImage(image, for: .normal)
+        }, failure: nil)
     }
     
     // MARK: selection
@@ -111,6 +154,23 @@ class MainViewController: UIViewController, PollSelectionDelegate, UITableViewDe
         }) { _ in
             self.tableView.reloadSections(IndexSet(integer: cellIndex), with: .automatic)
         }
+    }
+    
+    // MARK: profile
+    
+    @objc private func showProfileViewController(_ sender: Any?) {
+        let viewController = ProfileViewController(user: UserHolder.shared.user)
+        viewController.successCallback = { [weak self] in
+            DispatchQueue.main.async {
+                self?.showLeftMessage("Successfully updated profile", type: .success)
+                self?.avatarButton.setImage(UserHolder.shared.user.image.value, for: .normal)
+            }
+        }
+        viewController.providesPresentationContextTransitionStyle = true
+        viewController.definesPresentationContext = true
+        viewController.modalPresentationStyle = .overCurrentContext
+        
+        self.present(viewController, animated: false, completion: nil)
     }
     
     // MARK: table view

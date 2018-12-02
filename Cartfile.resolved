@@ -1,6 +1,7 @@
 github "Alamofire/Alamofire" "4.8.0"
 github "ReactiveCocoa/ReactiveCocoa" "8.0.2"
 github "ReactiveCocoa/ReactiveSwift" "4.0.0"
+github "SDWebImage/SDWebImage" "4.4.2"
 github "Skyscanner/SkyFloatingLabelTextField" "v3.6.0"
 github "SnapKit/SnapKit" "4.2.0"
 github "antitypical/Result" "4.0.0"

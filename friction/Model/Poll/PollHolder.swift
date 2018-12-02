@@ -7,6 +7,9 @@
 //
 
 import Foundation
+import ReactiveCocoa
+import ReactiveSwift
+import Result
 
 class PollHolder: NSObject {
     static let shared = PollHolder()
@@ -14,12 +17,21 @@ class PollHolder: NSObject {
     var polls = [Poll]()
     private var pollMap = [String: Poll]()
     
-    func initialLoad(success: PollListHandler?, failure: ErrorHandler?) {
-        loadPolls(success: { polls in
-            self.loadVotes(success: {
-                success?(polls)
-            }, failure: failure)
-        }, failure: failure)
+    func initialLoad(success: PollListHandler?, failure: ErrorHandler?) -> Signal<Never, AnyError> {
+        return Signal { (observer, _) in
+            self.loadPolls(success: { polls in
+                self.loadVotes(success: {
+                    success?(polls)
+                    observer.sendCompleted()
+                }, failure: { error in
+                    failure?(error)
+                    observer.send(error: AnyError(error))
+                })
+            }, failure: { error in
+                failure?(error)
+                observer.send(error: AnyError(error))
+            })
+        }
     }
     
     func loadPolls(success: PollListHandler?, failure: ErrorHandler?) {

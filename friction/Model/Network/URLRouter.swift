@@ -39,7 +39,7 @@ enum URLRouter: URLRequestConvertible {
     var path: String {
         switch self {
         case .loadUser, .updateUser:
-            return "/users/me"
+            return "/users"
         case .signup:
             return "/users/signup"
         case .login:
@@ -69,7 +69,7 @@ enum URLRouter: URLRequestConvertible {
         }
         
         switch self {
-        case .signup(let parameters), .login(let parameters), .updateUser(let parameters), .addVote(let parameters), .addToken(let parameters), .updateVote(_, let parameters):
+        case .signup(let parameters), .login(let parameters), .addVote(let parameters), .addToken(let parameters), .updateUser(let parameters), .updateVote(_, let parameters):
             urlRequest = try JSONEncoding.default.encode(urlRequest, withJSONObject: parameters)
         default: break
         }

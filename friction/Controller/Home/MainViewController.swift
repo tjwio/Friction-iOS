@@ -23,6 +23,7 @@ class MainViewController: UIViewController, PollSelectionDelegate, UITableViewDe
         let button = UIButton(type: .custom)
         button.setImage(.blankAvatarBlack, for: .normal)
         button.layer.cornerRadius = 15.0
+        button.layer.masksToBounds = true
         button.translatesAutoresizingMaskIntoConstraints = false
         
         return button
@@ -162,6 +163,7 @@ class MainViewController: UIViewController, PollSelectionDelegate, UITableViewDe
         viewController.successCallback = { [weak self] in
             DispatchQueue.main.async {
                 self?.showLeftMessage("Successfully updated profile", type: .success)
+                self?.avatarButton.setImage(UserHolder.shared.user.image.value, for: .normal)
             }
         }
         viewController.providesPresentationContextTransitionStyle = true

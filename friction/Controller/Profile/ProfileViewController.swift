@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class ProfileViewController: ProfileBaseViewController {
     let logOutButton: UIButton = {
@@ -34,6 +35,12 @@ class ProfileViewController: ProfileBaseViewController {
         
         return view
     }()
+    
+    lazy var defaultDummyShadowConstraints: (SnapKit.ConstraintMaker) -> Void = { make in
+        make.leading.equalTo(self.view).offset(12.0)
+        make.trailing.equalTo(self.view).offset(-12.0)
+        make.bottom.equalTo(self.view).offset(6.0)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +60,9 @@ class ProfileViewController: ProfileBaseViewController {
         view.addSubview(dummyShadowView)
         dummyShadowView.addSubview(profileView)
         setupConstraints()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -154,6 +164,38 @@ class ProfileViewController: ProfileBaseViewController {
                     self.profileView.frame.origin.y = self.originalProfileFrame?.minY ?? 20.0
                 }
             }
+        }
+    }
+    
+    // MARK: Keyboard Notifications
+    
+    @objc private func keyboardWillShow(notification: NSNotification?) {
+        if self.isViewLoaded && self.view.window != nil {
+            if let keyboardSize = (notification?.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.size {
+                if UIApplication.shared.statusBarOrientation.isPortrait {
+                    self.dummyShadowView.snp.remakeConstraints { make in
+                        self.defaultDummyShadowConstraints(make)
+                        make.height.equalTo(400.0 + keyboardSize.height)
+                    }
+                }
+                
+                UIView.animate(withDuration: (notification?.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0.3, delay: 0.0, options: .beginFromCurrentState, animations: {
+                    self.view.layoutIfNeeded()
+                }, completion: nil)
+            }
+        }
+    }
+    
+    @objc private func keyboardWillHide(notification: NSNotification?) {
+        if self.isViewLoaded && self.view.window != nil {
+            self.dummyShadowView.snp.remakeConstraints { make in
+                self.defaultDummyShadowConstraints(make)
+                make.height.equalTo(400.0)
+            }
+            
+            UIView.animate(withDuration: (notification?.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0.3, animations: {
+                self.view.layoutIfNeeded()
+            })
         }
     }
 }

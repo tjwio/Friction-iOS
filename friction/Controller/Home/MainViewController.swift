@@ -23,6 +23,7 @@ class MainViewController: UIViewController, PollSelectionDelegate, UITableViewDe
         tableView.rowHeight = UITableView.automaticDimension
         tableView.separatorStyle = .none
         tableView.tableFooterView = UIView()
+        tableView.showsVerticalScrollIndicator = false
         tableView.translatesAutoresizingMaskIntoConstraints = false
         
         return tableView

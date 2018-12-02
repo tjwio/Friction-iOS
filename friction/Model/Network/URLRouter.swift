@@ -17,6 +17,7 @@ enum URLRouter: URLRequestConvertible {
     case login(parameters: Parameters)
     case uploadImage
     case addVote(parameters: Parameters)
+    case addToken(parameters: Parameters)
     
     //MARK: PUT
     case updateUser(parameters: Parameters)
@@ -28,7 +29,7 @@ enum URLRouter: URLRequestConvertible {
         switch self {
         case .loadUser, .getPolls, .getAllVotes:
             return .get
-        case .signup, .login, .uploadImage, .addVote:
+        case .signup, .login, .uploadImage, .addVote, .addToken:
             return .post
         case .updateUser, .updateVote:
             return .put
@@ -51,6 +52,8 @@ enum URLRouter: URLRequestConvertible {
             return "/votes"
         case .addVote:
             return "/votes"
+        case .addToken:
+            return "/token"
         case .updateVote(let id, _):
             return "/votes/\(id)"
         }
@@ -66,7 +69,7 @@ enum URLRouter: URLRequestConvertible {
         }
         
         switch self {
-        case .signup(let parameters), .login(let parameters), .updateUser(let parameters), .addVote(let parameters), .updateVote(_, let parameters):
+        case .signup(let parameters), .login(let parameters), .updateUser(let parameters), .addVote(let parameters), .addToken(let parameters), .updateVote(_, let parameters):
             urlRequest = try JSONEncoding.default.encode(urlRequest, withJSONObject: parameters)
         default: break
         }

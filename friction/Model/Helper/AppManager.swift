@@ -12,7 +12,7 @@ enum Environment {
     case development, staging, production
     
     var apiUrl: String {
-        return "http://localhost:4000/api/v1"
+        return "http://192.168.0.100:4000/api/v1"
     }
     
     var streamUrl: String {

@@ -22,8 +22,10 @@ class ChatViewController: UIViewController, ButtonScrollViewDelegate, UITableVie
     }
     
     let poll: Poll
+    var option: Poll.Option
     
     let socket = Socket(url: AppManager.shared.environment.streamUrl, params: ["token" : AuthenticationManager.shared.authToken ?? ""])
+    var lobby: Channel!
     
     private var messages = [Message]()
     
@@ -67,18 +69,11 @@ class ChatViewController: UIViewController, ButtonScrollViewDelegate, UITableVie
         return view
     }()
     
-    let textField: ChatTextField = {
-        let textField = ChatTextField()
-        textField.borderStyle = .none
-        textField.font = .avenirRegular(size: 16.0)
-        textField.layer.borderColor = UIColor.Grayscale.light.cgColor
-        textField.layer.borderWidth = 1.0
-        textField.layer.cornerRadius = 22.0
-        textField.placeholder = "Type a message..."
-        textField.textColor = UIColor.Grayscale.dark
-        textField.translatesAutoresizingMaskIntoConstraints = false
+    let chatBox: ChatBoxView = {
+        let view = ChatBoxView()
+        view.translatesAutoresizingMaskIntoConstraints = false
         
-        return textField
+        return view
     }()
     
     let tableView: UITableView = {
@@ -105,11 +100,12 @@ class ChatViewController: UIViewController, ButtonScrollViewDelegate, UITableVie
     lazy var defaultTextFieldConstraints: (SnapKit.ConstraintMaker) -> Void = { make in
         make.leading.equalToSuperview().offset(16.0)
         make.trailing.equalToSuperview().offset(-16.0)
-        make.height.equalTo(44.0)
+        make.height.equalTo(52.0)
     }
     
-    init(poll: Poll) {
+    init(poll: Poll, option: Poll.Option) {
         self.poll = poll
+        self.option = option
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -118,6 +114,7 @@ class ChatViewController: UIViewController, ButtonScrollViewDelegate, UITableVie
     }
     
     deinit {
+        socket.disconnect()
         NotificationCenter.default.removeObserver(self)
     }
     
@@ -133,7 +130,8 @@ class ChatViewController: UIViewController, ButtonScrollViewDelegate, UITableVie
         tableView.dataSource = self
         tableView.delegate = self
         
-        textField.delegate = self
+        chatBox.textField.delegate = self
+        chatBox.sendButton.addTarget(self, action: #selector(self.sendMessage(_:)), for: .touchUpInside)
         
         nameLabel.text = poll.name
         
@@ -149,7 +147,7 @@ class ChatViewController: UIViewController, ButtonScrollViewDelegate, UITableVie
         view.addSubview(progressView)
         view.addSubview(separatorView)
         view.addSubview(tableView)
-        view.addSubview(textField)
+        view.addSubview(chatBox)
         view.addSubview(activityIndicator)
         
         activityIndicator.startAnimating()
@@ -200,9 +198,9 @@ class ChatViewController: UIViewController, ButtonScrollViewDelegate, UITableVie
             make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).offset(-52.0)
         }
         
-        textField.snp.makeConstraints { make in
+        chatBox.snp.makeConstraints { make in
             self.defaultTextFieldConstraints(make)
-            make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).offset(-8.0)
+            make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).offset(-4.0)
         }
         
         activityIndicator.snp.makeConstraints { make in
@@ -217,34 +215,60 @@ class ChatViewController: UIViewController, ButtonScrollViewDelegate, UITableVie
         socket.onClose { print("socket disconnected") }
         socket.onError { error in print("socket error: \(error)") }
         socket.onMessage { message in
-            print("socket message: \(message.event)")
+            print("socket message: \(message.event) with error: \(message.payload)")
         }
         
-        let lobby = socket.channel(Constants.Channel.lobby)
-        lobby.on(Constants.Channel.lobby) { [weak self] message in
-            guard let message = message.payload.decodeJson(Message.self) else { return }
-            self?.messages.append(message)
-            self?.tableView.reloadData()
+        lobby = socket.channel(Constants.Channel.lobby)
+        lobby.on(Constants.Channel.shout) { [weak self] message in
+            self?.chatBox.textField.text = ""
+            self?.chatBox.sendButton.isLoading = false
+            guard let message = message.payload.decodeJson(Message.self), let strongSelf = self else { return }
+            strongSelf.messages.append(message)
+            strongSelf.tableView.reloadData()
+            strongSelf.scrollToBottom()
         }
         
         socket.connect()
         _ = lobby.join()
+            .receive("ok", callback: { _ in
+                print("lobby connected")
+            })
+            .receive("error", callback: { error in
+                print("lobby error: \(error)")
+            })
+            .receive("timeout", callback: { error in
+                print("lobby timeout: \(error)")
+            })
     }
     
     // MARK: reload
     
     private func reloadMessages(_ sender: UIRefreshControl?) {
         NetworkHandler.shared.getMessages(pollId: poll.id, success: { messages in
-            self.messages = messages
+            self.messages = messages.sorted { return $0.date < $1.date }
             self.activityIndicator.stopAnimating()
             sender?.endRefreshing()
             self.tableView.reloadData()
+            self.scrollToBottom()
         }) { error in
             print("failed to get messages with error: \(error)")
             self.activityIndicator.stopAnimating()
             sender?.endRefreshing()
             self.tableView.reloadData()
         }
+    }
+    
+    // MARK: send message
+    
+    @objc private func sendMessage(_ sender: Any?) {
+        let params = [
+            Message.CodingKeys.pollId.rawValue: poll.id,
+            Message.CodingKeys.optionId.rawValue: option.id,
+            Message.CodingKeys.message.rawValue: chatBox.textField.text ?? "",
+            "user_id": UserHolder.shared.user.id
+        ]
+        
+        _ = lobby.push(Constants.Channel.shout, payload: params)
     }
     
     // MARK: table view
@@ -290,6 +314,7 @@ class ChatViewController: UIViewController, ButtonScrollViewDelegate, UITableVie
         let option = poll.options[index]
         
         poll.vote(option: option, success: { _ in
+            self.option = option
             let items = self.poll.items
             self.buttonScrollView.items = items
             self.progressView.percents = items.map { return $0.percent }
@@ -301,19 +326,30 @@ class ChatViewController: UIViewController, ButtonScrollViewDelegate, UITableVie
     // MARK: text field
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        chatBox.sendButton.isLoading = true
+        
+        sendMessage(chatBox.sendButton)
+        
         textField.resignFirstResponder()
         return true
     }
     
-    // MARK: Keyboard Notifications
+    // MARK: helper
+    
+    private func scrollToBottom() {
+        let indexPath = IndexPath(row: 0, section: messages.count-1)
+        tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+    }
+    
+    // MARK: keyboard notifications
     
     @objc private func keyboardWillShow(notification: NSNotification?) {
         if self.isViewLoaded && self.view.window != nil {
             if let keyboardSize = (notification?.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.size {
                 if UIApplication.shared.statusBarOrientation.isPortrait {
-                    self.textField.snp.remakeConstraints { make in
+                    self.chatBox.snp.remakeConstraints { make in
                         self.defaultTextFieldConstraints(make)
-                        make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).offset(-keyboardSize.height)
+                        make.bottom.equalTo(self.view.snp.bottom).offset(-keyboardSize.height)
                     }
                 }
                 
@@ -326,9 +362,9 @@ class ChatViewController: UIViewController, ButtonScrollViewDelegate, UITableVie
     
     @objc private func keyboardWillHide(notification: NSNotification?) {
         if self.isViewLoaded && self.view.window != nil {
-            self.textField.snp.remakeConstraints { make in
+            self.chatBox.snp.remakeConstraints { make in
                 self.defaultTextFieldConstraints(make)
-                make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).offset(-8.0)
+                make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).offset(-4.0)
             }
             
             UIView.animate(withDuration: (notification?.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0.3, animations: {

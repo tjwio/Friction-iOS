@@ -230,7 +230,10 @@ class MainViewController: UIViewController, PollSelectionDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let viewController = ChatViewController(poll: PollHolder.shared.polls[indexPath.section])
+        let poll = PollHolder.shared.polls[indexPath.section]
+        guard let option = poll.options.first(where: { return $0.vote != nil }) else { return }
+        
+        let viewController = ChatViewController(poll: poll, option: option)
         navigationController?.pushViewController(viewController, animated: true)
     }
 }

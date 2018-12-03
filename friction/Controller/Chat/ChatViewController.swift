@@ -54,6 +54,8 @@ class ChatViewController: UIViewController, ButtonScrollViewDelegate, UITableVie
     let buttonScrollView: ButtonScrollView = {
         let scrollView = ButtonScrollView()
         scrollView.showPercentage = false
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.showsVerticalScrollIndicator = false
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         
         return scrollView
@@ -171,7 +173,7 @@ class ChatViewController: UIViewController, ButtonScrollViewDelegate, UITableVie
         nameLabel.snp.makeConstraints { make in
             make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(20.0)
             make.leading.equalToSuperview().offset(20.0)
-            make.trailing.lessThanOrEqualToSuperview().offset(-140.0)
+            make.trailing.lessThanOrEqualToSuperview().offset(-100.0)
         }
         
         liveView.snp.makeConstraints { make in

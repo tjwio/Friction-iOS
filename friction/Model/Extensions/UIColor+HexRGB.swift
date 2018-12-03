@@ -21,6 +21,10 @@ extension UIColor {
             return UIColor(hexColor: 0x656A6F)
         }
         
+        static var backgroundLight: UIColor {
+            return UIColor(hexColor: 0xF5F7FA)
+        }
+        
         static var medium: UIColor {
             return UIColor(hexColor: 0x7D7D7D)
         }

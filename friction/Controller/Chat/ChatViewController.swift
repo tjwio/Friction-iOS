@@ -45,7 +45,13 @@ class ChatViewController: UIViewController, ButtonScrollViewDelegate {
         return view
     }()
     
-    
+    let separatorView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.Grayscale.backgroundLight
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        return view
+    }()
     
     init(poll: Poll) {
         self.poll = poll
@@ -77,6 +83,7 @@ class ChatViewController: UIViewController, ButtonScrollViewDelegate {
         view.addSubview(liveView)
         view.addSubview(buttonScrollView)
         view.addSubview(progressView)
+        view.addSubview(separatorView)
         
         setupConstraints()
     }
@@ -104,6 +111,12 @@ class ChatViewController: UIViewController, ButtonScrollViewDelegate {
             make.top.equalTo(self.buttonScrollView.snp.bottom).offset(16.0)
             make.leading.equalToSuperview().offset(20.0)
             make.trailing.equalToSuperview().offset(-20.0)
+        }
+        
+        separatorView.snp.makeConstraints { make in
+            make.top.equalTo(self.progressView.snp.bottom).offset(12.0)
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(2.0)
         }
     }
     

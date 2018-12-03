@@ -9,13 +9,17 @@
 import UIKit
 
 class ChatBoxView: UIView {
-    let textField: ChatTextField = {
-        let textField = ChatTextField()
+    let textField: UITextField = {
+        let textField = UITextField()
         textField.borderStyle = .none
         textField.font = .avenirRegular(size: 16.0)
         textField.layer.borderColor = UIColor.Grayscale.light.cgColor
         textField.layer.borderWidth = 1.0
         textField.layer.cornerRadius = 22.0
+        textField.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 16.0, height: 44.0))
+        textField.rightView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 32.0, height: 44.0))
+        textField.leftViewMode = .always
+        textField.rightViewMode = .always
         textField.placeholder = "Type a message..."
         textField.textColor = UIColor.Grayscale.dark
         textField.translatesAutoresizingMaskIntoConstraints = false

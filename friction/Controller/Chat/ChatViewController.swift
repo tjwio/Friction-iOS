@@ -267,7 +267,7 @@ class ChatViewController: UIViewController, ButtonScrollViewDelegate, UITableVie
     // MARK: send message
     
     @objc private func sendMessage(_ sender: Any?) {
-        guard let text = chatBox.textField.text, !text.isEmpty else { return }
+        guard let text = chatBox.textField.text, !text.isEmpty else { (sender as? LoadingButton)?.isLoading = false; return }
         
         let params = [
             Message.CodingKeys.pollId.rawValue: poll.id,
@@ -374,8 +374,14 @@ class ChatViewController: UIViewController, ButtonScrollViewDelegate, UITableVie
                     }
                 }
                 
+                let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 12.0+keyboardSize.height, right: 0.0)
+                
                 UIView.animate(withDuration: (notification?.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0.3, delay: 0.0, options: .beginFromCurrentState, animations: {
+                    self.tableView.contentInset = contentInsets
+                    self.tableView.scrollIndicatorInsets = contentInsets
+                    self.tableView.setNeedsDisplay()
                     self.view.layoutIfNeeded()
+                    self.scrollToBottom()
                 }, completion: nil)
             }
         }
@@ -388,8 +394,14 @@ class ChatViewController: UIViewController, ButtonScrollViewDelegate, UITableVie
                 make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).offset(-4.0)
             }
             
+            let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 12.0, right: 0.0)
+            
             UIView.animate(withDuration: (notification?.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0.3, animations: {
+                self.tableView.contentInset = contentInsets
+                self.tableView.scrollIndicatorInsets = contentInsets
+                self.tableView.setNeedsDisplay()
                 self.view.layoutIfNeeded()
+                self.scrollToBottom()
             })
         }
     }

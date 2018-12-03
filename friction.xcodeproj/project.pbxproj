@@ -33,6 +33,7 @@
 		2F45109021B523D300EC529E /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45108F21B523D300EC529E /* Message.swift */; };
 		2F45109221B52E9300EC529E /* ChatBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45109121B52E9300EC529E /* ChatBoxView.swift */; };
 		2F45109421B53A8200EC529E /* NetworkHandler+Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45109321B53A8200EC529E /* NetworkHandler+Messages.swift */; };
+		2F45109721B5E2D300EC529E /* clap.caf in Resources */ = {isa = PBXBuildFile; fileRef = 2F45109621B5E2D300EC529E /* clap.caf */; };
 		2F5D1CDB21A292F0003D0587 /* AvenirNextLTPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F5D1CD421A292EF003D0587 /* AvenirNextLTPro-Regular.otf */; };
 		2F5D1CDC21A292F0003D0587 /* AvenirNextLTPro-UltLt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F5D1CD521A292EF003D0587 /* AvenirNextLTPro-UltLt.otf */; };
 		2F5D1CDD21A292F0003D0587 /* AvenirNextLTPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F5D1CD621A292EF003D0587 /* AvenirNextLTPro-Bold.otf */; };
@@ -135,6 +136,7 @@
 		2F45108F21B523D300EC529E /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		2F45109121B52E9300EC529E /* ChatBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBoxView.swift; sourceTree = "<group>"; };
 		2F45109321B53A8200EC529E /* NetworkHandler+Messages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkHandler+Messages.swift"; sourceTree = "<group>"; };
+		2F45109621B5E2D300EC529E /* clap.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = clap.caf; sourceTree = "<group>"; };
 		2F5D1CD421A292EF003D0587 /* AvenirNextLTPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextLTPro-Regular.otf"; sourceTree = "<group>"; };
 		2F5D1CD521A292EF003D0587 /* AvenirNextLTPro-UltLt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextLTPro-UltLt.otf"; sourceTree = "<group>"; };
 		2F5D1CD621A292EF003D0587 /* AvenirNextLTPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextLTPro-Bold.otf"; sourceTree = "<group>"; };
@@ -277,9 +279,18 @@
 			path = Message;
 			sourceTree = "<group>";
 		};
+		2F45109521B5E2C700EC529E /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				2F45109621B5E2D300EC529E /* clap.caf */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
 		2F5D1CD321A292D7003D0587 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2F45109521B5E2C700EC529E /* Sounds */,
 				2F5D1CD621A292EF003D0587 /* AvenirNextLTPro-Bold.otf */,
 				2F5D1CD821A292EF003D0587 /* AvenirNextLTPro-Demi.otf */,
 				2F5D1CDA21A292F0003D0587 /* AvenirNextLTPro-It.otf */,
@@ -658,6 +669,7 @@
 				2F5D1CDE21A292F0003D0587 /* AvenirNextLTPro-Medium.otf in Resources */,
 				2F5D1CDD21A292F0003D0587 /* AvenirNextLTPro-Bold.otf in Resources */,
 				2F5D1CDB21A292F0003D0587 /* AvenirNextLTPro-Regular.otf in Resources */,
+				2F45109721B5E2D300EC529E /* clap.caf in Resources */,
 				2F5D1CDC21A292F0003D0587 /* AvenirNextLTPro-UltLt.otf in Resources */,
 				2F99878021A282E3001B1256 /* Main.storyboard in Resources */,
 			);

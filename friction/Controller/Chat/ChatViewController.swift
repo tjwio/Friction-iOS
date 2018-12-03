@@ -308,6 +308,8 @@ class ChatViewController: UIViewController, ButtonScrollViewDelegate, UITableVie
         cell.clapView.claps.value = message.claps
         if let imageUrl = message.imageUrl {
             cell.avatarView.imageView.sd_setImage(with: URL(string: imageUrl), completed: nil)
+        } else {
+            cell.avatarView.imageView.image = .blankAvatarBlack
         }
         
         cell.messageView.layer.borderWidth = 1.0

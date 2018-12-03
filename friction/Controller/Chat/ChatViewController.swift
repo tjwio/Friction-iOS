@@ -9,7 +9,11 @@
 import UIKit
 import SnapKit
 
-class ChatViewController: UIViewController, ButtonScrollViewDelegate {
+class ChatViewController: UIViewController, ButtonScrollViewDelegate, UITableViewDataSource, UITableViewDelegate {
+    
+    private struct Constants {
+        static let cellIdentifier = "ChatMessageTableViewCellIdentifier"
+    }
     
     let poll: Poll
     
@@ -53,6 +57,19 @@ class ChatViewController: UIViewController, ButtonScrollViewDelegate {
         return view
     }()
     
+    let tableView: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .plain)
+        tableView.backgroundColor = .white
+        tableView.contentInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 12.0, right: 0.0)
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.separatorStyle = .none
+        tableView.tableFooterView = UIView()
+        tableView.showsVerticalScrollIndicator = false
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return tableView
+    }()
+    
     init(poll: Poll) {
         self.poll = poll
         super.init(nibName: nil, bundle: nil)
@@ -71,6 +88,9 @@ class ChatViewController: UIViewController, ButtonScrollViewDelegate {
         navigationItem.largeTitleDisplayMode = .never
         view.backgroundColor = .white
         
+        tableView.dataSource = self
+        tableView.delegate = self
+        
         nameLabel.text = poll.name
         
         let items = poll.items
@@ -84,6 +104,7 @@ class ChatViewController: UIViewController, ButtonScrollViewDelegate {
         view.addSubview(buttonScrollView)
         view.addSubview(progressView)
         view.addSubview(separatorView)
+        view.addSubview(tableView)
         
         setupConstraints()
     }
@@ -118,11 +139,56 @@ class ChatViewController: UIViewController, ButtonScrollViewDelegate {
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(2.0)
         }
+        
+        tableView.snp.makeConstraints { make in
+            make.top.equalTo(self.separatorView.snp.bottom)
+            make.leading.equalToSuperview().offset(16.0)
+            make.trailing.equalToSuperview().offset(-16.0)
+            make.bottom.equalToSuperview()
+        }
+    }
+    
+    // MARK: table view
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 14.0
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return UIView()
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellIdentifier) as? FullMessageTableViewCell ?? FullMessageTableViewCell(style: .default, reuseIdentifier: Constants.cellIdentifier)
+        
+        cell.messageView.nameLabel.text = "Poggers247"
+        cell.messageView.timeLabel.text = "2:47pm"
+        cell.messageView.messageLabel.text = "YO KENDRICK IS THE GOAT"
+        cell.clapView.label.text = "229 claps"
+        
+        cell.messageView.layer.borderWidth = 1.0
+        cell.messageView.layer.borderColor = UIColor.pollColor(index: 0).cgColor
+        
+        return cell
     }
     
     // MARK: button selection delegate
     
     func buttonScrollView(_ scrollView: ButtonScrollView, didSelect item: (value: String, percent: Double, selected: Bool), at index: Int) {
+        let option = poll.options[index]
         
+        poll.vote(option: option, success: { _ in
+            self.buttonScrollView.items = self.poll.items
+        }) { _ in
+            self.buttonScrollView.items = self.poll.items
+        }
     }
 }

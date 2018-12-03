@@ -12,7 +12,7 @@ import ReactiveSwift
 import Result
 import SnapKit
 
-class MainViewController: UIViewController, PollSelectionDelegate, UITableViewDelegate, UITableViewDataSource {
+class MainViewController: UIViewController, PollSelectionDelegate, UITableViewDataSource, UITableViewDelegate {
     
     private struct Constants {
         static let liveCellIdentifier = "LivePollCellIdentifier"
@@ -31,6 +31,7 @@ class MainViewController: UIViewController, PollSelectionDelegate, UITableViewDe
     
     let tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
+        tableView.allowsSelection = false
         tableView.backgroundColor = .white
         tableView.contentInset = UIEdgeInsets(top: 12.0, left: 0.0, bottom: 12.0, right: 0.0)
         tableView.rowHeight = UITableView.automaticDimension

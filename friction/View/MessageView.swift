@@ -12,7 +12,7 @@ class MessageView: UIView {
     let nameLabel: UILabel = {
         let label = UILabel()
         label.font = .avenirDemi(size: 10.0)
-        label.textColor = UIColor.Grayscale.dark
+        label.textColor = UIColor.Grayscale.darker
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
@@ -31,7 +31,7 @@ class MessageView: UIView {
     let timeLabel: UILabel = {
         let label = UILabel()
         label.font = .avenirDemi(size: 10.0)
-        label.textColor = UIColor.Grayscale.dark
+        label.textColor = UIColor.Grayscale.darker
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
@@ -40,7 +40,7 @@ class MessageView: UIView {
     let messageLabel: UILabel = {
         let label = UILabel()
         label.font = .avenirMedium(size: 14.0)
-        label.textColor = UIColor.Grayscale.dark
+        label.textColor = UIColor.Grayscale.darker
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
@@ -73,6 +73,8 @@ class MessageView: UIView {
     }
     
     private func commonInit() {
+        layer.cornerRadius = 4.0
+        
         addSubview(labelStackView)
         addSubview(messageLabel)
         

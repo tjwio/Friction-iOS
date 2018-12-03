@@ -17,6 +17,10 @@ extension UIColor {
     }
     
     struct Grayscale {
+        static var darker: UIColor {
+            return UIColor(hexColor: 0x3D3D3D)
+        }
+        
         static var dark: UIColor {
             return UIColor(hexColor: 0x656A6F)
         }

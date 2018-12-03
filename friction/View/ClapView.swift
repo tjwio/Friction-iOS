@@ -44,7 +44,7 @@ class ClapView: UIView {
     private func commonInit() {
         layer.cornerRadius = 4.0
         layer.borderWidth = 1.0
-        layer.borderColor = UIColor.Grayscale.backgroundLight.cgColor
+        layer.borderColor = UIColor.Grayscale.light.cgColor
         
         addSubview(imageView)
         addSubview(label)
@@ -61,5 +61,7 @@ class ClapView: UIView {
             make.bottom.equalToSuperview().offset(-4.0)
             make.centerX.equalToSuperview()
         }
+        
+        super.updateConstraints()
     }
 }

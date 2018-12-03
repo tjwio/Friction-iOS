@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import ReactiveCocoa
-import ReactiveSwift
 import SnapKit
 
 class AvatarView: UIView {
@@ -27,8 +25,6 @@ class AvatarView: UIView {
             setNeedsLayout()
         }
     }
-    
-    private var disposables = CompositeDisposable()
     
     init() {
         super.init(frame: .zero)
@@ -50,10 +46,6 @@ class AvatarView: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
-    }
-    
-    deinit {
-        disposables.dispose()
     }
     
     private func commonInit() {

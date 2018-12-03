@@ -173,7 +173,7 @@ class ChatViewController: UIViewController, ButtonScrollViewDelegate, UITableVie
         cell.messageView.nameLabel.text = "Poggers247"
         cell.messageView.timeLabel.text = "2:47pm"
         cell.messageView.messageLabel.text = "YO KENDRICK IS THE GOAT"
-        cell.clapView.label.text = "229 claps"
+        cell.clapView.claps.value = 229
         
         cell.messageView.layer.borderWidth = 1.0
         cell.messageView.layer.borderColor = UIColor.pollColor(index: 0).cgColor

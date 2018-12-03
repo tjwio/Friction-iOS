@@ -23,6 +23,9 @@
 		2F45107921B47E5F00EC529E /* ButtonScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45107821B47E5F00EC529E /* ButtonScrollView.swift */; };
 		2F45107C21B48BEB00EC529E /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45107B21B48BEB00EC529E /* ChatViewController.swift */; };
 		2F45107E21B4902200EC529E /* ProgressLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45107D21B4902200EC529E /* ProgressLabelView.swift */; };
+		2F45108021B4C54000EC529E /* ClapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45107F21B4C54000EC529E /* ClapView.swift */; };
+		2F45108221B4C5FC00EC529E /* UIImageView+TintColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45108121B4C5FC00EC529E /* UIImageView+TintColor.swift */; };
+		2F45108421B4C71300EC529E /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45108321B4C71300EC529E /* MessageView.swift */; };
 		2F5D1CDB21A292F0003D0587 /* AvenirNextLTPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F5D1CD421A292EF003D0587 /* AvenirNextLTPro-Regular.otf */; };
 		2F5D1CDC21A292F0003D0587 /* AvenirNextLTPro-UltLt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F5D1CD521A292EF003D0587 /* AvenirNextLTPro-UltLt.otf */; };
 		2F5D1CDD21A292F0003D0587 /* AvenirNextLTPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F5D1CD621A292EF003D0587 /* AvenirNextLTPro-Bold.otf */; };
@@ -115,6 +118,9 @@
 		2F45107821B47E5F00EC529E /* ButtonScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonScrollView.swift; sourceTree = "<group>"; };
 		2F45107B21B48BEB00EC529E /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		2F45107D21B4902200EC529E /* ProgressLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressLabelView.swift; sourceTree = "<group>"; };
+		2F45107F21B4C54000EC529E /* ClapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClapView.swift; sourceTree = "<group>"; };
+		2F45108121B4C5FC00EC529E /* UIImageView+TintColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+TintColor.swift"; sourceTree = "<group>"; };
+		2F45108321B4C71300EC529E /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		2F5D1CD421A292EF003D0587 /* AvenirNextLTPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextLTPro-Regular.otf"; sourceTree = "<group>"; };
 		2F5D1CD521A292EF003D0587 /* AvenirNextLTPro-UltLt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextLTPro-UltLt.otf"; sourceTree = "<group>"; };
 		2F5D1CD621A292EF003D0587 /* AvenirNextLTPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextLTPro-Bold.otf"; sourceTree = "<group>"; };
@@ -264,6 +270,7 @@
 				2F5D1CE521A293A0003D0587 /* UIColor+HexRGB.swift */,
 				2F5D1CE321A29344003D0587 /* UIFont+CustomFonts.swift */,
 				2F8A6F2621AB76040056D4AD /* UIImage+Constants.swift */,
+				2F45108121B4C5FC00EC529E /* UIImageView+TintColor.swift */,
 				2F8A6F1F21AB74B80056D4AD /* UITextField+Toolbar.swift */,
 				2F8A6F1E21AB74B80056D4AD /* UIViewController+Back.swift */,
 				2F8A6F4821ABCD790056D4AD /* UIViewController+Messages.swift */,
@@ -438,9 +445,11 @@
 			children = (
 				2F8A6F0421A678620056D4AD /* Cells */,
 				2F45106121B380E100EC529E /* AvatarView.swift */,
-				2F8A6F0721A67EAD0056D4AD /* LiveView.swift */,
 				2F45107821B47E5F00EC529E /* ButtonScrollView.swift */,
+				2F45107F21B4C54000EC529E /* ClapView.swift */,
+				2F8A6F0721A67EAD0056D4AD /* LiveView.swift */,
 				2F8A6F2821AB77E80056D4AD /* LoadingButton.swift */,
+				2F45108321B4C71300EC529E /* MessageView.swift */,
 				2F8A6F0921A680CB0056D4AD /* PercentageButton.swift */,
 				2F45106321B3860400EC529E /* ProfileView.swift */,
 				2F45107D21B4902200EC529E /* ProgressLabelView.swift */,
@@ -679,6 +688,8 @@
 				2F8A6F1121AB71C00056D4AD /* LoginViewController.swift in Sources */,
 				2F8A6F0621A679FB0056D4AD /* BasePollTableViewCell.swift in Sources */,
 				2F99877B21A282E3001B1256 /* AppDelegate.swift in Sources */,
+				2F45108421B4C71300EC529E /* MessageView.swift in Sources */,
+				2F45108021B4C54000EC529E /* ClapView.swift in Sources */,
 				2F8A6F1221AB71C00056D4AD /* SignupViewController.swift in Sources */,
 				2F8A6F2721AB76040056D4AD /* UIImage+Constants.swift in Sources */,
 				2FEA96BD21AFA10800522C0F /* Poll.swift in Sources */,
@@ -709,6 +720,7 @@
 				2FEA96C121AFD76D00522C0F /* DateFormatter+Constants.swift in Sources */,
 				2F45106921B3869B00EC529E /* ProfileBaseViewController.swift in Sources */,
 				2F8A6F0821A67EAD0056D4AD /* LiveView.swift in Sources */,
+				2F45108221B4C5FC00EC529E /* UIImageView+TintColor.swift in Sources */,
 				2F45106221B380E100EC529E /* AvatarView.swift in Sources */,
 				2F45107121B38FCC00EC529E /* NetworkHandler+Image.swift in Sources */,
 				2F8A6F2121AB74B80056D4AD /* UITextField+Toolbar.swift in Sources */,

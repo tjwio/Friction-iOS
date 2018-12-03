@@ -18,6 +18,7 @@ class ChatViewController: UIViewController, ButtonScrollViewDelegate, UITableVie
         struct Channel {
             static let lobby = "room:lobby"
             static let shout = "shout"
+            static let claps = "claps"
         }
     }
     
@@ -232,6 +233,19 @@ class ChatViewController: UIViewController, ButtonScrollViewDelegate, UITableVie
             strongSelf.messages.append(message)
             strongSelf.tableView.reloadData()
             strongSelf.scrollToBottom()
+        }
+        
+        lobby.on(Constants.Channel.claps) { [weak self] message in
+            guard let strongSelf = self,
+                let id = message.payload[Message.CodingKeys.id.rawValue] as? String, let claps = message.payload[Message.CodingKeys.claps.rawValue] as? Int,
+                let index = strongSelf.messages.firstIndex(where: { return $0.id == id }) else { return }
+            
+            let origMessage = strongSelf.messages[index]
+            guard !origMessage.isPendingClaps && origMessage.claps != claps else { return }
+            
+            origMessage.claps = claps
+            
+            strongSelf.tableView.reloadSections(IndexSet(integer: index), with: .none)
         }
         
         socket.connect()

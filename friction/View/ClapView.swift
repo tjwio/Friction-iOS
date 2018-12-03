@@ -21,6 +21,8 @@ class ClapView: UIView {
     let claps = MutableProperty<Int>(0)
     let addedClaps = MutableProperty<Int>(0)
     
+    let hapticGenerator = UIImpactFeedbackGenerator(style: .light)
+    
     let imageView: UIImageView = {
         let imageView = UIImageView(image: .clap)
         imageView.tintImage(color: UIColor.Grayscale.dark)
@@ -98,10 +100,12 @@ class ClapView: UIView {
     @objc private func longHoldPressGestureRecognized(_ sender: UILongPressGestureRecognizer) {
         if sender.state == .began {
             addedClaps.value += 1
+            hapticGenerator.impactOccurred()
             
             timer?.invalidate()
             timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { [weak self] _ in
                 self?.addedClaps.value += 1
+                self?.hapticGenerator.impactOccurred()
             })
             
             layer.borderColor = UIColor.Grayscale.darker.cgColor

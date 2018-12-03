@@ -27,6 +27,7 @@
 		2F45108221B4C5FC00EC529E /* UIImageView+TintColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45108121B4C5FC00EC529E /* UIImageView+TintColor.swift */; };
 		2F45108421B4C71300EC529E /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45108321B4C71300EC529E /* MessageView.swift */; };
 		2F45108621B4C8F200EC529E /* FullMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45108521B4C8F200EC529E /* FullMessageTableViewCell.swift */; };
+		2F45108821B4D9BE00EC529E /* ChatTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45108721B4D9BE00EC529E /* ChatTextField.swift */; };
 		2F5D1CDB21A292F0003D0587 /* AvenirNextLTPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F5D1CD421A292EF003D0587 /* AvenirNextLTPro-Regular.otf */; };
 		2F5D1CDC21A292F0003D0587 /* AvenirNextLTPro-UltLt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F5D1CD521A292EF003D0587 /* AvenirNextLTPro-UltLt.otf */; };
 		2F5D1CDD21A292F0003D0587 /* AvenirNextLTPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F5D1CD621A292EF003D0587 /* AvenirNextLTPro-Bold.otf */; };
@@ -123,6 +124,7 @@
 		2F45108121B4C5FC00EC529E /* UIImageView+TintColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+TintColor.swift"; sourceTree = "<group>"; };
 		2F45108321B4C71300EC529E /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		2F45108521B4C8F200EC529E /* FullMessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullMessageTableViewCell.swift; sourceTree = "<group>"; };
+		2F45108721B4D9BE00EC529E /* ChatTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTextField.swift; sourceTree = "<group>"; };
 		2F5D1CD421A292EF003D0587 /* AvenirNextLTPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextLTPro-Regular.otf"; sourceTree = "<group>"; };
 		2F5D1CD521A292EF003D0587 /* AvenirNextLTPro-UltLt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextLTPro-UltLt.otf"; sourceTree = "<group>"; };
 		2F5D1CD621A292EF003D0587 /* AvenirNextLTPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextLTPro-Bold.otf"; sourceTree = "<group>"; };
@@ -449,6 +451,7 @@
 				2F8A6F0421A678620056D4AD /* Cells */,
 				2F45106121B380E100EC529E /* AvatarView.swift */,
 				2F45107821B47E5F00EC529E /* ButtonScrollView.swift */,
+				2F45108721B4D9BE00EC529E /* ChatTextField.swift */,
 				2F45107F21B4C54000EC529E /* ClapView.swift */,
 				2F8A6F0721A67EAD0056D4AD /* LiveView.swift */,
 				2F8A6F2821AB77E80056D4AD /* LoadingButton.swift */,
@@ -713,6 +716,7 @@
 				2F8A6F3321AB80370056D4AD /* AuthenticationManager.swift in Sources */,
 				2F45106F21B38F7900EC529E /* User+Image.swift in Sources */,
 				2F8A6F4921ABCD790056D4AD /* UIViewController+Messages.swift in Sources */,
+				2F45108821B4D9BE00EC529E /* ChatTextField.swift in Sources */,
 				2F8A6F4421ABCA1B0056D4AD /* Dictionary+Decoder.swift in Sources */,
 				2F8A6F3B21AB8A640056D4AD /* User.swift in Sources */,
 				2F8A6F3121AB79D20056D4AD /* URLRouter.swift in Sources */,

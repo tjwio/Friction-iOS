@@ -57,6 +57,20 @@ class ChatViewController: UIViewController, ButtonScrollViewDelegate, UITableVie
         return view
     }()
     
+    let textField: ChatTextField = {
+        let textField = ChatTextField()
+        textField.borderStyle = .none
+        textField.font = .avenirRegular(size: 16.0)
+        textField.layer.borderColor = UIColor.Grayscale.light.cgColor
+        textField.layer.borderWidth = 1.0
+        textField.layer.cornerRadius = 22.0
+        textField.placeholder = "Type a message..."
+        textField.textColor = UIColor.Grayscale.dark
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        
+        return textField
+    }()
+    
     let tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.allowsSelection = false
@@ -106,6 +120,7 @@ class ChatViewController: UIViewController, ButtonScrollViewDelegate, UITableVie
         view.addSubview(progressView)
         view.addSubview(separatorView)
         view.addSubview(tableView)
+        view.addSubview(textField)
         
         setupConstraints()
     }
@@ -145,7 +160,14 @@ class ChatViewController: UIViewController, ButtonScrollViewDelegate, UITableVie
             make.top.equalTo(self.separatorView.snp.bottom)
             make.leading.equalToSuperview().offset(16.0)
             make.trailing.equalToSuperview().offset(-16.0)
-            make.bottom.equalToSuperview()
+        }
+        
+        textField.snp.makeConstraints { make in
+            make.top.equalTo(self.tableView.snp.bottom)
+            make.leading.equalToSuperview().offset(16.0)
+            make.trailing.equalToSuperview().offset(-16.0)
+            make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).offset(-8.0)
+            make.height.equalTo(44.0)
         }
     }
     

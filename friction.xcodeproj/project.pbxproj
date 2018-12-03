@@ -28,6 +28,9 @@
 		2F45108421B4C71300EC529E /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45108321B4C71300EC529E /* MessageView.swift */; };
 		2F45108621B4C8F200EC529E /* FullMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45108521B4C8F200EC529E /* FullMessageTableViewCell.swift */; };
 		2F45108821B4D9BE00EC529E /* ChatTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45108721B4D9BE00EC529E /* ChatTextField.swift */; };
+		2F45108C21B5208E00EC529E /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F45108A21B5208E00EC529E /* Starscream.framework */; };
+		2F45108D21B5208E00EC529E /* SwiftPhoenixClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F45108B21B5208E00EC529E /* SwiftPhoenixClient.framework */; };
+		2F45109021B523D300EC529E /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45108F21B523D300EC529E /* Message.swift */; };
 		2F5D1CDB21A292F0003D0587 /* AvenirNextLTPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F5D1CD421A292EF003D0587 /* AvenirNextLTPro-Regular.otf */; };
 		2F5D1CDC21A292F0003D0587 /* AvenirNextLTPro-UltLt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F5D1CD521A292EF003D0587 /* AvenirNextLTPro-UltLt.otf */; };
 		2F5D1CDD21A292F0003D0587 /* AvenirNextLTPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F5D1CD621A292EF003D0587 /* AvenirNextLTPro-Bold.otf */; };
@@ -125,6 +128,9 @@
 		2F45108321B4C71300EC529E /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		2F45108521B4C8F200EC529E /* FullMessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullMessageTableViewCell.swift; sourceTree = "<group>"; };
 		2F45108721B4D9BE00EC529E /* ChatTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTextField.swift; sourceTree = "<group>"; };
+		2F45108A21B5208E00EC529E /* Starscream.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Starscream.framework; path = Carthage/Build/iOS/Starscream.framework; sourceTree = "<group>"; };
+		2F45108B21B5208E00EC529E /* SwiftPhoenixClient.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftPhoenixClient.framework; path = Carthage/Build/iOS/SwiftPhoenixClient.framework; sourceTree = "<group>"; };
+		2F45108F21B523D300EC529E /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		2F5D1CD421A292EF003D0587 /* AvenirNextLTPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextLTPro-Regular.otf"; sourceTree = "<group>"; };
 		2F5D1CD521A292EF003D0587 /* AvenirNextLTPro-UltLt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextLTPro-UltLt.otf"; sourceTree = "<group>"; };
 		2F5D1CD621A292EF003D0587 /* AvenirNextLTPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextLTPro-Bold.otf"; sourceTree = "<group>"; };
@@ -195,6 +201,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F45108C21B5208E00EC529E /* Starscream.framework in Frameworks */,
+				2F45108D21B5208E00EC529E /* SwiftPhoenixClient.framework in Frameworks */,
 				2F45107521B3931600EC529E /* SDWebImage.framework in Frameworks */,
 				2F8A6F2D21AB790E0056D4AD /* KeychainSwift.framework in Frameworks */,
 				2F8A6F2521AB752D0056D4AD /* GSMessages.framework in Frameworks */,
@@ -248,6 +256,21 @@
 				2F45107B21B48BEB00EC529E /* ChatViewController.swift */,
 			);
 			path = Chat;
+			sourceTree = "<group>";
+		};
+		2F45108921B4E41F00EC529E /* Message */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Message;
+			sourceTree = "<group>";
+		};
+		2F45108E21B5234000EC529E /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				2F45108F21B523D300EC529E /* Message.swift */,
+			);
+			path = Message;
 			sourceTree = "<group>";
 		};
 		2F5D1CD321A292D7003D0587 /* Resources */ = {
@@ -440,6 +463,7 @@
 				2F45107A21B48BDB00EC529E /* Chat */,
 				2F8A6F0B21AB70780056D4AD /* Home */,
 				2F8A6F0C21AB708B0056D4AD /* Login */,
+				2F45108921B4E41F00EC529E /* Message */,
 				2F45106521B3867C00EC529E /* Profile */,
 			);
 			path = Controller;
@@ -473,6 +497,7 @@
 				2F8A6F4521ABCBC90056D4AD /* Error */,
 				2F5D1CE221A2932E003D0587 /* Extensions */,
 				2F8A6F1D21AB74880056D4AD /* Helper */,
+				2F45108E21B5234000EC529E /* Message */,
 				2F8A6F2B21AB78940056D4AD /* Network */,
 				2F9DF8B121AF9E2B001D437F /* Poll */,
 				2F8A6F3921AB8A4C0056D4AD /* User */,
@@ -483,6 +508,8 @@
 		2F9987AD21A29130001B1256 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2F45108A21B5208E00EC529E /* Starscream.framework */,
+				2F45108B21B5208E00EC529E /* SwiftPhoenixClient.framework */,
 				2F45107421B3931600EC529E /* SDWebImage.framework */,
 				2F8A6F2C21AB790E0056D4AD /* KeychainSwift.framework */,
 				2F8A6F2421AB752D0056D4AD /* GSMessages.framework */,
@@ -665,6 +692,8 @@
 				"$(SRCROOT)/Carthage/Build/iOS/GSMessages.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/KeychainSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SDWebImage.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Starscream.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftPhoenixClient.framework",
 			);
 			name = "Copy Carthage Frameworks";
 			outputFileListPaths = (
@@ -695,6 +724,7 @@
 				2F8A6F1121AB71C00056D4AD /* LoginViewController.swift in Sources */,
 				2F8A6F0621A679FB0056D4AD /* BasePollTableViewCell.swift in Sources */,
 				2F99877B21A282E3001B1256 /* AppDelegate.swift in Sources */,
+				2F45109021B523D300EC529E /* Message.swift in Sources */,
 				2F45108421B4C71300EC529E /* MessageView.swift in Sources */,
 				2F45108021B4C54000EC529E /* ClapView.swift in Sources */,
 				2F8A6F1221AB71C00056D4AD /* SignupViewController.swift in Sources */,

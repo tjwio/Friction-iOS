@@ -8,14 +8,24 @@
 
 import UIKit
 import SnapKit
+import SwiftPhoenixClient
 
 class ChatViewController: UIViewController, ButtonScrollViewDelegate, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
     
     private struct Constants {
         static let cellIdentifier = "ChatMessageTableViewCellIdentifier"
+        
+        struct Channel {
+            static let lobby = "room:lobby"
+            static let shout = "shout"
+        }
     }
     
     let poll: Poll
+    
+    let socket = Socket(url: AppManager.shared.environment.streamUrl, params: ["token" : AuthenticationManager.shared.authToken ?? ""])
+    
+    private var messages = [Message]()
     
     let nameLabel: UILabel = {
         let label = UILabel()
@@ -85,6 +95,13 @@ class ChatViewController: UIViewController, ButtonScrollViewDelegate, UITableVie
         return tableView
     }()
     
+    let activityIndicator: UIActivityIndicatorView = {
+        let view = UIActivityIndicatorView(style: .gray)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        return view
+    }()
+    
     lazy var defaultTextFieldConstraints: (SnapKit.ConstraintMaker) -> Void = { make in
         make.leading.equalToSuperview().offset(16.0)
         make.trailing.equalToSuperview().offset(-16.0)
@@ -133,6 +150,11 @@ class ChatViewController: UIViewController, ButtonScrollViewDelegate, UITableVie
         view.addSubview(separatorView)
         view.addSubview(tableView)
         view.addSubview(textField)
+        view.addSubview(activityIndicator)
+        
+        activityIndicator.startAnimating()
+        reloadMessages(nil)
+        addSocketEvents()
         
         setupConstraints()
         
@@ -182,12 +204,53 @@ class ChatViewController: UIViewController, ButtonScrollViewDelegate, UITableVie
             self.defaultTextFieldConstraints(make)
             make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).offset(-8.0)
         }
+        
+        activityIndicator.snp.makeConstraints { make in
+            make.center.equalTo(self.tableView)
+        }
+    }
+    
+    // MARK: socket/channel
+    
+    private func addSocketEvents() {
+        socket.onOpen { print("socket connected") }
+        socket.onClose { print("socket disconnected") }
+        socket.onError { error in print("socket error: \(error)") }
+        socket.onMessage { message in
+            print("socket message: \(message.event)")
+        }
+        
+        let lobby = socket.channel(Constants.Channel.lobby)
+        lobby.on(Constants.Channel.lobby) { [weak self] message in
+            guard let message = message.payload.decodeJson(Message.self) else { return }
+            self?.messages.append(message)
+            self?.tableView.reloadData()
+        }
+        
+        socket.connect()
+        _ = lobby.join()
+    }
+    
+    // MARK: reload
+    
+    private func reloadMessages(_ sender: UIRefreshControl?) {
+        NetworkHandler.shared.getMessages(pollId: poll.id, success: { messages in
+            self.messages = messages
+            self.activityIndicator.stopAnimating()
+            sender?.endRefreshing()
+            self.tableView.reloadData()
+        }) { error in
+            print("failed to get messages with error: \(error)")
+            self.activityIndicator.stopAnimating()
+            sender?.endRefreshing()
+            self.tableView.reloadData()
+        }
     }
     
     // MARK: table view
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return activityIndicator.isAnimating ? 0 : messages.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -205,10 +268,15 @@ class ChatViewController: UIViewController, ButtonScrollViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellIdentifier) as? FullMessageTableViewCell ?? FullMessageTableViewCell(style: .default, reuseIdentifier: Constants.cellIdentifier)
         
-        cell.messageView.nameLabel.text = "Poggers247"
-        cell.messageView.timeLabel.text = "2:47pm"
-        cell.messageView.messageLabel.text = "YO KENDRICK IS THE GOAT"
-        cell.clapView.claps.value = 229
+        let message = messages[indexPath.section]
+        
+        cell.messageView.nameLabel.text = message.name
+        cell.messageView.timeLabel.text = DateFormatter.amPm.string(from: message.date)
+        cell.messageView.messageLabel.text = message.message
+        cell.clapView.claps.value = message.claps
+        if let imageUrl = message.imageUrl {
+            cell.avatarView.imageView.sd_setImage(with: URL(string: imageUrl), completed: nil)
+        }
         
         cell.messageView.layer.borderWidth = 1.0
         cell.messageView.layer.borderColor = UIColor.pollColor(index: 0).cgColor

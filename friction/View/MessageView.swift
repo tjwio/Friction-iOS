@@ -40,6 +40,7 @@ class MessageView: UIView {
     let messageLabel: UILabel = {
         let label = UILabel()
         label.font = .avenirMedium(size: 14.0)
+        label.numberOfLines = 0
         label.textColor = UIColor.Grayscale.darker
         label.translatesAutoresizingMaskIntoConstraints = false
         

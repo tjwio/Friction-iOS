@@ -12,11 +12,11 @@ enum Environment {
     case development, staging, production
     
     var apiUrl: String {
-        return "http://192.168.0.100:4000/api/v1"
+        return "https://friction-elixir.herokuapp.com/api/v1"
     }
     
     var streamUrl: String {
-        return "ws://localhost:4000/socket/websocket"
+        return "wss://friction-elixir.herokuapp.com/socket/websocket"
     }
 }
 

@@ -349,6 +349,7 @@ class ChatViewController: UIViewController, ButtonScrollViewDelegate, UITableVie
     // MARK: helper
     
     private func scrollToBottom() {
+        guard !messages.isEmpty else { return }
         let indexPath = IndexPath(row: 0, section: messages.count-1)
         tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
     }

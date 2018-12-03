@@ -26,6 +26,10 @@ extension UIImage {
         return UIImage(named: "blank_avatar_light")
     }
     
+    class var clap: UIImage? {
+        return UIImage(named: "clap")
+    }
+    
     class var frictionIconAvatar: UIImage? {
         return UIImage(named: "friction_icon_avatar")
     }

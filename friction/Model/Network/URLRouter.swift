@@ -10,13 +10,14 @@ import Alamofire
 
 enum URLRouter: URLRequestConvertible {
     //MARK: GET
-    case loadUser, getPolls, getAllVotes
+    case loadUser, getPolls, getAllVotes, getMessages(pollId: String)
     
     //MARK: POST
     case signup(parameters: Parameters)
     case login(parameters: Parameters)
     case uploadImage
     case addVote(parameters: Parameters)
+    case addClaps(messageId: String, parameters: Parameters)
     case addToken(parameters: Parameters)
     
     //MARK: PUT
@@ -27,9 +28,9 @@ enum URLRouter: URLRequestConvertible {
     
     var method: HTTPMethod {
         switch self {
-        case .loadUser, .getPolls, .getAllVotes:
+        case .loadUser, .getPolls, .getAllVotes, .getMessages:
             return .get
-        case .signup, .login, .uploadImage, .addVote, .addToken:
+        case .signup, .login, .uploadImage, .addVote, .addClaps, .addToken:
             return .post
         case .updateUser, .updateVote:
             return .put
@@ -40,18 +41,22 @@ enum URLRouter: URLRequestConvertible {
         switch self {
         case .loadUser, .updateUser:
             return "/users"
+        case .getPolls:
+            return "/polls"
+        case .getAllVotes:
+            return "/votes"
+        case .getMessages(let pollId):
+            return "/polls/\(pollId)/messages"
         case .signup:
             return "/users/signup"
         case .login:
             return "/users/login"
         case .uploadImage:
             return "/upload/image"
-        case .getPolls:
-            return "/polls"
-        case .getAllVotes:
-            return "/votes"
         case .addVote:
             return "/votes"
+        case .addClaps(let messageId, _):
+            return "/messages/\(messageId)/claps"
         case .addToken:
             return "/token"
         case .updateVote(let id, _):
@@ -69,7 +74,7 @@ enum URLRouter: URLRequestConvertible {
         }
         
         switch self {
-        case .signup(let parameters), .login(let parameters), .addVote(let parameters), .addToken(let parameters), .updateUser(let parameters), .updateVote(_, let parameters):
+        case .signup(let parameters), .login(let parameters), .addVote(let parameters), .addClaps(_, let parameters), .addToken(let parameters), .updateUser(let parameters), .updateVote(_, let parameters):
             urlRequest = try JSONEncoding.default.encode(urlRequest, withJSONObject: parameters)
         default: break
         }

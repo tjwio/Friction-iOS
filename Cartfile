@@ -6,3 +6,5 @@ github "tjwio/SwiftFeather" "master"
 github "tw23/GSMessages" "fix/access_control"
 github "evgenyneu/keychain-swift" ~> 11.0
 github "SDWebImage/SDWebImage"
+github "davidstump/SwiftPhoenixClient" ~> 0.9
+

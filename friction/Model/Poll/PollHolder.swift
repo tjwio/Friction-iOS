@@ -55,4 +55,10 @@ class PollHolder: NSObject {
             success?()
         }, failure: failure)
     }
+    
+    // MARK: helper
+    
+    func getPoll(id: String) -> Poll? {
+        return pollMap[id]
+    }
 }

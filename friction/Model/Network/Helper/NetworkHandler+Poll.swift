@@ -22,4 +22,18 @@ extension NetworkHandler {
             }
         }
     }
+    
+    func getMessages(pollId: String, success: MessageListHandler?, failure: ErrorHandler?) {
+        sessionManager.request(URLRouter.getMessages(pollId: pollId)).validate().responseData { response in
+            switch response.result {
+            case .success:
+                if let messages = response.data?.decodeJson([Message].self) {
+                    success?(messages)
+                } else {
+                    failure?(CommonError.invalidJson)
+                }
+            case .failure(let error): failure?(error)
+            }
+        }
+    }
 }

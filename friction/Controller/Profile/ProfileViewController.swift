@@ -41,6 +41,10 @@ class ProfileViewController: ProfileBaseViewController {
         make.trailing.equalTo(self.view).offset(-12.0)
         make.bottom.equalTo(self.view).offset(6.0)
     }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

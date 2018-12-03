@@ -19,6 +19,20 @@
 		2F45107121B38FCC00EC529E /* NetworkHandler+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45107021B38FCC00EC529E /* NetworkHandler+Image.swift */; };
 		2F45107321B390FE00EC529E /* CALayer+Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45107221B390FE00EC529E /* CALayer+Shadow.swift */; };
 		2F45107521B3931600EC529E /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F45107421B3931600EC529E /* SDWebImage.framework */; };
+		2F45107721B47C9A00EC529E /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45107621B47C9A00EC529E /* ProgressView.swift */; };
+		2F45107921B47E5F00EC529E /* ButtonScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45107821B47E5F00EC529E /* ButtonScrollView.swift */; };
+		2F45107C21B48BEB00EC529E /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45107B21B48BEB00EC529E /* ChatViewController.swift */; };
+		2F45107E21B4902200EC529E /* ProgressLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45107D21B4902200EC529E /* ProgressLabelView.swift */; };
+		2F45108021B4C54000EC529E /* ClapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45107F21B4C54000EC529E /* ClapView.swift */; };
+		2F45108221B4C5FC00EC529E /* UIImageView+TintColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45108121B4C5FC00EC529E /* UIImageView+TintColor.swift */; };
+		2F45108421B4C71300EC529E /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45108321B4C71300EC529E /* MessageView.swift */; };
+		2F45108621B4C8F200EC529E /* FullMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45108521B4C8F200EC529E /* FullMessageTableViewCell.swift */; };
+		2F45108821B4D9BE00EC529E /* ChatTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45108721B4D9BE00EC529E /* ChatTextField.swift */; };
+		2F45108C21B5208E00EC529E /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F45108A21B5208E00EC529E /* Starscream.framework */; };
+		2F45108D21B5208E00EC529E /* SwiftPhoenixClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F45108B21B5208E00EC529E /* SwiftPhoenixClient.framework */; };
+		2F45109021B523D300EC529E /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45108F21B523D300EC529E /* Message.swift */; };
+		2F45109221B52E9300EC529E /* ChatBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45109121B52E9300EC529E /* ChatBoxView.swift */; };
+		2F45109421B53A8200EC529E /* NetworkHandler+Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45109321B53A8200EC529E /* NetworkHandler+Messages.swift */; };
 		2F5D1CDB21A292F0003D0587 /* AvenirNextLTPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F5D1CD421A292EF003D0587 /* AvenirNextLTPro-Regular.otf */; };
 		2F5D1CDC21A292F0003D0587 /* AvenirNextLTPro-UltLt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F5D1CD521A292EF003D0587 /* AvenirNextLTPro-UltLt.otf */; };
 		2F5D1CDD21A292F0003D0587 /* AvenirNextLTPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F5D1CD621A292EF003D0587 /* AvenirNextLTPro-Bold.otf */; };
@@ -107,6 +121,20 @@
 		2F45107021B38FCC00EC529E /* NetworkHandler+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkHandler+Image.swift"; sourceTree = "<group>"; };
 		2F45107221B390FE00EC529E /* CALayer+Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Shadow.swift"; sourceTree = "<group>"; };
 		2F45107421B3931600EC529E /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImage.framework; path = Carthage/Build/iOS/SDWebImage.framework; sourceTree = "<group>"; };
+		2F45107621B47C9A00EC529E /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
+		2F45107821B47E5F00EC529E /* ButtonScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonScrollView.swift; sourceTree = "<group>"; };
+		2F45107B21B48BEB00EC529E /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		2F45107D21B4902200EC529E /* ProgressLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressLabelView.swift; sourceTree = "<group>"; };
+		2F45107F21B4C54000EC529E /* ClapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClapView.swift; sourceTree = "<group>"; };
+		2F45108121B4C5FC00EC529E /* UIImageView+TintColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+TintColor.swift"; sourceTree = "<group>"; };
+		2F45108321B4C71300EC529E /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
+		2F45108521B4C8F200EC529E /* FullMessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullMessageTableViewCell.swift; sourceTree = "<group>"; };
+		2F45108721B4D9BE00EC529E /* ChatTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTextField.swift; sourceTree = "<group>"; };
+		2F45108A21B5208E00EC529E /* Starscream.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Starscream.framework; path = Carthage/Build/iOS/Starscream.framework; sourceTree = "<group>"; };
+		2F45108B21B5208E00EC529E /* SwiftPhoenixClient.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftPhoenixClient.framework; path = Carthage/Build/iOS/SwiftPhoenixClient.framework; sourceTree = "<group>"; };
+		2F45108F21B523D300EC529E /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		2F45109121B52E9300EC529E /* ChatBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBoxView.swift; sourceTree = "<group>"; };
+		2F45109321B53A8200EC529E /* NetworkHandler+Messages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkHandler+Messages.swift"; sourceTree = "<group>"; };
 		2F5D1CD421A292EF003D0587 /* AvenirNextLTPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextLTPro-Regular.otf"; sourceTree = "<group>"; };
 		2F5D1CD521A292EF003D0587 /* AvenirNextLTPro-UltLt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextLTPro-UltLt.otf"; sourceTree = "<group>"; };
 		2F5D1CD621A292EF003D0587 /* AvenirNextLTPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextLTPro-Bold.otf"; sourceTree = "<group>"; };
@@ -177,6 +205,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F45108C21B5208E00EC529E /* Starscream.framework in Frameworks */,
+				2F45108D21B5208E00EC529E /* SwiftPhoenixClient.framework in Frameworks */,
 				2F45107521B3931600EC529E /* SDWebImage.framework in Frameworks */,
 				2F8A6F2D21AB790E0056D4AD /* KeychainSwift.framework in Frameworks */,
 				2F8A6F2521AB752D0056D4AD /* GSMessages.framework in Frameworks */,
@@ -224,6 +254,29 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
+		2F45107A21B48BDB00EC529E /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				2F45107B21B48BEB00EC529E /* ChatViewController.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		2F45108921B4E41F00EC529E /* Message */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Message;
+			sourceTree = "<group>";
+		};
+		2F45108E21B5234000EC529E /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				2F45108F21B523D300EC529E /* Message.swift */,
+			);
+			path = Message;
+			sourceTree = "<group>";
+		};
 		2F5D1CD321A292D7003D0587 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -248,6 +301,7 @@
 				2F5D1CE521A293A0003D0587 /* UIColor+HexRGB.swift */,
 				2F5D1CE321A29344003D0587 /* UIFont+CustomFonts.swift */,
 				2F8A6F2621AB76040056D4AD /* UIImage+Constants.swift */,
+				2F45108121B4C5FC00EC529E /* UIImageView+TintColor.swift */,
 				2F8A6F1F21AB74B80056D4AD /* UITextField+Toolbar.swift */,
 				2F8A6F1E21AB74B80056D4AD /* UIViewController+Back.swift */,
 				2F8A6F4821ABCD790056D4AD /* UIViewController+Messages.swift */,
@@ -260,6 +314,7 @@
 			isa = PBXGroup;
 			children = (
 				2F8A6F0521A679FB0056D4AD /* BasePollTableViewCell.swift */,
+				2F45108521B4C8F200EC529E /* FullMessageTableViewCell.swift */,
 				2F9DF8AF21AF9CE2001D437F /* HistoryPollTableViewCell.swift */,
 				2FEA96CC21B25C9500522C0F /* LivePollTableViewCell.swift */,
 				2F45106A21B3886500EC529E /* ProfileDetailValueTableViewCell.swift */,
@@ -307,7 +362,7 @@
 			children = (
 				2F8A6F2E21AB799D0056D4AD /* NetworkHandler.swift */,
 				2F8A6F3021AB79D20056D4AD /* URLRouter.swift */,
-				2F8A6F3E21ABC96A0056D4AD /* Authentication */,
+				2F8A6F3E21ABC96A0056D4AD /* Helper */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -329,17 +384,18 @@
 			path = User;
 			sourceTree = "<group>";
 		};
-		2F8A6F3E21ABC96A0056D4AD /* Authentication */ = {
+		2F8A6F3E21ABC96A0056D4AD /* Helper */ = {
 			isa = PBXGroup;
 			children = (
 				2F8A6F3F21ABC9AB0056D4AD /* NetworkHandler+Authentication.swift */,
 				2F45107021B38FCC00EC529E /* NetworkHandler+Image.swift */,
+				2F45109321B53A8200EC529E /* NetworkHandler+Messages.swift */,
 				2FEA96BE21AFD24700522C0F /* NetworkHandler+Poll.swift */,
 				2F45105F21B34BA900EC529E /* NetworkHandler+Token.swift */,
 				2F45106C21B38E9F00EC529E /* NetworkHandler+User.swift */,
 				2FEA96C621B242CC00522C0F /* NetworkHandler+Votes.swift */,
 			);
-			path = Authentication;
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		2F8A6F4521ABCBC90056D4AD /* Error */ = {
@@ -378,9 +434,9 @@
 				2F9987A821A28ED1001B1256 /* Controller */,
 				2F9987AA21A28EE6001B1256 /* Model */,
 				2F9987A921A28EDC001B1256 /* View */,
-				2F5D1CD321A292D7003D0587 /* Resources */,
 				2F99877A21A282E3001B1256 /* AppDelegate.swift */,
 				2F99877E21A282E3001B1256 /* Main.storyboard */,
+				2F5D1CD321A292D7003D0587 /* Resources */,
 				2F99878121A282E7001B1256 /* Assets.xcassets */,
 				2F99878321A282E7001B1256 /* LaunchScreen.storyboard */,
 				2F99878621A282E7001B1256 /* Info.plist */,
@@ -409,8 +465,10 @@
 		2F9987A821A28ED1001B1256 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				2F45107A21B48BDB00EC529E /* Chat */,
 				2F8A6F0B21AB70780056D4AD /* Home */,
 				2F8A6F0C21AB708B0056D4AD /* Login */,
+				2F45108921B4E41F00EC529E /* Message */,
 				2F45106521B3867C00EC529E /* Profile */,
 			);
 			path = Controller;
@@ -421,10 +479,17 @@
 			children = (
 				2F8A6F0421A678620056D4AD /* Cells */,
 				2F45106121B380E100EC529E /* AvatarView.swift */,
+				2F45107821B47E5F00EC529E /* ButtonScrollView.swift */,
+				2F45109121B52E9300EC529E /* ChatBoxView.swift */,
+				2F45108721B4D9BE00EC529E /* ChatTextField.swift */,
+				2F45107F21B4C54000EC529E /* ClapView.swift */,
 				2F8A6F0721A67EAD0056D4AD /* LiveView.swift */,
 				2F8A6F2821AB77E80056D4AD /* LoadingButton.swift */,
+				2F45108321B4C71300EC529E /* MessageView.swift */,
 				2F8A6F0921A680CB0056D4AD /* PercentageButton.swift */,
 				2F45106321B3860400EC529E /* ProfileView.swift */,
+				2F45107D21B4902200EC529E /* ProgressLabelView.swift */,
+				2F45107621B47C9A00EC529E /* ProgressView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -438,6 +503,7 @@
 				2F8A6F4521ABCBC90056D4AD /* Error */,
 				2F5D1CE221A2932E003D0587 /* Extensions */,
 				2F8A6F1D21AB74880056D4AD /* Helper */,
+				2F45108E21B5234000EC529E /* Message */,
 				2F8A6F2B21AB78940056D4AD /* Network */,
 				2F9DF8B121AF9E2B001D437F /* Poll */,
 				2F8A6F3921AB8A4C0056D4AD /* User */,
@@ -448,6 +514,8 @@
 		2F9987AD21A29130001B1256 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2F45108A21B5208E00EC529E /* Starscream.framework */,
+				2F45108B21B5208E00EC529E /* SwiftPhoenixClient.framework */,
 				2F45107421B3931600EC529E /* SDWebImage.framework */,
 				2F8A6F2C21AB790E0056D4AD /* KeychainSwift.framework */,
 				2F8A6F2421AB752D0056D4AD /* GSMessages.framework */,
@@ -630,6 +698,8 @@
 				"$(SRCROOT)/Carthage/Build/iOS/GSMessages.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/KeychainSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SDWebImage.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Starscream.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftPhoenixClient.framework",
 			);
 			name = "Copy Carthage Frameworks";
 			outputFileListPaths = (
@@ -650,15 +720,21 @@
 				2F8A6F2321AB74CA0056D4AD /* CommonUtility.swift in Sources */,
 				2F45107321B390FE00EC529E /* CALayer+Shadow.swift in Sources */,
 				2F8A6F4321ABCA1B0056D4AD /* Data+JSON.swift in Sources */,
+				2F45107C21B48BEB00EC529E /* ChatViewController.swift in Sources */,
 				2F8A6F3821AB820E0056D4AD /* AppManager.swift in Sources */,
 				2F45106421B3860400EC529E /* ProfileView.swift in Sources */,
+				2F45108621B4C8F200EC529E /* FullMessageTableViewCell.swift in Sources */,
 				2F45106D21B38E9F00EC529E /* NetworkHandler+User.swift in Sources */,
 				2F8A6F2F21AB799D0056D4AD /* NetworkHandler.swift in Sources */,
 				2F8A6F2921AB77E80056D4AD /* LoadingButton.swift in Sources */,
 				2F8A6F1121AB71C00056D4AD /* LoginViewController.swift in Sources */,
 				2F8A6F0621A679FB0056D4AD /* BasePollTableViewCell.swift in Sources */,
 				2F99877B21A282E3001B1256 /* AppDelegate.swift in Sources */,
+				2F45109021B523D300EC529E /* Message.swift in Sources */,
+				2F45108421B4C71300EC529E /* MessageView.swift in Sources */,
+				2F45108021B4C54000EC529E /* ClapView.swift in Sources */,
 				2F8A6F1221AB71C00056D4AD /* SignupViewController.swift in Sources */,
+				2F45109221B52E9300EC529E /* ChatBoxView.swift in Sources */,
 				2F8A6F2721AB76040056D4AD /* UIImage+Constants.swift in Sources */,
 				2FEA96BD21AFA10800522C0F /* Poll.swift in Sources */,
 				2FEA96CB21B247CD00522C0F /* Vote.swift in Sources */,
@@ -666,14 +742,19 @@
 				2FEA96C921B2433600522C0F /* PollHolder.swift in Sources */,
 				2FEA96BF21AFD24700522C0F /* NetworkHandler+Poll.swift in Sources */,
 				2F5D1CE421A29344003D0587 /* UIFont+CustomFonts.swift in Sources */,
+				2F45107721B47C9A00EC529E /* ProgressView.swift in Sources */,
 				2FEA96CD21B25C9500522C0F /* LivePollTableViewCell.swift in Sources */,
 				2F9987AC21A28EF9001B1256 /* MainViewController.swift in Sources */,
 				2F45106721B3868700EC529E /* ProfileViewController.swift in Sources */,
+				2F45107E21B4902200EC529E /* ProgressLabelView.swift in Sources */,
+				2F45107921B47E5F00EC529E /* ButtonScrollView.swift in Sources */,
+				2F45109421B53A8200EC529E /* NetworkHandler+Messages.swift in Sources */,
 				2F8A6F3621AB81620056D4AD /* AppConstants.swift in Sources */,
 				2F8A6F4021ABC9AB0056D4AD /* NetworkHandler+Authentication.swift in Sources */,
 				2F8A6F3321AB80370056D4AD /* AuthenticationManager.swift in Sources */,
 				2F45106F21B38F7900EC529E /* User+Image.swift in Sources */,
 				2F8A6F4921ABCD790056D4AD /* UIViewController+Messages.swift in Sources */,
+				2F45108821B4D9BE00EC529E /* ChatTextField.swift in Sources */,
 				2F8A6F4421ABCA1B0056D4AD /* Dictionary+Decoder.swift in Sources */,
 				2F8A6F3B21AB8A640056D4AD /* User.swift in Sources */,
 				2F8A6F3121AB79D20056D4AD /* URLRouter.swift in Sources */,
@@ -685,6 +766,7 @@
 				2FEA96C121AFD76D00522C0F /* DateFormatter+Constants.swift in Sources */,
 				2F45106921B3869B00EC529E /* ProfileBaseViewController.swift in Sources */,
 				2F8A6F0821A67EAD0056D4AD /* LiveView.swift in Sources */,
+				2F45108221B4C5FC00EC529E /* UIImageView+TintColor.swift in Sources */,
 				2F45106221B380E100EC529E /* AvatarView.swift in Sources */,
 				2F45107121B38FCC00EC529E /* NetworkHandler+Image.swift in Sources */,
 				2F8A6F2121AB74B80056D4AD /* UITextField+Toolbar.swift in Sources */,
@@ -869,7 +951,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = friction/friction.entitlements;
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 9JBA7R48SP;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -897,7 +979,7 @@
 				CODE_SIGN_ENTITLEMENTS = friction/friction.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 9JBA7R48SP;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

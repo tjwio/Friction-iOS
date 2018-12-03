@@ -11,7 +11,7 @@ import UIKit
 extension UIViewController: UIGestureRecognizerDelegate {
     
     func addBackInfoBarButtons() {
-        let backBarButtonItem = UIBarButtonItem(image: UIImage(named: "back"), style: .done, target: self, action: #selector(self.goBack));
+        let backBarButtonItem = UIBarButtonItem(image: UIImage(named: "back_arrow_dark"), style: .done, target: self, action: #selector(self.goBack));
         backBarButtonItem.tintColor = UIColor(hexColor: 0x434A54);
         
         self.navigationItem.leftBarButtonItem = backBarButtonItem;

@@ -7,15 +7,26 @@
 //
 
 import UIKit
+import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
+    
+    private struct Constants {
+        static let tokenKey = "device_token"
+    }
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        window = UIWindow(frame: UIScreen.main.bounds)
+        
+        registerForPushNotifications()
+        CommonUtility.configureMessages()
+        
+        loadMainViewController()
+        window?.makeKeyAndVisible()
+        
         return true
     }
 
@@ -34,13 +45,55 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        UIApplication.shared.applicationIconBadgeNumber = 0
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
-
+    
+    func loadMainViewController() {
+        var rootViewController: UIViewController
+        
+        if AuthenticationManager.shared.authToken?.isEmpty ?? true || AuthenticationManager.shared.userId?.isEmpty ?? true {
+            rootViewController = UINavigationController(rootViewController: WelcomeViewController())
+        } else {
+            rootViewController = UINavigationController(rootViewController: MainViewController())
+        }
+        
+        window?.rootViewController = rootViewController
+    }
+    
+    // MARK: push notifications
+    
+    func registerForPushNotifications() {
+        UNUserNotificationCenter.current().delegate = self
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in
+            guard granted else { return }
+            
+            DispatchQueue.main.async {
+                UIApplication.shared.registerForRemoteNotifications()
+            }
+        }
+    }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        let tokenParts = deviceToken.map { data -> String in
+            return String(format: "%02.2hhx", data)
+        }
+        
+        let token = tokenParts.joined()
+        print("Device Token: \(token)")
+        
+        guard UserDefaults.standard.string(forKey: Constants.tokenKey) != token, let udid = UIDevice.current.identifierForVendor?.uuidString else { return }
+        
+        NetworkHandler.shared.addToken(parameters: [DeviceToken.CodingKeys.token.rawValue: token, DeviceToken.CodingKeys.udid.rawValue: udid], success: { _ in
+            UserDefaults.standard.set(token, forKey: Constants.tokenKey)
+        }, failure: nil)
+    }
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("Failed to register for remote notifications with error: \(error)")
+    }
 }
 

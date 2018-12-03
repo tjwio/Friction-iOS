@@ -68,7 +68,6 @@ class ProgressView: UIView {
         
         firstProgressView.snp.remakeConstraints { make in
             make.top.leading.bottom.equalToSuperview()
-            make.height.equalTo(4.0)
             make.width.equalToSuperview().multipliedBy(firstWidth)
         }
         

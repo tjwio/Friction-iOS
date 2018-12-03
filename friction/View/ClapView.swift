@@ -42,6 +42,10 @@ class ClapView: UIView {
     }
     
     private func commonInit() {
+        let holdGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.longHoldPressGestureRecognized(_:)))
+        holdGestureRecognizer.minimumPressDuration = 0.0
+        addGestureRecognizer(holdGestureRecognizer)
+        
         layer.cornerRadius = 4.0
         layer.borderWidth = 1.0
         layer.borderColor = UIColor.Grayscale.light.cgColor
@@ -63,5 +67,27 @@ class ClapView: UIView {
         }
         
         super.updateConstraints()
+    }
+    
+    // MARK: long press gesture recognizer
+    
+    @objc private func longHoldPressGestureRecognized(_ sender: UILongPressGestureRecognizer) {
+        if sender.state == .began {
+            layer.borderColor = UIColor.Grayscale.darker.cgColor
+            imageView.tintImage(color: UIColor.Grayscale.darker)
+            label.textColor = UIColor.Grayscale.darker
+            
+            UIView.animate(withDuration: 0.125) {
+                self.transform = CGAffineTransform(scaleX: 1.25, y: 1.25)
+            }
+        } else if sender.state == .ended {
+            layer.borderColor = UIColor.Grayscale.light.cgColor
+            imageView.tintImage(color: UIColor.Grayscale.dark)
+            label.textColor = UIColor.Grayscale.dark
+            
+            UIView.animate(withDuration: 0.125) {
+                self.transform = .identity
+            }
+        }
     }
 }

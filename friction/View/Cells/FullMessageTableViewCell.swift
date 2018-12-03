@@ -63,8 +63,8 @@ class FullMessageTableViewCell: UITableViewCell {
         
         clapView.snp.makeConstraints { make in
             make.top.equalToSuperview()
-            make.leading.equalTo(self.messageView.snp.trailing).offset(6.0)
-            make.trailing.equalToSuperview().offset(-4.0)
+            make.leading.equalTo(self.messageView.snp.trailing).offset(8.0)
+            make.trailing.equalToSuperview().offset(-8.0)
             make.height.equalTo(48.0)
             make.width.equalTo(54.0)
         }

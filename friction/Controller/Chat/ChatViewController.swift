@@ -59,6 +59,7 @@ class ChatViewController: UIViewController, ButtonScrollViewDelegate, UITableVie
     
     let tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
+        tableView.allowsSelection = false
         tableView.backgroundColor = .white
         tableView.contentInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 12.0, right: 0.0)
         tableView.rowHeight = UITableView.automaticDimension
@@ -186,7 +187,9 @@ class ChatViewController: UIViewController, ButtonScrollViewDelegate, UITableVie
         let option = poll.options[index]
         
         poll.vote(option: option, success: { _ in
-            self.buttonScrollView.items = self.poll.items
+            let items = self.poll.items
+            self.buttonScrollView.items = items
+            self.progressView.percents = items.map { return $0.percent }
         }) { _ in
             self.buttonScrollView.items = self.poll.items
         }

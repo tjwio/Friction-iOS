@@ -21,7 +21,7 @@ class ButtonScrollView: UIScrollView {
         }
     }
     
-    var selectionDelegate: ButtonScrollViewDelegate?
+    weak var selectionDelegate: ButtonScrollViewDelegate?
     
     var items = [(value: String, percent: Double, selected: Bool)]() {
         didSet {

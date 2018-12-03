@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Message: Decodable {
+class Message: Decodable {
     var id: String
     
     var poll: Poll
@@ -30,7 +30,7 @@ struct Message: Decodable {
         case date = "inserted_at"
     }
     
-    init(from decoder: Decoder) throws {
+    required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         id = try container.decode(String.self, forKey: .id)
         name = try container.decode(String.self, forKey: .name)
@@ -46,5 +46,12 @@ struct Message: Decodable {
         self.poll = poll
         self.option = option
         self.date = date
+    }
+    
+    func addClaps(_ claps: Int, success: EmptyHandler?, failure: ErrorHandler?) {
+        NetworkHandler.shared.addClaps(messageId: id, parameters: [CodingKeys.claps.rawValue: claps], success: {
+            self.claps += claps
+            success?()
+        }, failure: failure)
     }
 }

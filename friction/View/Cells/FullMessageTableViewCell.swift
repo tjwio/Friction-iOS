@@ -9,7 +9,10 @@
 import UIKit
 import SnapKit
 
-class FullMessageTableViewCell: UITableViewCell {
+class FullMessageTableViewCell: UITableViewCell, ClapViewDelegate {
+    
+    var clapCallback: ((_ claps: Int) -> Void)?
+    
     let avatarView: AvatarView = {
         let imageView = AvatarView(image: .blankAvatarBlack, shadowHidden: true)
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -42,6 +45,8 @@ class FullMessageTableViewCell: UITableViewCell {
     }
     
     private func commonInit() {
+        clapView.delegate = self
+        
         contentView.addSubview(avatarView)
         contentView.addSubview(messageView)
         contentView.addSubview(clapView)
@@ -70,5 +75,11 @@ class FullMessageTableViewCell: UITableViewCell {
         }
         
         super.updateConstraints()
+    }
+    
+    // MARK: delegate
+    
+    func clapView(_ clapView: ClapView, didClap claps: Int) {
+        clapCallback?(claps)
     }
 }

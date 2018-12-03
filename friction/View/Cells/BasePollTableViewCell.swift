@@ -15,7 +15,7 @@ protocol PollSelectionDelegate: class {
 
 class BasePollTableViewCell: UITableViewCell, ButtonScrollViewDelegate {
     
-    var delegate: PollSelectionDelegate?
+    weak var delegate: PollSelectionDelegate?
     
     var items = [(value: String, percent: Double, selected: Bool)]() {
         didSet {

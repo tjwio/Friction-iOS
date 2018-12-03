@@ -16,7 +16,7 @@ protocol ClapViewDelegate: class {
 
 class ClapView: UIView {
     
-    var delegate: ClapViewDelegate?
+    weak var delegate: ClapViewDelegate?
     
     let claps = MutableProperty<Int>(0)
     let addedClaps = MutableProperty<Int>(0)

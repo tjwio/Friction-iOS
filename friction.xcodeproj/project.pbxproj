@@ -32,6 +32,7 @@
 		2F45108D21B5208E00EC529E /* SwiftPhoenixClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F45108B21B5208E00EC529E /* SwiftPhoenixClient.framework */; };
 		2F45109021B523D300EC529E /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45108F21B523D300EC529E /* Message.swift */; };
 		2F45109221B52E9300EC529E /* ChatBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45109121B52E9300EC529E /* ChatBoxView.swift */; };
+		2F45109421B53A8200EC529E /* NetworkHandler+Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45109321B53A8200EC529E /* NetworkHandler+Messages.swift */; };
 		2F5D1CDB21A292F0003D0587 /* AvenirNextLTPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F5D1CD421A292EF003D0587 /* AvenirNextLTPro-Regular.otf */; };
 		2F5D1CDC21A292F0003D0587 /* AvenirNextLTPro-UltLt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F5D1CD521A292EF003D0587 /* AvenirNextLTPro-UltLt.otf */; };
 		2F5D1CDD21A292F0003D0587 /* AvenirNextLTPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F5D1CD621A292EF003D0587 /* AvenirNextLTPro-Bold.otf */; };
@@ -133,6 +134,7 @@
 		2F45108B21B5208E00EC529E /* SwiftPhoenixClient.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftPhoenixClient.framework; path = Carthage/Build/iOS/SwiftPhoenixClient.framework; sourceTree = "<group>"; };
 		2F45108F21B523D300EC529E /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		2F45109121B52E9300EC529E /* ChatBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBoxView.swift; sourceTree = "<group>"; };
+		2F45109321B53A8200EC529E /* NetworkHandler+Messages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkHandler+Messages.swift"; sourceTree = "<group>"; };
 		2F5D1CD421A292EF003D0587 /* AvenirNextLTPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextLTPro-Regular.otf"; sourceTree = "<group>"; };
 		2F5D1CD521A292EF003D0587 /* AvenirNextLTPro-UltLt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextLTPro-UltLt.otf"; sourceTree = "<group>"; };
 		2F5D1CD621A292EF003D0587 /* AvenirNextLTPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextLTPro-Bold.otf"; sourceTree = "<group>"; };
@@ -360,7 +362,7 @@
 			children = (
 				2F8A6F2E21AB799D0056D4AD /* NetworkHandler.swift */,
 				2F8A6F3021AB79D20056D4AD /* URLRouter.swift */,
-				2F8A6F3E21ABC96A0056D4AD /* Authentication */,
+				2F8A6F3E21ABC96A0056D4AD /* Helper */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -382,17 +384,18 @@
 			path = User;
 			sourceTree = "<group>";
 		};
-		2F8A6F3E21ABC96A0056D4AD /* Authentication */ = {
+		2F8A6F3E21ABC96A0056D4AD /* Helper */ = {
 			isa = PBXGroup;
 			children = (
 				2F8A6F3F21ABC9AB0056D4AD /* NetworkHandler+Authentication.swift */,
 				2F45107021B38FCC00EC529E /* NetworkHandler+Image.swift */,
+				2F45109321B53A8200EC529E /* NetworkHandler+Messages.swift */,
 				2FEA96BE21AFD24700522C0F /* NetworkHandler+Poll.swift */,
 				2F45105F21B34BA900EC529E /* NetworkHandler+Token.swift */,
 				2F45106C21B38E9F00EC529E /* NetworkHandler+User.swift */,
 				2FEA96C621B242CC00522C0F /* NetworkHandler+Votes.swift */,
 			);
-			path = Authentication;
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		2F8A6F4521ABCBC90056D4AD /* Error */ = {
@@ -745,6 +748,7 @@
 				2F45106721B3868700EC529E /* ProfileViewController.swift in Sources */,
 				2F45107E21B4902200EC529E /* ProgressLabelView.swift in Sources */,
 				2F45107921B47E5F00EC529E /* ButtonScrollView.swift in Sources */,
+				2F45109421B53A8200EC529E /* NetworkHandler+Messages.swift in Sources */,
 				2F8A6F3621AB81620056D4AD /* AppConstants.swift in Sources */,
 				2F8A6F4021ABC9AB0056D4AD /* NetworkHandler+Authentication.swift in Sources */,
 				2F8A6F3321AB80370056D4AD /* AuthenticationManager.swift in Sources */,
@@ -947,7 +951,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = friction/friction.entitlements;
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 9JBA7R48SP;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -975,7 +979,7 @@
 				CODE_SIGN_ENTITLEMENTS = friction/friction.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 9JBA7R48SP;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

@@ -22,7 +22,11 @@ class ChatViewController: UIViewController, ButtonScrollViewDelegate, UITableVie
     }
     
     let poll: Poll
-    var option: Poll.Option
+    var option: Poll.Option {
+        didSet {
+            updateSendColor()
+        }
+    }
     
     let socket = Socket(url: AppManager.shared.environment.streamUrl, params: ["token" : AuthenticationManager.shared.authToken ?? ""])
     var lobby: Channel!
@@ -140,6 +144,8 @@ class ChatViewController: UIViewController, ButtonScrollViewDelegate, UITableVie
         buttonScrollView.selectionDelegate = self
         
         progressView.percents = items.map { return $0.percent }
+        
+        updateSendColor()
         
         view.addSubview(nameLabel)
         view.addSubview(liveView)
@@ -261,10 +267,12 @@ class ChatViewController: UIViewController, ButtonScrollViewDelegate, UITableVie
     // MARK: send message
     
     @objc private func sendMessage(_ sender: Any?) {
+        guard let text = chatBox.textField.text, !text.isEmpty else { return }
+        
         let params = [
             Message.CodingKeys.pollId.rawValue: poll.id,
             Message.CodingKeys.optionId.rawValue: option.id,
-            Message.CodingKeys.message.rawValue: chatBox.textField.text ?? "",
+            Message.CodingKeys.message.rawValue: text,
             "user_id": UserHolder.shared.user.id
         ]
         
@@ -303,7 +311,11 @@ class ChatViewController: UIViewController, ButtonScrollViewDelegate, UITableVie
         }
         
         cell.messageView.layer.borderWidth = 1.0
-        cell.messageView.layer.borderColor = UIColor.pollColor(index: 0).cgColor
+        cell.messageView.layer.borderColor = UIColor.pollColor(index: message.poll.options.firstIndex(of: message.option) ?? 0).cgColor
+        
+        cell.clapCallback = { [weak message] claps in
+            message?.addClaps(claps, success: nil, failure: nil)
+        }
         
         return cell
     }
@@ -339,6 +351,12 @@ class ChatViewController: UIViewController, ButtonScrollViewDelegate, UITableVie
     private func scrollToBottom() {
         let indexPath = IndexPath(row: 0, section: messages.count-1)
         tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+    }
+    
+    private func updateSendColor() {
+        if let index = poll.options.firstIndex(of: option) {
+            chatBox.sendButton.backgroundColor = .pollColor(index: index)
+        }
     }
     
     // MARK: keyboard notifications

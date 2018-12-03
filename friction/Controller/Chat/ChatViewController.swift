@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-class ChatViewController: UIViewController, ButtonScrollViewDelegate, UITableViewDataSource, UITableViewDelegate {
+class ChatViewController: UIViewController, ButtonScrollViewDelegate, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
     
     private struct Constants {
         static let cellIdentifier = "ChatMessageTableViewCellIdentifier"
@@ -85,6 +85,12 @@ class ChatViewController: UIViewController, ButtonScrollViewDelegate, UITableVie
         return tableView
     }()
     
+    lazy var defaultTextFieldConstraints: (SnapKit.ConstraintMaker) -> Void = { make in
+        make.leading.equalToSuperview().offset(16.0)
+        make.trailing.equalToSuperview().offset(-16.0)
+        make.height.equalTo(44.0)
+    }
+    
     init(poll: Poll) {
         self.poll = poll
         super.init(nibName: nil, bundle: nil)
@@ -92,6 +98,10 @@ class ChatViewController: UIViewController, ButtonScrollViewDelegate, UITableVie
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     override func viewDidLoad() {
@@ -105,6 +115,8 @@ class ChatViewController: UIViewController, ButtonScrollViewDelegate, UITableVie
         
         tableView.dataSource = self
         tableView.delegate = self
+        
+        textField.delegate = self
         
         nameLabel.text = poll.name
         
@@ -123,6 +135,9 @@ class ChatViewController: UIViewController, ButtonScrollViewDelegate, UITableVie
         view.addSubview(textField)
         
         setupConstraints()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     private func setupConstraints() {
@@ -160,14 +175,12 @@ class ChatViewController: UIViewController, ButtonScrollViewDelegate, UITableVie
             make.top.equalTo(self.separatorView.snp.bottom)
             make.leading.equalToSuperview().offset(16.0)
             make.trailing.equalToSuperview().offset(-16.0)
+            make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).offset(-52.0)
         }
         
         textField.snp.makeConstraints { make in
-            make.top.equalTo(self.tableView.snp.bottom)
-            make.leading.equalToSuperview().offset(16.0)
-            make.trailing.equalToSuperview().offset(-16.0)
+            self.defaultTextFieldConstraints(make)
             make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).offset(-8.0)
-            make.height.equalTo(44.0)
         }
     }
     
@@ -214,6 +227,45 @@ class ChatViewController: UIViewController, ButtonScrollViewDelegate, UITableVie
             self.progressView.percents = items.map { return $0.percent }
         }) { _ in
             self.buttonScrollView.items = self.poll.items
+        }
+    }
+    
+    // MARK: text field
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    // MARK: Keyboard Notifications
+    
+    @objc private func keyboardWillShow(notification: NSNotification?) {
+        if self.isViewLoaded && self.view.window != nil {
+            if let keyboardSize = (notification?.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.size {
+                if UIApplication.shared.statusBarOrientation.isPortrait {
+                    self.textField.snp.remakeConstraints { make in
+                        self.defaultTextFieldConstraints(make)
+                        make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).offset(-keyboardSize.height)
+                    }
+                }
+                
+                UIView.animate(withDuration: (notification?.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0.3, delay: 0.0, options: .beginFromCurrentState, animations: {
+                    self.view.layoutIfNeeded()
+                }, completion: nil)
+            }
+        }
+    }
+    
+    @objc private func keyboardWillHide(notification: NSNotification?) {
+        if self.isViewLoaded && self.view.window != nil {
+            self.textField.snp.remakeConstraints { make in
+                self.defaultTextFieldConstraints(make)
+                make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).offset(-8.0)
+            }
+            
+            UIView.animate(withDuration: (notification?.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0.3, animations: {
+                self.view.layoutIfNeeded()
+            })
         }
     }
 }

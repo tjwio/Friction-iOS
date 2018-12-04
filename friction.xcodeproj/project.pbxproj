@@ -34,6 +34,7 @@
 		2F45109221B52E9300EC529E /* ChatBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45109121B52E9300EC529E /* ChatBoxView.swift */; };
 		2F45109421B53A8200EC529E /* NetworkHandler+Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45109321B53A8200EC529E /* NetworkHandler+Messages.swift */; };
 		2F45109921B5F32000EC529E /* clap.caf in Resources */ = {isa = PBXBuildFile; fileRef = 2F45109821B5F32000EC529E /* clap.caf */; };
+		2F45109B21B647F000EC529E /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F45109A21B647F000EC529E /* HockeySDK.framework */; };
 		2F5D1CDB21A292F0003D0587 /* AvenirNextLTPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F5D1CD421A292EF003D0587 /* AvenirNextLTPro-Regular.otf */; };
 		2F5D1CDC21A292F0003D0587 /* AvenirNextLTPro-UltLt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F5D1CD521A292EF003D0587 /* AvenirNextLTPro-UltLt.otf */; };
 		2F5D1CDD21A292F0003D0587 /* AvenirNextLTPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F5D1CD621A292EF003D0587 /* AvenirNextLTPro-Bold.otf */; };
@@ -137,6 +138,7 @@
 		2F45109121B52E9300EC529E /* ChatBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBoxView.swift; sourceTree = "<group>"; };
 		2F45109321B53A8200EC529E /* NetworkHandler+Messages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkHandler+Messages.swift"; sourceTree = "<group>"; };
 		2F45109821B5F32000EC529E /* clap.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = clap.caf; sourceTree = "<group>"; };
+		2F45109A21B647F000EC529E /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HockeySDK.framework; path = Carthage/Build/iOS/HockeySDK.framework; sourceTree = "<group>"; };
 		2F5D1CD421A292EF003D0587 /* AvenirNextLTPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextLTPro-Regular.otf"; sourceTree = "<group>"; };
 		2F5D1CD521A292EF003D0587 /* AvenirNextLTPro-UltLt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextLTPro-UltLt.otf"; sourceTree = "<group>"; };
 		2F5D1CD621A292EF003D0587 /* AvenirNextLTPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextLTPro-Bold.otf"; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F45109B21B647F000EC529E /* HockeySDK.framework in Frameworks */,
 				2F45108C21B5208E00EC529E /* Starscream.framework in Frameworks */,
 				2F45108D21B5208E00EC529E /* SwiftPhoenixClient.framework in Frameworks */,
 				2F45107521B3931600EC529E /* SDWebImage.framework in Frameworks */,
@@ -525,6 +528,7 @@
 		2F9987AD21A29130001B1256 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2F45109A21B647F000EC529E /* HockeySDK.framework */,
 				2F45108A21B5208E00EC529E /* Starscream.framework */,
 				2F45108B21B5208E00EC529E /* SwiftPhoenixClient.framework */,
 				2F45107421B3931600EC529E /* SDWebImage.framework */,
@@ -712,6 +716,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/SDWebImage.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Starscream.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftPhoenixClient.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/HockeySDK.framework",
 			);
 			name = "Copy Carthage Frameworks";
 			outputFileListPaths = (

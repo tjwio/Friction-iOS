@@ -7,4 +7,7 @@ github "tw23/GSMessages" "fix/access_control"
 github "evgenyneu/keychain-swift" ~> 11.0
 github "SDWebImage/SDWebImage"
 github "davidstump/SwiftPhoenixClient" ~> 0.9
-
+github "bitstadium/HockeySDK-iOS"
+binary "https://dl.google.com/dl/firebase/ios/carthage/FirebaseAnalyticsBinary.json"
+binary "https://building42.github.io/Specs/Carthage/iOS/Fabric.json"
+binary "https://building42.github.io/Specs/Carthage/iOS/Crashlytics.json"

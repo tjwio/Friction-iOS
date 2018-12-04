@@ -34,6 +34,19 @@
 		2F45109221B52E9300EC529E /* ChatBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45109121B52E9300EC529E /* ChatBoxView.swift */; };
 		2F45109421B53A8200EC529E /* NetworkHandler+Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45109321B53A8200EC529E /* NetworkHandler+Messages.swift */; };
 		2F45109921B5F32000EC529E /* clap.caf in Resources */ = {isa = PBXBuildFile; fileRef = 2F45109821B5F32000EC529E /* clap.caf */; };
+		2F45109B21B647F000EC529E /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F45109A21B647F000EC529E /* HockeySDK.framework */; };
+		2F4510A621B64E8400EC529E /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F45109D21B64E8300EC529E /* FirebaseCore.framework */; };
+		2F4510A721B64E8400EC529E /* FirebaseInstanceID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F45109E21B64E8300EC529E /* FirebaseInstanceID.framework */; };
+		2F4510A821B64E8400EC529E /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F45109F21B64E8300EC529E /* nanopb.framework */; };
+		2F4510A921B64E8400EC529E /* GoogleUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F4510A021B64E8300EC529E /* GoogleUtilities.framework */; };
+		2F4510AA21B64E8400EC529E /* FIRAnalyticsConnector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F4510A121B64E8400EC529E /* FIRAnalyticsConnector.framework */; };
+		2F4510AC21B64E8400EC529E /* GoogleAppMeasurement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F4510A321B64E8400EC529E /* GoogleAppMeasurement.framework */; };
+		2F4510AD21B64E8400EC529E /* FirebaseCoreDiagnostics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F4510A421B64E8400EC529E /* FirebaseCoreDiagnostics.framework */; };
+		2F4510AE21B64E8400EC529E /* FirebaseAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F4510A521B64E8400EC529E /* FirebaseAnalytics.framework */; };
+		2F4510B021B64F3A00EC529E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F4510AF21B64F3A00EC529E /* GoogleService-Info.plist */; };
+		2F4510B321B651F700EC529E /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F4510B121B651F700EC529E /* Fabric.framework */; };
+		2F4510B421B651F700EC529E /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F4510B221B651F700EC529E /* Crashlytics.framework */; };
+		2F4510B821B6551D00EC529E /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F4510B721B6551D00EC529E /* libc++.tbd */; };
 		2F5D1CDB21A292F0003D0587 /* AvenirNextLTPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F5D1CD421A292EF003D0587 /* AvenirNextLTPro-Regular.otf */; };
 		2F5D1CDC21A292F0003D0587 /* AvenirNextLTPro-UltLt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F5D1CD521A292EF003D0587 /* AvenirNextLTPro-UltLt.otf */; };
 		2F5D1CDD21A292F0003D0587 /* AvenirNextLTPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F5D1CD621A292EF003D0587 /* AvenirNextLTPro-Bold.otf */; };
@@ -137,6 +150,20 @@
 		2F45109121B52E9300EC529E /* ChatBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBoxView.swift; sourceTree = "<group>"; };
 		2F45109321B53A8200EC529E /* NetworkHandler+Messages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkHandler+Messages.swift"; sourceTree = "<group>"; };
 		2F45109821B5F32000EC529E /* clap.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = clap.caf; sourceTree = "<group>"; };
+		2F45109A21B647F000EC529E /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HockeySDK.framework; path = Carthage/Build/iOS/HockeySDK.framework; sourceTree = "<group>"; };
+		2F45109D21B64E8300EC529E /* FirebaseCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCore.framework; path = Carthage/Build/iOS/FirebaseCore.framework; sourceTree = "<group>"; };
+		2F45109E21B64E8300EC529E /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseInstanceID.framework; path = Carthage/Build/iOS/FirebaseInstanceID.framework; sourceTree = "<group>"; };
+		2F45109F21B64E8300EC529E /* nanopb.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = nanopb.framework; path = Carthage/Build/iOS/nanopb.framework; sourceTree = "<group>"; };
+		2F4510A021B64E8300EC529E /* GoogleUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleUtilities.framework; path = Carthage/Build/iOS/GoogleUtilities.framework; sourceTree = "<group>"; };
+		2F4510A121B64E8400EC529E /* FIRAnalyticsConnector.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FIRAnalyticsConnector.framework; path = Carthage/Build/iOS/FIRAnalyticsConnector.framework; sourceTree = "<group>"; };
+		2F4510A221B64E8400EC529E /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Firebase.framework; path = Carthage/Build/iOS/Firebase.framework; sourceTree = "<group>"; };
+		2F4510A321B64E8400EC529E /* GoogleAppMeasurement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleAppMeasurement.framework; path = Carthage/Build/iOS/GoogleAppMeasurement.framework; sourceTree = "<group>"; };
+		2F4510A421B64E8400EC529E /* FirebaseCoreDiagnostics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCoreDiagnostics.framework; path = Carthage/Build/iOS/FirebaseCoreDiagnostics.framework; sourceTree = "<group>"; };
+		2F4510A521B64E8400EC529E /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = Carthage/Build/iOS/FirebaseAnalytics.framework; sourceTree = "<group>"; };
+		2F4510AF21B64F3A00EC529E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2F4510B121B651F700EC529E /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = Carthage/Build/iOS/Fabric.framework; sourceTree = "<group>"; };
+		2F4510B221B651F700EC529E /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crashlytics.framework; path = Carthage/Build/iOS/Crashlytics.framework; sourceTree = "<group>"; };
+		2F4510B721B6551D00EC529E /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		2F5D1CD421A292EF003D0587 /* AvenirNextLTPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextLTPro-Regular.otf"; sourceTree = "<group>"; };
 		2F5D1CD521A292EF003D0587 /* AvenirNextLTPro-UltLt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextLTPro-UltLt.otf"; sourceTree = "<group>"; };
 		2F5D1CD621A292EF003D0587 /* AvenirNextLTPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextLTPro-Bold.otf"; sourceTree = "<group>"; };
@@ -207,6 +234,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F4510B821B6551D00EC529E /* libc++.tbd in Frameworks */,
+				2F4510B321B651F700EC529E /* Fabric.framework in Frameworks */,
+				2F4510B421B651F700EC529E /* Crashlytics.framework in Frameworks */,
+				2F4510A621B64E8400EC529E /* FirebaseCore.framework in Frameworks */,
+				2F4510A721B64E8400EC529E /* FirebaseInstanceID.framework in Frameworks */,
+				2F4510A821B64E8400EC529E /* nanopb.framework in Frameworks */,
+				2F4510A921B64E8400EC529E /* GoogleUtilities.framework in Frameworks */,
+				2F4510AA21B64E8400EC529E /* FIRAnalyticsConnector.framework in Frameworks */,
+				2F4510AC21B64E8400EC529E /* GoogleAppMeasurement.framework in Frameworks */,
+				2F4510AD21B64E8400EC529E /* FirebaseCoreDiagnostics.framework in Frameworks */,
+				2F4510AE21B64E8400EC529E /* FirebaseAnalytics.framework in Frameworks */,
+				2F45109B21B647F000EC529E /* HockeySDK.framework in Frameworks */,
 				2F45108C21B5208E00EC529E /* Starscream.framework in Frameworks */,
 				2F45108D21B5208E00EC529E /* SwiftPhoenixClient.framework in Frameworks */,
 				2F45107521B3931600EC529E /* SDWebImage.framework in Frameworks */,
@@ -287,6 +326,13 @@
 			path = Sounds;
 			sourceTree = "<group>";
 		};
+		2F45109C21B64CFA00EC529E /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
 		2F5D1CD321A292D7003D0587 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -298,6 +344,7 @@
 				2F5D1CD421A292EF003D0587 /* AvenirNextLTPro-Regular.otf */,
 				2F5D1CD521A292EF003D0587 /* AvenirNextLTPro-UltLt.otf */,
 				2F5D1CD921A292F0003D0587 /* AvenirNextLTPro-UltLtIt.otf */,
+				2F4510AF21B64F3A00EC529E /* GoogleService-Info.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -445,6 +492,7 @@
 				2F9987A821A28ED1001B1256 /* Controller */,
 				2F9987AA21A28EE6001B1256 /* Model */,
 				2F9987A921A28EDC001B1256 /* View */,
+				2F45109C21B64CFA00EC529E /* Localization */,
 				2F99877A21A282E3001B1256 /* AppDelegate.swift */,
 				2F99877E21A282E3001B1256 /* Main.storyboard */,
 				2F5D1CD321A292D7003D0587 /* Resources */,
@@ -525,6 +573,19 @@
 		2F9987AD21A29130001B1256 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2F4510B721B6551D00EC529E /* libc++.tbd */,
+				2F4510B221B651F700EC529E /* Crashlytics.framework */,
+				2F4510B121B651F700EC529E /* Fabric.framework */,
+				2F4510A121B64E8400EC529E /* FIRAnalyticsConnector.framework */,
+				2F4510A221B64E8400EC529E /* Firebase.framework */,
+				2F4510A521B64E8400EC529E /* FirebaseAnalytics.framework */,
+				2F45109D21B64E8300EC529E /* FirebaseCore.framework */,
+				2F4510A421B64E8400EC529E /* FirebaseCoreDiagnostics.framework */,
+				2F45109E21B64E8300EC529E /* FirebaseInstanceID.framework */,
+				2F4510A321B64E8400EC529E /* GoogleAppMeasurement.framework */,
+				2F4510A021B64E8300EC529E /* GoogleUtilities.framework */,
+				2F45109F21B64E8300EC529E /* nanopb.framework */,
+				2F45109A21B647F000EC529E /* HockeySDK.framework */,
 				2F45108A21B5208E00EC529E /* Starscream.framework */,
 				2F45108B21B5208E00EC529E /* SwiftPhoenixClient.framework */,
 				2F45107421B3931600EC529E /* SDWebImage.framework */,
@@ -562,6 +623,7 @@
 				2F99877421A282E3001B1256 /* Frameworks */,
 				2F99877521A282E3001B1256 /* Resources */,
 				2F5D1CD121A29298003D0587 /* Copy Carthage Frameworks */,
+				2F4510B521B652B300EC529E /* Crashlytics */,
 			);
 			buildRules = (
 			);
@@ -666,6 +728,7 @@
 				2F99878521A282E7001B1256 /* LaunchScreen.storyboard in Resources */,
 				2F5D1CE021A292F0003D0587 /* AvenirNextLTPro-UltLtIt.otf in Resources */,
 				2F99878221A282E7001B1256 /* Assets.xcassets in Resources */,
+				2F4510B021B64F3A00EC529E /* GoogleService-Info.plist in Resources */,
 				2F5D1CE121A292F0003D0587 /* AvenirNextLTPro-It.otf in Resources */,
 				2F5D1CDE21A292F0003D0587 /* AvenirNextLTPro-Medium.otf in Resources */,
 				2F5D1CDD21A292F0003D0587 /* AvenirNextLTPro-Bold.otf in Resources */,
@@ -692,6 +755,25 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		2F4510B521B652B300EC529E /* Crashlytics */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			name = Crashlytics;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${PROJECT_DIR}/Carthage/Build/iOS/Fabric.framework/run\n";
+		};
 		2F5D1CD121A29298003D0587 /* Copy Carthage Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -712,6 +794,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/SDWebImage.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Starscream.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftPhoenixClient.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/HockeySDK.framework",
 			);
 			name = "Copy Carthage Frameworks";
 			outputFileListPaths = (
@@ -975,6 +1058,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = io.tjw.friction;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "match Development io.tjw.friction";
@@ -1003,6 +1087,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = io.tjw.friction;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "match AdHoc io.tjw.friction";

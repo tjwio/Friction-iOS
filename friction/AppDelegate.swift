@@ -8,18 +8,30 @@
 
 import UIKit
 import UserNotifications
+import Firebase
+import HockeySDK
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
     
     private struct Constants {
         static let tokenKey = "device_token"
+        
+        struct Hockey {
+            static let id = "ccbae485c4064ef6a7da864d31c9a072"
+        }
     }
 
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
+        
+        BITHockeyManager.shared().configure(withIdentifier: Constants.Hockey.id)
+        BITHockeyManager.shared().start()
+        BITHockeyManager.shared().authenticator.authenticateInstallation()
+        
+        FirebaseApp.configure()
         
         registerForPushNotifications()
         CommonUtility.configureMessages()

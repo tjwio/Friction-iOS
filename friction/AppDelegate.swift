@@ -8,6 +8,7 @@
 
 import UIKit
 import UserNotifications
+import Firebase
 import HockeySDK
 
 @UIApplicationMain
@@ -29,6 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         BITHockeyManager.shared().configure(withIdentifier: Constants.Hockey.id)
         BITHockeyManager.shared().start()
         BITHockeyManager.shared().authenticator.authenticateInstallation()
+        
+        FirebaseApp.configure()
         
         registerForPushNotifications()
         CommonUtility.configureMessages()

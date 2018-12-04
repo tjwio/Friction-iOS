@@ -27,7 +27,7 @@ class LivePollTableViewCell: BasePollTableViewCell {
     let discussLabel: UILabel = {
         let label = UILabel()
         label.font = .avenirRegular(size: 12.0)
-        label.text = "DISCUSS"
+        label.text = GlobalStrings.discuss.localized.uppercased()
         label.textColor = UIColor.Grayscale.light
         label.translatesAutoresizingMaskIntoConstraints = false
         

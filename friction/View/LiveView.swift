@@ -13,7 +13,7 @@ class LiveView: UIView {
     let label: UILabel = {
         let label = UILabel()
         label.font = .avenirMedium(size: 14.0)
-        label.text = "LIVE"
+        label.text = GlobalStrings.live.localized.uppercased()
         label.textColor = UIColor.Grayscale.medium
         label.translatesAutoresizingMaskIntoConstraints = false
         

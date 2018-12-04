@@ -93,7 +93,7 @@ class ClapView: UIView {
         addGestureRecognizer(holdGestureRecognizer)
         
         disposables += SignalProducer.combineLatest(claps.producer, addedClaps.producer).startWithValues { [weak self] claps, added in
-            self?.label.text = "\(claps+added) claps"
+            self?.label.text = "\(claps+added) \(GlobalStrings.claps.localized.lowercased())"
         }
         
         layer.cornerRadius = 4.0

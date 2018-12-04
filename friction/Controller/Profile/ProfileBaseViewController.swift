@@ -134,12 +134,12 @@ class ProfileBaseViewController: UIViewController, UITableViewDelegate, UITableV
         
         switch indexPath.section {
         case Constants.nameIndex:
-            cell.detailLabel.text = "Full Name"
+            cell.detailLabel.text = GlobalStrings.fullName.localized
             cell.textField.attributedPlaceholder = NSAttributedString(string: "Muhammad", attributes: attributes)
             cell.textField.text = self.name.value
             disposables += (self.name <~ cell.textField.reactive.continuousTextValues)
         case Constants.emailIndex:
-            cell.detailLabel.text = "Email"
+            cell.detailLabel.text = GlobalStrings.email.localized
             cell.textField.attributedPlaceholder = NSAttributedString(string: "muhammad.nakmura@ciao.haus", attributes: attributes)
             cell.textField.text = self.email.value
             disposables += (self.email <~ cell.textField.reactive.continuousTextValues)

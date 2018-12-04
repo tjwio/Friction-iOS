@@ -130,7 +130,7 @@ class ChatViewController: UIViewController, ButtonScrollViewDelegate, UITableVie
         
         addBackInfoBarButtons()
         
-        navigationItem.title = "Today's Clash Chat"
+        navigationItem.title = GlobalStrings.todaysClashChat.localized
         navigationItem.largeTitleDisplayMode = .never
         view.backgroundColor = .white
         

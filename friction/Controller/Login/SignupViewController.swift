@@ -75,7 +75,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         textField.iconColor = .white
         textField.iconMarginBottom = 0.0
         textField.selectedIconColor = .white
-        textField.placeholder = "Email"
+        textField.placeholder = GlobalStrings.email.localized
         textField.placeholderColor = .white
         textField.placeholderFont = UIFont.avenirRegular(size: 17.0)
         textField.titleLabel.font = UIFont.avenirRegular(size: 12.0)

@@ -1,0 +1,19 @@
+/* 
+  Global.strings
+  friction
+
+  Created by Tim Wong on 12/3/18.
+  Copyright © 2018 tjwio. All rights reserved.
+*/
+
+"at" = "At";
+"claps" = "Claps";
+"discuss" = "Discuss";
+"edit_profile" = "Edit Profile";
+"email" = "Email";
+"full_name" = "Full Name";
+"live" = "Live";
+"todays_clash" = "Today's Clash";
+"todays_clash_chat" = "Today's Clash Chat";
+"type_message" = "Type a message...";
+"votes" = "Votes";

@@ -61,7 +61,7 @@ class MainViewController: UIViewController, PollSelectionDelegate, UITableViewDa
         view.backgroundColor = .white
         
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.title = "Today's Clash"
+        navigationItem.title = GlobalStrings.todaysClash.localized
         navigationController?.navigationBar.largeTitleTextAttributes = [
             .foregroundColor    :    UIColor.black,
             .font               :    UIFont.avenirBold(size: 30.0) ?? UIFont.preferredFont(forTextStyle: .largeTitle)
@@ -208,8 +208,8 @@ class MainViewController: UIViewController, PollSelectionDelegate, UITableViewDa
         let totalVotes = poll.totalVotes
         
         cell.nameLabel.text = poll.name
-        cell.dateLabel.text = DateFormatter.dayFullMonth.string(from: poll.date).appending(" at ").appending(DateFormatter.amPm.string(from: poll.date))
-        cell.voteLabel.text = "\(totalVotes) Votes"
+        cell.dateLabel.text = DateFormatter.dayFullMonth.string(from: poll.date).appending(" \(GlobalStrings.at.localized.lowercased()) ").appending(DateFormatter.amPm.string(from: poll.date))
+        cell.voteLabel.text = "\(totalVotes) \(GlobalStrings.votes.localized)"
         cell.items = poll.items
         cell.progressHolderView.isHidden = totalVotes == 0
         

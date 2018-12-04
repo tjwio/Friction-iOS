@@ -20,7 +20,7 @@ class ChatBoxView: UIView {
         textField.rightView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 32.0, height: 44.0))
         textField.leftViewMode = .always
         textField.rightViewMode = .always
-        textField.placeholder = "Type a message..."
+        textField.placeholder = GlobalStrings.typeMessage.localized
         textField.textColor = UIColor.Grayscale.dark
         textField.translatesAutoresizingMaskIntoConstraints = false
         

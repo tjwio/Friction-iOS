@@ -160,7 +160,7 @@ class BasePollTableViewCell: UITableViewCell, ButtonScrollViewDelegate {
     override func updateConstraints() {
         nameLabel.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(16.0)
-            make.trailing.greaterThanOrEqualToSuperview().offset(-48.0)
+            make.trailing.lessThanOrEqualToSuperview().offset(-56.0)
         }
         
         scrollView.snp.makeConstraints { make in

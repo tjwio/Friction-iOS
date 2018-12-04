@@ -22,6 +22,8 @@ class Message: Decodable {
     
     var date: Date
     
+    private(set) var isPendingClaps = false
+    
     enum CodingKeys: String, CodingKey {
         case id, message, claps, name
         case pollId = "poll_id"
@@ -49,9 +51,15 @@ class Message: Decodable {
     }
     
     func addClaps(_ claps: Int, success: EmptyHandler?, failure: ErrorHandler?) {
+        isPendingClaps = true
+        
         NetworkHandler.shared.addClaps(messageId: id, parameters: [CodingKeys.claps.rawValue: claps], success: {
             self.claps += claps
+            self.isPendingClaps = false
             success?()
-        }, failure: failure)
+        }, failure: { error in
+            self.isPendingClaps = false
+            failure?(error)
+        })
     }
 }

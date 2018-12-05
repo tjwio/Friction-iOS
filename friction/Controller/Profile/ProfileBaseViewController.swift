@@ -204,6 +204,7 @@ class ProfileBaseViewController: UIViewController, UITableViewDelegate, UITableV
     
     private func showCameraController() {
         let cameraController = UIImagePickerController()
+        cameraController.allowsEditing = true
         cameraController.delegate = self
         cameraController.sourceType = .camera
         
@@ -212,6 +213,7 @@ class ProfileBaseViewController: UIViewController, UITableViewDelegate, UITableV
     
     private func showImageController() {
         let cameraController = UIImagePickerController()
+        cameraController.allowsEditing = true
         cameraController.delegate = self
         cameraController.sourceType = .photoLibrary
         

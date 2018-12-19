@@ -47,6 +47,8 @@
 		2F4510B321B651F700EC529E /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F4510B121B651F700EC529E /* Fabric.framework */; };
 		2F4510B421B651F700EC529E /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F4510B221B651F700EC529E /* Crashlytics.framework */; };
 		2F4510B821B6551D00EC529E /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F4510B721B6551D00EC529E /* libc++.tbd */; };
+		2F4510BA21B6574B00EC529E /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4510B921B6574B00EC529E /* Localizable.swift */; };
+		2F4510C021B6594200EC529E /* Global.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2F4510C221B6594200EC529E /* Global.strings */; };
 		2F5D1CDB21A292F0003D0587 /* AvenirNextLTPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F5D1CD421A292EF003D0587 /* AvenirNextLTPro-Regular.otf */; };
 		2F5D1CDC21A292F0003D0587 /* AvenirNextLTPro-UltLt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F5D1CD521A292EF003D0587 /* AvenirNextLTPro-UltLt.otf */; };
 		2F5D1CDD21A292F0003D0587 /* AvenirNextLTPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F5D1CD621A292EF003D0587 /* AvenirNextLTPro-Bold.otf */; };
@@ -164,6 +166,11 @@
 		2F4510B121B651F700EC529E /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = Carthage/Build/iOS/Fabric.framework; sourceTree = "<group>"; };
 		2F4510B221B651F700EC529E /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crashlytics.framework; path = Carthage/Build/iOS/Crashlytics.framework; sourceTree = "<group>"; };
 		2F4510B721B6551D00EC529E /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		2F4510B921B6574B00EC529E /* Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
+		2F4510BB21B6585B00EC529E /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
+		2F4510BC21B6585B00EC529E /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		2F4510C121B6594200EC529E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Global.strings; sourceTree = "<group>"; };
+		2F4510C321B6594A00EC529E /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Global.strings; sourceTree = "<group>"; };
 		2F5D1CD421A292EF003D0587 /* AvenirNextLTPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextLTPro-Regular.otf"; sourceTree = "<group>"; };
 		2F5D1CD521A292EF003D0587 /* AvenirNextLTPro-UltLt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextLTPro-UltLt.otf"; sourceTree = "<group>"; };
 		2F5D1CD621A292EF003D0587 /* AvenirNextLTPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextLTPro-Bold.otf"; sourceTree = "<group>"; };
@@ -329,8 +336,18 @@
 		2F45109C21B64CFA00EC529E /* Localization */ = {
 			isa = PBXGroup;
 			children = (
+				2F4510BD21B658BF00EC529E /* Strings */,
+				2F4510B921B6574B00EC529E /* Localizable.swift */,
 			);
 			path = Localization;
+			sourceTree = "<group>";
+		};
+		2F4510BD21B658BF00EC529E /* Strings */ = {
+			isa = PBXGroup;
+			children = (
+				2F4510C221B6594200EC529E /* Global.strings */,
+			);
+			path = Strings;
 			sourceTree = "<group>";
 		};
 		2F5D1CD321A292D7003D0587 /* Resources */ = {
@@ -705,6 +722,7 @@
 			knownRegions = (
 				en,
 				Base,
+				es,
 			);
 			mainGroup = 2F99876E21A282E3001B1256;
 			productRefGroup = 2F99877821A282E3001B1256 /* Products */;
@@ -724,6 +742,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F45109921B5F32000EC529E /* clap.caf in Resources */,
+				2F4510C021B6594200EC529E /* Global.strings in Resources */,
 				2F5D1CDF21A292F0003D0587 /* AvenirNextLTPro-Demi.otf in Resources */,
 				2F99878521A282E7001B1256 /* LaunchScreen.storyboard in Resources */,
 				2F5D1CE021A292F0003D0587 /* AvenirNextLTPro-UltLtIt.otf in Resources */,
@@ -822,6 +841,7 @@
 				2F45106D21B38E9F00EC529E /* NetworkHandler+User.swift in Sources */,
 				2F8A6F2F21AB799D0056D4AD /* NetworkHandler.swift in Sources */,
 				2F8A6F2921AB77E80056D4AD /* LoadingButton.swift in Sources */,
+				2F4510BA21B6574B00EC529E /* Localizable.swift in Sources */,
 				2F8A6F1121AB71C00056D4AD /* LoginViewController.swift in Sources */,
 				2F8A6F0621A679FB0056D4AD /* BasePollTableViewCell.swift in Sources */,
 				2F99877B21A282E3001B1256 /* AppDelegate.swift in Sources */,
@@ -905,10 +925,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		2F4510C221B6594200EC529E /* Global.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2F4510C121B6594200EC529E /* en */,
+				2F4510C321B6594A00EC529E /* es */,
+			);
+			name = Global.strings;
+			sourceTree = "<group>";
+		};
 		2F99877E21A282E3001B1256 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				2F99877F21A282E3001B1256 /* Base */,
+				2F4510BB21B6585B00EC529E /* es */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -917,6 +947,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				2F99878421A282E7001B1256 /* Base */,
+				2F4510BC21B6585B00EC529E /* es */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -928,6 +959,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -989,6 +1021,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1046,7 +1079,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = friction/friction.entitlements;
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = 9JBA7R48SP;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1075,7 +1108,7 @@
 				CODE_SIGN_ENTITLEMENTS = friction/friction.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = 9JBA7R48SP;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

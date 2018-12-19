@@ -33,7 +33,7 @@ class ProfileView: UIView {
     
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Edit Profile"
+        label.text = GlobalStrings.editProfile.localized
         label.textColor = UIColor.Grayscale.dark
         label.font = UIFont.avenirBold(size: 20.0)
         label.translatesAutoresizingMaskIntoConstraints = false

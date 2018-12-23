@@ -551,19 +551,12 @@
 		2F9987A921A28EDC001B1256 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2FA78ABF21CF642000C4FF53 /* Button */,
 				2F8A6F0421A678620056D4AD /* Cells */,
-				2F45106121B380E100EC529E /* AvatarView.swift */,
-				2F45107821B47E5F00EC529E /* ButtonScrollView.swift */,
-				2F45109121B52E9300EC529E /* ChatBoxView.swift */,
-				2F45108721B4D9BE00EC529E /* ChatTextField.swift */,
-				2F45107F21B4C54000EC529E /* ClapView.swift */,
-				2F8A6F0721A67EAD0056D4AD /* LiveView.swift */,
-				2F8A6F2821AB77E80056D4AD /* LoadingButton.swift */,
-				2F45108321B4C71300EC529E /* MessageView.swift */,
-				2F8A6F0921A680CB0056D4AD /* PercentageButton.swift */,
-				2F45106321B3860400EC529E /* ProfileView.swift */,
-				2F45107D21B4902200EC529E /* ProgressLabelView.swift */,
-				2F45107621B47C9A00EC529E /* ProgressView.swift */,
+				2FA78AC021CF643A00C4FF53 /* Chat */,
+				2FA78AC221CF644A00C4FF53 /* Poll */,
+				2FA78AC121CF644400C4FF53 /* Profile */,
+				2FA78ABE21CF641300C4FF53 /* Progress */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -623,6 +616,53 @@
 				2FEA96BC21AFA10800522C0F /* Poll.swift */,
 				2FEA96C821B2433600522C0F /* PollHolder.swift */,
 				2FEA96CA21B247CD00522C0F /* Vote.swift */,
+			);
+			path = Poll;
+			sourceTree = "<group>";
+		};
+		2FA78ABE21CF641300C4FF53 /* Progress */ = {
+			isa = PBXGroup;
+			children = (
+				2F45107D21B4902200EC529E /* ProgressLabelView.swift */,
+				2F45107621B47C9A00EC529E /* ProgressView.swift */,
+			);
+			path = Progress;
+			sourceTree = "<group>";
+		};
+		2FA78ABF21CF642000C4FF53 /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				2F45107821B47E5F00EC529E /* ButtonScrollView.swift */,
+				2F8A6F2821AB77E80056D4AD /* LoadingButton.swift */,
+				2F8A6F0921A680CB0056D4AD /* PercentageButton.swift */,
+			);
+			path = Button;
+			sourceTree = "<group>";
+		};
+		2FA78AC021CF643A00C4FF53 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				2F45109121B52E9300EC529E /* ChatBoxView.swift */,
+				2F45108721B4D9BE00EC529E /* ChatTextField.swift */,
+				2F45107F21B4C54000EC529E /* ClapView.swift */,
+				2F45108321B4C71300EC529E /* MessageView.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		2FA78AC121CF644400C4FF53 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				2F45106121B380E100EC529E /* AvatarView.swift */,
+				2F45106321B3860400EC529E /* ProfileView.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		2FA78AC221CF644A00C4FF53 /* Poll */ = {
+			isa = PBXGroup;
+			children = (
+				2F8A6F0721A67EAD0056D4AD /* LiveView.swift */,
 			);
 			path = Poll;
 			sourceTree = "<group>";

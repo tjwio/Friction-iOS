@@ -213,6 +213,7 @@ class BaseChatViewController: UIViewController, UITableViewDataSource, UITableVi
         cell.messageView.timeLabel.text = DateFormatter.amPm.string(from: message.date)
         cell.messageView.messageLabel.text = message.message
         cell.clapView.claps.value = message.claps
+        cell.clapView.isUserInteractionEnabled = false
         if let imageUrl = message.imageUrl {
             cell.avatarView.imageView.sd_setImage(with: URL(string: imageUrl), completed: nil)
         } else {
@@ -221,10 +222,6 @@ class BaseChatViewController: UIViewController, UITableViewDataSource, UITableVi
         
         cell.messageView.layer.borderWidth = 1.0
         cell.messageView.layer.borderColor = UIColor.pollColor(index: message.poll.options.firstIndex(of: message.option) ?? 0).cgColor
-        
-        cell.clapCallback = { [weak message] claps in
-            message?.addClaps(claps, success: nil, failure: nil)
-        }
         
         return cell
     }

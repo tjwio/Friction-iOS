@@ -145,6 +145,23 @@ class LiveChatViewController: BaseChatViewController, ButtonScrollViewDelegate, 
         }
     }
     
+    // MARK: table view
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = super.tableView(tableView, cellForRowAt: indexPath)
+        
+        let message = messages[indexPath.section]
+        
+        if let cell = cell as? FullMessageTableViewCell {
+            cell.clapView.isUserInteractionEnabled = true
+            cell.clapCallback = { [weak message] claps in
+                message?.addClaps(claps, success: nil, failure: nil)
+            }
+        }
+        
+        return cell
+    }
+    
     // MARK: text field
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

@@ -100,6 +100,10 @@
 		2F9DF8B021AF9CE2001D437F /* HistoryPollTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9DF8AF21AF9CE2001D437F /* HistoryPollTableViewCell.swift */; };
 		2FA78ABA21CF5A9A00C4FF53 /* LiveChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA78AB921CF5A9A00C4FF53 /* LiveChatViewController.swift */; };
 		2FA78ABC21CF5D9400C4FF53 /* FinishedChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA78ABB21CF5D9400C4FF53 /* FinishedChatViewController.swift */; };
+		2FA78AC721CF65C100C4FF53 /* StatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA78AC621CF65C100C4FF53 /* StatView.swift */; };
+		2FA78AC921CF65D900C4FF53 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FA78AC821CF65D900C4FF53 /* Charts.framework */; };
+		2FA78ACB21CF6BA400C4FF53 /* StatLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA78ACA21CF6BA400C4FF53 /* StatLabelView.swift */; };
+		2FA78ACD21CF6D8E00C4FF53 /* StatsHolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA78ACC21CF6D8E00C4FF53 /* StatsHolderView.swift */; };
 		2FEA96BD21AFA10800522C0F /* Poll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEA96BC21AFA10800522C0F /* Poll.swift */; };
 		2FEA96BF21AFD24700522C0F /* NetworkHandler+Poll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEA96BE21AFD24700522C0F /* NetworkHandler+Poll.swift */; };
 		2FEA96C121AFD76D00522C0F /* DateFormatter+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEA96C021AFD76D00522C0F /* DateFormatter+Constants.swift */; };
@@ -230,6 +234,10 @@
 		2F9DF8AF21AF9CE2001D437F /* HistoryPollTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryPollTableViewCell.swift; sourceTree = "<group>"; };
 		2FA78AB921CF5A9A00C4FF53 /* LiveChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveChatViewController.swift; sourceTree = "<group>"; };
 		2FA78ABB21CF5D9400C4FF53 /* FinishedChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishedChatViewController.swift; sourceTree = "<group>"; };
+		2FA78AC621CF65C100C4FF53 /* StatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatView.swift; sourceTree = "<group>"; };
+		2FA78AC821CF65D900C4FF53 /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Charts.framework; path = Carthage/Build/iOS/Charts.framework; sourceTree = "<group>"; };
+		2FA78ACA21CF6BA400C4FF53 /* StatLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatLabelView.swift; sourceTree = "<group>"; };
+		2FA78ACC21CF6D8E00C4FF53 /* StatsHolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsHolderView.swift; sourceTree = "<group>"; };
 		2FEA96BC21AFA10800522C0F /* Poll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Poll.swift; sourceTree = "<group>"; };
 		2FEA96BE21AFD24700522C0F /* NetworkHandler+Poll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkHandler+Poll.swift"; sourceTree = "<group>"; };
 		2FEA96C021AFD76D00522C0F /* DateFormatter+Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Constants.swift"; sourceTree = "<group>"; };
@@ -245,6 +253,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FA78AC921CF65D900C4FF53 /* Charts.framework in Frameworks */,
 				2F4510B821B6551D00EC529E /* libc++.tbd in Frameworks */,
 				2F4510B321B651F700EC529E /* Fabric.framework in Frameworks */,
 				2F4510B421B651F700EC529E /* Crashlytics.framework in Frameworks */,
@@ -557,6 +566,7 @@
 				2FA78AC221CF644A00C4FF53 /* Poll */,
 				2FA78AC121CF644400C4FF53 /* Profile */,
 				2FA78ABE21CF641300C4FF53 /* Progress */,
+				2FA78AC321CF651200C4FF53 /* Stats */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -581,6 +591,7 @@
 		2F9987AD21A29130001B1256 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2FA78AC821CF65D900C4FF53 /* Charts.framework */,
 				2F4510B721B6551D00EC529E /* libc++.tbd */,
 				2F4510B221B651F700EC529E /* Crashlytics.framework */,
 				2F4510B121B651F700EC529E /* Fabric.framework */,
@@ -665,6 +676,16 @@
 				2F8A6F0721A67EAD0056D4AD /* LiveView.swift */,
 			);
 			path = Poll;
+			sourceTree = "<group>";
+		};
+		2FA78AC321CF651200C4FF53 /* Stats */ = {
+			isa = PBXGroup;
+			children = (
+				2FA78AC621CF65C100C4FF53 /* StatView.swift */,
+				2FA78ACA21CF6BA400C4FF53 /* StatLabelView.swift */,
+				2FA78ACC21CF6D8E00C4FF53 /* StatsHolderView.swift */,
+			);
+			path = Stats;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -852,6 +873,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Starscream.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftPhoenixClient.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/HockeySDK.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Charts.framework",
 			);
 			name = "Copy Carthage Frameworks";
 			outputFileListPaths = (
@@ -875,6 +897,7 @@
 				2F45107C21B48BEB00EC529E /* BaseChatViewController.swift in Sources */,
 				2F8A6F3821AB820E0056D4AD /* AppManager.swift in Sources */,
 				2F45106421B3860400EC529E /* ProfileView.swift in Sources */,
+				2FA78ACB21CF6BA400C4FF53 /* StatLabelView.swift in Sources */,
 				2F45108621B4C8F200EC529E /* FullMessageTableViewCell.swift in Sources */,
 				2F45106D21B38E9F00EC529E /* NetworkHandler+User.swift in Sources */,
 				2F8A6F2F21AB799D0056D4AD /* NetworkHandler.swift in Sources */,
@@ -909,6 +932,7 @@
 				2F45106F21B38F7900EC529E /* User+Image.swift in Sources */,
 				2F8A6F4921ABCD790056D4AD /* UIViewController+Messages.swift in Sources */,
 				2F45108821B4D9BE00EC529E /* ChatTextField.swift in Sources */,
+				2FA78AC721CF65C100C4FF53 /* StatView.swift in Sources */,
 				2F8A6F4421ABCA1B0056D4AD /* Dictionary+Decoder.swift in Sources */,
 				2F8A6F3B21AB8A640056D4AD /* User.swift in Sources */,
 				2FA78ABA21CF5A9A00C4FF53 /* LiveChatViewController.swift in Sources */,
@@ -923,6 +947,7 @@
 				2F8A6F0821A67EAD0056D4AD /* LiveView.swift in Sources */,
 				2F45108221B4C5FC00EC529E /* UIImageView+TintColor.swift in Sources */,
 				2F45106221B380E100EC529E /* AvatarView.swift in Sources */,
+				2FA78ACD21CF6D8E00C4FF53 /* StatsHolderView.swift in Sources */,
 				2F45107121B38FCC00EC529E /* NetworkHandler+Image.swift in Sources */,
 				2F8A6F2121AB74B80056D4AD /* UITextField+Toolbar.swift in Sources */,
 				2F45106021B34BA900EC529E /* NetworkHandler+Token.swift in Sources */,

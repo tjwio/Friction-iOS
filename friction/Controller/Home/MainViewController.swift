@@ -233,7 +233,7 @@ class MainViewController: UIViewController, PollSelectionDelegate, UITableViewDa
         let poll = PollHolder.shared.polls[indexPath.section]
         guard let option = poll.options.first(where: { return $0.vote != nil }) else { return }
         
-        let viewController = indexPath.section == 0 ? LiveChatViewController(poll: poll, option: option) : BaseChatViewController(poll: poll, option: option)
+        let viewController = indexPath.section == 0 ? LiveChatViewController(poll: poll, option: option) : FinishedChatViewController(poll: poll, option: option)
         navigationController?.pushViewController(viewController, animated: true)
     }
 }

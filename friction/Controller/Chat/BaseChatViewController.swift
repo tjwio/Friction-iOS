@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-class BaseChatViewController: UIViewController, ButtonScrollViewDelegate, UITableViewDataSource, UITableViewDelegate {
+class BaseChatViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     private struct Constants {
         static let cellIdentifier = "ChatMessageTableViewCellIdentifier"
@@ -109,7 +109,6 @@ class BaseChatViewController: UIViewController, ButtonScrollViewDelegate, UITabl
         
         let items = poll.items
         buttonScrollView.items = items
-        buttonScrollView.selectionDelegate = self
         
         progressView.percents = items.map { return $0.percent }
         
@@ -228,21 +227,6 @@ class BaseChatViewController: UIViewController, ButtonScrollViewDelegate, UITabl
         }
         
         return cell
-    }
-    
-    // MARK: button selection delegate
-    
-    func buttonScrollView(_ scrollView: ButtonScrollView, didSelect item: (value: String, percent: Double, selected: Bool), at index: Int) {
-        let option = poll.options[index]
-        
-        poll.vote(option: option, success: { _ in
-            self.option = option
-            let items = self.poll.items
-            self.buttonScrollView.items = items
-            self.progressView.percents = items.map { return $0.percent }
-        }) { _ in
-            self.buttonScrollView.items = self.poll.items
-        }
     }
     
     // MARK: helper

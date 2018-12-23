@@ -33,6 +33,12 @@ class ButtonScrollView: UIScrollView {
     
     var showPercentage = true
     
+    var enabled = true {
+        didSet {
+            buttons.forEach { $0.isEnabled = enabled }
+        }
+    }
+    
     // MARK: button scroll view
     
     private func reloadButtons() {

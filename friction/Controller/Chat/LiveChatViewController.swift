@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import SwiftPhoenixClient
 
-class LiveChatViewController: BaseChatViewController, UITextFieldDelegate {
+class LiveChatViewController: BaseChatViewController, ButtonScrollViewDelegate, UITextFieldDelegate {
 
     private struct Constants {
         struct Channel {
@@ -49,6 +49,8 @@ class LiveChatViewController: BaseChatViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        buttonScrollView.selectionDelegate = self
         
         chatBox.textField.delegate = self
         chatBox.sendButton.addTarget(self, action: #selector(self.sendMessage(_:)), for: .touchUpInside)
@@ -126,6 +128,21 @@ class LiveChatViewController: BaseChatViewController, UITextFieldDelegate {
         ]
         
         _ = lobby.push(Constants.Channel.shout, payload: params)
+    }
+    
+    // MARK: button selection
+    
+    func buttonScrollView(_ scrollView: ButtonScrollView, didSelect item: (value: String, percent: Double, selected: Bool), at index: Int) {
+        let option = poll.options[index]
+        
+        poll.vote(option: option, success: { _ in
+            self.option = option
+            let items = self.poll.items
+            self.buttonScrollView.items = items
+            self.progressView.percents = items.map { return $0.percent }
+        }) { _ in
+            self.buttonScrollView.items = self.poll.items
+        }
     }
     
     // MARK: text field

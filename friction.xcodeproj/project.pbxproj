@@ -21,7 +21,7 @@
 		2F45107521B3931600EC529E /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F45107421B3931600EC529E /* SDWebImage.framework */; };
 		2F45107721B47C9A00EC529E /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45107621B47C9A00EC529E /* ProgressView.swift */; };
 		2F45107921B47E5F00EC529E /* ButtonScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45107821B47E5F00EC529E /* ButtonScrollView.swift */; };
-		2F45107C21B48BEB00EC529E /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45107B21B48BEB00EC529E /* ChatViewController.swift */; };
+		2F45107C21B48BEB00EC529E /* BaseChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45107B21B48BEB00EC529E /* BaseChatViewController.swift */; };
 		2F45107E21B4902200EC529E /* ProgressLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45107D21B4902200EC529E /* ProgressLabelView.swift */; };
 		2F45108021B4C54000EC529E /* ClapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45107F21B4C54000EC529E /* ClapView.swift */; };
 		2F45108221B4C5FC00EC529E /* UIImageView+TintColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45108121B4C5FC00EC529E /* UIImageView+TintColor.swift */; };
@@ -98,6 +98,7 @@
 		2F9987B021A29131001B1256 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F9987AE21A29131001B1256 /* SnapKit.framework */; };
 		2F9987B121A29131001B1256 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F9987AF21A29131001B1256 /* Alamofire.framework */; };
 		2F9DF8B021AF9CE2001D437F /* HistoryPollTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9DF8AF21AF9CE2001D437F /* HistoryPollTableViewCell.swift */; };
+		2FA78ABA21CF5A9A00C4FF53 /* LiveChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA78AB921CF5A9A00C4FF53 /* LiveChatViewController.swift */; };
 		2FEA96BD21AFA10800522C0F /* Poll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEA96BC21AFA10800522C0F /* Poll.swift */; };
 		2FEA96BF21AFD24700522C0F /* NetworkHandler+Poll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEA96BE21AFD24700522C0F /* NetworkHandler+Poll.swift */; };
 		2FEA96C121AFD76D00522C0F /* DateFormatter+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEA96C021AFD76D00522C0F /* DateFormatter+Constants.swift */; };
@@ -139,7 +140,7 @@
 		2F45107421B3931600EC529E /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImage.framework; path = Carthage/Build/iOS/SDWebImage.framework; sourceTree = "<group>"; };
 		2F45107621B47C9A00EC529E /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		2F45107821B47E5F00EC529E /* ButtonScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonScrollView.swift; sourceTree = "<group>"; };
-		2F45107B21B48BEB00EC529E /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		2F45107B21B48BEB00EC529E /* BaseChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseChatViewController.swift; sourceTree = "<group>"; };
 		2F45107D21B4902200EC529E /* ProgressLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressLabelView.swift; sourceTree = "<group>"; };
 		2F45107F21B4C54000EC529E /* ClapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClapView.swift; sourceTree = "<group>"; };
 		2F45108121B4C5FC00EC529E /* UIImageView+TintColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+TintColor.swift"; sourceTree = "<group>"; };
@@ -226,6 +227,7 @@
 		2F9987AE21A29131001B1256 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
 		2F9987AF21A29131001B1256 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		2F9DF8AF21AF9CE2001D437F /* HistoryPollTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryPollTableViewCell.swift; sourceTree = "<group>"; };
+		2FA78AB921CF5A9A00C4FF53 /* LiveChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveChatViewController.swift; sourceTree = "<group>"; };
 		2FEA96BC21AFA10800522C0F /* Poll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Poll.swift; sourceTree = "<group>"; };
 		2FEA96BE21AFD24700522C0F /* NetworkHandler+Poll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkHandler+Poll.swift"; sourceTree = "<group>"; };
 		2FEA96C021AFD76D00522C0F /* DateFormatter+Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Constants.swift"; sourceTree = "<group>"; };
@@ -305,16 +307,10 @@
 		2F45107A21B48BDB00EC529E /* Chat */ = {
 			isa = PBXGroup;
 			children = (
-				2F45107B21B48BEB00EC529E /* ChatViewController.swift */,
+				2F45107B21B48BEB00EC529E /* BaseChatViewController.swift */,
+				2FA78AB921CF5A9A00C4FF53 /* LiveChatViewController.swift */,
 			);
 			path = Chat;
-			sourceTree = "<group>";
-		};
-		2F45108921B4E41F00EC529E /* Message */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Message;
 			sourceTree = "<group>";
 		};
 		2F45108E21B5234000EC529E /* Message */ = {
@@ -544,7 +540,6 @@
 				2F45107A21B48BDB00EC529E /* Chat */,
 				2F8A6F0B21AB70780056D4AD /* Home */,
 				2F8A6F0C21AB708B0056D4AD /* Login */,
-				2F45108921B4E41F00EC529E /* Message */,
 				2F45106521B3867C00EC529E /* Profile */,
 			);
 			path = Controller;
@@ -834,7 +829,7 @@
 				2F8A6F2321AB74CA0056D4AD /* CommonUtility.swift in Sources */,
 				2F45107321B390FE00EC529E /* CALayer+Shadow.swift in Sources */,
 				2F8A6F4321ABCA1B0056D4AD /* Data+JSON.swift in Sources */,
-				2F45107C21B48BEB00EC529E /* ChatViewController.swift in Sources */,
+				2F45107C21B48BEB00EC529E /* BaseChatViewController.swift in Sources */,
 				2F8A6F3821AB820E0056D4AD /* AppManager.swift in Sources */,
 				2F45106421B3860400EC529E /* ProfileView.swift in Sources */,
 				2F45108621B4C8F200EC529E /* FullMessageTableViewCell.swift in Sources */,
@@ -872,6 +867,7 @@
 				2F45108821B4D9BE00EC529E /* ChatTextField.swift in Sources */,
 				2F8A6F4421ABCA1B0056D4AD /* Dictionary+Decoder.swift in Sources */,
 				2F8A6F3B21AB8A640056D4AD /* User.swift in Sources */,
+				2FA78ABA21CF5A9A00C4FF53 /* LiveChatViewController.swift in Sources */,
 				2F8A6F3121AB79D20056D4AD /* URLRouter.swift in Sources */,
 				2F8A6F2021AB74B80056D4AD /* UIViewController+Back.swift in Sources */,
 				2F8A6F3D21ABC8B20056D4AD /* URLRequesst+cURL.swift in Sources */,

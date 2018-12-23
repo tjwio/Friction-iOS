@@ -8,31 +8,17 @@
 
 import UIKit
 import SnapKit
-import SwiftPhoenixClient
 
-class ChatViewController: UIViewController, ButtonScrollViewDelegate, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
+class BaseChatViewController: UIViewController, ButtonScrollViewDelegate, UITableViewDataSource, UITableViewDelegate {
     
     private struct Constants {
         static let cellIdentifier = "ChatMessageTableViewCellIdentifier"
-        
-        struct Channel {
-            static let lobby = "room:lobby"
-            static let shout = "shout"
-            static let claps = "claps"
-        }
     }
     
     let poll: Poll
-    var option: Poll.Option {
-        didSet {
-            updateSendColor()
-        }
-    }
+    var option: Poll.Option
     
-    let socket = Socket(url: AppManager.shared.environment.streamUrl, params: ["token" : AuthenticationManager.shared.authToken ?? ""])
-    var lobby: Channel!
-    
-    private var messages = [Message]()
+    var messages = [Message]()
     
     let nameLabel: UILabel = {
         let label = UILabel()
@@ -76,13 +62,6 @@ class ChatViewController: UIViewController, ButtonScrollViewDelegate, UITableVie
         return view
     }()
     
-    let chatBox: ChatBoxView = {
-        let view = ChatBoxView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        
-        return view
-    }()
-    
     let tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.allowsSelection = false
@@ -104,12 +83,6 @@ class ChatViewController: UIViewController, ButtonScrollViewDelegate, UITableVie
         return view
     }()
     
-    lazy var defaultTextFieldConstraints: (SnapKit.ConstraintMaker) -> Void = { make in
-        make.leading.equalToSuperview().offset(16.0)
-        make.trailing.equalToSuperview().offset(-16.0)
-        make.height.equalTo(52.0)
-    }
-    
     init(poll: Poll, option: Poll.Option) {
         self.poll = poll
         self.option = option
@@ -118,11 +91,6 @@ class ChatViewController: UIViewController, ButtonScrollViewDelegate, UITableVie
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    deinit {
-        socket.disconnect()
-        NotificationCenter.default.removeObserver(self)
     }
     
     override func viewDidLoad() {
@@ -137,9 +105,6 @@ class ChatViewController: UIViewController, ButtonScrollViewDelegate, UITableVie
         tableView.dataSource = self
         tableView.delegate = self
         
-        chatBox.textField.delegate = self
-        chatBox.sendButton.addTarget(self, action: #selector(self.sendMessage(_:)), for: .touchUpInside)
-        
         nameLabel.text = poll.name
         
         let items = poll.items
@@ -148,25 +113,18 @@ class ChatViewController: UIViewController, ButtonScrollViewDelegate, UITableVie
         
         progressView.percents = items.map { return $0.percent }
         
-        updateSendColor()
-        
         view.addSubview(nameLabel)
         view.addSubview(liveView)
         view.addSubview(buttonScrollView)
         view.addSubview(progressView)
         view.addSubview(separatorView)
         view.addSubview(tableView)
-        view.addSubview(chatBox)
         view.addSubview(activityIndicator)
         
         activityIndicator.startAnimating()
         reloadMessages(nil)
-        addSocketEvents()
         
         setupConstraints()
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     private func setupConstraints() {
@@ -207,60 +165,9 @@ class ChatViewController: UIViewController, ButtonScrollViewDelegate, UITableVie
             make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).offset(-52.0)
         }
         
-        chatBox.snp.makeConstraints { make in
-            self.defaultTextFieldConstraints(make)
-            make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).offset(-4.0)
-        }
-        
         activityIndicator.snp.makeConstraints { make in
             make.center.equalTo(self.tableView)
         }
-    }
-    
-    // MARK: socket/channel
-    
-    private func addSocketEvents() {
-        socket.onOpen { print("socket connected") }
-        socket.onClose { print("socket disconnected") }
-        socket.onError { error in print("socket error: \(error)") }
-        socket.onMessage { message in
-            print("socket message: \(message.event) with error: \(message.payload)")
-        }
-        
-        lobby = socket.channel(Constants.Channel.lobby)
-        lobby.on(Constants.Channel.shout) { [weak self] message in
-            self?.chatBox.textField.text = ""
-            self?.chatBox.sendButton.isLoading = false
-            guard let message = message.payload.decodeJson(Message.self), let strongSelf = self else { return }
-            strongSelf.messages.append(message)
-            strongSelf.tableView.reloadData()
-            strongSelf.scrollToBottom()
-        }
-        
-        lobby.on(Constants.Channel.claps) { [weak self] message in
-            guard let strongSelf = self,
-                let id = message.payload[Message.CodingKeys.id.rawValue] as? String, let claps = message.payload[Message.CodingKeys.claps.rawValue] as? Int,
-                let index = strongSelf.messages.firstIndex(where: { return $0.id == id }) else { return }
-            
-            let origMessage = strongSelf.messages[index]
-            guard !origMessage.isPendingClaps && origMessage.claps != claps else { return }
-            
-            origMessage.claps = claps
-            
-            strongSelf.tableView.reloadSections(IndexSet(integer: index), with: .none)
-        }
-        
-        socket.connect()
-        _ = lobby.join()
-            .receive("ok", callback: { _ in
-                print("lobby connected")
-            })
-            .receive("error", callback: { error in
-                print("lobby error: \(error)")
-            })
-            .receive("timeout", callback: { error in
-                print("lobby timeout: \(error)")
-            })
     }
     
     // MARK: reload
@@ -278,21 +185,6 @@ class ChatViewController: UIViewController, ButtonScrollViewDelegate, UITableVie
             sender?.endRefreshing()
             self.tableView.reloadData()
         }
-    }
-    
-    // MARK: send message
-    
-    @objc private func sendMessage(_ sender: Any?) {
-        guard let text = chatBox.textField.text, !text.isEmpty else { (sender as? LoadingButton)?.isLoading = false; return }
-        
-        let params = [
-            Message.CodingKeys.pollId.rawValue: poll.id,
-            Message.CodingKeys.optionId.rawValue: option.id,
-            Message.CodingKeys.message.rawValue: text,
-            "user_id": UserHolder.shared.user.id
-        ]
-        
-        _ = lobby.push(Constants.Channel.shout, payload: params)
     }
     
     // MARK: table view
@@ -353,72 +245,11 @@ class ChatViewController: UIViewController, ButtonScrollViewDelegate, UITableVie
         }
     }
     
-    // MARK: text field
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        chatBox.sendButton.isLoading = true
-        
-        sendMessage(chatBox.sendButton)
-        
-        textField.resignFirstResponder()
-        return true
-    }
-    
     // MARK: helper
     
-    private func scrollToBottom() {
+    func scrollToBottom() {
         guard !messages.isEmpty else { return }
         let indexPath = IndexPath(row: 0, section: messages.count-1)
         tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
-    }
-    
-    private func updateSendColor() {
-        if let index = poll.options.firstIndex(of: option) {
-            chatBox.sendButton.backgroundColor = .pollColor(index: index)
-        }
-    }
-    
-    // MARK: keyboard notifications
-    
-    @objc private func keyboardWillShow(notification: NSNotification?) {
-        if self.isViewLoaded && self.view.window != nil {
-            if let keyboardSize = (notification?.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.size {
-                if UIApplication.shared.statusBarOrientation.isPortrait {
-                    self.chatBox.snp.remakeConstraints { make in
-                        self.defaultTextFieldConstraints(make)
-                        make.bottom.equalTo(self.view.snp.bottom).offset(-keyboardSize.height)
-                    }
-                }
-                
-                let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 12.0+keyboardSize.height, right: 0.0)
-                
-                UIView.animate(withDuration: (notification?.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0.3, delay: 0.0, options: .beginFromCurrentState, animations: {
-                    self.tableView.contentInset = contentInsets
-                    self.tableView.scrollIndicatorInsets = contentInsets
-                    self.tableView.setNeedsDisplay()
-                    self.view.layoutIfNeeded()
-                    self.scrollToBottom()
-                }, completion: nil)
-            }
-        }
-    }
-    
-    @objc private func keyboardWillHide(notification: NSNotification?) {
-        if self.isViewLoaded && self.view.window != nil {
-            self.chatBox.snp.remakeConstraints { make in
-                self.defaultTextFieldConstraints(make)
-                make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).offset(-4.0)
-            }
-            
-            let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 12.0, right: 0.0)
-            
-            UIView.animate(withDuration: (notification?.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0.3, animations: {
-                self.tableView.contentInset = contentInsets
-                self.tableView.scrollIndicatorInsets = contentInsets
-                self.tableView.setNeedsDisplay()
-                self.view.layoutIfNeeded()
-                self.scrollToBottom()
-            })
-        }
     }
 }

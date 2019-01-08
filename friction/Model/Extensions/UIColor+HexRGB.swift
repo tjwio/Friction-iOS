@@ -92,18 +92,22 @@ extension UIColor {
     
     struct Poll {
         static var red: UIColor {
-            return UIColor(hexColor: 0xC8553D)
+            return UIColor(hexColor: 0xFF8787)
         }
         
         static var orange: UIColor {
-            return UIColor(hexColor: 0xFFC239)
+            return UIColor(hexColor: 0xF9B598)
         }
         
         static var yellow: UIColor {
-            return UIColor(hexColor: 0xFFEC8B)
+            return UIColor(hexColor: 0xFFD97F)
         }
         
-        static let all = [red, orange, yellow]
+        static var pink: UIColor {
+            return UIColor(hexColor: 0xFF89C0)
+        }
+        
+        static let all = [red, orange, yellow, pink]
     }
     
     class func pollColor(index: Int) -> UIColor {

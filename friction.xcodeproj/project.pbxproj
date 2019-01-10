@@ -88,6 +88,7 @@
 		2F8A6F4421ABCA1B0056D4AD /* Dictionary+Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8A6F4221ABCA1B0056D4AD /* Dictionary+Decoder.swift */; };
 		2F8A6F4721ABCBD60056D4AD /* CommonError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8A6F4621ABCBD60056D4AD /* CommonError.swift */; };
 		2F8A6F4921ABCD790056D4AD /* UIViewController+Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8A6F4821ABCD790056D4AD /* UIViewController+Messages.swift */; };
+		2F8C262621E5C03400BD0C3C /* Cocogoose.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2F8C262521E5C03400BD0C3C /* Cocogoose.ttf */; };
 		2F99877B21A282E3001B1256 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F99877A21A282E3001B1256 /* AppDelegate.swift */; };
 		2F99878021A282E3001B1256 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F99877E21A282E3001B1256 /* Main.storyboard */; };
 		2F99878221A282E7001B1256 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F99878121A282E7001B1256 /* Assets.xcassets */; };
@@ -216,6 +217,7 @@
 		2F8A6F4221ABCA1B0056D4AD /* Dictionary+Decoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Decoder.swift"; sourceTree = "<group>"; };
 		2F8A6F4621ABCBD60056D4AD /* CommonError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonError.swift; sourceTree = "<group>"; };
 		2F8A6F4821ABCD790056D4AD /* UIViewController+Messages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Messages.swift"; sourceTree = "<group>"; };
+		2F8C262521E5C03400BD0C3C /* Cocogoose.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Cocogoose.ttf; sourceTree = "<group>"; };
 		2F99877721A282E3001B1256 /* friction.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = friction.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F99877A21A282E3001B1256 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2F99877F21A282E3001B1256 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -369,6 +371,7 @@
 				2F5D1CD421A292EF003D0587 /* AvenirNextLTPro-Regular.otf */,
 				2F5D1CD521A292EF003D0587 /* AvenirNextLTPro-UltLt.otf */,
 				2F5D1CD921A292F0003D0587 /* AvenirNextLTPro-UltLtIt.otf */,
+				2F8C262521E5C03400BD0C3C /* Cocogoose.ttf */,
 				2F4510AF21B64F3A00EC529E /* GoogleService-Info.plist */,
 			);
 			path = Resources;
@@ -413,14 +416,14 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
-		2F8A6F0C21AB708B0056D4AD /* Login */ = {
+		2F8A6F0C21AB708B0056D4AD /* Welcome */ = {
 			isa = PBXGroup;
 			children = (
 				2F8A6F0E21AB71C00056D4AD /* LoginViewController.swift */,
 				2F8A6F0F21AB71C00056D4AD /* SignupViewController.swift */,
 				2F8A6F0D21AB71BF0056D4AD /* WelcomeViewController.swift */,
 			);
-			path = Login;
+			path = Welcome;
 			sourceTree = "<group>";
 		};
 		2F8A6F1D21AB74880056D4AD /* Helper */ = {
@@ -551,7 +554,7 @@
 			children = (
 				2F45107A21B48BDB00EC529E /* Chat */,
 				2F8A6F0B21AB70780056D4AD /* Home */,
-				2F8A6F0C21AB708B0056D4AD /* Login */,
+				2F8A6F0C21AB708B0056D4AD /* Welcome */,
 				2F45106521B3867C00EC529E /* Profile */,
 			);
 			path = Controller;
@@ -806,6 +809,7 @@
 				2F99878521A282E7001B1256 /* LaunchScreen.storyboard in Resources */,
 				2F5D1CE021A292F0003D0587 /* AvenirNextLTPro-UltLtIt.otf in Resources */,
 				2F99878221A282E7001B1256 /* Assets.xcassets in Resources */,
+				2F8C262621E5C03400BD0C3C /* Cocogoose.ttf in Resources */,
 				2F4510B021B64F3A00EC529E /* GoogleService-Info.plist in Resources */,
 				2F5D1CE121A292F0003D0587 /* AvenirNextLTPro-It.otf in Resources */,
 				2F5D1CDE21A292F0003D0587 /* AvenirNextLTPro-Medium.otf in Resources */,

@@ -84,6 +84,12 @@ extension UIColor {
         }
     }
     
+    struct Pink {
+        static var normal: UIColor {
+            return UIColor(hexColor: 0xFF6666)
+        }
+    }
+    
     struct Yellow {
         static var normal: UIColor {
             return UIColor(hexColor: 0xF4D03F)

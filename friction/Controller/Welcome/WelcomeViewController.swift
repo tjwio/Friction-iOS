@@ -142,7 +142,7 @@ class WelcomeViewController: UIViewController {
     
     //MARK: create account
     @objc private func createAccount(_ sender: UIButton?) {
-        let viewController = SignupViewController()
+        let viewController = EmailSignupViewController()
         navigationController?.pushViewController(viewController, animated: true)
     }
     

@@ -90,6 +90,7 @@
 		2F8A6F4921ABCD790056D4AD /* UIViewController+Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8A6F4821ABCD790056D4AD /* UIViewController+Messages.swift */; };
 		2F8C262621E5C03400BD0C3C /* Cocogoose.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2F8C262521E5C03400BD0C3C /* Cocogoose.ttf */; };
 		2F8C262F21E70A5700BD0C3C /* BaseSignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8C262E21E70A5700BD0C3C /* BaseSignupViewController.swift */; };
+		2F8C263721E8531700BD0C3C /* EmailSignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8C263621E8531700BD0C3C /* EmailSignupViewController.swift */; };
 		2F99877B21A282E3001B1256 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F99877A21A282E3001B1256 /* AppDelegate.swift */; };
 		2F99878021A282E3001B1256 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F99877E21A282E3001B1256 /* Main.storyboard */; };
 		2F99878221A282E7001B1256 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F99878121A282E7001B1256 /* Assets.xcassets */; };
@@ -220,6 +221,7 @@
 		2F8A6F4821ABCD790056D4AD /* UIViewController+Messages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Messages.swift"; sourceTree = "<group>"; };
 		2F8C262521E5C03400BD0C3C /* Cocogoose.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Cocogoose.ttf; sourceTree = "<group>"; };
 		2F8C262E21E70A5700BD0C3C /* BaseSignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSignupViewController.swift; sourceTree = "<group>"; };
+		2F8C263621E8531700BD0C3C /* EmailSignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSignupViewController.swift; sourceTree = "<group>"; };
 		2F99877721A282E3001B1256 /* friction.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = friction.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F99877A21A282E3001B1256 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2F99877F21A282E3001B1256 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -499,6 +501,7 @@
 			isa = PBXGroup;
 			children = (
 				2F8C262E21E70A5700BD0C3C /* BaseSignupViewController.swift */,
+				2F8C263621E8531700BD0C3C /* EmailSignupViewController.swift */,
 			);
 			path = Signup;
 			sourceTree = "<group>";
@@ -933,6 +936,7 @@
 				2F8A6F0A21A680CB0056D4AD /* PercentageButton.swift in Sources */,
 				2FA78ABC21CF5D9400C4FF53 /* FinishedChatViewController.swift in Sources */,
 				2FEA96C921B2433600522C0F /* PollHolder.swift in Sources */,
+				2F8C263721E8531700BD0C3C /* EmailSignupViewController.swift in Sources */,
 				2FEA96BF21AFD24700522C0F /* NetworkHandler+Poll.swift in Sources */,
 				2F5D1CE421A29344003D0587 /* UIFont+CustomFonts.swift in Sources */,
 				2F45107721B47C9A00EC529E /* ProgressView.swift in Sources */,

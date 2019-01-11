@@ -26,7 +26,7 @@ extension UIViewController: UIGestureRecognizerDelegate {
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false;
     }
     
-    func addBackButtonToView(dark: Bool, shouldAddText: Bool = true) -> UIButton {
+    func addBackButtonToView(dark: Bool, shouldAddText: Bool = true, top: CGFloat = 44.0) -> UIButton {
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self;
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true;
         
@@ -43,7 +43,7 @@ extension UIViewController: UIGestureRecognizerDelegate {
         
         self.view.addSubview(backButton)
         
-        let topConstraint = NSLayoutConstraint(item: backButton, attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1.0, constant: 44.0)
+        let topConstraint = NSLayoutConstraint(item: backButton, attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1.0, constant: top)
         let leadingConstraint = NSLayoutConstraint(item: backButton, attribute: .leading, relatedBy: .equal, toItem: self.view, attribute: .leading, multiplier: 1.0, constant: 19.0)
         let widthConstraint = NSLayoutConstraint(item: backButton, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: backButton.intrinsicContentSize.width+10.0)
         

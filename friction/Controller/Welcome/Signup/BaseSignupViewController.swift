@@ -35,6 +35,7 @@ class BaseSignupViewController: UIViewController {
     let descriptionLabel: UILabel = {
         let label = UILabel()
         label.font = .avenirItalic(size: 14.0)
+        label.numberOfLines = 0
         label.textColor = UIColor.Grayscale.darker
         label.translatesAutoresizingMaskIntoConstraints = false
         label.setContentCompressionResistancePriority(.required, for: .vertical)
@@ -123,6 +124,19 @@ class BaseSignupViewController: UIViewController {
             button.backgroundColor = button.backgroundColor?.withAlphaComponent(0.75)
         }
         
+        disposables += textField.reactive.continuousTextValues.map { [unowned self] string in
+            return string != nil && self.isValidEntry(string!)
+        }.observeValues { [unowned self] isEnabled in
+            if (isEnabled) {
+                self.nextButton.isEnabled = true
+                self.nextButton.backgroundColor = self.nextButton.backgroundColor?.withAlphaComponent(1.0)
+            }
+            else {
+                self.nextButton.isEnabled = false
+                self.nextButton.backgroundColor = self.nextButton.backgroundColor?.withAlphaComponent(0.50)
+            }
+        }
+        
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
@@ -185,5 +199,9 @@ class BaseSignupViewController: UIViewController {
                 self.view.layoutIfNeeded()
             })
         }
+    }
+    
+    func isValidEntry(_ string: String) -> Bool {
+        return !string.isEmpty
     }
 }

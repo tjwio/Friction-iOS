@@ -14,6 +14,14 @@ extension UIImage {
         return UIImage(named: "abstract1")
     }
     
+    class var abstract2: UIImage? {
+        return UIImage(named: "abstract2")
+    }
+    
+    class var abstract3: UIImage? {
+        return UIImage(named: "abstract3")
+    }
+    
     class var backArrowDark: UIImage? {
         return UIImage(named: "back_arrow_dark")
     }

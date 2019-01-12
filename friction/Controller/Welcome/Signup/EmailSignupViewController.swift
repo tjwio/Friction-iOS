@@ -22,10 +22,20 @@ class EmailSignupViewController: BaseSignupViewController {
         textField.keyboardType = .emailAddress
         textField.placeholder = "Email Address"
         
+        nextButton.addTarget(self, action: #selector(self.nextStep(_:)), for: .touchUpInside)
         nextButton.setTitle("Next Step", for: .normal)
         
         textField.becomeFirstResponder()
         
         imageView.image = .abstract1
+    }
+    
+    @objc private func nextStep(_ sender: Any?) {
+        let viewController = UsernameSignupViewController(email: textField.text!)
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    override func isValidEntry(_ string: String) -> Bool {
+        return super.isValidEntry(string) && CommonUtility.isValidEmail(string)
     }
 }

@@ -37,6 +37,7 @@ class BaseSignupViewController: UIViewController {
         label.font = .avenirItalic(size: 14.0)
         label.textColor = UIColor.Grayscale.darker
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.setContentCompressionResistancePriority(.required, for: .vertical)
         
         return label
     }()
@@ -69,6 +70,14 @@ class BaseSignupViewController: UIViewController {
         return button
     }()
     
+    let imageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return imageView
+    }()
+    
     private lazy var infoIconStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [infoLabel, iconLabel])
         stackView.alignment = .center
@@ -82,9 +91,12 @@ class BaseSignupViewController: UIViewController {
     
     var backButton: UIButton!
     
+    private var keyboardConstraint: Constraint?
+    
     private var disposables = CompositeDisposable()
     
     deinit {
+        NotificationCenter.default.removeObserver(self)
         disposables.dispose()
     }
 
@@ -97,6 +109,7 @@ class BaseSignupViewController: UIViewController {
         view.addSubview(descriptionLabel)
         view.addSubview(textField)
         view.addSubview(nextButton)
+        view.addSubview(imageView)
         
         backButton = addBackButtonToView(dark: true, top: 56.0)
         
@@ -109,6 +122,9 @@ class BaseSignupViewController: UIViewController {
         disposables += nextButton.reactive.controlEvents(UIControl.Event(rawValue: UIControl.Event.touchDown.rawValue | UIControl.Event.touchDragInside.rawValue)).observeValues { button in
             button.backgroundColor = button.backgroundColor?.withAlphaComponent(0.75)
         }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     private func setupConstraints() {
@@ -134,6 +150,40 @@ class BaseSignupViewController: UIViewController {
             make.trailing.equalToSuperview().offset(-44.0)
             make.height.equalTo(44.0)
             make.width.equalTo(150.0)
+        }
+        
+        imageView.snp.makeConstraints { make in
+            make.top.equalTo(self.nextButton.snp.bottom).offset(12.0)
+            make.leading.equalToSuperview().offset(32.0)
+            make.trailing.equalToSuperview().offset(-32.0)
+            self.keyboardConstraint = make.bottom.lessThanOrEqualToSuperview().constraint
+        }
+        
+        self.keyboardConstraint?.deactivate()
+    }
+    
+    // MARK: Keyboard Notifications
+    
+    @objc private func keyboardWillShow(notification: NSNotification?) {
+        if self.navigationController?.viewControllers.last == self && self.isViewLoaded && self.view.window != nil {
+            if let keyboardHeight = (notification?.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+                self.keyboardConstraint?.update(offset: -(keyboardHeight.height + 12.0))
+                self.keyboardConstraint?.activate()
+                self.view.setNeedsUpdateConstraints()
+                UIView.animate(withDuration: 0.1, animations: {
+                    self.view.layoutIfNeeded()
+                })
+            }
+        }
+    }
+    
+    @objc private func keyboardWillHide(notification: NSNotification?) {
+        if self.navigationController?.viewControllers.last == self && self.isViewLoaded && self.view.window != nil {
+            self.keyboardConstraint?.deactivate()
+            self.view.setNeedsUpdateConstraints()
+            UIView.animate(withDuration: 0.1, animations: {
+                self.view.layoutIfNeeded()
+            })
         }
     }
 }

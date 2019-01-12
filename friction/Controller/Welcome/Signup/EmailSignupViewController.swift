@@ -17,10 +17,15 @@ class EmailSignupViewController: BaseSignupViewController {
         iconLabel.text = String.featherIcon(name: .mail)
         descriptionLabel.text = "to get started"
         
+        textField.autocapitalizationType = .none
+        textField.autocorrectionType = .no
+        textField.keyboardType = .emailAddress
         textField.placeholder = "Email Address"
         
         nextButton.setTitle("Next Step", for: .normal)
         
         textField.becomeFirstResponder()
+        
+        imageView.image = .abstract1
     }
 }

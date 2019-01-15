@@ -92,6 +92,7 @@
 		2F8C262F21E70A5700BD0C3C /* BaseSignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8C262E21E70A5700BD0C3C /* BaseSignupViewController.swift */; };
 		2F8C263721E8531700BD0C3C /* EmailSignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8C263621E8531700BD0C3C /* EmailSignupViewController.swift */; };
 		2F8C263921EAA0FC00BD0C3C /* UsernameSignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8C263821EAA0FC00BD0C3C /* UsernameSignupViewController.swift */; };
+		2F8C263B21ED7B0100BD0C3C /* PasswordSignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8C263A21ED7B0000BD0C3C /* PasswordSignupViewController.swift */; };
 		2F99877B21A282E3001B1256 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F99877A21A282E3001B1256 /* AppDelegate.swift */; };
 		2F99878021A282E3001B1256 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F99877E21A282E3001B1256 /* Main.storyboard */; };
 		2F99878221A282E7001B1256 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F99878121A282E7001B1256 /* Assets.xcassets */; };
@@ -224,6 +225,7 @@
 		2F8C262E21E70A5700BD0C3C /* BaseSignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSignupViewController.swift; sourceTree = "<group>"; };
 		2F8C263621E8531700BD0C3C /* EmailSignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSignupViewController.swift; sourceTree = "<group>"; };
 		2F8C263821EAA0FC00BD0C3C /* UsernameSignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameSignupViewController.swift; sourceTree = "<group>"; };
+		2F8C263A21ED7B0000BD0C3C /* PasswordSignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordSignupViewController.swift; sourceTree = "<group>"; };
 		2F99877721A282E3001B1256 /* friction.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = friction.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F99877A21A282E3001B1256 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2F99877F21A282E3001B1256 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -505,6 +507,7 @@
 				2F8C262E21E70A5700BD0C3C /* BaseSignupViewController.swift */,
 				2F8C263621E8531700BD0C3C /* EmailSignupViewController.swift */,
 				2F8C263821EAA0FC00BD0C3C /* UsernameSignupViewController.swift */,
+				2F8C263A21ED7B0000BD0C3C /* PasswordSignupViewController.swift */,
 			);
 			path = Signup;
 			sourceTree = "<group>";
@@ -965,6 +968,7 @@
 				2F8A6F3D21ABC8B20056D4AD /* URLRequesst+cURL.swift in Sources */,
 				2F45105E21B34B3500EC529E /* DeviceToken.swift in Sources */,
 				2F9DF8B021AF9CE2001D437F /* HistoryPollTableViewCell.swift in Sources */,
+				2F8C263B21ED7B0100BD0C3C /* PasswordSignupViewController.swift in Sources */,
 				2FEA96C721B242CC00522C0F /* NetworkHandler+Votes.swift in Sources */,
 				2FEA96C121AFD76D00522C0F /* DateFormatter+Constants.swift in Sources */,
 				2F45106921B3869B00EC529E /* ProfileBaseViewController.swift in Sources */,
@@ -1168,7 +1172,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = friction/friction.entitlements;
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = 9JBA7R48SP;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1197,7 +1201,7 @@
 				CODE_SIGN_ENTITLEMENTS = friction/friction.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = 9JBA7R48SP;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

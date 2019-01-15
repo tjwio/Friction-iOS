@@ -12,7 +12,7 @@ import ReactiveCocoa
 import ReactiveSwift
 import SnapKit
 
-class BaseSignupViewController: UIViewController {
+class BaseSignupViewController: UIViewController, UITextFieldDelegate {
     
     let infoLabel: UILabel = {
         let label = UILabel()
@@ -60,8 +60,8 @@ class BaseSignupViewController: UIViewController {
         return textField
     }()
     
-    let nextButton: UIButton = {
-        let button = UIButton(type: .custom)
+    let nextButton: LoadingButton = {
+        let button = LoadingButton(type: .custom)
         button.backgroundColor = UIColor.Pink.normal
         
         button.setTitleColor(.white, for: .normal)
@@ -113,6 +113,8 @@ class BaseSignupViewController: UIViewController {
         view.addSubview(imageView)
         
         backButton = addBackButtonToView(dark: true, top: 56.0)
+        
+        nextButton.addTarget(self, action: #selector(self.nextStep(_:)), for: .touchUpInside)
         
         setupConstraints()
         
@@ -176,7 +178,23 @@ class BaseSignupViewController: UIViewController {
         self.keyboardConstraint?.deactivate()
     }
     
-    // MARK: Keyboard Notifications
+    // MARK: next
+    
+    @objc func nextStep(_ sender: LoadingButton?) {
+        fatalError("needs to be overriden in subclass")
+    }
+    
+    // MARK: text field
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if isValidEntry(textField.text ?? "") {
+            nextStep(nil)
+        }
+        
+        return true
+    }
+    
+    // MARK: keyboard notifications
     
     @objc private func keyboardWillShow(notification: NSNotification?) {
         if self.navigationController?.viewControllers.last == self && self.isViewLoaded && self.view.window != nil {
@@ -200,6 +218,8 @@ class BaseSignupViewController: UIViewController {
             })
         }
     }
+    
+    // MARK: helper override
     
     func isValidEntry(_ string: String) -> Bool {
         return !string.isEmpty

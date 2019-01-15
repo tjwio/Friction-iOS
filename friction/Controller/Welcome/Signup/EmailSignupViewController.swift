@@ -19,10 +19,10 @@ class EmailSignupViewController: BaseSignupViewController {
         
         textField.autocapitalizationType = .none
         textField.autocorrectionType = .no
+        textField.delegate = self
         textField.keyboardType = .emailAddress
         textField.placeholder = "Email Address"
         
-        nextButton.addTarget(self, action: #selector(self.nextStep(_:)), for: .touchUpInside)
         nextButton.setTitle("Next Step", for: .normal)
         
         textField.becomeFirstResponder()
@@ -30,7 +30,8 @@ class EmailSignupViewController: BaseSignupViewController {
         imageView.image = .abstract1
     }
     
-    @objc private func nextStep(_ sender: Any?) {
+    override func nextStep(_ sender: LoadingButton?) {
+        sender?.isLoading = false
         let viewController = UsernameSignupViewController(email: textField.text!)
         navigationController?.pushViewController(viewController, animated: true)
     }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UsernameSignupViewController: BaseSignupViewController, UITextFieldDelegate {
+class UsernameSignupViewController: BaseSignupViewController {
     
     var email: String
     
@@ -34,11 +34,18 @@ class UsernameSignupViewController: BaseSignupViewController, UITextFieldDelegat
         textField.keyboardType = .default
         textField.placeholder = "Username"
         
+        nextButton.addTarget(self, action: #selector(self.nextStep(_:)), for: .touchUpInside)
         nextButton.setTitle("Next Step", for: .normal)
         
         textField.becomeFirstResponder()
         
         imageView.image = .abstract2
+    }
+    
+    override func nextStep(_ sender: LoadingButton?) {
+        sender?.isLoading = false
+        let viewController = PasswordSignupViewController(email: email, username: textField.text!)
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

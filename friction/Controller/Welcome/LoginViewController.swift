@@ -12,7 +12,7 @@ import ReactiveCocoa
 import ReactiveSwift
 import SkyFloatingLabelTextField
 
-class LoginViewController: UIViewController, UITextFieldDelegate {
+class BaseLoginViewController: UIViewController, UITextFieldDelegate {
     
     let ciaoLabel: UILabel = {
         let label = UILabel()
@@ -308,7 +308,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     //MARK: signup
     
     @objc private func goToCreateAccount(_ sender: UIButton?) {
-        let viewController = SignupViewController()
+        let viewController = EmailSignupViewController()
         navigationController?.pushViewController(viewController, animated: true)
     }
     

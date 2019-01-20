@@ -21,7 +21,7 @@
 		2F45107521B3931600EC529E /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F45107421B3931600EC529E /* SDWebImage.framework */; };
 		2F45107721B47C9A00EC529E /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45107621B47C9A00EC529E /* ProgressView.swift */; };
 		2F45107921B47E5F00EC529E /* ButtonScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45107821B47E5F00EC529E /* ButtonScrollView.swift */; };
-		2F45107C21B48BEB00EC529E /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45107B21B48BEB00EC529E /* ChatViewController.swift */; };
+		2F45107C21B48BEB00EC529E /* BaseChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45107B21B48BEB00EC529E /* BaseChatViewController.swift */; };
 		2F45107E21B4902200EC529E /* ProgressLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45107D21B4902200EC529E /* ProgressLabelView.swift */; };
 		2F45108021B4C54000EC529E /* ClapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45107F21B4C54000EC529E /* ClapView.swift */; };
 		2F45108221B4C5FC00EC529E /* UIImageView+TintColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45108121B4C5FC00EC529E /* UIImageView+TintColor.swift */; };
@@ -62,8 +62,7 @@
 		2F8A6F0821A67EAD0056D4AD /* LiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8A6F0721A67EAD0056D4AD /* LiveView.swift */; };
 		2F8A6F0A21A680CB0056D4AD /* PercentageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8A6F0921A680CB0056D4AD /* PercentageButton.swift */; };
 		2F8A6F1021AB71C00056D4AD /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8A6F0D21AB71BF0056D4AD /* WelcomeViewController.swift */; };
-		2F8A6F1121AB71C00056D4AD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8A6F0E21AB71C00056D4AD /* LoginViewController.swift */; };
-		2F8A6F1221AB71C00056D4AD /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8A6F0F21AB71C00056D4AD /* SignupViewController.swift */; };
+		2F8A6F1121AB71C00056D4AD /* BaseLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8A6F0E21AB71C00056D4AD /* BaseLoginViewController.swift */; };
 		2F8A6F1421AB72300056D4AD /* FeatherIcon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F8A6F1321AB72300056D4AD /* FeatherIcon.framework */; };
 		2F8A6F1921AB74140056D4AD /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F8A6F1521AB74140056D4AD /* ReactiveCocoa.framework */; };
 		2F8A6F1A21AB74140056D4AD /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F8A6F1621AB74140056D4AD /* Result.framework */; };
@@ -88,6 +87,11 @@
 		2F8A6F4421ABCA1B0056D4AD /* Dictionary+Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8A6F4221ABCA1B0056D4AD /* Dictionary+Decoder.swift */; };
 		2F8A6F4721ABCBD60056D4AD /* CommonError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8A6F4621ABCBD60056D4AD /* CommonError.swift */; };
 		2F8A6F4921ABCD790056D4AD /* UIViewController+Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8A6F4821ABCD790056D4AD /* UIViewController+Messages.swift */; };
+		2F8C262621E5C03400BD0C3C /* Cocogoose.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2F8C262521E5C03400BD0C3C /* Cocogoose.ttf */; };
+		2F8C262F21E70A5700BD0C3C /* BaseSignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8C262E21E70A5700BD0C3C /* BaseSignupViewController.swift */; };
+		2F8C263721E8531700BD0C3C /* EmailSignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8C263621E8531700BD0C3C /* EmailSignupViewController.swift */; };
+		2F8C263921EAA0FC00BD0C3C /* UsernameSignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8C263821EAA0FC00BD0C3C /* UsernameSignupViewController.swift */; };
+		2F8C263B21ED7B0100BD0C3C /* PasswordSignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8C263A21ED7B0000BD0C3C /* PasswordSignupViewController.swift */; };
 		2F99877B21A282E3001B1256 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F99877A21A282E3001B1256 /* AppDelegate.swift */; };
 		2F99878021A282E3001B1256 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F99877E21A282E3001B1256 /* Main.storyboard */; };
 		2F99878221A282E7001B1256 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F99878121A282E7001B1256 /* Assets.xcassets */; };
@@ -98,6 +102,13 @@
 		2F9987B021A29131001B1256 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F9987AE21A29131001B1256 /* SnapKit.framework */; };
 		2F9987B121A29131001B1256 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F9987AF21A29131001B1256 /* Alamofire.framework */; };
 		2F9DF8B021AF9CE2001D437F /* HistoryPollTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9DF8AF21AF9CE2001D437F /* HistoryPollTableViewCell.swift */; };
+		2FA78ABA21CF5A9A00C4FF53 /* LiveChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA78AB921CF5A9A00C4FF53 /* LiveChatViewController.swift */; };
+		2FA78ABC21CF5D9400C4FF53 /* FinishedChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA78ABB21CF5D9400C4FF53 /* FinishedChatViewController.swift */; };
+		2FA78AC721CF65C100C4FF53 /* StatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA78AC621CF65C100C4FF53 /* StatView.swift */; };
+		2FA78AC921CF65D900C4FF53 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FA78AC821CF65D900C4FF53 /* Charts.framework */; };
+		2FA78ACB21CF6BA400C4FF53 /* StatLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA78ACA21CF6BA400C4FF53 /* StatLabelView.swift */; };
+		2FA78ACD21CF6D8E00C4FF53 /* StatsHolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA78ACC21CF6D8E00C4FF53 /* StatsHolderView.swift */; };
+		2FD4595B21F427CD00B19E70 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4595A21F427CD00B19E70 /* LoginViewController.swift */; };
 		2FEA96BD21AFA10800522C0F /* Poll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEA96BC21AFA10800522C0F /* Poll.swift */; };
 		2FEA96BF21AFD24700522C0F /* NetworkHandler+Poll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEA96BE21AFD24700522C0F /* NetworkHandler+Poll.swift */; };
 		2FEA96C121AFD76D00522C0F /* DateFormatter+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEA96C021AFD76D00522C0F /* DateFormatter+Constants.swift */; };
@@ -139,7 +150,7 @@
 		2F45107421B3931600EC529E /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImage.framework; path = Carthage/Build/iOS/SDWebImage.framework; sourceTree = "<group>"; };
 		2F45107621B47C9A00EC529E /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		2F45107821B47E5F00EC529E /* ButtonScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonScrollView.swift; sourceTree = "<group>"; };
-		2F45107B21B48BEB00EC529E /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		2F45107B21B48BEB00EC529E /* BaseChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseChatViewController.swift; sourceTree = "<group>"; };
 		2F45107D21B4902200EC529E /* ProgressLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressLabelView.swift; sourceTree = "<group>"; };
 		2F45107F21B4C54000EC529E /* ClapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClapView.swift; sourceTree = "<group>"; };
 		2F45108121B4C5FC00EC529E /* UIImageView+TintColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+TintColor.swift"; sourceTree = "<group>"; };
@@ -184,8 +195,7 @@
 		2F8A6F0721A67EAD0056D4AD /* LiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveView.swift; sourceTree = "<group>"; };
 		2F8A6F0921A680CB0056D4AD /* PercentageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercentageButton.swift; sourceTree = "<group>"; };
 		2F8A6F0D21AB71BF0056D4AD /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
-		2F8A6F0E21AB71C00056D4AD /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		2F8A6F0F21AB71C00056D4AD /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		2F8A6F0E21AB71C00056D4AD /* BaseLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseLoginViewController.swift; sourceTree = "<group>"; };
 		2F8A6F1321AB72300056D4AD /* FeatherIcon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FeatherIcon.framework; path = Carthage/Build/iOS/FeatherIcon.framework; sourceTree = "<group>"; };
 		2F8A6F1521AB74140056D4AD /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
 		2F8A6F1621AB74140056D4AD /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
@@ -210,6 +220,11 @@
 		2F8A6F4221ABCA1B0056D4AD /* Dictionary+Decoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Decoder.swift"; sourceTree = "<group>"; };
 		2F8A6F4621ABCBD60056D4AD /* CommonError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonError.swift; sourceTree = "<group>"; };
 		2F8A6F4821ABCD790056D4AD /* UIViewController+Messages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Messages.swift"; sourceTree = "<group>"; };
+		2F8C262521E5C03400BD0C3C /* Cocogoose.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Cocogoose.ttf; sourceTree = "<group>"; };
+		2F8C262E21E70A5700BD0C3C /* BaseSignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSignupViewController.swift; sourceTree = "<group>"; };
+		2F8C263621E8531700BD0C3C /* EmailSignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSignupViewController.swift; sourceTree = "<group>"; };
+		2F8C263821EAA0FC00BD0C3C /* UsernameSignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameSignupViewController.swift; sourceTree = "<group>"; };
+		2F8C263A21ED7B0000BD0C3C /* PasswordSignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordSignupViewController.swift; sourceTree = "<group>"; };
 		2F99877721A282E3001B1256 /* friction.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = friction.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F99877A21A282E3001B1256 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2F99877F21A282E3001B1256 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -226,6 +241,13 @@
 		2F9987AE21A29131001B1256 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
 		2F9987AF21A29131001B1256 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		2F9DF8AF21AF9CE2001D437F /* HistoryPollTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryPollTableViewCell.swift; sourceTree = "<group>"; };
+		2FA78AB921CF5A9A00C4FF53 /* LiveChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveChatViewController.swift; sourceTree = "<group>"; };
+		2FA78ABB21CF5D9400C4FF53 /* FinishedChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishedChatViewController.swift; sourceTree = "<group>"; };
+		2FA78AC621CF65C100C4FF53 /* StatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatView.swift; sourceTree = "<group>"; };
+		2FA78AC821CF65D900C4FF53 /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Charts.framework; path = Carthage/Build/iOS/Charts.framework; sourceTree = "<group>"; };
+		2FA78ACA21CF6BA400C4FF53 /* StatLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatLabelView.swift; sourceTree = "<group>"; };
+		2FA78ACC21CF6D8E00C4FF53 /* StatsHolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsHolderView.swift; sourceTree = "<group>"; };
+		2FD4595A21F427CD00B19E70 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		2FEA96BC21AFA10800522C0F /* Poll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Poll.swift; sourceTree = "<group>"; };
 		2FEA96BE21AFD24700522C0F /* NetworkHandler+Poll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkHandler+Poll.swift"; sourceTree = "<group>"; };
 		2FEA96C021AFD76D00522C0F /* DateFormatter+Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Constants.swift"; sourceTree = "<group>"; };
@@ -241,6 +263,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FA78AC921CF65D900C4FF53 /* Charts.framework in Frameworks */,
 				2F4510B821B6551D00EC529E /* libc++.tbd in Frameworks */,
 				2F4510B321B651F700EC529E /* Fabric.framework in Frameworks */,
 				2F4510B421B651F700EC529E /* Crashlytics.framework in Frameworks */,
@@ -305,16 +328,11 @@
 		2F45107A21B48BDB00EC529E /* Chat */ = {
 			isa = PBXGroup;
 			children = (
-				2F45107B21B48BEB00EC529E /* ChatViewController.swift */,
+				2F45107B21B48BEB00EC529E /* BaseChatViewController.swift */,
+				2FA78ABB21CF5D9400C4FF53 /* FinishedChatViewController.swift */,
+				2FA78AB921CF5A9A00C4FF53 /* LiveChatViewController.swift */,
 			);
 			path = Chat;
-			sourceTree = "<group>";
-		};
-		2F45108921B4E41F00EC529E /* Message */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Message;
 			sourceTree = "<group>";
 		};
 		2F45108E21B5234000EC529E /* Message */ = {
@@ -361,6 +379,7 @@
 				2F5D1CD421A292EF003D0587 /* AvenirNextLTPro-Regular.otf */,
 				2F5D1CD521A292EF003D0587 /* AvenirNextLTPro-UltLt.otf */,
 				2F5D1CD921A292F0003D0587 /* AvenirNextLTPro-UltLtIt.otf */,
+				2F8C262521E5C03400BD0C3C /* Cocogoose.ttf */,
 				2F4510AF21B64F3A00EC529E /* GoogleService-Info.plist */,
 			);
 			path = Resources;
@@ -405,14 +424,15 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
-		2F8A6F0C21AB708B0056D4AD /* Login */ = {
+		2F8A6F0C21AB708B0056D4AD /* Welcome */ = {
 			isa = PBXGroup;
 			children = (
-				2F8A6F0E21AB71C00056D4AD /* LoginViewController.swift */,
-				2F8A6F0F21AB71C00056D4AD /* SignupViewController.swift */,
+				2FD4595921F4274800B19E70 /* Login */,
+				2F8C262D21E70A4300BD0C3C /* Signup */,
+				2F8A6F0E21AB71C00056D4AD /* BaseLoginViewController.swift */,
 				2F8A6F0D21AB71BF0056D4AD /* WelcomeViewController.swift */,
 			);
-			path = Login;
+			path = Welcome;
 			sourceTree = "<group>";
 		};
 		2F8A6F1D21AB74880056D4AD /* Helper */ = {
@@ -481,6 +501,17 @@
 			path = Error;
 			sourceTree = "<group>";
 		};
+		2F8C262D21E70A4300BD0C3C /* Signup */ = {
+			isa = PBXGroup;
+			children = (
+				2F8C262E21E70A5700BD0C3C /* BaseSignupViewController.swift */,
+				2F8C263621E8531700BD0C3C /* EmailSignupViewController.swift */,
+				2F8C263821EAA0FC00BD0C3C /* UsernameSignupViewController.swift */,
+				2F8C263A21ED7B0000BD0C3C /* PasswordSignupViewController.swift */,
+			);
+			path = Signup;
+			sourceTree = "<group>";
+		};
 		2F99876E21A282E3001B1256 = {
 			isa = PBXGroup;
 			children = (
@@ -543,8 +574,7 @@
 			children = (
 				2F45107A21B48BDB00EC529E /* Chat */,
 				2F8A6F0B21AB70780056D4AD /* Home */,
-				2F8A6F0C21AB708B0056D4AD /* Login */,
-				2F45108921B4E41F00EC529E /* Message */,
+				2F8A6F0C21AB708B0056D4AD /* Welcome */,
 				2F45106521B3867C00EC529E /* Profile */,
 			);
 			path = Controller;
@@ -553,19 +583,13 @@
 		2F9987A921A28EDC001B1256 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2FA78ABF21CF642000C4FF53 /* Button */,
 				2F8A6F0421A678620056D4AD /* Cells */,
-				2F45106121B380E100EC529E /* AvatarView.swift */,
-				2F45107821B47E5F00EC529E /* ButtonScrollView.swift */,
-				2F45109121B52E9300EC529E /* ChatBoxView.swift */,
-				2F45108721B4D9BE00EC529E /* ChatTextField.swift */,
-				2F45107F21B4C54000EC529E /* ClapView.swift */,
-				2F8A6F0721A67EAD0056D4AD /* LiveView.swift */,
-				2F8A6F2821AB77E80056D4AD /* LoadingButton.swift */,
-				2F45108321B4C71300EC529E /* MessageView.swift */,
-				2F8A6F0921A680CB0056D4AD /* PercentageButton.swift */,
-				2F45106321B3860400EC529E /* ProfileView.swift */,
-				2F45107D21B4902200EC529E /* ProgressLabelView.swift */,
-				2F45107621B47C9A00EC529E /* ProgressView.swift */,
+				2FA78AC021CF643A00C4FF53 /* Chat */,
+				2FA78AC221CF644A00C4FF53 /* Poll */,
+				2FA78AC121CF644400C4FF53 /* Profile */,
+				2FA78ABE21CF641300C4FF53 /* Progress */,
+				2FA78AC321CF651200C4FF53 /* Stats */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -590,6 +614,7 @@
 		2F9987AD21A29130001B1256 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2FA78AC821CF65D900C4FF53 /* Charts.framework */,
 				2F4510B721B6551D00EC529E /* libc++.tbd */,
 				2F4510B221B651F700EC529E /* Crashlytics.framework */,
 				2F4510B121B651F700EC529E /* Fabric.framework */,
@@ -627,6 +652,71 @@
 				2FEA96CA21B247CD00522C0F /* Vote.swift */,
 			);
 			path = Poll;
+			sourceTree = "<group>";
+		};
+		2FA78ABE21CF641300C4FF53 /* Progress */ = {
+			isa = PBXGroup;
+			children = (
+				2F45107D21B4902200EC529E /* ProgressLabelView.swift */,
+				2F45107621B47C9A00EC529E /* ProgressView.swift */,
+			);
+			path = Progress;
+			sourceTree = "<group>";
+		};
+		2FA78ABF21CF642000C4FF53 /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				2F45107821B47E5F00EC529E /* ButtonScrollView.swift */,
+				2F8A6F2821AB77E80056D4AD /* LoadingButton.swift */,
+				2F8A6F0921A680CB0056D4AD /* PercentageButton.swift */,
+			);
+			path = Button;
+			sourceTree = "<group>";
+		};
+		2FA78AC021CF643A00C4FF53 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				2F45109121B52E9300EC529E /* ChatBoxView.swift */,
+				2F45108721B4D9BE00EC529E /* ChatTextField.swift */,
+				2F45107F21B4C54000EC529E /* ClapView.swift */,
+				2F45108321B4C71300EC529E /* MessageView.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		2FA78AC121CF644400C4FF53 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				2F45106121B380E100EC529E /* AvatarView.swift */,
+				2F45106321B3860400EC529E /* ProfileView.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		2FA78AC221CF644A00C4FF53 /* Poll */ = {
+			isa = PBXGroup;
+			children = (
+				2F8A6F0721A67EAD0056D4AD /* LiveView.swift */,
+			);
+			path = Poll;
+			sourceTree = "<group>";
+		};
+		2FA78AC321CF651200C4FF53 /* Stats */ = {
+			isa = PBXGroup;
+			children = (
+				2FA78AC621CF65C100C4FF53 /* StatView.swift */,
+				2FA78ACA21CF6BA400C4FF53 /* StatLabelView.swift */,
+				2FA78ACC21CF6D8E00C4FF53 /* StatsHolderView.swift */,
+			);
+			path = Stats;
+			sourceTree = "<group>";
+		};
+		2FD4595921F4274800B19E70 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				2FD4595A21F427CD00B19E70 /* LoginViewController.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -747,6 +837,7 @@
 				2F99878521A282E7001B1256 /* LaunchScreen.storyboard in Resources */,
 				2F5D1CE021A292F0003D0587 /* AvenirNextLTPro-UltLtIt.otf in Resources */,
 				2F99878221A282E7001B1256 /* Assets.xcassets in Resources */,
+				2F8C262621E5C03400BD0C3C /* Cocogoose.ttf in Resources */,
 				2F4510B021B64F3A00EC529E /* GoogleService-Info.plist in Resources */,
 				2F5D1CE121A292F0003D0587 /* AvenirNextLTPro-It.otf in Resources */,
 				2F5D1CDE21A292F0003D0587 /* AvenirNextLTPro-Medium.otf in Resources */,
@@ -814,6 +905,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Starscream.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftPhoenixClient.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/HockeySDK.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Charts.framework",
 			);
 			name = "Copy Carthage Frameworks";
 			outputFileListPaths = (
@@ -834,33 +926,37 @@
 				2F8A6F2321AB74CA0056D4AD /* CommonUtility.swift in Sources */,
 				2F45107321B390FE00EC529E /* CALayer+Shadow.swift in Sources */,
 				2F8A6F4321ABCA1B0056D4AD /* Data+JSON.swift in Sources */,
-				2F45107C21B48BEB00EC529E /* ChatViewController.swift in Sources */,
+				2F45107C21B48BEB00EC529E /* BaseChatViewController.swift in Sources */,
 				2F8A6F3821AB820E0056D4AD /* AppManager.swift in Sources */,
 				2F45106421B3860400EC529E /* ProfileView.swift in Sources */,
+				2FA78ACB21CF6BA400C4FF53 /* StatLabelView.swift in Sources */,
 				2F45108621B4C8F200EC529E /* FullMessageTableViewCell.swift in Sources */,
 				2F45106D21B38E9F00EC529E /* NetworkHandler+User.swift in Sources */,
 				2F8A6F2F21AB799D0056D4AD /* NetworkHandler.swift in Sources */,
 				2F8A6F2921AB77E80056D4AD /* LoadingButton.swift in Sources */,
 				2F4510BA21B6574B00EC529E /* Localizable.swift in Sources */,
-				2F8A6F1121AB71C00056D4AD /* LoginViewController.swift in Sources */,
+				2F8A6F1121AB71C00056D4AD /* BaseLoginViewController.swift in Sources */,
 				2F8A6F0621A679FB0056D4AD /* BasePollTableViewCell.swift in Sources */,
 				2F99877B21A282E3001B1256 /* AppDelegate.swift in Sources */,
 				2F45109021B523D300EC529E /* Message.swift in Sources */,
 				2F45108421B4C71300EC529E /* MessageView.swift in Sources */,
 				2F45108021B4C54000EC529E /* ClapView.swift in Sources */,
-				2F8A6F1221AB71C00056D4AD /* SignupViewController.swift in Sources */,
+				2F8C262F21E70A5700BD0C3C /* BaseSignupViewController.swift in Sources */,
 				2F45109221B52E9300EC529E /* ChatBoxView.swift in Sources */,
 				2F8A6F2721AB76040056D4AD /* UIImage+Constants.swift in Sources */,
 				2FEA96BD21AFA10800522C0F /* Poll.swift in Sources */,
 				2FEA96CB21B247CD00522C0F /* Vote.swift in Sources */,
 				2F8A6F0A21A680CB0056D4AD /* PercentageButton.swift in Sources */,
+				2FA78ABC21CF5D9400C4FF53 /* FinishedChatViewController.swift in Sources */,
 				2FEA96C921B2433600522C0F /* PollHolder.swift in Sources */,
+				2F8C263721E8531700BD0C3C /* EmailSignupViewController.swift in Sources */,
 				2FEA96BF21AFD24700522C0F /* NetworkHandler+Poll.swift in Sources */,
 				2F5D1CE421A29344003D0587 /* UIFont+CustomFonts.swift in Sources */,
 				2F45107721B47C9A00EC529E /* ProgressView.swift in Sources */,
 				2FEA96CD21B25C9500522C0F /* LivePollTableViewCell.swift in Sources */,
 				2F9987AC21A28EF9001B1256 /* MainViewController.swift in Sources */,
 				2F45106721B3868700EC529E /* ProfileViewController.swift in Sources */,
+				2F8C263921EAA0FC00BD0C3C /* UsernameSignupViewController.swift in Sources */,
 				2F45107E21B4902200EC529E /* ProgressLabelView.swift in Sources */,
 				2F45107921B47E5F00EC529E /* ButtonScrollView.swift in Sources */,
 				2F45109421B53A8200EC529E /* NetworkHandler+Messages.swift in Sources */,
@@ -870,23 +966,28 @@
 				2F45106F21B38F7900EC529E /* User+Image.swift in Sources */,
 				2F8A6F4921ABCD790056D4AD /* UIViewController+Messages.swift in Sources */,
 				2F45108821B4D9BE00EC529E /* ChatTextField.swift in Sources */,
+				2FA78AC721CF65C100C4FF53 /* StatView.swift in Sources */,
 				2F8A6F4421ABCA1B0056D4AD /* Dictionary+Decoder.swift in Sources */,
 				2F8A6F3B21AB8A640056D4AD /* User.swift in Sources */,
+				2FA78ABA21CF5A9A00C4FF53 /* LiveChatViewController.swift in Sources */,
 				2F8A6F3121AB79D20056D4AD /* URLRouter.swift in Sources */,
 				2F8A6F2021AB74B80056D4AD /* UIViewController+Back.swift in Sources */,
 				2F8A6F3D21ABC8B20056D4AD /* URLRequesst+cURL.swift in Sources */,
 				2F45105E21B34B3500EC529E /* DeviceToken.swift in Sources */,
 				2F9DF8B021AF9CE2001D437F /* HistoryPollTableViewCell.swift in Sources */,
+				2F8C263B21ED7B0100BD0C3C /* PasswordSignupViewController.swift in Sources */,
 				2FEA96C721B242CC00522C0F /* NetworkHandler+Votes.swift in Sources */,
 				2FEA96C121AFD76D00522C0F /* DateFormatter+Constants.swift in Sources */,
 				2F45106921B3869B00EC529E /* ProfileBaseViewController.swift in Sources */,
 				2F8A6F0821A67EAD0056D4AD /* LiveView.swift in Sources */,
 				2F45108221B4C5FC00EC529E /* UIImageView+TintColor.swift in Sources */,
 				2F45106221B380E100EC529E /* AvatarView.swift in Sources */,
+				2FA78ACD21CF6D8E00C4FF53 /* StatsHolderView.swift in Sources */,
 				2F45107121B38FCC00EC529E /* NetworkHandler+Image.swift in Sources */,
 				2F8A6F2121AB74B80056D4AD /* UITextField+Toolbar.swift in Sources */,
 				2F45106021B34BA900EC529E /* NetworkHandler+Token.swift in Sources */,
 				2F8A6F1021AB71C00056D4AD /* WelcomeViewController.swift in Sources */,
+				2FD4595B21F427CD00B19E70 /* LoginViewController.swift in Sources */,
 				2F45106B21B3886500EC529E /* ProfileDetailValueTableViewCell.swift in Sources */,
 				2F8A6F4721ABCBD60056D4AD /* CommonError.swift in Sources */,
 				2F5D1CE621A293A0003D0587 /* UIColor+HexRGB.swift in Sources */,
@@ -1079,7 +1180,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = friction/friction.entitlements;
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = 9JBA7R48SP;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1108,7 +1209,7 @@
 				CODE_SIGN_ENTITLEMENTS = friction/friction.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = 9JBA7R48SP;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

@@ -19,7 +19,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>11</string>
+	<string>12</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
@@ -33,6 +33,7 @@
 	</dict>
 	<key>UIAppFonts</key>
 	<array>
+		<string>Cocogoose.ttf</string>
 		<string>AvenirNextLTPro-Bold.otf</string>
 		<string>AvenirNextLTPro-Demi.otf</string>
 		<string>AvenirNextLTPro-It.otf</string>

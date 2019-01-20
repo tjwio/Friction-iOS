@@ -62,8 +62,8 @@ class BaseSignupViewController: UIViewController, UITextFieldDelegate {
     
     let nextButton: LoadingButton = {
         let button = LoadingButton(type: .custom)
-        button.backgroundColor = UIColor.Pink.normal
-        
+        button.backgroundColor = UIColor.Pink.normal.withAlphaComponent(0.50)
+        button.isEnabled = false
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont.avenirDemi(size: 17.0)
         button.layer.cornerRadius = 4.0
@@ -77,6 +77,17 @@ class BaseSignupViewController: UIViewController, UITextFieldDelegate {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
         return imageView
+    }()
+    
+    lazy var textFieldStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [textField])
+        stackView.alignment = .leading
+        stackView.axis = .vertical
+        stackView.distribution = .fill
+        stackView.spacing = 12.0
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return stackView
     }()
     
     private lazy var infoIconStackView: UIStackView = {
@@ -96,6 +107,10 @@ class BaseSignupViewController: UIViewController, UITextFieldDelegate {
     
     private var disposables = CompositeDisposable()
     
+    var enabledTextFields: [UITextField] {
+        return [textField]
+    }
+    
     deinit {
         NotificationCenter.default.removeObserver(self)
         disposables.dispose()
@@ -108,7 +123,7 @@ class BaseSignupViewController: UIViewController, UITextFieldDelegate {
         
         view.addSubview(infoIconStackView)
         view.addSubview(descriptionLabel)
-        view.addSubview(textField)
+        view.addSubview(textFieldStackView)
         view.addSubview(nextButton)
         view.addSubview(imageView)
         
@@ -126,8 +141,8 @@ class BaseSignupViewController: UIViewController, UITextFieldDelegate {
             button.backgroundColor = button.backgroundColor?.withAlphaComponent(0.75)
         }
         
-        disposables += textField.reactive.continuousTextValues.map { [unowned self] string in
-            return string != nil && self.isValidEntry(string!)
+        disposables += Signal.combineLatest(enabledTextFields.map { return $0.reactive.continuousTextValues }).map { [unowned self] strings in
+            return !strings.contains { $0 == nil || !self.isValidEntry($0!) }
         }.observeValues { [unowned self] isEnabled in
             if (isEnabled) {
                 self.nextButton.isEnabled = true
@@ -155,14 +170,18 @@ class BaseSignupViewController: UIViewController, UITextFieldDelegate {
         }
         
         textField.snp.makeConstraints { make in
-            make.top.equalTo(self.descriptionLabel.snp.bottom).offset(40.0)
-            make.leading.equalToSuperview().offset(44.0)
-            make.trailing.equalToSuperview().offset(-44.0)
+            make.leading.trailing.equalToSuperview()
             make.height.equalTo(44.0)
         }
         
+        textFieldStackView.snp.makeConstraints { make in
+            make.top.equalTo(self.descriptionLabel.snp.bottom).offset(40.0)
+            make.leading.equalToSuperview().offset(44.0)
+            make.trailing.equalToSuperview().offset(-44.0)
+        }
+        
         nextButton.snp.makeConstraints { make in
-            make.top.equalTo(self.textField.snp.bottom).offset(12.0)
+            make.top.equalTo(self.textFieldStackView.snp.bottom).offset(12.0)
             make.trailing.equalToSuperview().offset(-44.0)
             make.height.equalTo(44.0)
             make.width.equalTo(150.0)
@@ -187,8 +206,8 @@ class BaseSignupViewController: UIViewController, UITextFieldDelegate {
     // MARK: text field
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if isValidEntry(textField.text ?? "") {
-            nextStep(nil)
+        if isValidEntry(textField.text ?? "") && nextButton.isEnabled {
+            nextStep(nextButton)
         }
         
         return true

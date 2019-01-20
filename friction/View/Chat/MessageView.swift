@@ -74,7 +74,7 @@ class MessageView: UIView {
     }
     
     private func commonInit() {
-        layer.cornerRadius = 4.0
+        layer.cornerRadius = 12.0
         
         addSubview(labelStackView)
         addSubview(messageLabel)
@@ -93,7 +93,7 @@ class MessageView: UIView {
             make.top.equalTo(self.labelStackView.snp.bottom).offset(4.0)
             make.leading.equalToSuperview().offset(8.0)
             make.trailing.lessThanOrEqualToSuperview().offset(-8.0)
-            make.bottom.equalToSuperview().offset(-6.0)
+            make.bottom.equalToSuperview().offset(-8.0)
         }
         
         super.updateConstraints()

@@ -37,7 +37,6 @@ class FullMessageTableViewCell: UITableViewCell, ClapViewDelegate {
     
     let dislikeView: ClapView = {
         let view = ClapView()
-        view.detailString = "frics"
         view.icon.text = "👎"
         view.translatesAutoresizingMaskIntoConstraints = false
         
@@ -83,25 +82,24 @@ class FullMessageTableViewCell: UITableViewCell, ClapViewDelegate {
         }
         
         messageView.snp.makeConstraints { make in
-            make.top.bottom.equalToSuperview()
+            make.top.equalToSuperview()
             make.leading.equalTo(self.avatarView.snp.trailing).offset(10.0)
+            make.trailing.equalToSuperview().offset(-16.0)
             make.height.greaterThanOrEqualTo(48.0)
         }
         
         buttonStackView.snp.makeConstraints { make in
-            make.top.equalToSuperview()
-            make.leading.equalTo(self.messageView.snp.trailing).offset(8.0)
-            make.trailing.equalToSuperview().offset(-8.0)
+            make.bottom.equalToSuperview()
+            make.trailing.equalTo(self.messageView).offset(-6.0)
+            make.centerY.equalTo(self.messageView.snp.bottom).offset(6.0)
         }
         
         clapView.snp.makeConstraints { make in
-            make.height.equalTo(48.0)
-            make.width.equalTo(54.0)
+            make.width.greaterThanOrEqualTo(44.0)
         }
         
         dislikeView.snp.makeConstraints { make in
-            make.height.equalTo(48.0)
-            make.width.equalTo(54.0)
+            make.width.greaterThanOrEqualTo(44.0)
         }
         
         super.updateConstraints()

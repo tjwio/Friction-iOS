@@ -29,12 +29,6 @@ class ClapView: UIView {
     let claps = MutableProperty<Int>(0)
     let addedClaps = MutableProperty<Int>(0)
     
-    var detailString = GlobalStrings.claps.localized.lowercased() {
-        didSet {
-            updateLabelText(claps: claps.value + addedClaps.value)
-        }
-    }
-    
     let hapticGenerator = UIImpactFeedbackGenerator(style: .light)
     
     var audioPlayer: AVAudioPlayer? = {
@@ -55,6 +49,7 @@ class ClapView: UIView {
     
     let icon: UILabel = {
         let label  = UILabel()
+        label.font = .systemFont(ofSize: 12.0)
         label.text = "👏"
         label.translatesAutoresizingMaskIntoConstraints = false
         
@@ -63,11 +58,22 @@ class ClapView: UIView {
     
     let label: UILabel = {
         let label = UILabel()
-        label.font = .avenirMedium(size: 10.0)
-        label.textColor = UIColor.Grayscale.dark
+        label.font = .avenirMedium(size: 9.0)
+        label.textColor = UIColor.Grayscale.medium
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
+    }()
+    
+    lazy private var stackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [label, icon])
+        stackView.alignment = .center
+        stackView.axis = .horizontal
+        stackView.distribution = .fill
+        stackView.spacing = 0.0
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return stackView
     }()
     
     private var timer: Timer?
@@ -99,27 +105,23 @@ class ClapView: UIView {
         addGestureRecognizer(holdGestureRecognizer)
         
         disposables += SignalProducer.combineLatest(claps.producer, addedClaps.producer).startWithValues { [unowned self] claps, added in
-            self.updateLabelText(claps: claps+added)
+            self.label.text = "\(claps+added)"
         }
         
-        layer.cornerRadius = 4.0
+        backgroundColor = .white
+        
+        layer.cornerRadius = 8.0
         layer.borderWidth = 1.0
         layer.borderColor = UIColor.Grayscale.light.cgColor
+        layer.applySketchShadow(color: UIColor(hexColor: 0xEBEBEB), alpha: 0.80, x: 2.0, y: 4.0, blur: 3.0, spread: 0.0)
         
-        addSubview(icon)
-        addSubview(label)
+        addSubview(stackView)
         setNeedsUpdateConstraints()
     }
     
     override func updateConstraints() {
-        icon.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(8.0)
-            make.centerX.equalToSuperview()
-        }
-        
-        label.snp.makeConstraints { make in
-            make.bottom.equalToSuperview().offset(-4.0)
-            make.centerX.equalToSuperview()
+        stackView.snp.makeConstraints { make in
+            make.edges.equalToSuperview().inset(UIEdgeInsets(top: 6.0, left: 12.0, bottom: 6.0, right: 12.0))
         }
         
         super.updateConstraints()
@@ -160,11 +162,5 @@ class ClapView: UIView {
                 self.transform = .identity
             }
         }
-    }
-    
-    // MARK: helper
-    
-    private func updateLabelText(claps: Int) {
-        label.text = "\(claps) \(detailString)"
     }
 }

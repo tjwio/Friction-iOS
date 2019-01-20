@@ -113,7 +113,11 @@ extension UIColor {
             return UIColor(hexColor: 0xFF89C0)
         }
         
-        static let all = [red, orange, yellow, pink]
+        static var purple: UIColor {
+            return UIColor(hexColor: 0xA7ABFF)
+        }
+        
+        static let all = [red, orange, purple, pink]
     }
     
     class func pollColor(index: Int) -> UIColor {

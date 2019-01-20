@@ -17,4 +17,13 @@ extension NetworkHandler {
             }
         }
     }
+    
+    func addDislikes(messageId: String, parameters: Parameters, success: EmptyHandler?, failure: ErrorHandler?) {
+        sessionManager.request(URLRouter.addDislikes(messageId: messageId, parameters: parameters)).validate().responseData { response in
+            switch response.result {
+            case .success: success?()
+            case .failure(let error): failure?(error)
+            }
+        }
+    }
 }

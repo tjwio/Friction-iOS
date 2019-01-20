@@ -24,6 +24,7 @@ class Message: Decodable {
     var date: Date
     
     private(set) var isPendingClaps = false
+    private(set) var isPendingDislikes = false
     
     enum CodingKeys: String, CodingKey {
         case id, message, claps, dislikes, name
@@ -61,6 +62,19 @@ class Message: Decodable {
             success?()
         }, failure: { error in
             self.isPendingClaps = false
+            failure?(error)
+        })
+    }
+    
+    func addDislikes(_ dislikes: Int, success: EmptyHandler?, failure: ErrorHandler?) {
+        isPendingDislikes = true
+        
+        NetworkHandler.shared.addDislikes(messageId: id, parameters: [CodingKeys.dislikes.rawValue: dislikes], success: {
+            self.dislikes += dislikes
+            self.isPendingDislikes = false
+            success?()
+        }, failure: { error in
+            self.isPendingDislikes = false
             failure?(error)
         })
     }

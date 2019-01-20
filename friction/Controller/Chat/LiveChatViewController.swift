@@ -17,6 +17,7 @@ class LiveChatViewController: BaseChatViewController, ButtonScrollViewDelegate, 
             static let lobby = "room:lobby"
             static let shout = "shout"
             static let claps = "claps"
+            static let dislikes = "dislikes"
         }
     }
     
@@ -102,6 +103,19 @@ class LiveChatViewController: BaseChatViewController, ButtonScrollViewDelegate, 
             strongSelf.tableView.reloadSections(IndexSet(integer: index), with: .none)
         }
         
+        lobby.on(Constants.Channel.dislikes) { [weak self] message in
+            guard let strongSelf = self,
+                let id = message.payload[Message.CodingKeys.id.rawValue] as? String, let dislikes = message.payload[Message.CodingKeys.dislikes.rawValue] as? Int,
+                let index = strongSelf.messages.firstIndex(where: { return $0.id == id }) else { return }
+            
+            let origMessage = strongSelf.messages[index]
+            guard !origMessage.isPendingDislikes && origMessage.dislikes != dislikes else { return }
+            
+            origMessage.dislikes = dislikes
+            
+            strongSelf.tableView.reloadSections(IndexSet(integer: index), with: .none)
+        }
+        
         socket.connect()
         _ = lobby.join()
             .receive("ok", callback: { _ in
@@ -156,6 +170,9 @@ class LiveChatViewController: BaseChatViewController, ButtonScrollViewDelegate, 
             cell.clapView.isUserInteractionEnabled = true
             cell.clapCallback = { [weak message] claps in
                 message?.addClaps(claps, success: nil, failure: nil)
+            }
+            cell.dislikeCallback = { [weak message] dislikes in
+                message?.addDislikes(dislikes, success: nil, failure: nil)
             }
         }
         

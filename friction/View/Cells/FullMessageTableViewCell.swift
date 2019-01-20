@@ -12,6 +12,7 @@ import SnapKit
 class FullMessageTableViewCell: UITableViewCell, ClapViewDelegate {
     
     var clapCallback: ((_ claps: Int) -> Void)?
+    var dislikeCallback: ((_ dislikes: Int) -> Void)?
     
     let avatarView: AvatarView = {
         let imageView = AvatarView(image: .blankAvatarBlack, shadowHidden: true)
@@ -44,7 +45,7 @@ class FullMessageTableViewCell: UITableViewCell, ClapViewDelegate {
     }()
     
     lazy private var buttonStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [clapView, dislikeView])
+        let stackView = UIStackView(arrangedSubviews: [dislikeView, clapView])
         stackView.alignment = .center
         stackView.axis = .horizontal
         stackView.distribution = .fill
@@ -66,6 +67,7 @@ class FullMessageTableViewCell: UITableViewCell, ClapViewDelegate {
     
     private func commonInit() {
         clapView.delegate = self
+        dislikeView.delegate = self
         
         contentView.addSubview(avatarView)
         contentView.addSubview(messageView)
@@ -108,6 +110,10 @@ class FullMessageTableViewCell: UITableViewCell, ClapViewDelegate {
     // MARK: delegate
     
     func clapView(_ clapView: ClapView, didClap claps: Int) {
-        clapCallback?(claps)
+        if clapView === dislikeView {
+            dislikeCallback?(claps)
+        } else {
+            clapCallback?(claps)
+        }
     }
 }

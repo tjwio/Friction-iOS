@@ -34,6 +34,26 @@ class FullMessageTableViewCell: UITableViewCell, ClapViewDelegate {
         return clapView
     }()
     
+    let dislikeView: ClapView = {
+        let view = ClapView()
+        view.detailString = "frics"
+        view.icon.text = "👎"
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        return view
+    }()
+    
+    lazy private var buttonStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [clapView, dislikeView])
+        stackView.alignment = .center
+        stackView.axis = .horizontal
+        stackView.distribution = .fill
+        stackView.spacing = 8.0
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return stackView
+    }()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         commonInit()
@@ -49,7 +69,7 @@ class FullMessageTableViewCell: UITableViewCell, ClapViewDelegate {
         
         contentView.addSubview(avatarView)
         contentView.addSubview(messageView)
-        contentView.addSubview(clapView)
+        contentView.addSubview(buttonStackView)
         
         setNeedsUpdateConstraints()
     }
@@ -66,10 +86,18 @@ class FullMessageTableViewCell: UITableViewCell, ClapViewDelegate {
             make.height.greaterThanOrEqualTo(48.0)
         }
         
-        clapView.snp.makeConstraints { make in
+        buttonStackView.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.leading.equalTo(self.messageView.snp.trailing).offset(8.0)
             make.trailing.equalToSuperview().offset(-8.0)
+        }
+        
+        clapView.snp.makeConstraints { make in
+            make.height.equalTo(48.0)
+            make.width.equalTo(54.0)
+        }
+        
+        dislikeView.snp.makeConstraints { make in
             make.height.equalTo(48.0)
             make.width.equalTo(54.0)
         }

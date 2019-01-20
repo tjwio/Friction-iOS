@@ -160,7 +160,7 @@ class BaseChatViewController: UIViewController, UITableViewDataSource, UITableVi
         tableView.snp.makeConstraints { make in
             make.top.equalTo(self.separatorView.snp.bottom)
             make.leading.equalToSuperview().offset(16.0)
-            make.trailing.equalToSuperview().offset(-16.0)
+            make.trailing.equalToSuperview()
             make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).offset(-52.0)
         }
         

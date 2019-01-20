@@ -29,6 +29,12 @@ class ClapView: UIView {
     let claps = MutableProperty<Int>(0)
     let addedClaps = MutableProperty<Int>(0)
     
+    var detailString = GlobalStrings.claps.localized.lowercased() {
+        didSet {
+            updateLabelText(claps: claps.value + addedClaps.value)
+        }
+    }
+    
     let hapticGenerator = UIImpactFeedbackGenerator(style: .light)
     
     var audioPlayer: AVAudioPlayer? = {
@@ -47,12 +53,12 @@ class ClapView: UIView {
         }
     }()
     
-    let imageView: UIImageView = {
-        let imageView = UIImageView(image: .clap)
-        imageView.tintImage(color: UIColor.Grayscale.dark)
-        imageView.translatesAutoresizingMaskIntoConstraints = false
+    let icon: UILabel = {
+        let label  = UILabel()
+        label.text = "👏"
+        label.translatesAutoresizingMaskIntoConstraints = false
         
-        return imageView
+        return label
     }()
     
     let label: UILabel = {
@@ -92,21 +98,21 @@ class ClapView: UIView {
         holdGestureRecognizer.minimumPressDuration = 0.0
         addGestureRecognizer(holdGestureRecognizer)
         
-        disposables += SignalProducer.combineLatest(claps.producer, addedClaps.producer).startWithValues { [weak self] claps, added in
-            self?.label.text = "\(claps+added) \(GlobalStrings.claps.localized.lowercased())"
+        disposables += SignalProducer.combineLatest(claps.producer, addedClaps.producer).startWithValues { [unowned self] claps, added in
+            self.updateLabelText(claps: claps+added)
         }
         
         layer.cornerRadius = 4.0
         layer.borderWidth = 1.0
         layer.borderColor = UIColor.Grayscale.light.cgColor
         
-        addSubview(imageView)
+        addSubview(icon)
         addSubview(label)
         setNeedsUpdateConstraints()
     }
     
     override func updateConstraints() {
-        imageView.snp.makeConstraints { make in
+        icon.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(8.0)
             make.centerX.equalToSuperview()
         }
@@ -135,7 +141,6 @@ class ClapView: UIView {
             })
             
             layer.borderColor = UIColor.Grayscale.darker.cgColor
-            imageView.tintImage(color: UIColor.Grayscale.darker)
             label.textColor = UIColor.Grayscale.darker
             
             UIView.animate(withDuration: 0.125) {
@@ -149,12 +154,17 @@ class ClapView: UIView {
             addedClaps.value = 0
             
             layer.borderColor = UIColor.Grayscale.light.cgColor
-            imageView.tintImage(color: UIColor.Grayscale.dark)
             label.textColor = UIColor.Grayscale.dark
             
             UIView.animate(withDuration: 0.125) {
                 self.transform = .identity
             }
         }
+    }
+    
+    // MARK: helper
+    
+    private func updateLabelText(claps: Int) {
+        label.text = "\(claps) \(detailString)"
     }
 }

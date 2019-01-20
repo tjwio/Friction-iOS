@@ -16,6 +16,7 @@ class Message: Decodable {
     
     var message: String
     var claps: Int
+    var dislikes: Int
     
     var name: String
     var imageUrl: String?
@@ -25,7 +26,7 @@ class Message: Decodable {
     private(set) var isPendingClaps = false
     
     enum CodingKeys: String, CodingKey {
-        case id, message, claps, name
+        case id, message, claps, dislikes, name
         case pollId = "poll_id"
         case optionId = "option_id"
         case imageUrl = "image_url"
@@ -39,6 +40,7 @@ class Message: Decodable {
         message = try container.decode(String.self, forKey: .message)
         imageUrl = try container.decodeIfPresent(String.self, forKey: .imageUrl)
         claps = try container.decode(Int.self, forKey: .claps)
+        dislikes = try container.decodeIfPresent(Int.self, forKey: .dislikes) ?? 0
         let pollId = try container.decode(String.self, forKey: .pollId)
         let optionId = try container.decode(String.self, forKey: .optionId)
         let dateStr = try container.decode(String.self, forKey: .date)

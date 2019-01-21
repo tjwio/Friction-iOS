@@ -110,10 +110,7 @@ class ClapView: UIView {
         
         backgroundColor = .white
         
-        layer.cornerRadius = 8.0
-        layer.borderWidth = 1.0
-        layer.borderColor = UIColor.Grayscale.light.cgColor
-        layer.applySketchShadow(color: UIColor(hexColor: 0xEBEBEB), alpha: 0.80, x: 2.0, y: 4.0, blur: 3.0, spread: 0.0)
+        layer.cornerRadius = 12.0
         
         addSubview(stackView)
         setNeedsUpdateConstraints()
@@ -142,7 +139,7 @@ class ClapView: UIView {
                 self?.audioPlayer?.play()
             })
             
-            layer.borderColor = UIColor.Grayscale.darker.cgColor
+            layer.borderWidth = 2.0
             label.textColor = UIColor.Grayscale.darker
             
             UIView.animate(withDuration: 0.125) {
@@ -155,7 +152,7 @@ class ClapView: UIView {
             claps.value += addedClaps.value
             addedClaps.value = 0
             
-            layer.borderColor = UIColor.Grayscale.light.cgColor
+            layer.borderWidth = 1.0
             label.textColor = UIColor.Grayscale.dark
             
             UIView.animate(withDuration: 0.125) {

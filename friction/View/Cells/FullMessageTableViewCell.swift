@@ -77,7 +77,8 @@ class FullMessageTableViewCell: UITableViewCell, ClapViewDelegate {
     
     override func updateConstraints() {
         avatarView.snp.makeConstraints { make in
-            make.top.leading.equalToSuperview()
+            make.top.equalTo(self.messageView.labelStackView)
+            make.leading.equalToSuperview()
             make.height.width.equalTo(30.0)
         }
         

@@ -47,8 +47,8 @@ class BaseChatViewController: UIViewController, UITableViewDataSource, UITableVi
         return scrollView
     }()
     
-    let progressView: ProgressLabelView = {
-        let view = ProgressLabelView()
+    let progressView: ProgressView = {
+        let view = ProgressView()
         view.translatesAutoresizingMaskIntoConstraints = false
         
         return view
@@ -111,13 +111,14 @@ class BaseChatViewController: UIViewController, UITableViewDataSource, UITableVi
         buttonScrollView.items = items
         
         progressView.percents = items.map { return $0.percent }
+        progressView.layer.applySketchShadow(color: UIColor.Grayscale.light, alpha: 0.50, x: 3.0, y: 4.0, blur: 8.0, spread: 0.0)
         
         view.addSubview(nameLabel)
         view.addSubview(liveView)
         view.addSubview(buttonScrollView)
-        view.addSubview(progressView)
         view.addSubview(separatorView)
         view.addSubview(tableView)
+        view.addSubview(progressView)
         view.addSubview(activityIndicator)
         
         activityIndicator.startAnimating()
@@ -147,12 +148,13 @@ class BaseChatViewController: UIViewController, UITableViewDataSource, UITableVi
         
         progressView.snp.makeConstraints { make in
             make.top.equalTo(self.buttonScrollView.snp.bottom).offset(16.0)
-            make.leading.equalToSuperview().offset(20.0)
-            make.trailing.equalToSuperview().offset(-20.0)
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.height.equalTo(24.0)
         }
         
         separatorView.snp.makeConstraints { make in
-            make.top.equalTo(self.progressView.snp.bottom).offset(12.0)
+            make.top.equalTo(self.progressView.snp.bottom)
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(2.0)
         }

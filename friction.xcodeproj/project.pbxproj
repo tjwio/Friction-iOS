@@ -22,7 +22,6 @@
 		2F45107721B47C9A00EC529E /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45107621B47C9A00EC529E /* ProgressView.swift */; };
 		2F45107921B47E5F00EC529E /* ButtonScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45107821B47E5F00EC529E /* ButtonScrollView.swift */; };
 		2F45107C21B48BEB00EC529E /* BaseChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45107B21B48BEB00EC529E /* BaseChatViewController.swift */; };
-		2F45107E21B4902200EC529E /* ProgressLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45107D21B4902200EC529E /* ProgressLabelView.swift */; };
 		2F45108021B4C54000EC529E /* ClapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45107F21B4C54000EC529E /* ClapView.swift */; };
 		2F45108221B4C5FC00EC529E /* UIImageView+TintColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45108121B4C5FC00EC529E /* UIImageView+TintColor.swift */; };
 		2F45108421B4C71300EC529E /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45108321B4C71300EC529E /* MessageView.swift */; };
@@ -151,7 +150,6 @@
 		2F45107621B47C9A00EC529E /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		2F45107821B47E5F00EC529E /* ButtonScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonScrollView.swift; sourceTree = "<group>"; };
 		2F45107B21B48BEB00EC529E /* BaseChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseChatViewController.swift; sourceTree = "<group>"; };
-		2F45107D21B4902200EC529E /* ProgressLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressLabelView.swift; sourceTree = "<group>"; };
 		2F45107F21B4C54000EC529E /* ClapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClapView.swift; sourceTree = "<group>"; };
 		2F45108121B4C5FC00EC529E /* UIImageView+TintColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+TintColor.swift"; sourceTree = "<group>"; };
 		2F45108321B4C71300EC529E /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
@@ -657,7 +655,6 @@
 		2FA78ABE21CF641300C4FF53 /* Progress */ = {
 			isa = PBXGroup;
 			children = (
-				2F45107D21B4902200EC529E /* ProgressLabelView.swift */,
 				2F45107621B47C9A00EC529E /* ProgressView.swift */,
 			);
 			path = Progress;
@@ -957,7 +954,6 @@
 				2F9987AC21A28EF9001B1256 /* MainViewController.swift in Sources */,
 				2F45106721B3868700EC529E /* ProfileViewController.swift in Sources */,
 				2F8C263921EAA0FC00BD0C3C /* UsernameSignupViewController.swift in Sources */,
-				2F45107E21B4902200EC529E /* ProgressLabelView.swift in Sources */,
 				2F45107921B47E5F00EC529E /* ButtonScrollView.swift in Sources */,
 				2F45109421B53A8200EC529E /* NetworkHandler+Messages.swift in Sources */,
 				2F8A6F3621AB81620056D4AD /* AppConstants.swift in Sources */,
@@ -1180,7 +1176,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = friction/friction.entitlements;
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_TEAM = 9JBA7R48SP;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1209,7 +1205,7 @@
 				CODE_SIGN_ENTITLEMENTS = friction/friction.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_TEAM = 9JBA7R48SP;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

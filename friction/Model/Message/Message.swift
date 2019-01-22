@@ -9,6 +9,31 @@
 import Foundation
 
 class Message: Decodable {
+    struct Clap: Decodable {
+        enum CodingKeys: String, CodingKey {
+            case id, claps
+        }
+        
+        var id: String
+        var claps: Int
+    }
+    
+    struct Dislike: Decodable {
+        enum CodingKeys: String, CodingKey {
+            case id, dislikes
+        }
+        
+        var id: String
+        var dislikes: Int
+    }
+    
+    struct Constants {
+        struct Limit {
+            static let claps = 50
+            static let dislikes = 50
+        }
+    }
+    
     var id: String
     
     var poll: Poll
@@ -23,6 +48,9 @@ class Message: Decodable {
     
     var date: Date
     
+    var addedClap: Clap?
+    var addedDislike: Dislike?
+    
     private(set) var isPendingClaps = false
     private(set) var isPendingDislikes = false
     
@@ -32,6 +60,8 @@ class Message: Decodable {
         case optionId = "option_id"
         case imageUrl = "image_url"
         case date = "inserted_at"
+        case addedClap = "added_clap"
+        case addedDislike = "added_dislike"
     }
     
     required init(from decoder: Decoder) throws {
@@ -42,6 +72,8 @@ class Message: Decodable {
         imageUrl = try container.decodeIfPresent(String.self, forKey: .imageUrl)
         claps = try container.decode(Int.self, forKey: .claps)
         dislikes = try container.decodeIfPresent(Int.self, forKey: .dislikes) ?? 0
+        addedClap = try container.decodeIfPresent(Clap.self, forKey: .addedClap)
+        addedDislike = try container.decodeIfPresent(Dislike.self, forKey: .addedDislike)
         let pollId = try container.decode(String.self, forKey: .pollId)
         let optionId = try container.decode(String.self, forKey: .optionId)
         let dateStr = try container.decode(String.self, forKey: .date)
@@ -53,10 +85,21 @@ class Message: Decodable {
         self.date = date
     }
     
+    // MARK: claps
+    
     func addClaps(_ claps: Int, success: EmptyHandler?, failure: ErrorHandler?) {
+        if let clap = addedClap {
+            updateClapsHelper(clap: clap, claps: claps, success: success, failure: failure)
+        } else {
+            addClapsHelper(claps: claps, success: success, failure: failure)
+        }
+    }
+    
+    private func addClapsHelper(claps: Int, success: EmptyHandler?, failure: ErrorHandler?) {
         isPendingClaps = true
         
-        NetworkHandler.shared.addClaps(messageId: id, parameters: [CodingKeys.claps.rawValue: claps], success: {
+        NetworkHandler.shared.addClaps(messageId: id, parameters: [CodingKeys.claps.rawValue: claps], success: { clap in
+            self.addedClap = clap
             self.claps += claps
             self.isPendingClaps = false
             success?()
@@ -66,10 +109,35 @@ class Message: Decodable {
         })
     }
     
+    private func updateClapsHelper(clap: Clap, claps: Int, success: EmptyHandler?, failure: ErrorHandler?) {
+        isPendingClaps = true
+        
+        NetworkHandler.shared.updateClaps(messageId: id, clapId: clap.id, parameters: [CodingKeys.claps.rawValue: claps], success: { clap in
+            self.addedClap = clap
+            self.claps += claps
+            self.isPendingClaps = false
+            success?()
+        }) { error in
+            self.isPendingClaps = false
+            failure?(error)
+        }
+    }
+    
+    // MARK: dislikes
+    
     func addDislikes(_ dislikes: Int, success: EmptyHandler?, failure: ErrorHandler?) {
+        if let dislike = addedDislike {
+            updateDislikesHelper(dislike: dislike, dislikes: dislikes, success: success, failure: failure)
+        } else {
+            
+        }
+    }
+    
+    private func addDislikesHelper(dislikes: Int, success: EmptyHandler?, failure: ErrorHandler?) {
         isPendingDislikes = true
         
-        NetworkHandler.shared.addDislikes(messageId: id, parameters: [CodingKeys.dislikes.rawValue: dislikes], success: {
+        NetworkHandler.shared.addDislikes(messageId: id, parameters: [CodingKeys.dislikes.rawValue: dislikes], success: { dislike in
+            self.addedDislike = dislike
             self.dislikes += dislikes
             self.isPendingDislikes = false
             success?()
@@ -77,5 +145,19 @@ class Message: Decodable {
             self.isPendingDislikes = false
             failure?(error)
         })
+    }
+    
+    private func updateDislikesHelper(dislike: Dislike, dislikes: Int, success: EmptyHandler?, failure: ErrorHandler?) {
+        isPendingDislikes = true
+        
+        NetworkHandler.shared.updateDislikes(messageId: id, dislikeId: dislike.id, parameters: [CodingKeys.dislikes.rawValue: dislikes], success: { dislike in
+            self.addedDislike = dislike
+            self.dislikes += dislikes
+            self.isPendingDislikes = false
+            success?()
+        }) { error in
+            self.isPendingDislikes = false
+            failure?(error)
+        }
     }
 }

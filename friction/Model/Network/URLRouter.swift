@@ -24,6 +24,8 @@ enum URLRouter: URLRequestConvertible {
     //MARK: PUT
     case updateUser(parameters: Parameters)
     case updateVote(id: String, parameters: Parameters)
+    case updateClaps(messageId: String, clapId: String, parameters: Parameters)
+    case updateDislikes(messageId: String, dislikeId: String, parameters: Parameters)
     
     //MARK: DELETE
     
@@ -33,7 +35,7 @@ enum URLRouter: URLRequestConvertible {
             return .get
         case .signup, .login, .uploadImage, .addVote, .addClaps, .addDislikes, .addToken:
             return .post
-        case .updateUser, .updateVote:
+        case .updateUser, .updateVote, .updateClaps, .updateDislikes:
             return .put
         }
     }
@@ -64,6 +66,10 @@ enum URLRouter: URLRequestConvertible {
             return "/token"
         case .updateVote(let id, _):
             return "/votes/\(id)"
+        case .updateClaps(let messageId, let clapId, _):
+            return "/messages/\(messageId)/claps/\(clapId)"
+        case .updateDislikes(let messageId, let dislikeId, _):
+            return "/messages/\(messageId)/dislikes/\(dislikeId)"
         }
     }
     
@@ -77,7 +83,7 @@ enum URLRouter: URLRequestConvertible {
         }
         
         switch self {
-        case .signup(let parameters), .login(let parameters), .addVote(let parameters), .addClaps(_, let parameters), .addDislikes(_, let parameters), .addToken(let parameters), .updateUser(let parameters), .updateVote(_, let parameters):
+        case .signup(let parameters), .login(let parameters), .addVote(let parameters), .addClaps(_, let parameters), .addDislikes(_, let parameters), .addToken(let parameters), .updateUser(let parameters), .updateVote(_, let parameters), .updateClaps(_, _, let parameters), .updateDislikes(_, _, let parameters):
             urlRequest = try JSONEncoding.default.encode(urlRequest, withJSONObject: parameters)
         default: break
         }

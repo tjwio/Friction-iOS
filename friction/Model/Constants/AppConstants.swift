@@ -21,6 +21,12 @@ typealias VoteListHandler = ([Vote]) -> Void
 typealias MessageHandler = (Message) -> Void
 typealias MessageListHandler = ([Message]) -> Void
 
+typealias ClapHandler = (Message.Clap) -> Void
+typealias ClapListHandler = ([Message.Clap]) -> Void
+
+typealias DislikeHandler = (Message.Dislike) -> Void
+typealias DislikeListHandler = ([Message.Dislike]) -> Void
+
 typealias DeviceTokenHandler = (DeviceToken) -> Void
 
 typealias ImageHandler = (UIImage) -> Void

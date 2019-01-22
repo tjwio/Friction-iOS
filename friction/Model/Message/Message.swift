@@ -129,7 +129,7 @@ class Message: Decodable {
         if let dislike = addedDislike {
             updateDislikesHelper(dislike: dislike, dislikes: dislikes, success: success, failure: failure)
         } else {
-            
+            addDislikesHelper(dislikes: dislikes, success: success, failure: failure)
         }
     }
     

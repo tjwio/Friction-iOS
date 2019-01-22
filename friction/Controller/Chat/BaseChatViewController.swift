@@ -203,7 +203,10 @@ class BaseChatViewController: UIViewController, UITableViewDataSource, UITableVi
         cell.messageView.messageLabel.text = message.message
         cell.clapView.claps.value = message.claps
         cell.dislikeView.claps.value = message.dislikes
+        
         cell.clapView.isUserInteractionEnabled = false
+        cell.dislikeView.isUserInteractionEnabled = false
+        
         if let imageUrl = message.imageUrl {
             cell.avatarView.imageView.sd_setImage(with: URL(string: imageUrl), completed: nil)
         } else {

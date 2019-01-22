@@ -29,6 +29,8 @@ class ClapView: UIView {
     let claps = MutableProperty<Int>(0)
     let addedClaps = MutableProperty<Int>(0)
     
+    var maxClaps = 0
+    
     let hapticGenerator = UIImpactFeedbackGenerator(style: .light)
     
     var audioPlayer: AVAudioPlayer? = {
@@ -127,16 +129,19 @@ class ClapView: UIView {
     // MARK: long press gesture recognizer
     
     @objc private func longHoldPressGestureRecognized(_ sender: UILongPressGestureRecognizer) {
-        if sender.state == .began {
+        if sender.state == .began && addedClaps.value < maxClaps {
             addedClaps.value += 1
+            
             hapticGenerator.impactOccurred()
             audioPlayer?.play()
             
             timer?.invalidate()
-            timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { [weak self] _ in
-                self?.addedClaps.value += 1
-                self?.hapticGenerator.impactOccurred()
-                self?.audioPlayer?.play()
+            timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { [unowned self] _ in
+                if self.addedClaps.value < self.maxClaps {
+                    self.addedClaps.value += 1
+                }
+                self.hapticGenerator.impactOccurred()
+                self.audioPlayer?.play()
             })
             
             layer.borderWidth = 2.0
@@ -150,6 +155,7 @@ class ClapView: UIView {
             timer?.invalidate()
             
             claps.value += addedClaps.value
+            maxClaps -= addedClaps.value
             addedClaps.value = 0
             
             layer.borderWidth = 1.0

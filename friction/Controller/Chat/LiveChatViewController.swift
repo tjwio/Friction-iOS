@@ -168,6 +168,11 @@ class LiveChatViewController: BaseChatViewController, ButtonScrollViewDelegate, 
         
         if let cell = cell as? FullMessageTableViewCell {
             cell.clapView.isUserInteractionEnabled = true
+            cell.dislikeView.isUserInteractionEnabled = true
+            
+            cell.clapView.maxClaps = 50 - (message.addedClap?.claps ?? 0)
+            cell.dislikeView.maxClaps = 50 - (message.addedDislike?.dislikes ?? 0)
+            
             cell.clapCallback = { [weak message] claps in
                 message?.addClaps(claps, success: nil, failure: nil)
             }

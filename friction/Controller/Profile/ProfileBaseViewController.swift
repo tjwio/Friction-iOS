@@ -12,7 +12,7 @@ import Photos
 import ReactiveCocoa
 import ReactiveSwift
 
-class ProfileBaseViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ProfileBaseViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     struct Constants {
         static let cellIdentifier = "ProfileDetailValueTableViewCellIdentifier"
         
@@ -129,18 +129,21 @@ class ProfileBaseViewController: UIViewController, UITableViewDelegate, UITableV
         cell.accountHolderView.isHidden = true
         cell.iconLabel.isHidden = true
         cell.textField.isEnabled = true
-        cell.textField.autocapitalizationType = .words
-        cell.textField.autocorrectionType = .default
+        cell.textField.delegate = self
         
         switch indexPath.section {
         case Constants.nameIndex:
             cell.detailLabel.text = GlobalStrings.fullName.localized
             cell.textField.attributedPlaceholder = NSAttributedString(string: "Muhammad", attributes: attributes)
+            cell.textField.autocapitalizationType = .none
+            cell.textField.autocorrectionType = .no
             cell.textField.text = self.name.value
             disposables += (self.name <~ cell.textField.reactive.continuousTextValues)
         case Constants.emailIndex:
             cell.detailLabel.text = GlobalStrings.email.localized
             cell.textField.attributedPlaceholder = NSAttributedString(string: "muhammad.nakmura@ciao.haus", attributes: attributes)
+            cell.textField.autocapitalizationType = .words
+            cell.textField.autocorrectionType = .default
             cell.textField.text = self.email.value
             disposables += (self.email <~ cell.textField.reactive.continuousTextValues)
         default: break
@@ -155,6 +158,12 @@ class ProfileBaseViewController: UIViewController, UITableViewDelegate, UITableV
         }
         
         return cell
+    }
+    
+    // MARK: text field
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        return string != " "
     }
     
     //MARK: photo/camera delegate

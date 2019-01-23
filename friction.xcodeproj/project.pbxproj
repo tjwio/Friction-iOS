@@ -61,7 +61,6 @@
 		2F8A6F0821A67EAD0056D4AD /* LiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8A6F0721A67EAD0056D4AD /* LiveView.swift */; };
 		2F8A6F0A21A680CB0056D4AD /* PercentageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8A6F0921A680CB0056D4AD /* PercentageButton.swift */; };
 		2F8A6F1021AB71C00056D4AD /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8A6F0D21AB71BF0056D4AD /* WelcomeViewController.swift */; };
-		2F8A6F1121AB71C00056D4AD /* BaseLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8A6F0E21AB71C00056D4AD /* BaseLoginViewController.swift */; };
 		2F8A6F1421AB72300056D4AD /* FeatherIcon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F8A6F1321AB72300056D4AD /* FeatherIcon.framework */; };
 		2F8A6F1921AB74140056D4AD /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F8A6F1521AB74140056D4AD /* ReactiveCocoa.framework */; };
 		2F8A6F1A21AB74140056D4AD /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F8A6F1621AB74140056D4AD /* Result.framework */; };
@@ -193,7 +192,6 @@
 		2F8A6F0721A67EAD0056D4AD /* LiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveView.swift; sourceTree = "<group>"; };
 		2F8A6F0921A680CB0056D4AD /* PercentageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercentageButton.swift; sourceTree = "<group>"; };
 		2F8A6F0D21AB71BF0056D4AD /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
-		2F8A6F0E21AB71C00056D4AD /* BaseLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseLoginViewController.swift; sourceTree = "<group>"; };
 		2F8A6F1321AB72300056D4AD /* FeatherIcon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FeatherIcon.framework; path = Carthage/Build/iOS/FeatherIcon.framework; sourceTree = "<group>"; };
 		2F8A6F1521AB74140056D4AD /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
 		2F8A6F1621AB74140056D4AD /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
@@ -427,7 +425,6 @@
 			children = (
 				2FD4595921F4274800B19E70 /* Login */,
 				2F8C262D21E70A4300BD0C3C /* Signup */,
-				2F8A6F0E21AB71C00056D4AD /* BaseLoginViewController.swift */,
 				2F8A6F0D21AB71BF0056D4AD /* WelcomeViewController.swift */,
 			);
 			path = Welcome;
@@ -932,7 +929,6 @@
 				2F8A6F2F21AB799D0056D4AD /* NetworkHandler.swift in Sources */,
 				2F8A6F2921AB77E80056D4AD /* LoadingButton.swift in Sources */,
 				2F4510BA21B6574B00EC529E /* Localizable.swift in Sources */,
-				2F8A6F1121AB71C00056D4AD /* BaseLoginViewController.swift in Sources */,
 				2F8A6F0621A679FB0056D4AD /* BasePollTableViewCell.swift in Sources */,
 				2F99877B21A282E3001B1256 /* AppDelegate.swift in Sources */,
 				2F45109021B523D300EC529E /* Message.swift in Sources */,

@@ -43,6 +43,8 @@ class LiveChatViewController: BaseChatViewController, ButtonScrollViewDelegate, 
         make.height.equalTo(52.0)
     }
     
+    var didJustSendMessage = false
+    
     deinit {
         socket.disconnect()
         NotificationCenter.default.removeObserver(self)
@@ -55,6 +57,8 @@ class LiveChatViewController: BaseChatViewController, ButtonScrollViewDelegate, 
         
         chatBox.textField.delegate = self
         chatBox.sendButton.addTarget(self, action: #selector(self.sendMessage(_:)), for: .touchUpInside)
+        
+        tableView.keyboardDismissMode = .onDrag
         
         updateSendColor()
         addSocketEvents()
@@ -134,6 +138,8 @@ class LiveChatViewController: BaseChatViewController, ButtonScrollViewDelegate, 
     @objc private func sendMessage(_ sender: Any?) {
         guard let text = chatBox.textField.text, !text.isEmpty else { (sender as? LoadingButton)?.isLoading = false; return }
         
+        self.didJustSendMessage = true
+        
         let params = [
             Message.CodingKeys.pollId.rawValue: poll.id,
             Message.CodingKeys.optionId.rawValue: option.id,
@@ -205,6 +211,14 @@ class LiveChatViewController: BaseChatViewController, ButtonScrollViewDelegate, 
     
     // MARK: keyboard notifications
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if chatBox.textField.isFirstResponder {
+            chatBox.textField.resignFirstResponder()
+        }
+        
+        super.touchesBegan(touches, with: event)
+    }
+    
     @objc private func keyboardWillShow(notification: NSNotification?) {
         if self.isViewLoaded && self.view.window != nil {
             if let keyboardSize = (notification?.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.size {
@@ -242,7 +256,11 @@ class LiveChatViewController: BaseChatViewController, ButtonScrollViewDelegate, 
                 self.tableView.scrollIndicatorInsets = contentInsets
                 self.tableView.setNeedsDisplay()
                 self.view.layoutIfNeeded()
-                self.scrollToBottom()
+                
+                if self.didJustSendMessage {
+                    self.scrollToBottom()
+                    self.didJustSendMessage = false
+                }
             })
         }
     }

@@ -63,7 +63,7 @@ class ButtonScrollView: UIScrollView {
         
         for index in 1..<items.endIndex {
             item = items[index]
-            let nextButton = PercentageButton(value: item.value, count: Int(item.percent * 100.0), color: .pollColor(index: index % 3), selected: item.selected, showPercentage: showPercentage)
+            let nextButton = PercentageButton(value: item.value, count: Int(item.percent * 100.0), color: .pollColor(index: index), selected: item.selected, showPercentage: showPercentage)
             nextButton.tag = index
             nextButton.addTarget(self, action: #selector(self.didSelectButton(_:)), for: .touchUpInside)
             buttons.append(nextButton)

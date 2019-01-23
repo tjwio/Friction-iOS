@@ -121,6 +121,6 @@ extension UIColor {
     }
     
     class func pollColor(index: Int) -> UIColor {
-        return Poll.all[index]
+        return Poll.all[index % Poll.all.count]
     }
 }

@@ -17,6 +17,7 @@ class LiveChatViewController: BaseChatViewController, ButtonScrollViewDelegate, 
             static let lobby = "room:lobby"
             static let shout = "shout"
             static let claps = "claps"
+            static let dislikes = "dislikes"
         }
     }
     
@@ -42,6 +43,8 @@ class LiveChatViewController: BaseChatViewController, ButtonScrollViewDelegate, 
         make.height.equalTo(52.0)
     }
     
+    var didJustSendMessage = false
+    
     deinit {
         socket.disconnect()
         NotificationCenter.default.removeObserver(self)
@@ -54,6 +57,8 @@ class LiveChatViewController: BaseChatViewController, ButtonScrollViewDelegate, 
         
         chatBox.textField.delegate = self
         chatBox.sendButton.addTarget(self, action: #selector(self.sendMessage(_:)), for: .touchUpInside)
+        
+        tableView.keyboardDismissMode = .onDrag
         
         updateSendColor()
         addSocketEvents()
@@ -102,6 +107,19 @@ class LiveChatViewController: BaseChatViewController, ButtonScrollViewDelegate, 
             strongSelf.tableView.reloadSections(IndexSet(integer: index), with: .none)
         }
         
+        lobby.on(Constants.Channel.dislikes) { [weak self] message in
+            guard let strongSelf = self,
+                let id = message.payload[Message.CodingKeys.id.rawValue] as? String, let dislikes = message.payload[Message.CodingKeys.dislikes.rawValue] as? Int,
+                let index = strongSelf.messages.firstIndex(where: { return $0.id == id }) else { return }
+            
+            let origMessage = strongSelf.messages[index]
+            guard !origMessage.isPendingDislikes && origMessage.dislikes != dislikes else { return }
+            
+            origMessage.dislikes = dislikes
+            
+            strongSelf.tableView.reloadSections(IndexSet(integer: index), with: .none)
+        }
+        
         socket.connect()
         _ = lobby.join()
             .receive("ok", callback: { _ in
@@ -119,6 +137,8 @@ class LiveChatViewController: BaseChatViewController, ButtonScrollViewDelegate, 
     
     @objc private func sendMessage(_ sender: Any?) {
         guard let text = chatBox.textField.text, !text.isEmpty else { (sender as? LoadingButton)?.isLoading = false; return }
+        
+        self.didJustSendMessage = true
         
         let params = [
             Message.CodingKeys.pollId.rawValue: poll.id,
@@ -154,8 +174,16 @@ class LiveChatViewController: BaseChatViewController, ButtonScrollViewDelegate, 
         
         if let cell = cell as? FullMessageTableViewCell {
             cell.clapView.isUserInteractionEnabled = true
+            cell.dislikeView.isUserInteractionEnabled = true
+            
+            cell.clapView.maxClaps = 50 - (message.addedClap?.claps ?? 0)
+            cell.dislikeView.maxClaps = 50 - (message.addedDislike?.dislikes ?? 0)
+            
             cell.clapCallback = { [weak message] claps in
                 message?.addClaps(claps, success: nil, failure: nil)
+            }
+            cell.dislikeCallback = { [weak message] dislikes in
+                message?.addDislikes(dislikes, success: nil, failure: nil)
             }
         }
         
@@ -182,6 +210,14 @@ class LiveChatViewController: BaseChatViewController, ButtonScrollViewDelegate, 
     }
     
     // MARK: keyboard notifications
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if chatBox.textField.isFirstResponder {
+            chatBox.textField.resignFirstResponder()
+        }
+        
+        super.touchesBegan(touches, with: event)
+    }
     
     @objc private func keyboardWillShow(notification: NSNotification?) {
         if self.isViewLoaded && self.view.window != nil {
@@ -220,7 +256,11 @@ class LiveChatViewController: BaseChatViewController, ButtonScrollViewDelegate, 
                 self.tableView.scrollIndicatorInsets = contentInsets
                 self.tableView.setNeedsDisplay()
                 self.view.layoutIfNeeded()
-                self.scrollToBottom()
+                
+                if self.didJustSendMessage {
+                    self.scrollToBottom()
+                    self.didJustSendMessage = false
+                }
             })
         }
     }

@@ -47,16 +47,8 @@ class BaseChatViewController: UIViewController, UITableViewDataSource, UITableVi
         return scrollView
     }()
     
-    let progressView: ProgressLabelView = {
-        let view = ProgressLabelView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        
-        return view
-    }()
-    
-    let separatorView: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor.Grayscale.backgroundLight
+    let progressView: ProgressView = {
+        let view = ProgressView()
         view.translatesAutoresizingMaskIntoConstraints = false
         
         return view
@@ -111,13 +103,13 @@ class BaseChatViewController: UIViewController, UITableViewDataSource, UITableVi
         buttonScrollView.items = items
         
         progressView.percents = items.map { return $0.percent }
+        progressView.layer.applySketchShadow(color: UIColor.Grayscale.light, alpha: 0.50, x: 3.0, y: 4.0, blur: 8.0, spread: 0.0)
         
         view.addSubview(nameLabel)
         view.addSubview(liveView)
         view.addSubview(buttonScrollView)
-        view.addSubview(progressView)
-        view.addSubview(separatorView)
         view.addSubview(tableView)
+        view.addSubview(progressView)
         view.addSubview(activityIndicator)
         
         activityIndicator.startAnimating()
@@ -147,20 +139,15 @@ class BaseChatViewController: UIViewController, UITableViewDataSource, UITableVi
         
         progressView.snp.makeConstraints { make in
             make.top.equalTo(self.buttonScrollView.snp.bottom).offset(16.0)
-            make.leading.equalToSuperview().offset(20.0)
-            make.trailing.equalToSuperview().offset(-20.0)
-        }
-        
-        separatorView.snp.makeConstraints { make in
-            make.top.equalTo(self.progressView.snp.bottom).offset(12.0)
-            make.leading.trailing.equalToSuperview()
-            make.height.equalTo(2.0)
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.height.equalTo(24.0)
         }
         
         tableView.snp.makeConstraints { make in
-            make.top.equalTo(self.separatorView.snp.bottom)
+            make.top.equalTo(self.progressView.snp.bottom).offset(4.0)
             make.leading.equalToSuperview().offset(16.0)
-            make.trailing.equalToSuperview().offset(-16.0)
+            make.trailing.equalToSuperview()
             make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).offset(-52.0)
         }
         
@@ -197,7 +184,7 @@ class BaseChatViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 14.0
+        return 4.0
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -209,19 +196,32 @@ class BaseChatViewController: UIViewController, UITableViewDataSource, UITableVi
         
         let message = messages[indexPath.section]
         
-        cell.messageView.nameLabel.text = message.name
-        cell.messageView.timeLabel.text = DateFormatter.amPm.string(from: message.date)
+        let color = UIColor.pollColor(index: message.poll.options.firstIndex(of: message.option) ?? 0)
+        
+        cell.nameLabel.text = message.name
+        cell.timeLabel.text = DateFormatter.amPm.string(from: message.date)
         cell.messageView.messageLabel.text = message.message
         cell.clapView.claps.value = message.claps
+        cell.dislikeView.claps.value = message.dislikes
+        
         cell.clapView.isUserInteractionEnabled = false
+        cell.dislikeView.isUserInteractionEnabled = false
+        
         if let imageUrl = message.imageUrl {
             cell.avatarView.imageView.sd_setImage(with: URL(string: imageUrl), completed: nil)
         } else {
             cell.avatarView.imageView.image = .blankAvatarBlack
         }
         
-        cell.messageView.layer.borderWidth = 1.0
-        cell.messageView.layer.borderColor = UIColor.pollColor(index: message.poll.options.firstIndex(of: message.option) ?? 0).cgColor
+        cell.messageView.backgroundColor = color
+        
+        cell.clapView.layer.borderColor = color.cgColor
+        cell.clapView.layer.borderWidth = 1.0
+        cell.clapView.layer.applySketchShadow(color: color, alpha: 1.0, x: 0.5, y: 1.0, blur: 3.0, spread: 0.0)
+        
+        cell.dislikeView.layer.borderColor = color.cgColor
+        cell.dislikeView.layer.borderWidth = 1.0
+        cell.dislikeView.layer.applySketchShadow(color: color, alpha: 1.0, x: 0.5, y: 1.0, blur: 3.0, spread: 0.0)
         
         return cell
     }

@@ -29,6 +29,8 @@ class ClapView: UIView {
     let claps = MutableProperty<Int>(0)
     let addedClaps = MutableProperty<Int>(0)
     
+    var maxClaps = 0
+    
     let hapticGenerator = UIImpactFeedbackGenerator(style: .light)
     
     var audioPlayer: AVAudioPlayer? = {
@@ -47,21 +49,33 @@ class ClapView: UIView {
         }
     }()
     
-    let imageView: UIImageView = {
-        let imageView = UIImageView(image: .clap)
-        imageView.tintImage(color: UIColor.Grayscale.dark)
-        imageView.translatesAutoresizingMaskIntoConstraints = false
+    let icon: UILabel = {
+        let label  = UILabel()
+        label.font = .systemFont(ofSize: 12.0)
+        label.text = "👏"
+        label.translatesAutoresizingMaskIntoConstraints = false
         
-        return imageView
+        return label
     }()
     
     let label: UILabel = {
         let label = UILabel()
-        label.font = .avenirMedium(size: 10.0)
-        label.textColor = UIColor.Grayscale.dark
+        label.font = .avenirMedium(size: 9.0)
+        label.textColor = UIColor.Grayscale.medium
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
+    }()
+    
+    lazy private var stackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [label, icon])
+        stackView.alignment = .center
+        stackView.axis = .horizontal
+        stackView.distribution = .fill
+        stackView.spacing = 0.0
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return stackView
     }()
     
     private var timer: Timer?
@@ -92,28 +106,21 @@ class ClapView: UIView {
         holdGestureRecognizer.minimumPressDuration = 0.0
         addGestureRecognizer(holdGestureRecognizer)
         
-        disposables += SignalProducer.combineLatest(claps.producer, addedClaps.producer).startWithValues { [weak self] claps, added in
-            self?.label.text = "\(claps+added) \(GlobalStrings.claps.localized.lowercased())"
+        disposables += SignalProducer.combineLatest(claps.producer, addedClaps.producer).startWithValues { [unowned self] claps, added in
+            self.label.text = "\(claps+added)"
         }
         
-        layer.cornerRadius = 4.0
-        layer.borderWidth = 1.0
-        layer.borderColor = UIColor.Grayscale.light.cgColor
+        backgroundColor = .white
         
-        addSubview(imageView)
-        addSubview(label)
+        layer.cornerRadius = 12.0
+        
+        addSubview(stackView)
         setNeedsUpdateConstraints()
     }
     
     override func updateConstraints() {
-        imageView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(8.0)
-            make.centerX.equalToSuperview()
-        }
-        
-        label.snp.makeConstraints { make in
-            make.bottom.equalToSuperview().offset(-4.0)
-            make.centerX.equalToSuperview()
+        stackView.snp.makeConstraints { make in
+            make.edges.equalToSuperview().inset(UIEdgeInsets(top: 6.0, left: 12.0, bottom: 6.0, right: 12.0))
         }
         
         super.updateConstraints()
@@ -122,20 +129,22 @@ class ClapView: UIView {
     // MARK: long press gesture recognizer
     
     @objc private func longHoldPressGestureRecognized(_ sender: UILongPressGestureRecognizer) {
-        if sender.state == .began {
+        if sender.state == .began && addedClaps.value < maxClaps {
             addedClaps.value += 1
+            
             hapticGenerator.impactOccurred()
             audioPlayer?.play()
             
             timer?.invalidate()
-            timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { [weak self] _ in
-                self?.addedClaps.value += 1
-                self?.hapticGenerator.impactOccurred()
-                self?.audioPlayer?.play()
+            timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { [unowned self] _ in
+                if self.addedClaps.value < self.maxClaps {
+                    self.addedClaps.value += 1
+                }
+                self.hapticGenerator.impactOccurred()
+                self.audioPlayer?.play()
             })
             
-            layer.borderColor = UIColor.Grayscale.darker.cgColor
-            imageView.tintImage(color: UIColor.Grayscale.darker)
+            layer.borderWidth = 2.0
             label.textColor = UIColor.Grayscale.darker
             
             UIView.animate(withDuration: 0.125) {
@@ -146,10 +155,10 @@ class ClapView: UIView {
             timer?.invalidate()
             
             claps.value += addedClaps.value
+            maxClaps -= addedClaps.value
             addedClaps.value = 0
             
-            layer.borderColor = UIColor.Grayscale.light.cgColor
-            imageView.tintImage(color: UIColor.Grayscale.dark)
+            layer.borderWidth = 1.0
             label.textColor = UIColor.Grayscale.dark
             
             UIView.animate(withDuration: 0.125) {

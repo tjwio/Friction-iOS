@@ -127,7 +127,7 @@ class BasePollTableViewCell: UITableViewCell, ButtonScrollViewDelegate {
     }()
     
     var progressHolderView: ProgressView = {
-        let view = ProgressView()
+        let view = ProgressView(labelsHidden: true)
         view.backgroundColor = .clear
         view.translatesAutoresizingMaskIntoConstraints = false
         

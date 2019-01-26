@@ -14,5 +14,6 @@ class FinishedChatViewController: BaseChatViewController {
         super.viewDidLoad()
 
         buttonScrollView.enabled = false
+        liveView.isHidden = true
     }
 }

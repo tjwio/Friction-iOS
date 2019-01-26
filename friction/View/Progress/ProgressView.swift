@@ -78,7 +78,9 @@ class ProgressView: UIView {
     override func updateConstraints() {
         var previousView: UIView?
         
-        for (view, width) in progressViews {
+        for (index, (view, width)) in progressViews.enumerated() {
+            let isLast = index == progressViews.count - 1
+            
             view.snp.makeConstraints { make in
                 if let previousView = previousView {
                     make.leading.equalTo(previousView.snp.trailing)
@@ -87,7 +89,10 @@ class ProgressView: UIView {
                 }
                 
                 make.top.bottom.equalToSuperview()
-                make.width.equalToSuperview().multipliedBy(width)
+                
+                if !isLast {
+                    make.width.equalToSuperview().multipliedBy(width)
+                }
             }
             
             previousView = view

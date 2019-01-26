@@ -569,8 +569,8 @@
 			children = (
 				2F45107A21B48BDB00EC529E /* Chat */,
 				2F8A6F0B21AB70780056D4AD /* Home */,
-				2F8A6F0C21AB708B0056D4AD /* Welcome */,
 				2F45106521B3867C00EC529E /* Profile */,
+				2F8A6F0C21AB708B0056D4AD /* Welcome */,
 			);
 			path = Controller;
 			sourceTree = "<group>";

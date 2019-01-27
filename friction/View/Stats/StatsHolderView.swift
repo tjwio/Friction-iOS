@@ -15,9 +15,9 @@ class StatsHolderView: UIView {
     let statViews: [StatLabelView]
     let stackView: UIStackView
     
-    init(items: [(count: [Int], name: String)]) {
+    init(items: [(count: [Int], name: String)], labels: [String]) {
         self.items = items
-        statViews = items.map { return StatLabelView(counts: $0.count, name: $0.name) }
+        statViews = items.map { return StatLabelView(counts: $0.count, name: $0.name, labels: labels) }
         stackView = UIStackView(arrangedSubviews: statViews)
         stackView.alignment = .leading
         stackView.axis = .vertical

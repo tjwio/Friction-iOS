@@ -62,6 +62,7 @@ class StatView: UIView {
     
     var counts: [Int]
     var name: String
+    var labels: [String]
     
     let chart: HorizontalBarChartView = {
         let chart = HorizontalBarChartView()
@@ -70,9 +71,10 @@ class StatView: UIView {
         return chart
     }()
     
-    init(counts: [Int], name: String) {
+    init(counts: [Int], name: String, labels: [String]) {
         self.counts = counts
         self.name = name
+        self.labels = labels
         super.init(frame: .zero)
         commonInit()
     }
@@ -110,8 +112,8 @@ class StatView: UIView {
         let legend = chart.legend
         legend.horizontalAlignment = .right
         legend.verticalAlignment = .top
-        legend.orientation = .vertical
-        legend.drawInside = false
+        legend.orientation = .horizontal
+        legend.drawInside = true
         legend.form = .circle
         legend.formSize = 9
         legend.font = font
@@ -120,14 +122,18 @@ class StatView: UIView {
         
         chart.fitBars = true
         
-        let entries = counts.enumerated().map { elem in
-            return BarChartDataEntry(x: Double(elem.offset) * Constants.spaceForBar, y: Double(elem.element))
+        let entries = counts.reversed().enumerated().map { elem -> BarChartDataSet in
+            let entry = BarChartDataEntry(x: Double(elem.offset) * Constants.spaceForBar, y: Double(elem.element))
+            let set = BarChartDataSet(values: [entry], label: nil)
+            set.drawValuesEnabled = true
+            set.colors = [UIColor.pollColor(index: elem.offset)]
+            set.label = self.labels[elem.offset]
+            
+            return set
         }
         
-        let set = BarChartDataSet(values: entries, label: nil)
-        set.drawValuesEnabled = true
-        set.colors = UIColor.Poll.all
-        let data = BarChartData(dataSet: set)
+       
+        let data = BarChartData(dataSets: entries)
         data.setValueFont(.avenirMedium(size: 10.0) ?? .systemFont(ofSize: 10.0))
         data.barWidth = Constants.barWidth
         

@@ -26,7 +26,8 @@ class FinishedChatViewController: BaseChatViewController {
         
         let header = StatsHolderView(items: [(count: counts, name: "Comments"),
                                              (count: claps, name: "Claps"),
-                                             (count: dislikes, name: "Dislikes")])
+                                             (count: dislikes, name: "Dislikes")],
+                                     labels: poll.options.map { $0.name })
         
         header.frame.size.height = header.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
         tableView.tableHeaderView = header

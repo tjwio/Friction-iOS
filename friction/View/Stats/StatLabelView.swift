@@ -23,8 +23,8 @@ class StatLabelView: UIView {
     
     let totalCount: Int
     
-    init(counts: [Int], name: String) {
-        statView = StatView(counts: counts, name: name)
+    init(counts: [Int], name: String, labels: [String]) {
+        statView = StatView(counts: counts, name: name, labels: labels)
         label.text = "Total ".appending(name)
         totalCount = counts.count
         super.init(frame: .zero)

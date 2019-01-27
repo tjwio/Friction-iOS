@@ -15,39 +15,34 @@ class FinishedChatViewController: BaseChatViewController {
 
         buttonScrollView.enabled = false
         liveView.isHidden = true
+        
+        let messages = poll.options.map { return $0.messages }
+        
+        let counts = messages.map { $0.count }
+        let claps = messages.map { $0.map { $0.claps }.reduce(0, +) }
+        let dislikes = messages.map { $0.map { $0.dislikes }.reduce(0, +) }
+        
+        let header = StatsHolderView(items: [(count: counts, name: "Comments"),
+                                             (count: claps, name: "Claps"),
+                                             (count: dislikes, name: "Dislikes")])
+        tableView.tableHeaderView = header
     }
     
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 0 {
-            return UITableView.automaticDimension
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        guard let headerView = tableView.tableHeaderView else {
+            return
         }
         
-        return super.tableView(tableView, heightForHeaderInSection: section)
-    }
-    
-    func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
-        if section == 0 {
-            return 375.0
-        }
+        let size = headerView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
         
-        return self.tableView(tableView, heightForHeaderInSection: section)
-    }
-    
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if section == 0 {
-            let messages = poll.options.map { return $0.messages }
+        if headerView.frame.size.height != size.height {
+            headerView.frame.size.height = size.height
             
-            let counts = messages.map { $0.count }
-            let claps = messages.map { $0.map { $0.claps }.reduce(0, +) }
-            let dislikes = messages.map { $0.map { $0.dislikes }.reduce(0, +) }
+            tableView.tableHeaderView = headerView
             
-            let header = StatsHolderView(items: [(count: counts, name: "Comments"),
-                                                 (count: claps, name: "Claps"),
-                                                 (count: dislikes, name: "Dislikes")])
-            
-            return header
+            tableView.layoutIfNeeded()
         }
-        
-        return super.tableView(tableView, viewForHeaderInSection: section)
     }
 }

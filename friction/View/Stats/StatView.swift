@@ -102,14 +102,13 @@ class StatView: UIView {
         leftAxis.drawGridLinesEnabled = false
         leftAxis.drawAxisLineEnabled = false
         
-        let font = UIFont.avenirRegular(size: 9.0) ?? UIFont.systemFont(ofSize: 9.0)
-        
         let xAxis = chart.xAxis
         xAxis.drawAxisLineEnabled = false
         xAxis.drawGridLinesEnabled = false
         xAxis.labelPosition = .bottom
-        xAxis.labelFont = font
+        xAxis.labelFont = UIFont.avenirMedium(size: 10.0) ?? UIFont.systemFont(ofSize: 9.0)
         xAxis.labelCount = counts.count
+        xAxis.labelTextColor = UIColor.Grayscale.dark
         xAxis.valueFormatter = LabelValueFormatter(counts: counts, name: name)
         xAxis.enabled = true
         
@@ -120,7 +119,7 @@ class StatView: UIView {
         legend.drawInside = false
         legend.form = .circle
         legend.formSize = 9
-        legend.font = font
+        legend.font = UIFont.avenirRegular(size: 9.0) ?? UIFont.systemFont(ofSize: 9.0)
         legend.textColor = UIColor.Grayscale.dark
         legend.xEntrySpace = 4
         

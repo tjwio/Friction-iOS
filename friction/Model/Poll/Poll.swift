@@ -100,8 +100,9 @@ class Poll: NSObject, Decodable {
     
     func getMessages(success: MessageListHandler?, failure: ErrorHandler?) {
         NetworkHandler.shared.getMessages(pollId: id, success: { messages in
+            self.options.forEach { $0.messages = [] }
             self.messages = messages.sorted { return $0.date < $1.date }
-            self.messages.forEach { $0.option?.messages = []; $0.option?.messages.append($0) }
+            self.messages.forEach { $0.option?.messages.append($0) }
             success?(messages)
         }) { error in
             self.messages = []

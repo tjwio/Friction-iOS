@@ -15,16 +15,6 @@ class StatsHolderView: UIView {
     let statViews: [StatLabelView]
     let stackView: UIStackView
     
-    let label: UILabel = {
-        let label = UILabel()
-        label.font = .avenirDemi(size: 22.0)
-        label.text = "Stats"
-        label.textColor = .black
-        label.translatesAutoresizingMaskIntoConstraints = false
-        
-        return label
-    }()
-    
     init(items: [(count: [Int], name: String)]) {
         self.items = items
         statViews = items.map { return StatLabelView(counts: $0.count, name: $0.name) }
@@ -44,20 +34,21 @@ class StatsHolderView: UIView {
     }
     
     private func commonInit() {
-        addSubview(label)
         addSubview(stackView)
         
         setNeedsUpdateConstraints()
     }
     
     override func updateConstraints() {
-        label.snp.makeConstraints { make in
-            make.top.leading.equalToSuperview()
+        stackView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(12.0)
+            make.leading.trailing.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-12.0)
         }
         
-        stackView.snp.makeConstraints { make in
-            make.top.equalTo(self.label.snp.bottom)
-            make.leading.trailing.bottom.equalToSuperview()
+        statViews.forEach { $0.snp.makeConstraints { make in
+                make.leading.trailing.equalToSuperview()
+            }
         }
         
         super.updateConstraints()

@@ -11,9 +11,9 @@ import Charts
 import SnapKit
 
 class StatView: UIView {
-    private struct Constants {
-        static let barWidth = 12.0
-        static let spaceForBar = 13.0
+    struct Constants {
+        static let barWidth = 15.0
+        static let spaceForBar = 20.0
     }
     
     var counts: [Int]
@@ -38,11 +38,27 @@ class StatView: UIView {
     }
     
     private func commonInit() {
+        chart.drawBarShadowEnabled = false
+        chart.drawValueAboveBarEnabled = false
+        chart.doubleTapToZoomEnabled = false
+        chart.pinchZoomEnabled = false
+        
+        chart.maxVisibleCount = 60
+        
+        chart.xAxis.enabled = false
+        chart.leftAxis.enabled = false
+        chart.rightAxis.enabled = false
+        chart.legend.enabled = false
+        
+        chart.fitBars = true
+        
         let entries = counts.enumerated().map { elem in
             return BarChartDataEntry(x: Double(elem.offset) * Constants.spaceForBar, y: Double(elem.element))
         }
         
         let set = BarChartDataSet(values: entries, label: nil)
+        set.drawValuesEnabled = false
+        set.colors = UIColor.Poll.all
         let data = BarChartData(dataSet: set)
         data.setValueFont(.avenirMedium(size: 10.0) ?? .systemFont(ofSize: 10.0))
         data.barWidth = Constants.barWidth

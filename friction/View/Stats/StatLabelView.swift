@@ -14,16 +14,19 @@ class StatLabelView: UIView {
     
     let label: UILabel = {
         let label = UILabel()
-        label.font = .avenirDemi(size: 12.0)
-        label.textColor = UIColor.Grayscale.dark
+        label.font = .avenirDemi(size: 18.0)
+        label.textColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
     }()
     
+    let totalCount: Int
+    
     init(counts: [Int], name: String) {
         statView = StatView(counts: counts, name: name)
         label.text = "Total ".appending(name)
+        totalCount = counts.count
         super.init(frame: .zero)
         commonInit()
     }
@@ -47,6 +50,7 @@ class StatLabelView: UIView {
         statView.snp.makeConstraints { make in
             make.top.equalTo(self.label.snp.bottom).offset(12.0)
             make.leading.trailing.bottom.equalToSuperview()
+            make.height.equalTo(StatView.Constants.spaceForBar * Double(self.totalCount) + 40.0)
         }
         
         super.updateConstraints()

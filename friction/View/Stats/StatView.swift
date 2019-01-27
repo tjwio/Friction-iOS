@@ -40,7 +40,7 @@ class StatView: UIView {
         }
         
         func stringForValue(_ value: Double, axis: AxisBase?) -> String {
-            let index = Int(value / StatView.Constants.spaceForBar)
+            let index = counts.count - Int(value / StatView.Constants.spaceForBar) - 1
             
             let string = "\(counts[index]) \(name.lowercased())"
             let font = axis?.labelFont ?? .systemFont(ofSize: 9.0)
@@ -113,7 +113,7 @@ class StatView: UIView {
         legend.horizontalAlignment = .right
         legend.verticalAlignment = .top
         legend.orientation = .horizontal
-        legend.drawInside = true
+        legend.drawInside = false
         legend.form = .circle
         legend.formSize = 9
         legend.font = font
@@ -122,17 +122,19 @@ class StatView: UIView {
         
         chart.fitBars = true
         
-        let entries = counts.reversed().enumerated().map { elem -> BarChartDataSet in
-            let entry = BarChartDataEntry(x: Double(elem.offset) * Constants.spaceForBar, y: Double(elem.element))
+        let count = counts.count - 1
+        let entries = counts.enumerated().map { elem -> BarChartDataSet in
+            let entry = BarChartDataEntry(x: Double(count - elem.offset) * Constants.spaceForBar, y: Double(elem.element))
             let set = BarChartDataSet(values: [entry], label: nil)
             set.drawValuesEnabled = true
             set.colors = [UIColor.pollColor(index: elem.offset)]
             set.label = self.labels[elem.offset]
+            set.roundedCorners = .allCorners
+            set.roundBottomBar = true
             
             return set
         }
         
-       
         let data = BarChartData(dataSets: entries)
         data.setValueFont(.avenirMedium(size: 10.0) ?? .systemFont(ofSize: 10.0))
         data.barWidth = Constants.barWidth

@@ -92,11 +92,15 @@ class StatView: UIView {
         chart.highlightFullBarEnabled = false
         chart.highlightPerDragEnabled = false
         chart.isUserInteractionEnabled = false
+        chart.rightAxis.enabled = false
         
         chart.maxVisibleCount = 60
         
-        chart.leftAxis.enabled = false
-        chart.rightAxis.enabled = false
+        let leftAxis = chart.leftAxis
+        leftAxis.axisMinimum = 0.0
+        leftAxis.drawLabelsEnabled = false
+        leftAxis.drawGridLinesEnabled = false
+        leftAxis.drawAxisLineEnabled = false
         
         let font = UIFont.avenirRegular(size: 9.0) ?? UIFont.systemFont(ofSize: 9.0)
         
@@ -126,11 +130,10 @@ class StatView: UIView {
         let entries = counts.enumerated().map { elem -> BarChartDataSet in
             let entry = BarChartDataEntry(x: Double(count - elem.offset) * Constants.spaceForBar, y: Double(elem.element))
             let set = BarChartDataSet(values: [entry], label: nil)
-            set.drawValuesEnabled = true
+            set.drawValuesEnabled = false
             set.colors = [UIColor.pollColor(index: elem.offset)]
             set.label = self.labels[elem.offset]
             set.roundedCorners = .allCorners
-            set.roundBottomBar = true
             
             return set
         }

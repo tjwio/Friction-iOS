@@ -10,20 +10,22 @@ import UIKit
 import SnapKit
 
 class StatsHolderView: UIView {
-    var items: [(count: [Int], name: String)] {
-        didSet {
-            stackView.removeFromSuperview()
-            updateItems(items)
-        }
-    }
+    let items: [(count: [Int], name: String)]
     
-    var statViews = [StatLabelView]()
-    var stackView: UIStackView!
+    let statViews: [StatLabelView]
+    let stackView: UIStackView
     
     init(items: [(count: [Int], name: String)]) {
         self.items = items
+        statViews = items.map { return StatLabelView(counts: $0.count, name: $0.name) }
+        stackView = UIStackView(arrangedSubviews: statViews)
+        stackView.alignment = .leading
+        stackView.axis = .vertical
+        stackView.distribution = .fill
+        stackView.spacing = 20.0
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        
         super.init(frame: .zero)
-        updateItems(items)
         commonInit()
     }
     
@@ -50,19 +52,5 @@ class StatsHolderView: UIView {
         }
         
         super.updateConstraints()
-    }
-    
-    private func updateItems(_ items: [(count: [Int], name: String)]) {
-        statViews = items.map { return StatLabelView(counts: $0.count, name: $0.name) }
-        stackView = UIStackView(arrangedSubviews: statViews)
-        stackView.alignment = .leading
-        stackView.axis = .vertical
-        stackView.distribution = .fill
-        stackView.spacing = 20.0
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        
-        addSubview(stackView)
-        
-        setNeedsUpdateConstraints()
     }
 }

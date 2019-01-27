@@ -209,6 +209,10 @@ class LiveChatViewController: BaseChatViewController, ButtonScrollViewDelegate, 
         }
     }
     
+    override func messagesDidReload(_ messages: [Message]) {
+        self.scrollToBottom()
+    }
+    
     // MARK: keyboard notifications
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

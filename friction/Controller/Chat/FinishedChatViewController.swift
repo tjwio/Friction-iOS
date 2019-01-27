@@ -9,6 +9,20 @@
 import UIKit
 
 class FinishedChatViewController: BaseChatViewController {
+    
+    var header: StatsHolderView?
+    
+    var chartItems: [(count: [Int], name: String)] {
+        let messages = poll.options.map { return $0.messages }
+        
+        let counts = messages.map { $0.count }
+        let claps = messages.map { $0.map { $0.claps }.reduce(0, +) }
+        let dislikes = messages.map { $0.map { $0.dislikes }.reduce(0, +) }
+        
+        return [(count: counts, name: "Comments"),
+                (count: claps, name: "Claps"),
+                (count: dislikes, name: "Dislikes")]
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,33 +30,26 @@ class FinishedChatViewController: BaseChatViewController {
         buttonScrollView.enabled = false
         liveView.isHidden = true
         
-        let messages = poll.options.map { return $0.messages }
-        
-        let counts = messages.map { $0.count }
-        let claps = messages.map { $0.map { $0.claps }.reduce(0, +) }
-        let dislikes = messages.map { $0.map { $0.dislikes }.reduce(0, +) }
-        
-        let header = StatsHolderView(items: [(count: counts, name: "Comments"),
-                                             (count: claps, name: "Claps"),
-                                             (count: dislikes, name: "Dislikes")])
-        tableView.tableHeaderView = header
+        let header = StatsHolderView(items: chartItems)
+        self.header = header
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        guard let headerView = tableView.tableHeaderView else {
-            return
-        }
+        guard tableView.tableHeaderView == nil, let header = header else { return }
         
-        let size = headerView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
+        let size = header.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
         
-        if headerView.frame.size.height != size.height {
-            headerView.frame.size.height = size.height
+        if size.height != 0 {
+            header.frame.size.height = size.height
             
-            tableView.tableHeaderView = headerView
-            
+            tableView.tableHeaderView = header
             tableView.layoutIfNeeded()
         }
+    }
+    
+    override func messagesDidReload(_ messages: [Message]) {
+        header?.items = chartItems
     }
 }

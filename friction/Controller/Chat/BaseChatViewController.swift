@@ -161,7 +161,7 @@ class BaseChatViewController: UIViewController, UITableViewDataSource, UITableVi
             self.activityIndicator.stopAnimating()
             sender?.endRefreshing()
             self.tableView.reloadData()
-            self.scrollToBottom()
+            self.messagesDidReload(messages)
         }) { error in
             print("failed to get messages with error: \(error)")
             self.activityIndicator.stopAnimating()
@@ -232,5 +232,9 @@ class BaseChatViewController: UIViewController, UITableViewDataSource, UITableVi
         guard !poll.messages.isEmpty else { return }
         let indexPath = IndexPath(row: 0, section: poll.messages.count-1)
         tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+    }
+    
+    func messagesDidReload(_ messages: [Message]) {
+        
     }
 }

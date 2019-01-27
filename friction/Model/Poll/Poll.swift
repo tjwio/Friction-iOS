@@ -14,6 +14,7 @@ class Poll: NSObject, Decodable {
         var name: String
         var votes: Int
         var vote: Vote?
+        var messages = [Message]()
         
         enum CodingKeys: String, CodingKey {
             case id, name
@@ -25,6 +26,7 @@ class Poll: NSObject, Decodable {
     var name: String
     var options: [Option]
     var date: Date
+    var messages = [Message]()
     
     var totalVotes: Int {
         return options.reduce(0, { (result, option) -> Int in
@@ -92,6 +94,19 @@ class Poll: NSObject, Decodable {
             newOption.votes += 1
             success?(vote)
         }, failure: failure)
+    }
+    
+    // MARK: messages
+    
+    func getMessages(success: MessageListHandler?, failure: ErrorHandler?) {
+        NetworkHandler.shared.getMessages(pollId: id, success: { messages in
+            self.messages = messages.sorted { return $0.date < $1.date }
+            self.messages.forEach { $0.option?.messages = []; $0.option?.messages.append($0) }
+            success?(messages)
+        }) { error in
+            self.messages = []
+            failure?(error)
+        }
     }
     
     // MARK: helper

@@ -30,6 +30,7 @@ class StatView: UIView {
         self.counts = counts
         self.name = name
         super.init(frame: .zero)
+        commonInit()
     }
     
     required init?(coder aDecoder: NSCoder) {

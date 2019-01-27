@@ -89,7 +89,7 @@ class LiveChatViewController: BaseChatViewController, ButtonScrollViewDelegate, 
             self?.chatBox.textField.text = ""
             self?.chatBox.sendButton.isLoading = false
             guard let message = message.payload.decodeJson(Message.self), let strongSelf = self else { return }
-            strongSelf.messages.append(message)
+            strongSelf.poll.messages.append(message)
             strongSelf.tableView.reloadData()
             strongSelf.scrollToBottom()
         }
@@ -97,9 +97,9 @@ class LiveChatViewController: BaseChatViewController, ButtonScrollViewDelegate, 
         lobby.on(Constants.Channel.claps) { [weak self] message in
             guard let strongSelf = self,
                 let id = message.payload[Message.CodingKeys.id.rawValue] as? String, let claps = message.payload[Message.CodingKeys.claps.rawValue] as? Int,
-                let index = strongSelf.messages.firstIndex(where: { return $0.id == id }) else { return }
+                let index = strongSelf.poll.messages.firstIndex(where: { return $0.id == id }) else { return }
             
-            let origMessage = strongSelf.messages[index]
+            let origMessage = strongSelf.poll.messages[index]
             guard !origMessage.isPendingClaps && origMessage.claps != claps else { return }
             
             origMessage.claps = claps
@@ -110,9 +110,9 @@ class LiveChatViewController: BaseChatViewController, ButtonScrollViewDelegate, 
         lobby.on(Constants.Channel.dislikes) { [weak self] message in
             guard let strongSelf = self,
                 let id = message.payload[Message.CodingKeys.id.rawValue] as? String, let dislikes = message.payload[Message.CodingKeys.dislikes.rawValue] as? Int,
-                let index = strongSelf.messages.firstIndex(where: { return $0.id == id }) else { return }
+                let index = strongSelf.poll.messages.firstIndex(where: { return $0.id == id }) else { return }
             
-            let origMessage = strongSelf.messages[index]
+            let origMessage = strongSelf.poll.messages[index]
             guard !origMessage.isPendingDislikes && origMessage.dislikes != dislikes else { return }
             
             origMessage.dislikes = dislikes
@@ -170,7 +170,7 @@ class LiveChatViewController: BaseChatViewController, ButtonScrollViewDelegate, 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
         
-        let message = messages[indexPath.section]
+        let message = poll.messages[indexPath.section]
         
         if let cell = cell as? FullMessageTableViewCell {
             cell.clapView.isUserInteractionEnabled = true

@@ -36,8 +36,8 @@ class Message: Decodable {
     
     var id: String
     
-    var poll: Poll
-    var option: Poll.Option
+    weak var poll: Poll?
+    weak var option: Poll.Option?
     
     var message: String
     var claps: Int

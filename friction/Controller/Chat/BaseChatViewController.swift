@@ -18,8 +18,6 @@ class BaseChatViewController: UIViewController, UITableViewDataSource, UITableVi
     let poll: Poll
     var option: Poll.Option
     
-    var messages = [Message]()
-    
     let nameLabel: UILabel = {
         let label = UILabel()
         label.font = .avenirDemi(size: 22.0)
@@ -159,8 +157,7 @@ class BaseChatViewController: UIViewController, UITableViewDataSource, UITableVi
     // MARK: reload
     
     private func reloadMessages(_ sender: UIRefreshControl?) {
-        NetworkHandler.shared.getMessages(pollId: poll.id, success: { messages in
-            self.messages = messages.sorted { return $0.date < $1.date }
+        poll.getMessages(success: { messages in
             self.activityIndicator.stopAnimating()
             sender?.endRefreshing()
             self.tableView.reloadData()
@@ -176,7 +173,7 @@ class BaseChatViewController: UIViewController, UITableViewDataSource, UITableVi
     // MARK: table view
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return activityIndicator.isAnimating ? 0 : messages.count
+        return activityIndicator.isAnimating ? 0 : poll.messages.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -194,9 +191,12 @@ class BaseChatViewController: UIViewController, UITableViewDataSource, UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellIdentifier) as? FullMessageTableViewCell ?? FullMessageTableViewCell(style: .default, reuseIdentifier: Constants.cellIdentifier)
         
-        let message = messages[indexPath.section]
+        let message = poll.messages[indexPath.section]
         
-        let color = UIColor.pollColor(index: message.poll.options.firstIndex(of: message.option) ?? 0)
+        var color = UIColor.pollColor(index: 0)
+        if let option = message.option, let index = poll.options.firstIndex(of: option) {
+            color = .pollColor(index: index)
+        }
         
         cell.nameLabel.text = message.name
         cell.timeLabel.text = DateFormatter.amPm.string(from: message.date)
@@ -229,8 +229,8 @@ class BaseChatViewController: UIViewController, UITableViewDataSource, UITableVi
     // MARK: helper
     
     func scrollToBottom() {
-        guard !messages.isEmpty else { return }
-        let indexPath = IndexPath(row: 0, section: messages.count-1)
+        guard !poll.messages.isEmpty else { return }
+        let indexPath = IndexPath(row: 0, section: poll.messages.count-1)
         tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
     }
 }

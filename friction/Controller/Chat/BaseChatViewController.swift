@@ -145,8 +145,7 @@ class BaseChatViewController: UIViewController, UITableViewDataSource, UITableVi
         tableView.snp.makeConstraints { make in
             make.top.equalTo(self.progressView.snp.bottom).offset(4.0)
             make.leading.equalToSuperview().offset(16.0)
-            make.trailing.equalToSuperview()
-            make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).offset(-52.0)
+            make.trailing.bottom.equalToSuperview()
         }
         
         activityIndicator.snp.makeConstraints { make in

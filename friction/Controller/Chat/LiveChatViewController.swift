@@ -37,6 +37,14 @@ class LiveChatViewController: BaseChatViewController, ButtonScrollViewDelegate, 
         return view
     }()
     
+    let whiteView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        return view
+    }()
+    
     lazy var defaultTextFieldConstraints: (SnapKit.ConstraintMaker) -> Void = { make in
         make.leading.equalToSuperview().offset(16.0)
         make.trailing.equalToSuperview().offset(-16.0)
@@ -58,16 +66,23 @@ class LiveChatViewController: BaseChatViewController, ButtonScrollViewDelegate, 
         chatBox.textField.delegate = self
         chatBox.sendButton.addTarget(self, action: #selector(self.sendMessage(_:)), for: .touchUpInside)
         
+        tableView.contentInset = UIEdgeInsets(top: tableView.contentInset.top, left: tableView.contentInset.left, bottom: 62.0, right: tableView.contentInset.right)
         tableView.keyboardDismissMode = .onDrag
         
         updateSendColor()
         addSocketEvents()
         
         view.addSubview(chatBox)
+        view.addSubview(whiteView)
+        
+        whiteView.snp.makeConstraints { make in
+            make.leading.trailing.bottom.equalToSuperview()
+            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
+        }
         
         chatBox.snp.makeConstraints { make in
             self.defaultTextFieldConstraints(make)
-            make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).offset(-4.0)
+            make.bottom.equalTo(self.whiteView.snp.top)
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -250,10 +265,10 @@ class LiveChatViewController: BaseChatViewController, ButtonScrollViewDelegate, 
         if self.isViewLoaded && self.view.window != nil {
             self.chatBox.snp.remakeConstraints { make in
                 self.defaultTextFieldConstraints(make)
-                make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).offset(-4.0)
+                make.bottom.equalTo(self.whiteView.snp.top)
             }
             
-            let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 12.0, right: 0.0)
+            let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 62.0, right: 0.0)
             
             UIView.animate(withDuration: (notification?.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0.3, animations: {
                 self.tableView.contentInset = contentInsets

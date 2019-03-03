@@ -13,10 +13,7 @@ import HockeySDK
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
-    
     private struct Constants {
-        static let tokenKey = "device_token"
-        
         struct Hockey {
             static let id = "ccbae485c4064ef6a7da864d31c9a072"
         }
@@ -80,11 +77,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     func registerForPushNotifications() {
         UNUserNotificationCenter.current().delegate = self
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in
-            guard granted else { return }
-            
-            DispatchQueue.main.async {
-                UIApplication.shared.registerForRemoteNotifications()
+        UNUserNotificationCenter.current().getNotificationSettings { settings in
+            if settings.authorizationStatus == .authorized {
+                DispatchQueue.main.async {
+                    UIApplication.shared.registerForRemoteNotifications()
+                }
             }
         }
     }
@@ -97,10 +94,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         let token = tokenParts.joined()
         print("Device Token: \(token)")
         
-        guard UserDefaults.standard.string(forKey: Constants.tokenKey) != token, let udid = UIDevice.current.identifierForVendor?.uuidString else { return }
+        guard UserDefaults.standard.string(forKey: AppConstants.UserDefaults.tokenKey) != token, let udid = UIDevice.current.identifierForVendor?.uuidString,
+            let userId = AuthenticationManager.shared.userId else { return }
         
-        NetworkHandler.shared.addToken(parameters: [DeviceToken.CodingKeys.token.rawValue: token, DeviceToken.CodingKeys.udid.rawValue: udid], success: { _ in
-            UserDefaults.standard.set(token, forKey: Constants.tokenKey)
+        let params: JSON = [
+            DeviceToken.CodingKeys.token.rawValue: token,
+            DeviceToken.CodingKeys.udid.rawValue: udid,
+            DeviceToken.CodingKeys.userId.rawValue: userId
+        ]
+        
+        NetworkHandler.shared.addToken(parameters: params, success: { _ in
+            UserDefaults.standard.set(token, forKey: AppConstants.UserDefaults.tokenKey)
         }, failure: nil)
     }
     

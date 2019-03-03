@@ -35,3 +35,9 @@ typealias JSONHandler = (JSON) -> Void
 typealias JSONListHandler = ([JSON]) -> Void
 typealias ErrorHandler = (Error) -> Void
 typealias EmptyHandler = () -> Void
+
+struct AppConstants {
+    struct UserDefaults {
+        static let tokenKey = "device_token"
+    }
+}

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 class PasswordSignupViewController: BaseSignupViewController {
     
@@ -42,6 +43,8 @@ class PasswordSignupViewController: BaseSignupViewController {
     
     override func nextStep(_ sender: LoadingButton?) {
         AuthenticationManager.shared.signup(name: username, email: email, password: textField.text!, success: { user in
+            UNUserNotificationCenter.current().requestAuthorizationStatus()
+            
             DispatchQueue.main.async {
                 (UIApplication.shared.delegate as? AppDelegate)?.loadMainViewController()
             }

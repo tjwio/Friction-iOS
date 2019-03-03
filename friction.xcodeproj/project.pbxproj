@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		221EBF78222B5B4D0087CB92 /* UNUserNotificationCenter+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221EBF77222B5B4D0087CB92 /* UNUserNotificationCenter+Helper.swift */; };
 		2F45105E21B34B3500EC529E /* DeviceToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45105D21B34B3500EC529E /* DeviceToken.swift */; };
 		2F45106021B34BA900EC529E /* NetworkHandler+Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45105F21B34BA900EC529E /* NetworkHandler+Token.swift */; };
 		2F45106221B380E100EC529E /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45106121B380E100EC529E /* AvatarView.swift */; };
@@ -135,6 +136,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		221EBF77222B5B4D0087CB92 /* UNUserNotificationCenter+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UNUserNotificationCenter+Helper.swift"; sourceTree = "<group>"; };
 		2F45105D21B34B3500EC529E /* DeviceToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceToken.swift; sourceTree = "<group>"; };
 		2F45105F21B34BA900EC529E /* NetworkHandler+Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkHandler+Token.swift"; sourceTree = "<group>"; };
 		2F45106121B380E100EC529E /* AvatarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
@@ -398,6 +400,7 @@
 				2F8A6F1F21AB74B80056D4AD /* UITextField+Toolbar.swift */,
 				2F8A6F1E21AB74B80056D4AD /* UIViewController+Back.swift */,
 				2F8A6F4821ABCD790056D4AD /* UIViewController+Messages.swift */,
+				221EBF77222B5B4D0087CB92 /* UNUserNotificationCenter+Helper.swift */,
 				2F8A6F3C21ABC8B20056D4AD /* URLRequesst+cURL.swift */,
 			);
 			path = Extensions;
@@ -929,6 +932,7 @@
 				2F45106421B3860400EC529E /* ProfileView.swift in Sources */,
 				2FA78ACB21CF6BA400C4FF53 /* StatLabelView.swift in Sources */,
 				2F45108621B4C8F200EC529E /* FullMessageTableViewCell.swift in Sources */,
+				221EBF78222B5B4D0087CB92 /* UNUserNotificationCenter+Helper.swift in Sources */,
 				2F45106D21B38E9F00EC529E /* NetworkHandler+User.swift in Sources */,
 				2F8A6F2F21AB799D0056D4AD /* NetworkHandler.swift in Sources */,
 				2F8A6F2921AB77E80056D4AD /* LoadingButton.swift in Sources */,

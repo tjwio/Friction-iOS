@@ -90,6 +90,7 @@ class AuthenticationManager: NSObject {
         userId = nil
         authToken = nil
         UserDefaults.standard.set(nil, forKey: Constants.userIdKeychainKey)
+        UserDefaults.standard.set(nil, forKey: AppConstants.UserDefaults.tokenKey)
         keychain.delete(Constants.emailKeychainKey)
         keychain.delete(Constants.passwordKeychainKey)
         keychain.delete(Constants.authTokenKeychainKey)

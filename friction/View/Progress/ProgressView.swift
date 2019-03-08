@@ -112,7 +112,7 @@ class ProgressView: UIView {
         progressViews = percents.map { percent in
             let view = LabelView()
             view.backgroundColor = .pollColor(index: index)
-            view.label.isHidden = self.labelsHidden
+            view.label.isHidden = self.labelsHidden || percent == 0
             view.label.text = "\(Int(percent * 100.0))%"
             view.translatesAutoresizingMaskIntoConstraints = false
             

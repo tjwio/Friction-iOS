@@ -100,13 +100,15 @@ class LiveChatViewController: BaseChatViewController, ButtonScrollViewDelegate, 
         }
         
         lobby = socket.channel(Constants.Channel.lobby)
-        lobby.on(Constants.Channel.shout) { [weak self] message in
-            self?.chatBox.textField.text = ""
-            self?.chatBox.sendButton.isLoading = false
-            guard let message = message.payload.decodeJson(Message.self), let strongSelf = self else { return }
-            strongSelf.poll.messages.append(message)
-            strongSelf.tableView.reloadData()
-            strongSelf.scrollToBottom()
+        lobby.on(Constants.Channel.shout) { [unowned self] message in
+            if self.chatBox.sendButton.isLoading {
+                self.chatBox.textField.text = ""
+                self.chatBox.sendButton.isLoading = false
+            }
+            guard let message = message.payload.decodeJson(Message.self) else { return }
+            self.poll.messages.append(message)
+            self.tableView.reloadData()
+            self.scrollToBottom()
         }
         
         lobby.on(Constants.Channel.claps) { [weak self] message in

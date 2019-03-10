@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		221EBF78222B5B4D0087CB92 /* UNUserNotificationCenter+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221EBF77222B5B4D0087CB92 /* UNUserNotificationCenter+Helper.swift */; };
+		22D55182223492C0003BE1F2 /* LabelTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D55181223492C0003BE1F2 /* LabelTableHeaderView.swift */; };
 		2F45105E21B34B3500EC529E /* DeviceToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45105D21B34B3500EC529E /* DeviceToken.swift */; };
 		2F45106021B34BA900EC529E /* NetworkHandler+Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45105F21B34BA900EC529E /* NetworkHandler+Token.swift */; };
 		2F45106221B380E100EC529E /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45106121B380E100EC529E /* AvatarView.swift */; };
@@ -137,6 +138,7 @@
 
 /* Begin PBXFileReference section */
 		221EBF77222B5B4D0087CB92 /* UNUserNotificationCenter+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UNUserNotificationCenter+Helper.swift"; sourceTree = "<group>"; };
+		22D55181223492C0003BE1F2 /* LabelTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelTableHeaderView.swift; sourceTree = "<group>"; };
 		2F45105D21B34B3500EC529E /* DeviceToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceToken.swift; sourceTree = "<group>"; };
 		2F45105F21B34BA900EC529E /* NetworkHandler+Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkHandler+Token.swift"; sourceTree = "<group>"; };
 		2F45106121B380E100EC529E /* AvatarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
@@ -308,6 +310,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		22D55180223492AC003BE1F2 /* Table */ = {
+			isa = PBXGroup;
+			children = (
+				22D55181223492C0003BE1F2 /* LabelTableHeaderView.swift */,
+			);
+			path = Table;
+			sourceTree = "<group>";
+		};
 		2F45105C21B34B2000EC529E /* DeviceToken */ = {
 			isa = PBXGroup;
 			children = (
@@ -591,6 +601,7 @@
 				2FA78AC121CF644400C4FF53 /* Profile */,
 				2FA78ABE21CF641300C4FF53 /* Progress */,
 				2FA78AC321CF651200C4FF53 /* Stats */,
+				22D55180223492AC003BE1F2 /* Table */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -928,6 +939,7 @@
 				2F8A6F4321ABCA1B0056D4AD /* Data+JSON.swift in Sources */,
 				2F6C1D0C21FD79FD00EE62CD /* String+Padding.swift in Sources */,
 				2F45107C21B48BEB00EC529E /* BaseChatViewController.swift in Sources */,
+				22D55182223492C0003BE1F2 /* LabelTableHeaderView.swift in Sources */,
 				2F8A6F3821AB820E0056D4AD /* AppManager.swift in Sources */,
 				2F45106421B3860400EC529E /* ProfileView.swift in Sources */,
 				2FA78ACB21CF6BA400C4FF53 /* StatLabelView.swift in Sources */,
@@ -1180,7 +1192,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = friction/friction.entitlements;
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_TEAM = 9JBA7R48SP;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1209,7 +1221,7 @@
 				CODE_SIGN_ENTITLEMENTS = friction/friction.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_TEAM = 9JBA7R48SP;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

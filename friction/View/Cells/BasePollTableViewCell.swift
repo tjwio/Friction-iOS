@@ -24,8 +24,6 @@ class BasePollTableViewCell: UITableViewCell, ButtonScrollViewDelegate {
         }
     }
     
-    var buttons = [PercentageButton]()
-    
     var index = 0
     
     let nameLabel: UILabel = {

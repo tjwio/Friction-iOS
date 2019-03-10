@@ -188,9 +188,11 @@ class BaseChatViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return getCell(tableView: tableView, message: poll.messages[indexPath.section])
+    }
+    
+    func getCell(tableView: UITableView, message: Message) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellIdentifier) as? FullMessageTableViewCell ?? FullMessageTableViewCell(style: .default, reuseIdentifier: Constants.cellIdentifier)
-        
-        let message = poll.messages[indexPath.section]
         
         var color = UIColor.pollColor(index: 0)
         if let option = message.option, let index = poll.options.firstIndex(of: option) {

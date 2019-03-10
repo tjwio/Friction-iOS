@@ -213,6 +213,8 @@ class MainViewController: UIViewController, PollSelectionDelegate, UITableViewDa
         cell.items = poll.items
         cell.progressHolderView.isHidden = totalVotes == 0
         
+        cell.scrollView.enabled = indexPath.section == 0
+        
         cell.layer.cornerRadius = 4.0
         cell.layer.borderColor = UIColor.Grayscale.lighter.cgColor
         cell.layer.borderWidth = 1.0

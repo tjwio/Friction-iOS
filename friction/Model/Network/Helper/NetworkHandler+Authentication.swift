@@ -23,8 +23,8 @@ extension NetworkHandler {
         
         self.sessionManager.request(URLRouter.signup(parameters: parameters)).validate().responseJSON { response in
             switch response.result {
-            case .success:
-                success?(response.result.value as? JSON ?? JSON())
+            case .success(let value):
+                success?(value as? JSON ?? JSON())
             case .failure(let error):
                 failure?(error)
             }
@@ -39,8 +39,8 @@ extension NetworkHandler {
         
         self.sessionManager.request(URLRouter.login(parameters: parameters)).validate().responseJSON { response in
             switch response.result {
-            case .success:
-                success?(response.result.value as? JSON ?? JSON())
+            case .success(let value):
+                success?(value as? JSON ?? JSON())
             case .failure(let error):
                 failure?(error)
             }

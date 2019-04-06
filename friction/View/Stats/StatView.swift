@@ -128,7 +128,7 @@ class StatView: UIView {
         let count = counts.count - 1
         let entries = counts.enumerated().map { elem -> BarChartDataSet in
             let entry = BarChartDataEntry(x: Double(count - elem.offset) * Constants.spaceForBar, y: Double(elem.element))
-            let set = BarChartDataSet(values: [entry], label: nil)
+            let set = BarChartDataSet(entries: [entry], label: nil)
             set.drawValuesEnabled = false
             set.colors = [UIColor.pollColor(index: elem.offset)]
             set.label = self.labels[elem.offset]
@@ -138,7 +138,7 @@ class StatView: UIView {
         }
         
         let data = BarChartData(dataSets: entries)
-        data.setValueFont(.avenirMedium(size: 10.0) ?? .systemFont(ofSize: 10.0))
+        data.setValueFont(UIFont.avenirMedium(size: 10.0) ?? UIFont.systemFont(ofSize: 10.0))
         data.barWidth = Constants.barWidth
         
         chart.data = data

@@ -800,6 +800,7 @@
 				TargetAttributes = {
 					2F99877621A282E3001B1256 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
@@ -808,10 +809,12 @@
 					};
 					2F99878A21A282E7001B1256 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 						TestTargetID = 2F99877621A282E3001B1256;
 					};
 					2F99879521A282E7001B1256 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 						TestTargetID = 2F99877621A282E3001B1256;
 					};
 				};
@@ -1208,7 +1211,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = io.tjw.friction;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "match Development io.tjw.friction";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1237,7 +1240,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = io.tjw.friction;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "match AdHoc io.tjw.friction";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1258,7 +1261,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.tjw.frictionTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/friction.app/friction";
 			};
@@ -1279,7 +1282,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.tjw.frictionTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/friction.app/friction";
 			};
@@ -1299,7 +1302,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.tjw.frictionUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = friction;
 			};
@@ -1319,7 +1322,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.tjw.frictionUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = friction;
 			};

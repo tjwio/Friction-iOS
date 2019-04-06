@@ -1,5 +1,5 @@
-github "Alamofire/Alamofire" ~> 4.7
-github "ReactiveCocoa/ReactiveCocoa" ~> 8.0
+github "Alamofire/Alamofire" "5.0.0-beta.4"
+github "ReactiveCocoa/ReactiveCocoa" ~> 9.0
 github "Skyscanner/SkyFloatingLabelTextField"
 github "SnapKit/SnapKit" ~> 4.0.0
 github "tjwio/SwiftFeather" "master"
@@ -7,7 +7,7 @@ github "tw23/GSMessages" "fix/access_control"
 github "evgenyneu/keychain-swift" ~> 11.0
 github "SDWebImage/SDWebImage"
 github "davidstump/SwiftPhoenixClient" ~> 0.9
-github "bitstadium/HockeySDK-iOS"
+github "acamill/HockeySDK-iOS" "misc/xcode10.2-tmp-fix"
 github "tjwio/Charts" "master"
 binary "https://dl.google.com/dl/firebase/ios/carthage/FirebaseAnalyticsBinary.json"
 binary "https://building42.github.io/Specs/Carthage/iOS/Fabric.json"

@@ -6,7 +6,7 @@
 //  Copyright © 2018 tjwio. All rights reserved.
 //
 
-import Foundation
+import Alamofire
 
 extension NetworkHandler {
     private struct Constants {
@@ -15,16 +15,13 @@ extension NetworkHandler {
     }
     
     public func uploadImage(_ image: Data, filename: String, success: JSONHandler?, failure: ErrorHandler?) {
-        self.sessionManager.upload(multipartFormData: { multipartFormData in
-            multipartFormData.append(image, withName: Constants.name, fileName: filename, mimeType: Constants.mimeType)
-        }, with: URLRouter.uploadImage) { result in
-            switch result {
-            case .success(let upload, _, _):
-                upload.validate().responseJSON(completionHandler: { response in
-                    success?(response.result.value as? JSON ?? JSON())
-                })
-            case .failure(let error):
-                failure?(error)
+        let multipartFormData = MultipartFormData(fileManager: .default, boundary: nil)
+        multipartFormData.append(image, withName: Constants.name, fileName: filename, mimeType: Constants.mimeType)
+        
+        sessionManager.upload(multipartFormData: multipartFormData, with: URLRouter.uploadImage).validate().responseJSON { response in
+            switch response.result {
+            case .success(let value): success?(value as? JSON ?? JSON())
+            case .failure(let error): failure?(error)
             }
         }
     }

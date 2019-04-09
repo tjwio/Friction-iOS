@@ -170,6 +170,8 @@ class ProfileBaseViewController: UIViewController, UITableViewDelegate, UITableV
     
     @objc private func avatarPressed(_ sender: UIGestureRecognizer?) {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        alertController.popoverPresentationController?.sourceView = profileView.avatarImageView
+        alertController.popoverPresentationController?.sourceRect = profileView.avatarImageView.bounds
         
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let takePhoto = UIAlertAction(title: "Take Photo", style: .default) { _ in

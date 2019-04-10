@@ -6,7 +6,7 @@ github "tjwio/SwiftFeather" "master"
 github "tw23/GSMessages" "fix/access_control"
 github "evgenyneu/keychain-swift" ~> 11.0
 github "SDWebImage/SDWebImage"
-github "davidstump/SwiftPhoenixClient" ~> 0.9
+github "davidstump/SwiftPhoenixClient" ~> 1.0
 github "acamill/HockeySDK-iOS" "misc/xcode10.2-tmp-fix"
 github "tjwio/Charts" "master"
 binary "https://dl.google.com/dl/firebase/ios/carthage/FirebaseAnalyticsBinary.json"

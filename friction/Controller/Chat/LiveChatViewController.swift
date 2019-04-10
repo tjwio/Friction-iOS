@@ -21,7 +21,7 @@ class LiveChatViewController: BaseChatViewController, ButtonScrollViewDelegate, 
         }
     }
     
-    let socket = Socket(url: AppManager.shared.environment.streamUrl, params: ["token" : AuthenticationManager.shared.authToken ?? ""])
+    let socket = Socket(AppManager.shared.environment.streamUrl, params: ["token" : AuthenticationManager.shared.authToken ?? ""])
     var lobby: Channel!
     
     override var option: Poll.Option {
@@ -45,7 +45,7 @@ class LiveChatViewController: BaseChatViewController, ButtonScrollViewDelegate, 
         return view
     }()
     
-    lazy var defaultTextFieldConstraints: (SnapKit.ConstraintMaker) -> Void = { make in
+    lazy var baseTextFieldConstraints: (SnapKit.ConstraintMaker) -> Void = { make in
         make.leading.equalToSuperview().offset(16.0)
         make.trailing.equalToSuperview().offset(-16.0)
         make.height.equalTo(52.0)
@@ -81,7 +81,7 @@ class LiveChatViewController: BaseChatViewController, ButtonScrollViewDelegate, 
         }
         
         chatBox.snp.makeConstraints { make in
-            self.defaultTextFieldConstraints(make)
+            self.baseTextFieldConstraints(make)
             make.bottom.equalTo(self.whiteView.snp.top)
         }
         
@@ -245,7 +245,7 @@ class LiveChatViewController: BaseChatViewController, ButtonScrollViewDelegate, 
             if let keyboardSize = (notification?.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.size {
                 if UIApplication.shared.statusBarOrientation.isPortrait {
                     self.chatBox.snp.remakeConstraints { make in
-                        self.defaultTextFieldConstraints(make)
+                        self.baseTextFieldConstraints(make)
                         make.bottom.equalTo(self.view.snp.bottom).offset(-keyboardSize.height)
                     }
                 }
@@ -266,7 +266,7 @@ class LiveChatViewController: BaseChatViewController, ButtonScrollViewDelegate, 
     @objc private func keyboardWillHide(notification: NSNotification?) {
         if self.isViewLoaded && self.view.window != nil {
             self.chatBox.snp.remakeConstraints { make in
-                self.defaultTextFieldConstraints(make)
+                self.baseTextFieldConstraints(make)
                 make.bottom.equalTo(self.whiteView.snp.top)
             }
             
